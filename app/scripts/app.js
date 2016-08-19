@@ -16,10 +16,24 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'auth0.lock',
+    'angular-jwt'
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+    lockProvider.init({
+      clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
+      domain: 'morion4000.auth0.com'
+    });
+
+    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('id_token');
+      }
+    });
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -31,7 +45,20 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope, auth, authManager) {
+    $rootScope.authService = auth;
+
+    auth.registerAuthenticationListener();
+
+    authManager.checkAuthOnRefresh();
+    authManager.redirectWhenUnauthenticated();
   });
