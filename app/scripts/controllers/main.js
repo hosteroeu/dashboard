@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name hosteroApp.controller:MainCtrl
+ * @name atlasApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the hosteroApp
+ * Controller of the atlasApp
  */
-angular.module('hosteroApp')
+angular.module('atlasApp')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

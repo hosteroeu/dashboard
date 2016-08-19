@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name hosteroApp
+ * @name atlasApp
  * @description
- * # hosteroApp
+ * # atlasApp
  *
  * Main module of the application.
  */
 angular
-  .module('hosteroApp', [
+  .module('atlasApp', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
