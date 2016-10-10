@@ -1,4 +1,4 @@
-box: olger/box-yeoman
+box: gceranto/nodejs-bower-grunt-yeoman
 
 build:
   steps:
