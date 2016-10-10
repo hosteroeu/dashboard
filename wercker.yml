@@ -1,4 +1,4 @@
-box: gceranto/nodejs-bower-grunt-yeoman
+box: digitallyseamless/nodejs-bower-grunt
 
 build:
   steps:
