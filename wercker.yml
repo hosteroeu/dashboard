@@ -6,7 +6,7 @@ build:
         packages: ruby-full
     - script:
         name: install compass gem
-        code: gem install compass
+        code: gem update --system && gem install compass
     - npm-install
     - olger/yeoman-bower-install
     - grunt:
