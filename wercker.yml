@@ -14,10 +14,6 @@ build:
 
 deploy:
   steps:
-    - script:
-        name: copy files to $WERCKER_SOURCE_DIR
-        code: ./scripts/copy_files_to_app_source_dir.sh
-
     - internal/docker-push:
         username: $DOCKER_USER
         password: $DOCKER_PASSWORD
