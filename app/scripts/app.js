@@ -29,7 +29,9 @@ angular
     jwtOptionsProvider.config({
       tokenGetter: function() {
         return localStorage.getItem('id_token');
-      }
+      },
+      whiteListedDomains: ['localhost'],
+      unauthenticatedRedirectPath: '/login'
     });
 
     $httpProvider.interceptors.push('jwtInterceptor');
@@ -54,7 +56,9 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function($rootScope, auth, authManager) {
+  .run(function($rootScope, auth, authManager, lock) {
+    lock.interceptHash();
+
     $rootScope.authService = auth;
 
     auth.registerAuthenticationListener();
