@@ -8,7 +8,7 @@ build:
         name: install compass gem
         code: gem update --system && gem install compass
     - npm-install
-    - olger/yeoman-bower-install
+    - bower-install
     - grunt:
         tasks: build
 
