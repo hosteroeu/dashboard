@@ -9,5 +9,5 @@
  */
 angular.module('atlasApp')
   .controller('LoginCtrl', function ($scope, auth) {
-    $scope.authService = auth;
+    auth.login();
   });
