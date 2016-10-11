@@ -17,7 +17,7 @@ deploy:
     - internal/docker-push:
         username: $DOCKER_USER
         password: $DOCKER_PASSWORD
-        tag: latest
+        tag: $WERCKER_GIT_COMMIT
         repository: morion4000/atlas
         registry: https://registry.hub.docker.com
         entrypoint: "/pipeline/source"
