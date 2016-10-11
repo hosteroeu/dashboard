@@ -14,8 +14,9 @@ build:
 
 deploy:
   steps:
-    - heroku-deploy:
-        key: $HEROKU_KEY
-        user: $HEROKU_USER
-        app-name: $HEROKU_APP_NAME
-        source_dir: dist
+    - internal/docker-push:
+        username: $DOCKER_USER
+        password: $DOCKER_PASSWORD
+        tag: latest
+        repository: morion4000/atlas
+        registry: https://registry.hub.docker.com
