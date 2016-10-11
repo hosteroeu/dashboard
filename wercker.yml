@@ -20,5 +20,6 @@ deploy:
         tag: latest
         repository: morion4000/atlas
         registry: https://registry.hub.docker.com
+        entrypoint: "/pipeline/source"
         cmd: "node server.js"
         ports: "80"
