@@ -12,7 +12,7 @@ build:
     - grunt:
         tasks: build
 
-deploy:
+docker:
   steps:
     - internal/docker-push:
         username: $DOCKER_USER
@@ -23,3 +23,18 @@ deploy:
         cmd: node server.js
         ports: "80"
         working-dir: /pipeline/source
+
+rancher:
+  steps:
+    - nhumrich/deploy-to-rancher:
+        access_key: $RANCHER_ACCESS_KEY
+        secret_key: $RANCHER_SECRET_KEY
+        rancher_url: $RANCHER_URL
+        https: false
+        tag: $WERCKER_GIT_COMMIT
+        stack_name: Default
+        service_name: atlas
+        docker_org: morion4000
+        docker_image: atlas
+        use_tag: true
+        inplace: false
