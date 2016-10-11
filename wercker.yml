@@ -3,7 +3,7 @@ box: digitallyseamless/nodejs-bower-grunt
 build:
   steps:
     - install-packages:
-        packages: ruby-full
+        packages: ruby-full unzip
     - script:
         name: install compass gem
         code: gem update --system && gem install compass
