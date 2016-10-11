@@ -14,12 +14,16 @@ build:
 
 deploy:
   steps:
+    - script:
+        name: copy files to $WERCKER_SOURCE_DIR
+        code: ./scripts/copy_files_to_app_source_dir.sh
+
     - internal/docker-push:
         username: $DOCKER_USER
         password: $DOCKER_PASSWORD
         tag: $WERCKER_GIT_COMMIT
         repository: morion4000/atlas
         registry: https://registry.hub.docker.com
-        entrypoint: "/pipeline/source"
+        entrypoint: "/usr/src/app"
         cmd: "node server.js"
         ports: "80"
