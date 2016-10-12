@@ -24,20 +24,29 @@
 
   <!-- Add your site or application content here -->
 
-  <md-toolbar>
-    <ul>
-      <li><a href="#/">Home</a></li>
-      <li><a href="#/about">About</a></li>
-      <li ng-if="!isAuthenticated"><a href="#/login">Log In</a></li>
-      <li ng-if="isAuthenticated"><a href="#/" ng-click="authService.logout()">Log Out</a></li>
-    </ul>
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <h2><span>Hoste.ro</span></h2>
+      <span flex></span>
+      <md-button class="md-raised" aria-label="Log out" ng-click="authService.logout()">
+        Log Out
+      </md-button>
+    </div>
   </md-toolbar>
 
   <div flex layout="row">
-    <md-sidenav flex="15" md-is-locked-open="true" class="md-whiteframe-z1">
-      <md-content>
-        sidenav
-      </md-content>
+    <md-sidenav flex="20" md-is-locked-open="true" class="md-whiteframe-z1">
+      <md-list>
+        <md-list-item href="#/">
+          <md-icon md-svg-icon="cached"></md-icon>
+          <p>Home</p>
+        </md-list-item>
+        <md-subheader class="md-no-sticky">Area</md-subheader>
+        <md-list-item href="#/instances">
+          <md-icon md-svg-icon="cached"></md-icon>
+          <p>Instances</p>
+        </md-list-item>
+      </md-list>
     </md-sidenav>
 
     <div layout="column" flex ng-view=""></div>
@@ -76,8 +85,9 @@
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/instances.js"></script>
   <script src="scripts/services/auth.js"></script>
+  <script src="scripts/services/instances.js"></script>
   <script src="scripts/controllers/login.js"></script>
   <!-- endbuild -->
 </body>

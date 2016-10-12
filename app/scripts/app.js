@@ -20,7 +20,7 @@ angular
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com'
@@ -42,10 +42,10 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/instances', {
+        templateUrl: 'views/instances.html',
+        controller: 'InstancesCtrl',
+        controllerAs: 'instances'
       })
       .when('/login', {
         templateUrl: 'views/login.html',

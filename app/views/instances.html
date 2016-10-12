@@ -1,0 +1,16 @@
+<md-content flex layout-padding>
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card ng-repeat="instance in query">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{instance.name}}</span>
+          <span class="md-subhead">{{instance.created_at | date}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Stop</md-button>
+        <md-button>Scale</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</md-content>
