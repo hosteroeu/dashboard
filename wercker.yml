@@ -26,6 +26,9 @@ docker:
 
 rancher:
   steps:
+    - install-packages:
+        packages: unzip
+
     - nhumrich/deploy-to-rancher:
         access_key: $RANCHER_ACCESS_KEY
         secret_key: $RANCHER_SECRET_KEY
