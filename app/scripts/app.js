@@ -56,7 +56,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function($rootScope, authService, authManager, lock) {
+  .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
     lock.interceptHash();
 
     $rootScope.authService = authService;
@@ -66,7 +66,23 @@ angular
     // Use the authManager from angular-jwt to check for
     // the user's authentication state when the page is
     // refreshed and maintain authentication
-    authManager.checkAuthOnRefresh();
+    //authManager.checkAuthOnRefresh();
+
+    // When a location change is detected
+    $rootScope.$on('$locationChangeStart', function() {
+      var token = localStorage.getItem('id_token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          //valid stored token - use it
+          return localStorage.getItem('id_token');
+        } else {
+          console.log('id_token has expired - removing from localstorage')
+          localStorage.removeItem('id_token');
+        }
+      } else {
+        $location.path('/login');
+      }
+    });
 
     // Listen for 401 unauthorized requests and redirect
     // the user to the login page
