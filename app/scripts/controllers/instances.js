@@ -10,6 +10,4 @@
 angular.module('atlasApp')
   .controller('InstancesCtrl', function($scope, instances) {
     $scope.query = instances.query();
-
-    console.log($scope.instances);
   });
