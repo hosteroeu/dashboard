@@ -84,12 +84,13 @@ angular
     // When a location change is detected
     $rootScope.$on('$locationChangeStart', function() {
       var token = localStorage.getItem('id_token');
+
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
-          //valid stored token - use it
           return localStorage.getItem('id_token');
         } else {
-          console.log('id_token has expired - removing from localstorage')
+          // TODO: Refresh token
+          
           localStorage.removeItem('id_token');
         }
       } else {
