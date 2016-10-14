@@ -8,6 +8,6 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('LoginCtrl', function ($scope, auth) {
-    auth.login();
+  .controller('LoginCtrl', function ($scope, authService) {
+    authService.login();
   });

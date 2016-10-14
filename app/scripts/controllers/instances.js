@@ -8,6 +8,6 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('InstancesCtrl', function($scope, instances) {
-    $scope.query = instances.query();
+  .controller('InstancesCtrl', function($scope, instancesService) {
+    $scope.instances = instancesService.query();
   });

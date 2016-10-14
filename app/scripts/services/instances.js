@@ -9,7 +9,7 @@
  */
 angular.module('atlasApp')
   .factory('instances', function($resource) {
-    return $resource('https://api.hoste.ro/v1' +
+    return $resource('//api.hoste.ro/v1' +
       '/instances/:id/:controller/:verb/:action', {
         id: '@id',
         controller: '@controller',

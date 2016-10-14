@@ -20,7 +20,7 @@ angular
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider) {
+  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com'
@@ -40,29 +40,35 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'mainCtrl'
       })
       .when('/instances', {
         templateUrl: 'views/instances.html',
         controller: 'InstancesCtrl',
-        controllerAs: 'instances'
+        controllerAs: 'instancesCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'login'
+        controllerAs: 'loginCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .run(function($rootScope, auth, authManager, lock) {
+  .run(function($rootScope, authService, authManager, lock) {
     lock.interceptHash();
 
-    $rootScope.authService = auth;
+    $rootScope.authService = authService;
 
-    auth.registerAuthenticationListener();
+    authService.registerAuthenticationListener();
 
+    // Use the authManager from angular-jwt to check for
+    // the user's authentication state when the page is
+    // refreshed and maintain authentication
     authManager.checkAuthOnRefresh();
+
+    // Listen for 401 unauthorized requests and redirect
+    // the user to the login page
     authManager.redirectWhenUnauthenticated();
   });
