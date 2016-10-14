@@ -40,4 +40,4 @@ rancher:
         docker_org: morion4000
         docker_image: atlas
         use_tag: true
-        inplace: false
+        inplace: true
