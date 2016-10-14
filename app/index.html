@@ -27,7 +27,7 @@
     <div class="md-toolbar-tools">
       <h2><span>Hoste.ro</span></h2>
       <span flex></span>
-      <md-button class="md-raised" aria-label="Log out" ng-click="authService.logout()">
+      <md-button class="md-raised" aria-label="Log out" ng-click="authService.logout()" ng-if="isAuthenticated">
         Log Out
       </md-button>
     </div>
@@ -36,31 +36,31 @@
   <div flex layout="row">
     <md-sidenav flex="20" md-is-locked-open="true" class="md-whiteframe-z1">
       <md-list>
-        <md-list-item href="#/">
+        <md-list-item ui-sref="main">
           <md-icon md-svg-icon="cached"></md-icon>
           <p>Home</p>
         </md-list-item>
-        <md-list-item href="#/">
+        <md-list-item ui-sref="main">
           <md-icon md-svg-icon="cached"></md-icon>
           <p>Account</p>
         </md-list-item>
         <md-subheader class="md-no-sticky">Management</md-subheader>
-        <md-list-item href="#/instances">
+        <md-list-item ui-sref="instances">
           <md-icon md-svg-icon="cached"></md-icon>
           <p>Sites</p>
         </md-list-item>
-        <md-list-item href="#/domans">
+        <md-list-item ui-sref="main">
           <md-icon md-svg-icon="cached"></md-icon>
           <p>Domains</p>
         </md-list-item>
-        <md-list-item href="#/backups">
+        <md-list-item ui-sref="main">
           <md-icon md-svg-icon="cached"></md-icon>
           <p>Backups</p>
         </md-list-item>
       </md-list>
     </md-sidenav>
 
-    <div layout="column" flex ng-view=""></div>
+    <div layout="column" flex ui-view></div>
   </div>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -90,6 +90,7 @@
   <script src="bower_components/auth0-lock/build/lock.js"></script>
   <script src="bower_components/angular-lock/angular-lock.js"></script>
   <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 

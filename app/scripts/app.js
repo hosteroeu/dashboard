@@ -17,10 +17,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngMaterial',
+    'ui.router',
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function($routeProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+  .config(function($stateProvider, $urlRouterProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com'
@@ -31,29 +32,41 @@ angular
         return localStorage.getItem('id_token');
       },
       whiteListedDomains: ['localhost'],
-      unauthenticatedRedirectPath: '/login'
+      /* does not get called
+      unauthenticatedRedirector: ['$state', function($state) {
+        $state.go('login');
+      }]
+      */
     });
 
     $httpProvider.interceptors.push('jwtInterceptor');
 
-    $routeProvider
-      .when('/', {
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('main', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'mainCtrl'
+        controllerAs: 'mainCtrl',
+        data: {
+          requiresLogin: true
+        }
       })
-      .when('/instances', {
+      .state('instances', {
+        url: '/instances',
         templateUrl: 'views/instances.html',
         controller: 'InstancesCtrl',
-        controllerAs: 'instancesCtrl'
+        controllerAs: 'instancesCtrl',
+        data: {
+          requiresLogin: true
+        }
       })
-      .when('/login', {
+      .state('login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'loginCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   })
   .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
@@ -66,7 +79,7 @@ angular
     // Use the authManager from angular-jwt to check for
     // the user's authentication state when the page is
     // refreshed and maintain authentication
-    //authManager.checkAuthOnRefresh();
+    // authManager.checkAuthOnRefresh();
 
     // When a location change is detected
     $rootScope.$on('$locationChangeStart', function() {

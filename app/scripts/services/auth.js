@@ -8,7 +8,7 @@
  * Service in the atlasApp.
  */
 angular.module('atlasApp')
-  .service('authService', function($rootScope, lock, authManager) {
+  .service('authService', function($rootScope, $state, lock, authManager) {
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
     function login() {
@@ -22,6 +22,8 @@ angular.module('atlasApp')
       localStorage.removeItem('profile');
       authManager.unauthenticate();
       userProfile = {};
+
+      $state.go('login');
     }
 
     // Set up the logic for when a user authenticates
