@@ -38,7 +38,7 @@ angular
     });
 
     jwtOptionsProvider.config({
-      tokenGetter: function(options) {
+      tokenGetter: function() {
         return localStorage.getItem('token');
       },
       whiteListedDomains: ['localhost', 'api.hoste.ro', 'dashboard.hoste.ro'],
