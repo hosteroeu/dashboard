@@ -21,7 +21,7 @@ angular
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function($stateProvider, $urlRouterProvider, lockProvider, $httpProvider, jwtOptionsProvider, jwtInterceptorProvider) {
+  .config(function($stateProvider, $urlRouterProvider, lockProvider, $httpProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com'
@@ -90,7 +90,7 @@ angular
           return localStorage.getItem('id_token');
         } else {
           // TODO: Refresh token
-          
+
           localStorage.removeItem('id_token');
         }
       } else {
