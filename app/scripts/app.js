@@ -24,7 +24,17 @@ angular
   .config(function($stateProvider, $urlRouterProvider, lockProvider, $httpProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
-      domain: 'morion4000.auth0.com'
+      domain: 'morion4000.auth0.com',
+      options: {
+        closable: false,
+        languageDictionary: {
+          title: 'Hoste.ro'
+        },
+        theme: {
+          //logo: '/images/hostero_logo_black.png',
+          //primaryColor: 'blue'
+        }
+      }
     });
 
     jwtOptionsProvider.config({
