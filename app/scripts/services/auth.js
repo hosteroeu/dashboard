@@ -15,10 +15,8 @@ angular.module('atlasApp')
       lock.show();
     }
 
-    // Logging out just requires removing the user's
-    // id_token and profile
     function logout() {
-      localStorage.removeItem('id_token');
+      localStorage.removeItem('token');
       localStorage.removeItem('profile');
       authManager.unauthenticate();
       userProfile = {};
@@ -30,7 +28,7 @@ angular.module('atlasApp')
     // This method is called from app.run.js
     function registerAuthenticationListener() {
       lock.on('authenticated', function(authResult) {
-        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('token', authResult.idToken);
         authManager.authenticate();
 
         lock.getProfile(authResult.idToken, function(error, profile) {

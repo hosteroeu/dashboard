@@ -21,14 +21,14 @@ angular
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(function($stateProvider, $urlRouterProvider, lockProvider, $httpProvider, jwtOptionsProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider, lockProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com',
       options: {
         closable: false,
         languageDictionary: {
-          title: 'Hoste.ro'
+          title: 'Hostero'
         },
         theme: {
           //logo: '/images/hostero_logo_black.png',
@@ -38,14 +38,14 @@ angular
     });
 
     jwtOptionsProvider.config({
-      tokenGetter: function() {
-        return localStorage.getItem('id_token');
+      tokenGetter: function(options) {
+        return localStorage.getItem('token');
       },
-      whiteListedDomains: ['localhost'],
-      /* does not get called
-      unauthenticatedRedirector: ['$state', function($state) {
+      whiteListedDomains: ['localhost', 'api.hoste.ro', 'dashboard.hoste.ro'],
+      /* does not work!!!
+      unauthenticatedRedirector: function($state) {
         $state.go('login');
-      }]
+      }
       */
     });
 
@@ -93,15 +93,16 @@ angular
 
     // When a location change is detected
     $rootScope.$on('$locationChangeStart', function() {
-      var token = localStorage.getItem('id_token');
+      var token = localStorage.getItem('token');
 
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
-          return localStorage.getItem('id_token');
+          authManager.authenticate();
+
+          return token;
         } else {
           // TODO: Refresh token
-
-          localStorage.removeItem('id_token');
+          localStorage.removeItem('token');
         }
       } else {
         $location.path('/login');
