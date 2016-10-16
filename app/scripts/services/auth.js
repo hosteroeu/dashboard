@@ -40,6 +40,10 @@ angular.module('atlasApp')
           $rootScope.$broadcast('userProfileSet', profile);
         });
       });
+
+      $rootScope.$on('tokenHasExpired', function() {
+        $state.go('login');
+      });
     }
 
     return {

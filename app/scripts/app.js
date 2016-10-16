@@ -42,11 +42,7 @@ angular
         return localStorage.getItem('token');
       },
       whiteListedDomains: ['localhost', 'api.hoste.ro', 'dashboard.hoste.ro'],
-      /* does not work!!!
-      unauthenticatedRedirector: function($state) {
-        $state.go('login');
-      }
-      */
+      unauthenticatedRedirectPath: '/login'
     });
 
     $httpProvider.interceptors.push('jwtInterceptor');
@@ -89,7 +85,7 @@ angular
     // Use the authManager from angular-jwt to check for
     // the user's authentication state when the page is
     // refreshed and maintain authentication
-    // authManager.checkAuthOnRefresh();
+    authManager.checkAuthOnRefresh();
 
     // When a location change is detected
     $rootScope.$on('$locationChangeStart', function() {
@@ -98,11 +94,10 @@ angular
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           authManager.authenticate();
-
-          return token;
         } else {
-          // TODO: Refresh token
           localStorage.removeItem('token');
+
+          $location.path('/login');
         }
       } else {
         $location.path('/login');
