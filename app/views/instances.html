@@ -1,5 +1,5 @@
 <md-content flex layout-padding>
-  <div flex-xs flex-gt-xs="50" layout="column">
+  <div flex-xs layout="column">
     <md-card ng-repeat="instance in instances">
       <md-card-title>
         <md-card-title-text>
@@ -12,5 +12,12 @@
         <md-button ng-disabled="true">Scale</md-button>
       </md-card-actions>
     </md-card>
+
+    <p ng-if="!instances.length">No Instances. Create</p>
   </div>
 </md-content>
+
+<md-button class="md-fab md-primary add-button" ng-click="vm.new_application($event)">
+  <md-icon class="material-icons">add</md-icon>
+  <md-tooltip>New Site</md-tooltip>
+</md-button>
