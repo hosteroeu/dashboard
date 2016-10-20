@@ -37,24 +37,24 @@
   <div flex layout="row">
     <md-sidenav flex="20" md-is-locked-open="true" class="md-whiteframe-z1">
       <md-list>
-        <md-list-item ui-sref="main">
+        <md-list-item ui-sref="main" ui-sref-active="active">
           <md-icon>home</md-icon>
           <p>Home</p>
         </md-list-item>
-        <md-list-item ui-sref="main">
+        <md-list-item ui-sref="account" ui-sref-active="active" ng-disabled="true">
           <md-icon>account_box</md-icon>
           <p>Account</p>
         </md-list-item>
         <md-subheader class="md-no-sticky">Management</md-subheader>
-        <md-list-item ui-sref="instances">
+        <md-list-item ui-sref="instances" ui-sref-active="active">
           <md-icon>list</md-icon>
           <p>Sites</p>
         </md-list-item>
-        <md-list-item ui-sref="main">
+        <md-list-item ui-sref="domains" ui-sref-active="active" ng-disabled="true">
           <md-icon>link</md-icon>
           <p>Domains</p>
         </md-list-item>
-        <md-list-item ui-sref="main">
+        <md-list-item ui-sref="backups" ui-sref-active="active" ng-disabled="true">
           <md-icon>backup</md-icon>
           <p>Backups</p>
         </md-list-item>
