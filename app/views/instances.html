@@ -1,20 +1,22 @@
 <md-content flex layout-padding>
-  <div flex-xs layout="column">
-    <md-card ng-repeat="instance in instances">
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">{{instance.name}}</span>
-          <span class="md-subhead">{{instance.created_at | date}}</span>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-disabled="true">Stop</md-button>
-        <md-button ng-disabled="true">Scale</md-button>
-      </md-card-actions>
-    </md-card>
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile ng-repeat="instance in instances">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{instance.name}}</span>
+            <span class="md-subhead">{{instance.created_at | date}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-disabled="true">Stop</md-button>
+          <md-button ng-disabled="true">Scale</md-button>
+        </md-card-actions>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
 
-    <p ng-if="!instances.length">No Instances. Create</p>
-  </div>
+  <p ng-if="!instances.length">No Instances. Create</p>
 </md-content>
 
 <md-button class="md-fab md-primary add-button" ng-click="instancesCtrl.open_new_modal($event)">
