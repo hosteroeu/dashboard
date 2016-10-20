@@ -1,0 +1,37 @@
+<md-dialog flex="50">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Create Instance</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="vm.close()">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <md-content class="layout-padding">
+      <form name="instancesNewCtrl.form" novalidate>
+        <div>
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Name</label>
+            <input ng-model="name" name="name" required />
+            <div ng-messages="name.$error">
+              <div ng-messages-include="views/form.messages.html"></div>
+            </div>
+          </md-input-container>
+        </div>
+      </form>
+    </md-content>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="instancesNewCtrl.close()">
+      Cancel
+    </md-button>
+    <md-button ng-click="instancesNewCtrl.create()" md-autofocus ng-disabled="!instancesNewCtrl.form.$valid">
+      Create
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>
