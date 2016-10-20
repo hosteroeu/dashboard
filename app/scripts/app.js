@@ -59,6 +59,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('account', {
+        url: '/account',
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl',
+        controllerAs: 'accountCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('instances', {
         url: '/instances',
         templateUrl: 'views/instances.html',
