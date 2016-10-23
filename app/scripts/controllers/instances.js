@@ -20,4 +20,20 @@ angular.module('atlasApp')
         clickOutsideToClose: false
       });
     };
+
+    this.get_status_icon = function(status) {
+      switch (status) {
+        case 'started':
+          return 'cloud';
+
+        case 'stopped':
+          return 'cloud_off';
+      }
+    };
+
+    this.open_url = function(instance) {
+      var account = JSON.parse(localStorage.getItem('account'));
+
+      window.open('//' + instance.name + '.' + account.name + '.infrastructure.hoste.ro');
+    };
   });

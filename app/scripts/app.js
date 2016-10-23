@@ -19,9 +19,10 @@ angular
     'ngMaterial',
     'ui.router',
     'auth0.lock',
-    'angular-jwt'
+    'angular-jwt',
+    'angular.filter'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider, lockProvider, jwtOptionsProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com',
@@ -83,6 +84,13 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'loginCtrl'
       });
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('green')
+      .accentPalette('orange');
+
+    $mdThemingProvider.theme('default')
+      .dark();
   })
   .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
     lock.interceptHash();

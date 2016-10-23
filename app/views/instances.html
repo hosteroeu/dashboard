@@ -1,22 +1,35 @@
 <md-content flex layout-padding>
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
     <md-grid-tile ng-repeat="instance in instances">
       <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">{{instance.name}}</span>
-            <span class="md-subhead">{{instance.created_at | date}}</span>
-          </md-card-title-text>
-        </md-card-title>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="md-avatar-icon">
+              {{instancesCtrl.get_status_icon(instance.status)}}
+            </md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{instance.name}}</span>
+            <span class="md-subhead"><strong>{{instance.scale}}</strong> instances</span>
+          </md-card-header-text>
+        </md-card-header>
         <md-card-actions layout="row" layout-align="end center">
           <md-button ng-disabled="true">Stop</md-button>
           <md-button ng-disabled="true">Scale</md-button>
+          <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="toggle" ng-click="instancesCtrl.open_url(instance)">
+              <md-tooltip>Open URL</md-tooltip>
+              <md-icon>open_in_new</md-icon>
+            </md-button>
+          </md-card-icon-actions>
         </md-card-actions>
       </md-card>
     </md-grid-tile>
   </md-grid-list>
 
-  <p ng-if="!instances.length">No Instances. <md-button ng-click="instancesCtrl.open_new_modal($event)">Create</md-button></p>
+  <p ng-if="!instances.length">No Instances.
+    <md-button ng-click="instancesCtrl.open_new_modal($event)">Create</md-button>
+  </p>
 </md-content>
 
 <md-button class="md-fab md-primary add-button" ng-click="instancesCtrl.open_new_modal($event)">

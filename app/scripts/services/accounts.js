@@ -8,8 +8,8 @@
  * Service in the atlasApp.
  */
 angular.module('atlasApp')
-  .factory('accountsService', function($resource) {
-    return $resource('//api.hoste.ro/v1' +
+  .factory('accountsService', function($resource, api) {
+    return $resource(api.url + api.version +
       '/accounts/:id/:controller/:verb/:action', {
         id: '@id',
         controller: '@controller',
