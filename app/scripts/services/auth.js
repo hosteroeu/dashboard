@@ -8,7 +8,7 @@
  * Service in the atlasApp.
  */
 angular.module('atlasApp')
-  .service('authService', function($rootScope, $state, lock, authManager) {
+  .service('authService', function($rootScope, $state, lock, authManager, accountsService) {
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
     function login() {
@@ -18,6 +18,7 @@ angular.module('atlasApp')
     function logout() {
       localStorage.removeItem('token');
       localStorage.removeItem('profile');
+      localStorage.removeItem('account');
       authManager.unauthenticate();
       userProfile = {};
 
@@ -38,6 +39,12 @@ angular.module('atlasApp')
 
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
+        });
+
+        accountsService.get({
+          controller: 'sync'
+        }).$promise.then(function(account) {
+          localStorage.setItem('account', JSON.stringify(account));
         });
       });
 
