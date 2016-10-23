@@ -12,13 +12,14 @@ angular.module('atlasApp')
     var account = JSON.parse(localStorage.getItem('account'));
 
     this.create = function() {
+      $mdDialog.hide();
+
       instancesService.save({}, {
         name: $scope.name,
         rancher_environment_id: account.rancher_environment_id
       }).$promise.then(function() {
         $mdToast.showSimple('Instance Created Successfully');
         $state.reload();
-        $mdDialog.hide();
       });
     };
 
