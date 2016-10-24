@@ -16,7 +16,9 @@ angular.module('atlasApp')
 
       instancesService.save({}, {
         name: $scope.name,
-        rancher_environment_id: account.rancher_environment_id
+        rancher_environment_id: account.rancher_environment_id,
+        // TODO: account_name should be set by the API
+        account_name: account.name
       }).$promise.then(function() {
         $mdToast.showSimple('Instance Created Successfully');
         $state.reload();
