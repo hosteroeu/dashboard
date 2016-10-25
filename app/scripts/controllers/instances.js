@@ -34,6 +34,6 @@ angular.module('atlasApp')
     this.open_url = function(instance) {
       var account = JSON.parse(localStorage.getItem('account'));
 
-      window.open('//' + instance.name + '.' + account.name + '.infrastructure.hoste.ro');
+      window.open('//' + instance.name + '.' + account.name + '.wordpress.hoste.ro');
     };
   });
