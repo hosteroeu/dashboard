@@ -89,8 +89,7 @@ angular
       .primaryPalette('green')
       .accentPalette('orange');
 
-    $mdThemingProvider.theme('default')
-      .dark();
+    //$mdThemingProvider.theme('default').dark();
   })
   .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
     lock.interceptHash();
