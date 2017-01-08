@@ -42,7 +42,7 @@ angular
       tokenGetter: function() {
         return localStorage.getItem('token');
       },
-      whiteListedDomains: ['localhost', 'api.hoste.ro', 'dashboard.hoste.ro'],
+      whiteListedDomains: ['localhost', 'api.hostero.eu', 'dashboard.hostero.eu'],
       unauthenticatedRedirectPath: '/login'
     });
 
