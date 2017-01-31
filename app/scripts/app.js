@@ -69,11 +69,11 @@ angular
           requiresLogin: true
         }
       })
-      .state('instances', {
-        url: '/instances',
-        templateUrl: 'views/instances.html',
-        controller: 'InstancesCtrl',
-        controllerAs: 'instancesCtrl',
+      .state('sites', {
+        url: '/sites',
+        templateUrl: 'views/sites.html',
+        controller: 'SitesCtrl',
+        controllerAs: 'sitesCtrl',
         data: {
           requiresLogin: true
         }

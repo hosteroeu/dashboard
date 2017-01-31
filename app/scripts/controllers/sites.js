@@ -2,20 +2,20 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:InstancesCtrl
+ * @name atlasApp.controller:SitesCtrl
  * @description
- * # InstancesCtrl
+ * # SitesCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('InstancesCtrl', function($scope, $mdDialog, instancesService) {
-    $scope.instances = instancesService.query();
+  .controller('SitesCtrl', function($scope, $mdDialog, sitesService) {
+    $scope.sites = sitesService.query();
 
     this.open_new_modal = function($event) {
       $mdDialog.show({
-        controller: 'InstancesNewCtrl',
-        controllerAs: 'instancesNewCtrl',
-        templateUrl: 'views/instances.new.html',
+        controller: 'SitesNewCtrl',
+        controllerAs: 'sitesNewCtrl',
+        templateUrl: 'views/sites.new.html',
         targetEvent: $event,
         clickOutsideToClose: false
       });
