@@ -10,7 +10,7 @@
 angular.module('atlasApp')
   .factory('sitesService', function($resource, api) {
     return $resource(api.url + api.version +
-      '/instances/:id/:controller/:verb/:action', {
+      '/sites/:id/:controller/:verb/:action', {
         id: '@id',
         controller: '@controller',
         verb: '@verb',
