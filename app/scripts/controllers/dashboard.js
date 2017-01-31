@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:MainCtrl
+ * @name atlasApp.controller:DashboardCtrl
  * @description
  * # MainCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MainCtrl', function () {
+  .controller('DashboardCtrl', function () {
   });

@@ -51,20 +51,20 @@ angular
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('main', {
+      .state('dashboard', {
         url: '/',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'mainCtrl',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboardCtrl',
         data: {
           requiresLogin: true
         }
       })
-      .state('account', {
-        url: '/account',
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl',
-        controllerAs: 'accountCtrl',
+      .state('settings', {
+        url: '/settings',
+        templateUrl: 'views/settings.html',
+        controller: 'SettingsCtrl',
+        controllerAs: 'settingsCtrl',
         data: {
           requiresLogin: true
         }

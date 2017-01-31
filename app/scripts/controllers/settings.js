@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:AccountCtrl
+ * @name atlasApp.controller:SettingsCtrl
  * @description
  * # AccountCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('AccountCtrl', function($scope) {
+  .controller('SettingsCtrl', function($scope) {
     $scope.user = JSON.parse(localStorage.getItem('profile'));
   });
