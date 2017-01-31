@@ -86,8 +86,8 @@ angular
       });
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('green')
-      .accentPalette('orange');
+      .primaryPalette('blue');
+      //.accentPalette('orange');
 
     //$mdThemingProvider.theme('default').dark();
   })
