@@ -1,9 +1,9 @@
 <md-dialog flex="50">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>Create Site</h2>
+      <h2>Create Miner</h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="sitesNewCtrl.close()">
+      <md-button class="md-icon-button" ng-click="minersNewCtrl.close()">
         <md-icon class="material-icons">close</md-icon>
       </md-button>
     </div>
@@ -11,7 +11,7 @@
 
   <md-dialog-content>
     <md-content class="layout-padding">
-      <form name="sitesNewCtrl.form" novalidate>
+      <form name="minersNewCtrl.form" novalidate>
         <div>
           <md-input-container class="md-block" flex-gt-xs>
             <label>Name</label>
@@ -27,10 +27,10 @@
 
   <md-dialog-actions layout="row">
     <span flex></span>
-    <md-button ng-click="sitesNewCtrl.close()">
+    <md-button ng-click="minersNewCtrl.close()">
       Cancel
     </md-button>
-    <md-button ng-click="sitesNewCtrl.create()" md-autofocus ng-disabled="!sitesNewCtrl.form.$valid">
+    <md-button ng-click="minersNewCtrl.create()" md-autofocus ng-disabled="!minersNewCtrl.form.$valid">
       Create
     </md-button>
   </md-dialog-actions>

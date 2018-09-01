@@ -69,11 +69,38 @@ angular
           requiresLogin: true
         }
       })
-      .state('sites', {
-        url: '/sites',
-        templateUrl: 'views/sites.html',
-        controller: 'SitesCtrl',
-        controllerAs: 'sitesCtrl',
+      .state('miners', {
+        url: '/miners',
+        templateUrl: 'views/miners.html',
+        controller: 'MinersCtrl',
+        controllerAs: 'minersCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('miner', {
+        url: '/miners/:miner',
+        templateUrl: 'views/miner.html',
+        controller: 'MinerCtrl',
+        controllerAs: 'minerCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('hosts', {
+        url: '/hosts',
+        templateUrl: 'views/hosts.html',
+        controller: 'HostsCtrl',
+        controllerAs: 'hostsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('host', {
+        url: '/hosts/:host',
+        templateUrl: 'views/host.html',
+        controller: 'HostCtrl',
+        controllerAs: 'hostCtrl',
         data: {
           requiresLogin: true
         }

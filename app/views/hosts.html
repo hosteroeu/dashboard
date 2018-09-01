@@ -1,0 +1,44 @@
+<md-content flex layout-padding>
+  <md-grid-list md-cols-xs="1" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
+    <md-grid-tile ng-repeat="host in hosts">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="md-avatar-icon">
+              {{hostsCtrl.get_status_icon(host.status)}}
+            </md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{host.name}}</span>
+            <span class="md-subhead"><strong>{{host.cpu_count}}</strong> CPUs @ {{host.cpu_mhz}} Mhz</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          {{host.os}}
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <!--<md-button ng-disabled="true">Stop</md-button>-->
+          <!--<md-button ng-disabled="true">Scale</md-button>-->
+
+          <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="toggle" ui-sref="host({host:host.id})">
+              <md-tooltip>Details</md-tooltip>
+              <md-icon>info</md-icon>
+            </md-button>
+          </md-card-icon-actions>
+        </md-card-actions>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
+
+  <p ng-if="!hosts.length">
+    You have not added any hosts
+  </p>
+
+  <md-button class="md-raised md-primary" ng-click="hostsCtrl.open_new_modal($event)">Add a Host</md-button>
+</md-content>
+
+<md-button class="md-fab md-primary add-button" ng-click="hostsCtrl.open_new_modal($event)">
+  <md-icon class="material-icons">add</md-icon>
+  <md-tooltip>New Host</md-tooltip>
+</md-button>

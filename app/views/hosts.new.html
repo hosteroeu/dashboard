@@ -1,0 +1,43 @@
+<md-dialog flex="50">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add Host</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="hostsNewCtrl.close()">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <md-content class="layout-padding">
+      <div>
+        <h4>Installation in two easy steps:</h4>
+        <ol>
+          <li>
+            <p>Install Docker</p>
+            <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
+          </li>
+          <li>
+            <p>Install Hostero</p>
+            <code>docker run -e CATTLE_HOST_LABELS='account={{profile.user_id}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://167.99.84.147:8080/v1/scripts/8A2F48145D7D544876F2:1514678400000:FxaguPYvHQzDvi30O5NBu8FBpMo</code>
+          </li>
+        </ol>
+        <h4>Requirements:</h4>
+        <ul>
+          <li>Ubuntu 16.04</li>
+          <li>0.1 GiB RAM / host</li>
+          <li>1 GiB SSD/HDD / host</li>
+          <li>1 miner / host</li>
+        </ul>
+      </div>
+    </md-content>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="hostsNewCtrl.close()">
+      Done
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

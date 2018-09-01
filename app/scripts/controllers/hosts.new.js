@@ -2,30 +2,32 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:SitesNewCtrl
+ * @name atlasApp.controller:HostsNewCtrl
  * @description
- * # SitesNewCtrl
+ * # HostsNewCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('SitesNewCtrl', function($state, $scope, $mdToast, $mdDialog, sitesService) {
-    var account = JSON.parse(localStorage.getItem('account'));
+  .controller('HostsNewCtrl', function($state, $scope, $mdToast, $mdDialog, hostsService) {
+    $scope.profile = JSON.parse(localStorage.getItem('profile'));
 
     this.create = function() {
       $mdDialog.hide();
 
-      sitesService.save({}, {
+      hostsService.save({}, {
         name: $scope.name,
         rancher_environment_id: account.rancher_environment_id,
         // TODO: account_name should be set by the API
         account_name: account.name
       }).$promise.then(function() {
-        $mdToast.showSimple('Site Created Successfully');
+        $mdToast.showSimple('Host Created Successfully');
         $state.reload();
       });
     };
 
     this.close = function() {
-      $mdDialog.cancel();
+      $mdToast.showSimple('Host will be added in a few minutes');
+      $state.reload();
+      $mdDialog.hide();
     };
   });

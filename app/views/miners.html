@@ -1,0 +1,23 @@
+<md-content flex layout-padding>
+  <md-list>
+    <md-subheader class="md-no-sticky">Click to view stats</md-subheader>
+
+    <md-list-item ng-repeat="miner in miners" ui-sref="miner({miner:miner.id})" class="noright">
+      <md-icon class="material-icons">check_circle_outline</md-icon>
+      <p><strong>{{ miner.id }}</strong></p>
+      <p>({{ miner.host }})</p>
+      <md-icon class="material-icons">explore</md-icon>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+
+  </md-list>
+
+  <p ng-if="!miners.length">No Miners.
+    <md-button ng-click="minersCtrl.open_new_modal($event)">Create</md-button>
+  </p>
+</md-content>
+
+<md-button class="md-fab md-primary add-button" ng-click="minersCtrl.open_new_modal($event)">
+  <md-icon class="material-icons">add</md-icon>
+  <md-tooltip>New Miner</md-tooltip>
+</md-button>

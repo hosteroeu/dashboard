@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc factory
- * @name atlasApp.sites
+ * @name atlasApp.miners
  * @description
- * # sites
+ * # miners
  * Service in the atlasApp.
  */
 angular.module('atlasApp')
-  .factory('sitesService', function($resource, api) {
+  .factory('minersService', function($resource, api) {
     return $resource(api.url + api.version +
-      '/sites/:id/:controller/:verb/:action', {
+      '/miners/:id/:controller/:verb/:action', {
         id: '@id',
         controller: '@controller',
         verb: '@verb',

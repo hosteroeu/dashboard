@@ -38,6 +38,7 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
+    "bower": "^1.8.4",
     "node-static": "^0.7.9"
   }
 }

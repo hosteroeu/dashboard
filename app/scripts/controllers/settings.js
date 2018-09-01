@@ -9,5 +9,5 @@
  */
 angular.module('atlasApp')
   .controller('SettingsCtrl', function($scope) {
-    $scope.user = JSON.parse(localStorage.getItem('profile'));
+    $scope.profile = JSON.parse(localStorage.getItem('profile'));
   });
