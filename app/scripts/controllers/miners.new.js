@@ -8,7 +8,16 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersNewCtrl', function($state, $scope, $mdToast, $mdDialog, minersService) {
+  .controller('MinersNewCtrl', function($scope, $mdToast, $mdDialog, minersService, hostsService, host) {
+    console.log(host);
+
+    if (!host) {
+      $scope.hosts = hostsService.query();
+    } else {
+      $scope.hosts = [host];
+      $scope.selected_host = host;
+    }
+
     var account = JSON.parse(localStorage.getItem('account'));
 
     this.create = function() {

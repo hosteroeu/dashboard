@@ -21,6 +21,19 @@ angular.module('atlasApp')
       });
     };
 
+    this.deploy_miners = function($event, host) {
+      $mdDialog.show({
+        controller: 'MinersNewCtrl',
+        controllerAs: 'minersNewCtrl',
+        templateUrl: 'views/miners.new.html',
+        targetEvent: $event,
+        clickOutsideToClose: false,
+        locals: {
+          host: host
+        }
+      });
+    };
+
     this.get_status_icon = function(status) {
       switch (status) {
         case 'started':

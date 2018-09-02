@@ -14,11 +14,20 @@
       <form name="minersNewCtrl.form" novalidate>
         <div>
           <md-input-container class="md-block" flex-gt-xs>
-            <label>Name</label>
-            <input ng-model="name" name="name" required />
-            <div ng-messages="name.$error">
-              <div ng-messages-include="views/form.messages.html"></div>
-            </div>
+            <label>Mining Pool URL</label>
+            <input ng-model="pool_url" name="pool_url" required />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Wallet JSON</label>
+            <textarea ng-model="wallet" md-maxlength="150" rows="5" md-select-on-focus required></textarea>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Host</label>
+            <md-select ng-model="selected_host" required>
+              <md-option ng-repeat="host in hosts" value="{{host.id}}">
+                {{host.name}}
+              </md-option>
+            </md-select>
           </md-input-container>
         </div>
       </form>

@@ -19,10 +19,13 @@
         <md-card-actions layout="row" layout-align="end center">
           <!--<md-button ng-disabled="true">Stop</md-button>-->
           <!--<md-button ng-disabled="true">Scale</md-button>-->
-
           <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miners($event, host)">
+              <md-tooltip>Deploy Miners</md-tooltip>
+              <md-icon>cloud_upload</md-icon>
+            </md-button>
             <md-button class="md-icon-button" aria-label="toggle" ui-sref="host({host:host.id})">
-              <md-tooltip>Details</md-tooltip>
+              <md-tooltip>Host Details</md-tooltip>
               <md-icon>info</md-icon>
             </md-button>
           </md-card-icon-actions>
@@ -35,7 +38,7 @@
     You have not added any hosts
   </p>
 
-  <md-button class="md-raised md-primary" ng-click="hostsCtrl.open_new_modal($event)">Add a Host</md-button>
+  <!--<md-button class="md-raised md-primary" ng-click="hostsCtrl.open_new_modal($event)">Add a Host</md-button>-->
 </md-content>
 
 <md-button class="md-fab md-primary add-button" ng-click="hostsCtrl.open_new_modal($event)">
