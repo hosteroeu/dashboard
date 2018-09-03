@@ -17,5 +17,6 @@
   <div ng-if="miner">
     <p>Mining Pool URL: <strong>{{ miner.mining_pool_url }}</strong></p>
     <p>Wallet: <strong>{{ miner.wallet.address }}</strong></p>
+    <p>Note: To see the logs you can connect to the server and run: <code>docker logs -f $(docker ps | grep pool_miner_cpp | cut -c1-5)</code></p>
   </div>
 </md-content>
