@@ -10,7 +10,7 @@
           </md-card-avatar>
           <md-card-header-text>
             <span class="md-title">{{host.name}}</span>
-            <span class="md-subhead"><strong>{{host.cpu_count}}</strong> CPUs @ {{host.cpu_mhz}} Mhz</span>
+            <span class="md-subhead"><strong>{{host.cpu_count}}</strong> CPUs @ {{host.cpu_mhz | number:0}} Mhz</span>
           </md-card-header-text>
         </md-card-header>
         <md-card-content>
@@ -20,8 +20,8 @@
           <!--<md-button ng-disabled="true">Stop</md-button>-->
           <!--<md-button ng-disabled="true">Scale</md-button>-->
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miners($event, host)">
-              <md-tooltip>Deploy Miners</md-tooltip>
+            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner($event, host)">
+              <md-tooltip>Deploy Miner</md-tooltip>
               <md-icon>cloud_upload</md-icon>
             </md-button>
             <md-button class="md-icon-button" aria-label="toggle" ui-sref="host({host:host.id})">
@@ -34,7 +34,11 @@
     </md-grid-tile>
   </md-grid-list>
 
-  <p ng-if="!hosts.length">
+  <center ng-if="!hosts">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </center>
+
+  <p ng-if="hosts != null && !hosts.length">
     You have not added any hosts
   </p>
 
@@ -42,6 +46,6 @@
 </md-content>
 
 <md-button class="md-fab md-primary add-button" ng-click="hostsCtrl.open_new_modal($event)">
-  <md-icon class="material-icons">add</md-icon>
-  <md-tooltip>New Host</md-tooltip>
+  <md-icon class="material-icons">devices</md-icon>
+  <md-tooltip>Add Host</md-tooltip>
 </md-button>

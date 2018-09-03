@@ -8,22 +8,8 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsNewCtrl', function($state, $scope, $mdToast, $mdDialog, hostsService) {
+  .controller('HostsNewCtrl', function($state, $scope, $mdToast, $mdDialog) {
     $scope.profile = JSON.parse(localStorage.getItem('profile'));
-
-    this.create = function() {
-      $mdDialog.hide();
-
-      hostsService.save({}, {
-        name: $scope.name,
-        rancher_environment_id: account.rancher_environment_id,
-        // TODO: account_name should be set by the API
-        account_name: account.name
-      }).$promise.then(function() {
-        $mdToast.showSimple('Host Created Successfully');
-        $state.reload();
-      });
-    };
 
     this.close = function() {
       $mdToast.showSimple('Host will be added in a few minutes');

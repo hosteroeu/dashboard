@@ -9,18 +9,11 @@
  */
 angular.module('atlasApp')
   .controller('MinersCtrl', function($scope, $mdDialog, minersService) {
-    //$scope.miners = minersService.query();
-    $scope.miners = [{
-      id: 'webd-cpp-miner-1',
-      wallet: 'WEBD$gDXtmzFaIdgZHcg9Lti#6fsMB6MmSr#eM7$',
-      host: 'WEBD-Host-1',
-      thread: 12
-    },{
-      id: 'webd-cpp-miner-2',
-      wallet: 'WEBD$gDXtmzFaIdgZHcg9Lti#6fsMB6MmSr#eM7$',
-      host: 'WEBD-Host-2',
-      thread: 12
-    }];
+    $scope.miners = null;
+
+    minersService.query().$promise.then(function(res) {
+      $scope.miners = res;
+    });
 
     this.open_new_modal = function($event) {
       $mdDialog.show({
@@ -28,7 +21,10 @@ angular.module('atlasApp')
         controllerAs: 'minersNewCtrl',
         templateUrl: 'views/miners.new.html',
         targetEvent: $event,
-        clickOutsideToClose: false
+        clickOutsideToClose: false,
+        locals: {
+          host: null
+        }
       });
     };
 

@@ -9,7 +9,11 @@
  */
 angular.module('atlasApp')
   .controller('HostCtrl', function($scope, $state, $mdDialog, hostsService) {
-    $scope.host = hostsService.get({
+    $scope.host = null;
+
+    hostsService.get({
       id: $state.params.host
+    }).$promise.then(function(res) {
+      $scope.host = res;
     });
   });

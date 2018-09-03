@@ -1,5 +1,10 @@
 <md-content flex layout-padding>
-  <p>Miner: <strong>{{ miner.id }}</strong></p>
-  <p>Wallet: <strong>{{ miner.wallet }}</strong></p>
-  <img src="https://charts.webdollarminingpool.com/render/dashboard-solo/db/wmp-miner-hash?orgId=1&var-address=WEBD%24gDXtmzFaIdgZHcg9Lti%236fsMB6MmSr%23eM7%24&panelId=1&from=now-24h&to=now&width=1000&height=500&tz=UTC%2B03%3A00&theme=light" width="90%" />
+  <center ng-if="!miner">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </center>
+
+  <div ng-if="miner">
+    <p>Miner: <strong>{{ miner.name }}</strong></p>
+    <p>Wallet: <strong>{{ miner.wallet }}</strong></p>
+  </div>
 </md-content>

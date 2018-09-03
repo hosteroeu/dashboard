@@ -9,7 +9,11 @@
  */
 angular.module('atlasApp')
   .controller('HostsCtrl', function($scope, $mdDialog, hostsService) {
-    $scope.hosts = hostsService.query();
+    $scope.hosts = null;
+
+    hostsService.query().$promise.then(function(res) {
+      $scope.hosts = res;
+    });
 
     this.open_new_modal = function($event) {
       $mdDialog.show({
@@ -21,7 +25,7 @@ angular.module('atlasApp')
       });
     };
 
-    this.deploy_miners = function($event, host) {
+    this.deploy_miner = function($event, host) {
       $mdDialog.show({
         controller: 'MinersNewCtrl',
         controllerAs: 'minersNewCtrl',

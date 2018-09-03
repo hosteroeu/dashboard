@@ -1,4 +1,10 @@
 <md-content flex layout-padding>
-  <p>Hostname: <strong>{{ host.hostname }}</strong></p>
-  <p>OS: <strong>{{ host.os }}</strong></p>
+  <center ng-if="!host">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </center>
+
+  <div ng-if="host">
+    <p>Hostname: <strong>{{ host.hostname }}</strong></p>
+    <p>OS: <strong>{{ host.os }}</strong></p>
+  </div>
 </md-content>

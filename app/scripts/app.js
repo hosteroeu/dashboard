@@ -20,9 +20,12 @@ angular
     'ui.router',
     'auth0.lock',
     'angular-jwt',
-    'angular.filter'
+    'angular.filter',
+    'angular-loading-bar'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com',
@@ -114,7 +117,7 @@ angular
 
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
-      //.accentPalette('orange');
+    //.accentPalette('orange');
 
     //$mdThemingProvider.theme('default').dark();
   })

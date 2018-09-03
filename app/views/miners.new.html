@@ -1,7 +1,7 @@
 <md-dialog flex="50">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h2>Create Miner</h2>
+      <h2>Deploy Miner</h2>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="minersNewCtrl.close()">
         <md-icon class="material-icons">close</md-icon>
@@ -15,7 +15,7 @@
         <div>
           <md-input-container class="md-block" flex-gt-xs>
             <label>Mining Pool URL</label>
-            <input ng-model="pool_url" name="pool_url" required />
+            <input ng-model="mining_pool_url" name="pool_url" required />
           </md-input-container>
           <md-input-container class="md-block">
             <label>Wallet JSON</label>
@@ -24,7 +24,7 @@
           <md-input-container class="md-block" flex-gt-sm>
             <label>Host</label>
             <md-select ng-model="selected_host" required>
-              <md-option ng-repeat="host in hosts" value="{{host.id}}">
+              <md-option ng-repeat="host in hosts" value="{{host}}" selected="selected_host">
                 {{host.name}}
               </md-option>
             </md-select>

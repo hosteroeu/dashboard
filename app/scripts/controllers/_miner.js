@@ -8,11 +8,12 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinerCtrl', function($scope, $mdDialog, minersService) {
-    $scope.miner = {
-      id: 'webd-cpp-miner-1',
-      wallet: 'WEBD$gDXtmzFaIdgZHcg9Lti#6fsMB6MmSr#eM7$',
-      host: 'WEBD-Host-1',
-      thread: 12
-    };
+  .controller('MinerCtrl', function($scope, $state, $mdDialog, minersService) {
+    $scope.miner = null;
+
+    minersService.get({
+      id: $state.params.miner
+    }).$promise.then(function(res) {
+      $scope.miner = res;
+    });
   });
