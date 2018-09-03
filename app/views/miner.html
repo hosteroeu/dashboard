@@ -1,10 +1,21 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button aria-label="Go Back" ui-sref="miners">
+      Back
+    </md-button>
+
+    <h2 flex md-truncate><strong>{{ miner.name }}</strong> ({{ miner.terminal_workers_cpu_max }} workers)</h2>
+    {{ host.internal_created | date }}
+  </div>
+</md-toolbar>
+
 <md-content flex layout-padding>
   <center ng-if="!miner">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </center>
 
   <div ng-if="miner">
-    <p>Miner: <strong>{{ miner.name }}</strong></p>
+    <p>Mining Pool URL: <strong>{{ miner.mining_pool_url }}</strong></p>
     <p>Wallet: <strong>{{ miner.wallet.address }}</strong></p>
   </div>
 </md-content>

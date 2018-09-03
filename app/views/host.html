@@ -1,10 +1,23 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button aria-label="Go Back" ui-sref="hosts">
+      Back
+    </md-button>
+
+    <h2 flex md-truncate><strong>{{ host.hostname }}</strong></h2>
+    {{ host.internal_created | date }}
+  </div>
+</md-toolbar>
+
 <md-content flex layout-padding>
   <center ng-if="!host">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </center>
 
   <div ng-if="host">
-    <p>Hostname: <strong>{{ host.hostname }}</strong></p>
-    <p>OS: <strong>{{ host.os }}</strong></p>
+    <p>Virtualization: <strong>{{ host.docker_version }}</strong></p>
+    <p>OS: <strong>{{ host.os }}</strong>, Kernel <strong>{{ host.os_kernel }}</strong></p>
+    <p>Memory: <strong>{{ (host.memory_total / 1000) | number:0 }} Gb RAM</strong></p>
+    <p>CPU: <strong>{{ host.cpu_count }}</strong> cores, <strong>{{ host.cpu_model }}</strong></p>
   </div>
 </md-content>

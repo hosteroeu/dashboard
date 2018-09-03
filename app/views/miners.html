@@ -1,8 +1,8 @@
 <md-content flex layout-padding>
   <md-list>
     <md-list-item ng-repeat="miner in miners" ui-sref="miner({miner:miner.id})" class="noright">
-      <md-icon class="material-icons">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
-      <p><strong>{{ miner.name }}</strong> ({{ miner.terminal_workers_cpu_max }} workers)</p>
+      <md-icon class="material-icons md-accent">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
+      <p><strong>{{ miner.name }}</strong></p>
       <p>({{ miner.Host.name }})</p>
       <md-icon class="material-icons">explore</md-icon>
       <md-divider ng-if="!$last"></md-divider>

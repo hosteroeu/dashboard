@@ -4,7 +4,7 @@
       <md-card>
         <md-card-header>
           <md-card-avatar>
-            <md-icon class="md-avatar-icon">
+            <md-icon class="md-avatar-icon md-accent">
               {{hostsCtrl.get_status_icon(host.status)}}
             </md-icon>
           </md-card-avatar>
@@ -17,10 +17,9 @@
           {{host.os}}
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <!--<md-button ng-disabled="true">Stop</md-button>-->
-          <!--<md-button ng-disabled="true">Scale</md-button>-->
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner($event, host)">
+            <md-button ng-if="host.deployed != 0" disabled>deployed</md-button>
+            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0">
               <md-tooltip>Deploy Miner</md-tooltip>
               <md-icon>cloud_upload</md-icon>
             </md-button>
