@@ -15,6 +15,14 @@ angular.module('atlasApp')
       $scope.miners = res;
     });
 
+    setInterval(function() {
+      minersService.query().$promise.then(function(res) {
+        if ($scope.miners.length !== res.length) {
+          $scope.miners = res;
+        }
+      });
+    }, 10 * 1000);
+
     this.open_new_modal = function($event) {
       $mdDialog.show({
         controller: 'MinersNewCtrl',

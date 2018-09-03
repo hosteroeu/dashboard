@@ -15,5 +15,6 @@ angular.module('atlasApp')
       id: $state.params.miner
     }).$promise.then(function(res) {
       $scope.miner = res;
+      $scope.miner.wallet = JSON.parse($scope.miner.wallet);
     });
   });

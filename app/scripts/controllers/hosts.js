@@ -15,6 +15,14 @@ angular.module('atlasApp')
       $scope.hosts = res;
     });
 
+    setInterval(function() {
+      hostsService.query().$promise.then(function(res) {
+        if ($scope.hosts.length !== res.length) {
+          $scope.hosts = res;
+        }
+      });
+    }, 10 * 1000);
+
     this.open_new_modal = function($event) {
       $mdDialog.show({
         controller: 'HostsNewCtrl',
