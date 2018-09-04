@@ -10,6 +10,7 @@
 angular.module('atlasApp')
   .controller('HostsNewCtrl', function($state, $scope, $mdToast, $mdDialog) {
     $scope.profile = JSON.parse(localStorage.getItem('profile'));
+    $scope.account = JSON.parse(localStorage.getItem('account'));
 
     this.close = function() {
       $mdToast.showSimple('Host will be added in a few minutes');

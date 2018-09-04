@@ -16,11 +16,11 @@
         <ol>
           <li>
             <p>Install Docker</p>
-            <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
+            <code>curl http://dashboard.hostero.eu/install_docker.sh | sh</code>
           </li>
           <li>
             <p>Install Hostero</p>
-            <code>docker run -e CATTLE_HOST_LABELS='account={{profile.user_id}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://167.99.84.147:8080/v1/scripts/8A2F48145D7D544876F2:1514678400000:FxaguPYvHQzDvi30O5NBu8FBpMo</code>
+            <code>docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/8A2F48145D7D544876F2:1514678400000:FxaguPYvHQzDvi30O5NBu8FBpMo</code>
           </li>
         </ol>
         <h4>Requirements:</h4>
