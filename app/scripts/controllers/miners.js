@@ -8,8 +8,9 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $mdDialog, minersService) {
+  .controller('MinersCtrl', function($scope, $mdDialog, $mdToast, minersService, hostsService) {
     $scope.miners = null;
+    $scope.hosts = hostsService.query();
 
     minersService.query().$promise.then(function(res) {
       $scope.miners = res;
@@ -26,16 +27,20 @@ angular.module('atlasApp')
     */
 
     this.open_new_modal = function($event) {
-      $mdDialog.show({
-        controller: 'MinersNewCtrl',
-        controllerAs: 'minersNewCtrl',
-        templateUrl: 'views/miners.new.html',
-        targetEvent: $event,
-        clickOutsideToClose: false,
-        locals: {
-          host: null
-        }
-      });
+      if ($scope.hosts.length > 0) {
+        $mdDialog.show({
+          controller: 'MinersNewCtrl',
+          controllerAs: 'minersNewCtrl',
+          templateUrl: 'views/miners.new.html',
+          targetEvent: $event,
+          clickOutsideToClose: false,
+          locals: {
+            host: null
+          }
+        });
+      } else {
+        $mdToast.showSimple('Please add a host first');
+      }
     };
 
     this.get_status_icon = function(status) {

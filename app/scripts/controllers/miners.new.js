@@ -16,11 +16,17 @@ angular.module('atlasApp')
       $scope.selected_host = host;
     }
 
+    $scope.mining_pool_url = localStorage.getItem('mining_pool_url') || '';
+    $scope.wallet = localStorage.getItem('wallet') || '';
+
     this.create = function() {
       $mdDialog.hide();
 
       var selected_host = JSON.parse($scope.selected_host);
       var name = 'WEBD miner ' + selected_host.id;
+
+      localStorage.setItem('mining_pool_url', $scope.mining_pool_url);
+      localStorage.setItem('wallet', $scope.wallet);
 
       minersService.save({}, {
         name: name,
