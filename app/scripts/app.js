@@ -23,7 +23,7 @@ angular
     'angular.filter',
     'angular-loading-bar'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 
     lockProvider.init({
@@ -52,6 +52,11 @@ angular
     $httpProvider.interceptors.push('jwtInterceptor');
 
     $urlRouterProvider.otherwise('/');
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://charts.webdollarminingpool.com/**'
+    ]);
 
     $stateProvider
       .state('dashboard', {
