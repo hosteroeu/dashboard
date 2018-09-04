@@ -20,6 +20,17 @@ angular.module('atlasApp')
     $scope.wallet = localStorage.getItem('wallet') || '';
 
     this.create = function() {
+      try {
+        var wallet = JSON.parse($scope.wallet);
+        var address = wallet.address;
+        var privateKey = wallet.privateKey;
+        var publicKey = wallet.publicKey;
+      } catch(e) {
+        $mdToast.showSimple('Wallet JSON must contain address, privateKey, and publicKey');
+
+        return;
+      }
+
       $mdDialog.hide();
 
       var selected_host = JSON.parse($scope.selected_host);
