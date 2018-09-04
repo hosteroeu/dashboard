@@ -24,7 +24,7 @@ angular.module('atlasApp')
     });
 
     $scope.getIframeSrc = function(panelId, address) {
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/wmp-miner-hash?orgId=1&from=1535989000082&to=1536075400084&panelId=' + panelId + '&theme=light&var-address=' + encodeURIComponent(address);
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/wmp-miner-hash?orgId=1&from=now-1d&to=now&panelId=' + panelId + '&theme=light&var-address=' + encodeURIComponent(address);
     };
 
     $scope.getHref = function(address) {
