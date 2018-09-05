@@ -31,6 +31,10 @@ angular.module('atlasApp')
         return;
       }
 
+      if (selected_host.deployed !== '0') {
+        $mdToast.showSimple('Host is already deployed');
+      }
+
       $mdDialog.hide();
 
       var selected_host = JSON.parse($scope.selected_host);
@@ -53,6 +57,12 @@ angular.module('atlasApp')
         wallet_secret_url: '7e5d522a70ce4c455f6875d01c22727e',
         host_id: selected_host.id,
       }).$promise.then(function() {
+        hostsService.update({
+          id: selected_host.id
+        }, {
+          deployed: '2'
+        });
+
         $mdToast.showSimple('Miner Created Successfully');
         $state.reload();
       });
