@@ -1,12 +1,12 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2 flex md-truncate><strong>{{ miners.length }}</strong> Miners</h2>
+    <h2 flex md-truncate><strong>{{ miners.length }}</strong> <a href="" ng-click="filter=''">Miners</a> (<strong>{{ miners_stopped.length }}</strong> <a href="" ng-click="filter='stopped'">stopped</a>)</h2>
   </div>
 </md-toolbar>
 
 <md-content flex layout-padding>
   <md-list>
-    <md-list-item ng-repeat="miner in miners" ui-sref="miner({miner:miner.id})" class="noright">
+    <md-list-item ng-repeat="miner in miners | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
       <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
       <p><strong>{{ miner.name }}</strong></p>
       <md-button ui-sref="host({host:miner.Host.id})">

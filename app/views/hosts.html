@@ -1,12 +1,12 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2 flex md-truncate><strong>{{ hosts.length }}</strong> Hosts (<strong>{{ hosts_deployed.length }}</strong> deployed)</h2>
+    <h2 flex md-truncate><strong>{{ hosts.length }}</strong> <a href="" ng-click="filter=''">Hosts</a> (<strong>{{ hosts_deployed.length }}</strong> <a href="" ng-click="filter='1'">deployed</a>, <strong>{{ hosts_stopped.length }}</strong> <a href="" ng-click="filter='stopped'">stopped</a>)</h2>
   </div>
 </md-toolbar>
 
 <md-content flex layout-padding>
   <md-grid-list md-cols-xs="1" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
-    <md-grid-tile ng-repeat="host in hosts">
+    <md-grid-tile ng-repeat="host in hosts | filter:filter">
       <md-card>
         <md-card-header>
           <md-card-avatar>
@@ -24,12 +24,12 @@
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
           <md-card-icon-actions>
-            <md-button ng-if="host.deployed == 1" disabled>deployed</md-button>
+            <md-button ng-if="host.deployed == 1 && host.status == 'started'" disabled>deployed</md-button>
             <md-button ng-if="host.deployed == 2" disabled>deploying...</md-button>
-            <md-button class="md-primary" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0">
+            <md-button class="md-primary" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
               deploy
             </md-button>
-            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0">
+            <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
               <md-tooltip>Fast Deploy Miner</md-tooltip>
               <md-icon>cloud_upload</md-icon>
             </md-button>

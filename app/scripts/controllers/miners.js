@@ -11,9 +11,17 @@ angular.module('atlasApp')
   .controller('MinersCtrl', function($scope, $mdDialog, $mdToast, minersService, hostsService) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
+    $scope.miners_stopped = [];
+    $scope.filter = '';
 
     minersService.query().$promise.then(function(res) {
       $scope.miners = res;
+
+      $scope.miners.forEach(function(miner) {
+        if (miner.status === 'stopped') {
+          $scope.miners_stopped.push(miner);
+        }
+      });
     });
 
     /*

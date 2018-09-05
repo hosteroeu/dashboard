@@ -11,12 +11,16 @@ angular.module('atlasApp')
   .controller('HostsCtrl', function($scope, $mdDialog, $mdToast, $state, hostsService, minersService, accountsService) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
+    $scope.hosts_stopped = [];
+    $scope.filter = '';
 
     hostsService.query().$promise.then(function(res) {
       $scope.hosts = res;
 
       $scope.hosts.forEach(function(host) {
-        if (host.deployed === '1') {
+        if (host.status === 'stopped') {
+          $scope.hosts_stopped.push(host);
+        } else if (host.deployed === '1') {
           $scope.hosts_deployed.push(host);
         }
       });
