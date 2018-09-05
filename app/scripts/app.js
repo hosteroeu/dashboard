@@ -95,6 +95,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('instructions', {
+        url: '/instructions',
+        templateUrl: 'views/instructions.html',
+        controller: 'InstructionsCtrl',
+        controllerAs: 'instructionsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('hosts', {
         url: '/hosts',
         templateUrl: 'views/hosts.html',
