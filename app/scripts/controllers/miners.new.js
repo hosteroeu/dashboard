@@ -67,7 +67,7 @@ angular.module('atlasApp')
         });
 
         $mdToast.showSimple('Miner Created Successfully');
-        $state.reload();
+        setTimeout($state.reload, 2000);
       });
     };
 
