@@ -95,11 +95,11 @@ angular
           requiresLogin: true
         }
       })
-      .state('instructions', {
-        url: '/instructions',
-        templateUrl: 'views/instructions.html',
-        controller: 'InstructionsCtrl',
-        controllerAs: 'instructionsCtrl',
+      .state('install', {
+        url: '/install',
+        templateUrl: 'views/install.html',
+        controller: 'InstallCtrl',
+        controllerAs: 'installCtrl',
         data: {
           requiresLogin: true
         }
