@@ -26,8 +26,11 @@
           <md-card-icon-actions>
             <md-button ng-if="host.deployed == 1" disabled>deployed</md-button>
             <md-button ng-if="host.deployed == 2" disabled>deploying...</md-button>
-            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0">
-              <md-tooltip>Deploy Miner</md-tooltip>
+            <md-button class="md-primary" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0">
+              deploy
+            </md-button>
+            <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0">
+              <md-tooltip>Fast Deploy Miner</md-tooltip>
               <md-icon>cloud_upload</md-icon>
             </md-button>
             <md-button class="md-icon-button" aria-label="toggle" ui-sref="host({host:host.id})">

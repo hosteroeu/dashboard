@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $mdDialog, hostsService) {
+  .controller('HostsCtrl', function($scope, $mdDialog, $mdToast, $state, hostsService, minersService, accountsService) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
 
@@ -52,6 +52,58 @@ angular.module('atlasApp')
         locals: {
           host: host
         }
+      });
+    };
+
+    this.deploy_miner_fast = function($event, host) {
+      var account = JSON.parse(localStorage.getItem('account'));
+      var default_wallet = {
+        version: '0.1',
+        address: null,
+        publicKey: '01',
+        privateKey: '02'
+      };
+
+      accountsService.get({
+        id: account.id
+      }).$promise.then(function(account) {
+        var mining_pool_url = account.mining_pool_url;
+        var selected_host = host;
+        var name = 'webd-miner-' + selected_host.id;
+        var wallet;
+
+        try {
+          wallet = JSON.parse(account.wallet).address;
+        } catch (e) {
+          $mdToast.showSimple('Set the wallet in Settings');
+          return;
+        }
+
+        default_wallet.address = decodeURIComponent(wallet);
+
+        minersService.save({}, {
+          name: name,
+          status: 'stopped',
+          server_port: '8000',
+          mining_pool_url: mining_pool_url,
+          domain: 'wd.hoste.ro',
+          wallet: JSON.stringify(default_wallet),
+          terminal_workers_type: 'cpu-cpp',
+          terminal_workers_cpu_max: selected_host.cpu_count || '0',
+          image_uuid: 'docker:morion4000/node:pool_miner_cpp',
+          command: 'sh start_pool_mining.sh',
+          wallet_secret_url: '7e5d522a70ce4c455f6875d01c22727e',
+          host_id: selected_host.id,
+        }).$promise.then(function() {
+          hostsService.update({
+            id: selected_host.id
+          }, {
+            deployed: '2'
+          });
+
+          $mdToast.showSimple('Miner Created Successfully');
+          setTimeout($state.reload, 2000);
+        });
       });
     };
 
