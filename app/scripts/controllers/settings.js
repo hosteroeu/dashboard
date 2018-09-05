@@ -17,6 +17,8 @@ angular.module('atlasApp')
       privateKey: '02'
     };
 
+    $scope.mining_pool_url = null;
+
     accountsService.get({
       id: account.id
     }).$promise.then(function(account) {

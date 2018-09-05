@@ -1,18 +1,26 @@
 <md-content flex layout-padding>
-  <p>The settings are going to be used for all miners:</p>
-  <form name="settingsCtrl.form" novalidate>
-    <div>
-      <md-input-container class="md-block" flex-gt-xs>
-        <label>Mining Pool URL</label>
-        <input ng-model="mining_pool_url" name="pool_url" required />
-      </md-input-container>
-      <md-input-container class="md-block">
-        <label>Wallet Address</label>
-        <input ng-model="wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" required />
-      </md-input-container>
-      <md-button ng-click="settingsCtrl.update()" md-autofocus ng-disabled="!settingsCtrl.form.$valid">
-        Update
-      </md-button>
-    </div>
-  </form>
+  <center ng-if="!mining_pool_url">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </center>
+
+  <div ng-if="mining_pool_url">
+    <p>The settings are going to be used for all miners:</p>
+    <md-divider></md-divider>
+    <br />
+    <form name="settingsCtrl.form" novalidate>
+      <div>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Mining Pool URL</label>
+          <input ng-model="mining_pool_url" name="pool_url" required />
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Wallet Address</label>
+          <input ng-model="wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" required />
+        </md-input-container>
+        <md-button ng-click="settingsCtrl.update()" md-autofocus ng-disabled="!settingsCtrl.form.$valid">
+          Update
+        </md-button>
+      </div>
+    </form>
+  </div>
 </md-content>
