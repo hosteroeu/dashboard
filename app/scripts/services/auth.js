@@ -39,12 +39,19 @@ angular.module('atlasApp')
 
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
-        });
 
-        accountsService.get({
-          controller: 'sync'
-        }).$promise.then(function(account) {
-          localStorage.setItem('account', JSON.stringify(account));
+          accountsService.get({
+            controller: 'sync'
+          }).$promise.then(function(account) {
+            localStorage.setItem('account', JSON.stringify(account));
+
+            accountsService.update({
+              id: account.id
+            }, {
+              email: profile.email,
+              full_name: profile.name
+            });
+          });
         });
       });
 

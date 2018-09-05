@@ -7,7 +7,7 @@
 <md-content flex layout-padding>
   <md-list>
     <md-list-item ng-repeat="miner in miners" ui-sref="miner({miner:miner.id})" class="noright">
-      <md-icon class="material-icons md-accent">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
+      <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
       <p><strong>{{ miner.name }}</strong></p>
       <md-button ui-sref="host({host:miner.Host.id})">
         {{ miner.Host.name }}

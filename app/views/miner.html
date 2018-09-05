@@ -15,7 +15,7 @@
   </center>
 
   <div ng-if="miner">
-    <p>Mining Pool URL: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.mining_pool_url }}</a></strong></p>
+    <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
     <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
 
     <div ng-if="show_chart">
@@ -23,6 +23,7 @@
       <iframe ng-src="{{ getIframeSrc(3, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
     </div>
 
+    <p>Note: Mining in WMP allows you to see mining charts on this screen.</p>
     <p>Note: To see the logs you can connect to the server and run: <code>docker logs -f $(docker ps | grep pool_miner_cpp | cut -c1-5)</code></p>
   </div>
 </md-content>

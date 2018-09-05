@@ -8,7 +8,15 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersNewCtrl', function($scope, $state, $mdToast, $mdDialog, minersService, hostsService, host) {
+  .controller('MinersNewCtrl', function($scope, $state, $mdToast, $mdDialog, minersService, hostsService, accountsService, host) {
+    var account = JSON.parse(localStorage.getItem('account'));
+    var default_wallet = {
+      version: '0.1',
+      address: null,
+      publicKey: '01',
+      privateKey: '02'
+    };
+
     if (!host) {
       $scope.hosts = hostsService.query();
     } else {
@@ -16,23 +24,17 @@ angular.module('atlasApp')
       $scope.selected_host = host;
     }
 
-    $scope.mining_pool_url = localStorage.getItem('mining_pool_url') || '';
-    $scope.wallet = localStorage.getItem('wallet') || '';
+    accountsService.get({
+      id: account.id
+    }).$promise.then(function(account) {
+      $scope.mining_pool_url = account.mining_pool_url;
+      var wallet = JSON.parse(account.wallet);
+      $scope.wallet = wallet.address;
+    });
 
     this.create = function() {
       var selected_host = JSON.parse($scope.selected_host);
-      var name = 'WEBD miner ' + selected_host.id;
-
-      try {
-        var wallet = JSON.parse($scope.wallet);
-        var address = wallet.address;
-        var privateKey = wallet.privateKey;
-        var publicKey = wallet.publicKey;
-      } catch(e) {
-        $mdToast.showSimple('Wallet JSON must contain address, privateKey, and publicKey');
-
-        return;
-      }
+      var name = 'webd-miner-' + selected_host.id;
 
       if (selected_host.deployed !== '0') {
         $mdToast.showSimple('Host is already deployed');
@@ -40,10 +42,9 @@ angular.module('atlasApp')
         return;
       }
 
-      $mdDialog.hide();
+      default_wallet.address = decodeURIComponent($scope.wallet);
 
-      localStorage.setItem('mining_pool_url', $scope.mining_pool_url);
-      localStorage.setItem('wallet', $scope.wallet);
+      $mdDialog.hide();
 
       minersService.save({}, {
         name: name,
@@ -51,7 +52,7 @@ angular.module('atlasApp')
         server_port: '8000',
         mining_pool_url: $scope.mining_pool_url,
         domain: 'wd.hoste.ro',
-        wallet: $scope.wallet,
+        wallet: JSON.stringify(default_wallet),
         terminal_workers_type: 'cpu-cpp',
         terminal_workers_cpu_max: selected_host.cpu_count || '0',
         image_uuid: 'docker:morion4000/node:pool_miner_cpp',

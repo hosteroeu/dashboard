@@ -18,6 +18,15 @@ angular.module('atlasApp')
       $scope.miner = res;
       $scope.miner.wallet = JSON.parse($scope.miner.wallet);
 
+      switch ($scope.miner.mining_pool_url) {
+        case 'https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443':
+          $scope.miner.friendly_name = 'WMP';
+          break;
+        default:
+          $scope.miner.friendly_name = $scope.miner.mining_pool_url;
+          break;
+      }
+
       if ($scope.miner.mining_pool_url.indexOf('WMP') !== -1) {
         $scope.show_chart = true;
       }

@@ -19,7 +19,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="atlasApp" ng-cloak layout="column">
+<body ng-app="atlasApp" ng-cloak layout="column" ng-controller="RootCtrl">
   <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -30,9 +30,16 @@
       <img src="images/hostero_logo_white_small.png" height="40" />&nbsp;
       <h2><span>Hostero.eu</span> <sup>Beta</sup></h2>
       <span flex></span>
-      <md-button class="md-raised" aria-label="Log out" ng-click="authService.logout()" ng-if="isAuthenticated">
-        Log Out
-      </md-button>
+      <span ng-if="isAuthenticated">
+        <md-button class="md-icon-button md-raised" aria-label="Account" ui-sref="account">
+          <md-tooltip>Account</md-tooltip>
+          <md-icon>account_box</md-icon>
+        </md-button>
+        <md-button class="md-icon-button md-raised" aria-label="Log out" ng-click="authService.logout()">
+          <md-tooltip>Log Out</md-tooltip>
+          <md-icon>exit_to_app</md-icon>
+        </md-button>
+      </span>
     </div>
   </md-toolbar>
 
@@ -97,6 +104,7 @@
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/root.js"></script>
   <script src="scripts/controllers/dashboard.js"></script>
   <script src="scripts/controllers/settings.js"></script>
   <script src="scripts/controllers/hosts.js"></script>
@@ -106,6 +114,7 @@
   <script src="scripts/controllers/_miner.js"></script>
   <script src="scripts/controllers/miners.new.js"></script>
   <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/account.js"></script>
   <script src="scripts/services/auth.js"></script>
   <script src="scripts/services/hosts.js"></script>
   <script src="scripts/services/miners.js"></script>
