@@ -10,9 +10,16 @@
 angular.module('atlasApp')
   .controller('HostsCtrl', function($scope, $mdDialog, hostsService) {
     $scope.hosts = null;
+    $scope.hosts_deployed = [];
 
     hostsService.query().$promise.then(function(res) {
       $scope.hosts = res;
+
+      $scope.hosts.forEach(function(host) {
+        if (host.deployed === '1') {
+          $scope.hosts_deployed.push(host);
+        }
+      });
     });
 
     /*

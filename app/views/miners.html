@@ -1,9 +1,17 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 flex md-truncate><strong>{{ miners.length }}</strong> Miners</h2>
+  </div>
+</md-toolbar>
+
 <md-content flex layout-padding>
   <md-list>
     <md-list-item ng-repeat="miner in miners" ui-sref="miner({miner:miner.id})" class="noright">
       <md-icon class="material-icons md-accent">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
       <p><strong>{{ miner.name }}</strong></p>
-      <p>({{ miner.Host.name }})</p>
+      <md-button ui-sref="host({host:miner.Host.id})">
+        {{ miner.Host.name }}
+      </md-button>
       <md-icon class="material-icons">explore</md-icon>
       <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
