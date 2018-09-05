@@ -44,7 +44,7 @@
   </md-toolbar>
 
   <div flex layout="row">
-    <md-sidenav flex="20" md-is-locked-open="true" class="md-whiteframe-z1">
+    <md-sidenav flex-gt-md="30" flex-md="20" flex="10" md-is-locked-open="true" class="md-whiteframe-z1">
       <md-list>
         <md-list-item ui-sref="dashboard" ui-sref-active="active">
           <md-icon>dashboard</md-icon>
@@ -58,7 +58,7 @@
           <md-icon>get_app</md-icon>
           <p>Install</p>
         </md-list-item>
-        <md-subheader class="md-no-sticky">Management</md-subheader>
+        <md-subheader class="md-no-sticky" show-gt-sm  hide>Management</md-subheader>
         <md-list-item ui-sref="miners" ui-sref-active="active">
           <md-icon>view_agenda</md-icon>
           <p>Miners</p>
