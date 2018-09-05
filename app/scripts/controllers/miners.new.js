@@ -20,6 +20,9 @@ angular.module('atlasApp')
     $scope.wallet = localStorage.getItem('wallet') || '';
 
     this.create = function() {
+      var selected_host = JSON.parse($scope.selected_host);
+      var name = 'WEBD miner ' + selected_host.id;
+
       try {
         var wallet = JSON.parse($scope.wallet);
         var address = wallet.address;
@@ -33,12 +36,11 @@ angular.module('atlasApp')
 
       if (selected_host.deployed !== '0') {
         $mdToast.showSimple('Host is already deployed');
+
+        return;
       }
 
       $mdDialog.hide();
-
-      var selected_host = JSON.parse($scope.selected_host);
-      var name = 'WEBD miner ' + selected_host.id;
 
       localStorage.setItem('mining_pool_url', $scope.mining_pool_url);
       localStorage.setItem('wallet', $scope.wallet);
