@@ -1,22 +1,54 @@
 <md-content class="layout-padding">
   <div>
-    <h4>Installation in two easy steps (<a href="https://asciinema.org/a/3gpdi8DTmDEiVpCHGY1eMqwys" target="_blank">view video</a>):</h4>
-    <ol>
-      <li>
-        <p>Install Docker</p>
-        <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
-      </li>
-      <li>
-        <p>Install Hostero</p>
-        <code>docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/8A2F48145D7D544876F2:1514678400000:FxaguPYvHQzDvi30O5NBu8FBpMo</code>
-      </li>
-    </ol>
-    <h4>Requirements:</h4>
+    <md-divider></md-divider>
+    <h3>Requirements for Host:</h3>
     <ul>
-      <li>Ubuntu 16.04</li>
-      <li>0.1 GiB RAM / host</li>
-      <li>1 GiB SSD/HDD / host</li>
-      <li>1 miner / host</li>
+      <li>Internet connectivity</li>
+      <li><a href="http://docker.com">Linux</a> (we recommend Ubuntu 16.04)</li>
+      <li><a href="http://docker.com">Docker</a></li>
+      <li>1 GiB RAM</li>
+      <li>1 GiB Storage</li>
     </ul>
+    <md-divider></md-divider>
+
+    <h2>Install Docker:</h2>
+    <p>Before installing Hostero, you first need to install Docker. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
+    <p>Run this command to install it:</p>
+
+    <md-card>
+      <md-card-title>
+        <md-card-title-media>
+          <div class="md-media-sm card-media" layout>
+            <md-icon>info</md-icon>
+          </div>
+        </md-card-title-media>
+        <md-card-title-text>
+          <span class="md-subhead description">
+              <br />
+              <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+
+    <h2>Install Hostero:</h2>
+    <p>The client is essentially a Docker container that runs on your Host.</p>
+    <p>Run this command to install it:</p>
+    <md-card>
+      <md-card-title>
+        <md-card-title-media>
+          <div class="md-media-sm card-media" layout>
+            <md-icon>info</md-icon>
+          </div>
+        </md-card-title-media>
+        <md-card-title-text>
+          <span class="md-subhead description">
+              <code>sudo docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/8A2F48145D7D544876F2:1514678400000:FxaguPYvHQzDvi30O5NBu8FBpMo</code>
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+
+    <p><strong>Note</strong>: After you install the Hostero client, wait a few minutes for the host to appear in the <a ui-sref="hosts">Hosts</a> page.</p>
   </div>
 </md-content>
