@@ -16,4 +16,8 @@ angular.module('atlasApp')
     }).$promise.then(function(res) {
       $scope.host = res;
     });
+
+    $scope.getIframeSrc = function(panelId, host) {
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-host=' + host;
+    };
   });
