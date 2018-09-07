@@ -15,7 +15,20 @@ angular.module('atlasApp')
     $scope.filter = '';
 
     minersService.query().$promise.then(function(res) {
-      $scope.miners = res;
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate()-1);
+
+      $scope.miners = [];
+
+      res.forEach(function(miner) {
+        var updated = Date.parse(miner.updated_at);
+
+        if (miner.status === 'stopped' && updated < yesterday.getTime()) {
+          return;
+        }
+
+        $scope.miners.push(miner);
+      });
 
       $scope.miners.forEach(function(miner) {
         if (miner.status === 'stopped') {

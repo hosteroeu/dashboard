@@ -15,7 +15,20 @@ angular.module('atlasApp')
     $scope.filter = '';
 
     hostsService.query().$promise.then(function(res) {
-      $scope.hosts = res;
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate()-1);
+
+      $scope.hosts = [];
+
+      res.forEach(function(host) {
+        var updated = Date.parse(host.updated_at);
+
+        if (host.status === 'stopped' && updated < yesterday.getTime()) {
+          return;
+        }
+
+        $scope.hosts.push(host);
+      });
 
       $scope.hosts.forEach(function(host) {
         if (host.status === 'stopped') {

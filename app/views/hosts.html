@@ -26,6 +26,7 @@
           <md-card-icon-actions>
             <md-button ng-if="host.deployed == 1 && host.status == 'started'" disabled>deployed</md-button>
             <md-button ng-if="host.deployed == 2" disabled>deploying...</md-button>
+            <md-button ng-if="host.status == 'stopped'" disabled>stopped</md-button>
             <md-button class="md-primary" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
               deploy
             </md-button>
