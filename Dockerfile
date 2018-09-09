@@ -11,6 +11,7 @@ RUN gem update --system --no-rdoc --no-ri && gem install compass --no-rdoc --no-
 RUN npm install
 RUN npm install -g bower
 RUN npm install -g grunt-cli
+RUN bower install
 RUN grunt build
 
 CMD [ "node", "server" ]
