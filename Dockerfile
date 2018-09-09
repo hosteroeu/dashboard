@@ -1,4 +1,4 @@
-FROM digitallyseamless/nodejs-bower-grunt
+FROM node:8-alpine
 
 RUN apk update && apk add --no-cache git ruby-full
 
@@ -9,7 +9,8 @@ ADD . /usr/src/app
 
 RUN gem update --system && gem install compass
 RUN npm install
-RUN npm install bower -g
+RUN npm install -g bower
+RUN npm install -g grunt-cli
 RUN grunt build
 
 CMD [ "node", "server" ]
