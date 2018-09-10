@@ -12,6 +12,7 @@ angular.module('atlasApp')
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
+    $scope.miners_running = [];
     $scope.filter = '';
 
     minersService.query().$promise.then(function(res) {
@@ -33,6 +34,8 @@ angular.module('atlasApp')
       $scope.miners.forEach(function(miner) {
         if (miner.status === 'stopped') {
           $scope.miners_stopped.push(miner);
+        } else {
+          $scope.miners_running.push(miner);
         }
       });
     });
