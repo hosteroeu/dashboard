@@ -10,7 +10,7 @@
       <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
       <p><strong>{{ miner.name }}</strong></p>
       <md-button ui-sref="host({host:miner.Host.id})">
-        {{ miner.Host.name }}
+        {{ miner.Host.name | limitTo:10 }}
       </md-button>
       <md-icon class="material-icons">explore</md-icon>
       <md-divider ng-if="!$last"></md-divider>
