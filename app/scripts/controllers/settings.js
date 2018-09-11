@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name atlasApp.controller:SettingsCtrl
  * @description
- * # AccountCtrl
+ * # SettingsCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
@@ -17,30 +17,31 @@ angular.module('atlasApp')
       privateKey: '02'
     };
 
-    $scope.mining_pool_url = null;
+    var _this = this;
+    this.mining_pool_url = null;
+    this.wallet = null;
 
     accountsService.get({
       id: account.id
     }).$promise.then(function(_account) {
-      $scope.mining_pool_url = _account.mining_pool_url;
-      var wallet = JSON.parse(_account.wallet);
-      $scope.wallet = wallet.address;
-      $scope.auto_deploy = _account.auto_deploy;
+      _this.mining_pool_url = _account.mining_pool_url;
+      _this.auto_deploy = _account.auto_deploy;
+
+      if (_account.wallet) {
+        var wallet = JSON.parse(_account.wallet);
+        _this.wallet = wallet.address;
+      }
     });
 
-    this.changeAutoDeploy = function(value) {
-      $scope.auto_deploy = value;
-    };
-
     this.update = function() {
-      default_wallet.address = decodeURIComponent($scope.wallet);
+      default_wallet.address = decodeURIComponent(this.wallet);
 
       accountsService.update({
         id: account.id
       }, {
-        mining_pool_url: $scope.mining_pool_url,
+        mining_pool_url: this.mining_pool_url,
         wallet: JSON.stringify(default_wallet),
-        auto_deploy: $scope.auto_deploy
+        auto_deploy: this.auto_deploy
       }).$promise.then(function() {
         $mdToast.showSimple('Settings Updated Successfully');
         $state.reload();
