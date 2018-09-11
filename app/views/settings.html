@@ -17,6 +17,9 @@
           <label>Wallet Address</label>
           <input ng-model="wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" required />
         </md-input-container>
+        <md-switch ng-model="auto_deploy" ng-change="settingsCtrl.changeAutoDeploy(auto_deploy)">
+          Auto Deploy
+        </md-switch>
         <md-button ng-click="settingsCtrl.update()" md-autofocus ng-disabled="!settingsCtrl.form.$valid">
           Update
         </md-button>

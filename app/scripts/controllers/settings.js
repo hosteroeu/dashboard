@@ -21,11 +21,16 @@ angular.module('atlasApp')
 
     accountsService.get({
       id: account.id
-    }).$promise.then(function(account) {
-      $scope.mining_pool_url = account.mining_pool_url;
-      var wallet = JSON.parse(account.wallet);
+    }).$promise.then(function(_account) {
+      $scope.mining_pool_url = _account.mining_pool_url;
+      var wallet = JSON.parse(_account.wallet);
       $scope.wallet = wallet.address;
+      $scope.auto_deploy = _account.auto_deploy;
     });
+
+    this.changeAutoDeploy = function(value) {
+      $scope.auto_deploy = value;
+    };
 
     this.update = function() {
       default_wallet.address = decodeURIComponent($scope.wallet);
@@ -34,7 +39,8 @@ angular.module('atlasApp')
         id: account.id
       }, {
         mining_pool_url: $scope.mining_pool_url,
-        wallet: JSON.stringify(default_wallet)
+        wallet: JSON.stringify(default_wallet),
+        auto_deploy: $scope.auto_deploy
       }).$promise.then(function() {
         $mdToast.showSimple('Settings Updated Successfully');
         $state.reload();
