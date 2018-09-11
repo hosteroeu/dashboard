@@ -8,7 +8,7 @@
   <md-list>
     <md-list-item ng-repeat="miner in miners | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
       <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
-      <p><strong>{{ miner.name }}</strong></p>
+      <p><strong>{{ miner.name | limitTo:20 }}</strong></p>
       <md-button ui-sref="host({host:miner.Host.id})">
         {{ miner.Host.name | limitTo:10 }}
       </md-button>
