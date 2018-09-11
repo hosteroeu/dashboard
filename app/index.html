@@ -19,7 +19,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="atlasApp" ng-cloak layout="column" ng-controller="RootCtrl">
+<body ng-app="atlasApp" ng-cloak layout="column" ng-controller="RootCtrl as rootCtrl">
   <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -31,20 +31,47 @@
       <h2><span>Hostero.eu</span> <sup>Beta</sup></h2>
       <span flex></span>
       <span ng-if="isAuthenticated">
-        <md-button class="md-icon-button md-raised" aria-label="Account" ui-sref="account">
-          <md-tooltip>Account</md-tooltip>
-          <md-icon>account_box</md-icon>
-        </md-button>
-        <md-button class="md-icon-button md-raised" aria-label="Log out" ng-click="authService.logout()">
-          <md-tooltip>Log Out</md-tooltip>
-          <md-icon>exit_to_app</md-icon>
-        </md-button>
+        <md-menu hide-gt-xs>
+          <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="rootCtrl.openMenu($mdMenu, $event)">
+            <md-tooltip>Navigation</md-tooltip>
+            <md-icon>menu</md-icon>
+          </md-button>
+          <md-menu-content width="3">
+            <md-menu-item>
+              <md-button aria-label="Account" ui-sref="account">
+                <md-icon>account_box</md-icon>
+                Account
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-menu>
+          <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="rootCtrl.openMenu($mdMenu, $event)">
+            <md-tooltip>More</md-tooltip>
+            <md-icon>more_horiz</md-icon>
+          </md-button>
+          <md-menu-content width="3">
+            <md-menu-item>
+              <md-button aria-label="Account" ui-sref="account">
+                <md-icon>account_box</md-icon>
+                Account
+              </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+              <md-button aria-label="Log out" ng-click="authService.logout()">
+                <md-icon>exit_to_app</md-icon>
+                Log Out
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
       </span>
     </div>
   </md-toolbar>
 
   <div flex layout="row">
-    <md-sidenav flex-gt-md="20" flex-md="20" flex="10" md-is-locked-open="true" class="md-whiteframe-z1">
+    <md-sidenav flex-gt-md="20" flex-md="20" flex="10" md-is-locked-open="$mdMedia('gt-xs')" class="md-whiteframe-z1">
       <md-list>
         <md-list-item ui-sref="dashboard" ui-sref-active="active">
           <md-icon>dashboard</md-icon>
@@ -58,7 +85,7 @@
           <md-icon>get_app</md-icon>
           <p>Install</p>
         </md-list-item>
-        <md-subheader class="md-no-sticky" show-gt-sm  hide>Management</md-subheader>
+        <md-subheader class="md-no-sticky" show-gt-sm hide>Management</md-subheader>
         <md-list-item ui-sref="hosts" ui-sref-active="active">
           <md-icon>storage</md-icon>
           <p>Hosts</p>

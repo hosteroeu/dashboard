@@ -5,7 +5,7 @@
 </md-toolbar>
 
 <md-content flex layout-padding>
-  <md-grid-list md-cols-xs="1" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
+  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
     <md-grid-tile ng-repeat="host in hosts | filter:filter">
       <md-card>
         <md-card-header>
@@ -15,7 +15,7 @@
             </md-icon>
           </md-card-avatar>
           <md-card-header-text>
-            <span class="md-title">{{host.name}}</span>
+            <span class="md-title">{{host.name | limitTo:10}}</span>
             <span class="md-subhead"><strong>{{host.cpu_count}}</strong> CPUs @ {{host.cpu_mhz | number:0}} Mhz</span>
           </md-card-header-text>
         </md-card-header>
