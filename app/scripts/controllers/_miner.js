@@ -19,7 +19,7 @@ angular.module('atlasApp')
       $scope.miner.wallet = JSON.parse($scope.miner.wallet);
 
       switch ($scope.miner.mining_pool_url) {
-        case 'https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443':
+        case 'https://mine.webdollarminingpool.com/pool/1/WMP/0.02/ac2b5a547a8069454f6092cde6f9ecd6a273932b45ccbcce7538ca512e80b6fe/https:$$pool.webdollarminingpool.com:443':
           $scope.miner.friendly_name = 'WMP';
           break;
         default:
