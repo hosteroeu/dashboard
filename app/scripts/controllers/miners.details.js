@@ -23,7 +23,11 @@ angular.module('atlasApp')
       minersService.remove({
         id: miner.id
       }).$promise.then(function() {
-        $state.reload();
+        if ($state.current.name === 'miners') {
+          $state.reload();
+        } else {
+          $state.go('miners');
+        }
 
         hostsService.update({
             id: miner.host_id
