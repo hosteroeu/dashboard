@@ -2,9 +2,8 @@
   <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="Requirements">
       <md-content class="md-padding">
-        <h1 class="md-display-2">Requirements for Host</h1>
+        <h2>Requirements for Host</h2>
         <p>
-
           <ul>
             <li>Internet connectivity</li>
             <li><a href="http://docker.com">Linux</a> (we recommend Ubuntu 16.04)</li>
@@ -17,9 +16,9 @@
     </md-tab>
     <md-tab label="Install">
       <md-content class="md-padding">
-        <h1 class="md-display-2">Install</h1>
-        <h1>Docker</h1>
         <p>Before installing Hostero, you first need to install Docker. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
+
+        <h2>1. Install Docker</h2>
         <p>Run this command to install it:</p>
 
         <md-card>
@@ -32,8 +31,7 @@
 
         <p><strong>Note</strong>: You need to have curl installed. If it's not installed, run: <i>apt install curl</i></p>
 
-        <h1>Hostero</h1>
-        <p>The client is essentially a Docker container that runs on your Host.</p>
+        <h2>2. Install Hostero</h2>
         <p>Run this command to install it:</p>
         <md-card>
           <md-card-title>
@@ -50,8 +48,7 @@
     </md-tab>
     <md-tab label="Startup Script (optional)">
       <md-content class="md-padding">
-        <h1 class="md-display-2">Startup Script</h1>
-        <p>Cloud providers like AWS, Google, etc, have an option to set a start-up script. The script will execute after the VPS is created, so you don't have to manually install it.</p>
+        <p>Cloud providers like AWS, Google, etc, have an option to set a start-up script. The script will execute after the VPS is created, so you don't have to manually install it. This step is optional, you can always install Hostero manually.</p>
         <p>Add this script to user data:</p>
         <md-card>
           <md-card-title>

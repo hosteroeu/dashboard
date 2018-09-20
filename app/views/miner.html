@@ -23,7 +23,7 @@
       <iframe ng-src="{{ getIframeSrc(3, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
     </div>
 
-    <p>Note: Mining in WMP allows you to see mining charts on this screen.</p>
-    <p>Note: To see the logs you can connect to the server and run: <code>docker logs -f $(docker ps | grep node | cut -c1-5)</code></p>
+    <p ng-if="!show_chart">Note: Mining in WMP allows you to see mining charts on this screen.</p>
+    <p><strong>Note</strong>: To see the logs you can connect to the server and run: <code>docker logs -f $(docker ps | grep node | cut -c1-5)</code></p>
   </div>
 </md-content>
