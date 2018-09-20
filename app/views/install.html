@@ -1,58 +1,72 @@
 <md-content class="layout-padding">
-  <div>
-    <md-divider></md-divider>
-    <h3>Requirements for Host:</h3>
-    <ul>
-      <li>Internet connectivity</li>
-      <li><a href="http://docker.com">Linux</a> (we recommend Ubuntu 16.04)</li>
-      <li><a href="http://docker.com">Docker</a></li>
-      <li>1 GiB RAM</li>
-      <li>1 GiB Storage</li>
-    </ul>
-    <md-divider></md-divider>
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Requirements">
+      <md-content class="md-padding">
+        <h1 class="md-display-2">Requirements for Host</h1>
+        <p>
 
-    <h2>Install Docker</h2>
-    <p>Before installing Hostero, you first need to install Docker. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
-    <p>Run this command to install it:</p>
+          <ul>
+            <li>Internet connectivity</li>
+            <li><a href="http://docker.com">Linux</a> (we recommend Ubuntu 16.04)</li>
+            <li><a href="http://docker.com">Docker</a></li>
+            <li>1 GiB RAM</li>
+            <li>1 GiB Storage</li>
+          </ul>
+        </p>
+      </md-content>
+    </md-tab>
+    <md-tab label="Install">
+      <md-content class="md-padding">
+        <h1 class="md-display-2">Install</h1>
+        <h1>Docker</h1>
+        <p>Before installing Hostero, you first need to install Docker. We recommand to install Docker using our instructions, but you can install it using alternative ways as well.</p>
+        <p>Run this command to install it:</p>
 
-    <md-card>
-      <md-card-title>
-        <span class="md-subhead description">
-              <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
-          </span>
-      </md-card-title>
-    </md-card>
+        <md-card>
+          <md-card-title>
+            <span class="md-subhead description">
+                      <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
+                  </span>
+          </md-card-title>
+        </md-card>
 
-    <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i></p>
-    <p><strong>Note</strong>: You need to have curl installed. If it's not installed, run: <i>apt install curl</i></p>
+        <p><strong>Note</strong>: You need to have curl installed. If it's not installed, run: <i>apt install curl</i></p>
 
-    <h2>Install Hostero</h2>
-    <p>The client is essentially a Docker container that runs on your Host.</p>
-    <p>Run this command to install it:</p>
-    <md-card>
-      <md-card-title>
-        <span class="md-subhead description">
-              <code>sudo docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
-          </span>
-      </md-card-title>
-    </md-card>
+        <h1>Hostero</h1>
+        <p>The client is essentially a Docker container that runs on your Host.</p>
+        <p>Run this command to install it:</p>
+        <md-card>
+          <md-card-title>
+            <span class="md-subhead description">
+                      <code>sudo docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
+                  </span>
+          </md-card-title>
+        </md-card>
 
-    <p><strong>Note</strong>: After you install the Hostero client, wait a few minutes for the host to appear in the <a ui-sref="hosts">Hosts</a> page.</p>
-
-    <h2>Alternative</h2>
-    <h3>User data script</h3>
-    <p>Add this script to user data:</p>
-    <md-card>
-      <md-card-title>
-        <md-card-title-media>
-          <span class="md-subhead description">
-              <code>
-                #!/bin/bash<br />
-                curl https://releases.rancher.com/install-docker/17.12.sh | sh<br />
-                docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
-          </span>
-      </md-card-title>
-    </md-card>
-    <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i></p>
-  </div>
+        <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i>
+        </p>
+        <p><strong>Note</strong>: After you install the Hostero client, wait a few minutes for the host to appear in the <a ui-sref="hosts">Hosts</a> page.</p>
+      </md-content>
+    </md-tab>
+    <md-tab label="Startup Script (optional)">
+      <md-content class="md-padding">
+        <h1 class="md-display-2">Startup Script</h1>
+        <p>Cloud providers like AWS, Google, etc, have an option to set a start-up script. The script will execute after the VPS is created, so you don't have to manually install it.</p>
+        <p>Add this script to user data:</p>
+        <md-card>
+          <md-card-title>
+            <md-card-title-media>
+              <span class="md-subhead description">
+                      <code>
+                        #!/bin/bash<br />
+                        curl https://releases.rancher.com/install-docker/17.12.sh | sh<br />
+                        docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
+                  </span>
+          </md-card-title>
+        </md-card>
+        <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i>
+        </p>
+      </md-content>
+    </md-tab>
+  </md-tabs>
 </md-content>
