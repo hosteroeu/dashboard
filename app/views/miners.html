@@ -12,10 +12,12 @@
       <md-button ui-sref="host({host:miner.Host.id})">
         {{ miner.Host.name | limitTo:10 }}
       </md-button>
-      <md-icon class="material-icons">explore</md-icon>
+      <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="minersCtrl.open_details(miner)">
+        <md-tooltip>Miner Details</md-tooltip>
+        <md-icon>details</md-icon>
+      </md-button>
       <md-divider ng-if="!$last"></md-divider>
     </md-list-item>
-
   </md-list>
 
   <center ng-if="!miners">
@@ -25,6 +27,11 @@
   <p ng-if="miners != null && !miners.length">
     You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
   </p>
+
+  <br />
+  <br />
+  <br />
+  <br />
 </md-content>
 
 <md-button class="md-fab md-primary add-button" ng-click="minersCtrl.open_new_modal($event)">

@@ -5,7 +5,12 @@
     </md-button>
 
     <h2 flex md-truncate><strong>{{ host.hostname }}</strong></h2>
-    {{ host.internal_created | date }}
+    <small>{{ host.internal_created | date }}</small>
+    &nbsp;
+    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="open_details(host)">
+      <md-tooltip>Host Details</md-tooltip>
+      <md-icon>details</md-icon>
+    </md-button>
   </div>
 </md-toolbar>
 

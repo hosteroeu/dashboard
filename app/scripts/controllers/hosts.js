@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $mdDialog, $mdToast, $state, hostsService, minersService, accountsService) {
+  .controller('HostsCtrl', function($scope, $mdDialog, $mdToast, $mdBottomSheet, $state, hostsService, minersService, accountsService) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
     $scope.hosts_stopped = [];
@@ -132,5 +132,15 @@ angular.module('atlasApp')
         case 'stopped':
           return 'cloud_off';
       }
+    };
+
+    this.open_details = function(host) {
+      $mdBottomSheet.show({
+        templateUrl: 'views/hosts.details.html',
+        controller: 'HostsDetailsCtrl',
+        locals: {
+          host: host
+        }
+      });
     };
   });

@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $mdDialog, $mdToast, minersService, hostsService) {
+  .controller('MinersCtrl', function($scope, $mdDialog, $mdToast, $mdBottomSheet, minersService, hostsService) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
@@ -81,5 +81,15 @@ angular.module('atlasApp')
       var account = JSON.parse(localStorage.getItem('account'));
 
       window.open('//' + instance.name + '.' + account.name + '.wordpress.hoste.ro');
+    };
+
+    this.open_details = function(miner) {
+      $mdBottomSheet.show({
+        templateUrl: 'views/miners.details.html',
+        controller: 'MinersDetailsCtrl',
+        locals: {
+          miner: miner
+        }
+      });
     };
   });

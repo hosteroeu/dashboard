@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinerCtrl', function($scope, $state, $mdDialog, minersService) {
+  .controller('MinerCtrl', function($scope, $state, $mdDialog, $mdBottomSheet, minersService) {
     $scope.miner = null;
     $scope.show_chart = false;
 
@@ -38,5 +38,15 @@ angular.module('atlasApp')
 
     $scope.getHref = function(address) {
       return 'https://www.webdscan.io/address/' + encodeURIComponent(address);
+    };
+
+    $scope.open_details = function() {
+      $mdBottomSheet.show({
+        templateUrl: 'views/miners.details.html',
+        controller: 'MinersDetailsCtrl',
+        locals: {
+          miner: $scope.miner
+        }
+      });
     };
   });

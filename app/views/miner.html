@@ -5,7 +5,12 @@
     </md-button>
 
     <h2 flex md-truncate><strong>{{ miner.name }}</strong> ({{ miner.terminal_workers_cpu_max }} threads)</h2>
-    {{ miner.status }}
+    <small>{{ miner.status }}</small>
+    &nbsp;
+    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="open_details(miner)">
+      <md-tooltip>Miner Details</md-tooltip>
+      <md-icon>details</md-icon>
+    </md-button>
   </div>
 </md-toolbar>
 
