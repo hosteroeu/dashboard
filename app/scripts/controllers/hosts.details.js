@@ -24,7 +24,7 @@ angular.module('atlasApp')
           id: host.id
         }).$promise
         .then(function() {
-          $state.go('hosts');
+          $state.reload();
         })
         .catch(console.error);
     };
