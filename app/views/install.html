@@ -17,20 +17,13 @@
 
     <md-card>
       <md-card-title>
-        <md-card-title-media>
-          <div class="md-media-sm card-media" layout>
-            <md-icon>info</md-icon>
-          </div>
-        </md-card-title-media>
-        <md-card-title-text>
-          <span class="md-subhead description">
-              <br />
+        <span class="md-subhead description">
               <code>curl https://releases.rancher.com/install-docker/17.12.sh | sh</code>
           </span>
-        </md-card-title-text>
       </md-card-title>
     </md-card>
 
+    <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i></p>
     <p><strong>Note</strong>: You need to have curl installed. If it's not installed, run: <i>apt install curl</i></p>
 
     <h2>Install Hostero</h2>
@@ -38,16 +31,9 @@
     <p>Run this command to install it:</p>
     <md-card>
       <md-card-title>
-        <md-card-title-media>
-          <div class="md-media-sm card-media" layout>
-            <md-icon>info</md-icon>
-          </div>
-        </md-card-title-media>
-        <md-card-title-text>
-          <span class="md-subhead description">
+        <span class="md-subhead description">
               <code>sudo docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
           </span>
-        </md-card-title-text>
       </md-card-title>
     </md-card>
 
@@ -59,19 +45,14 @@
     <md-card>
       <md-card-title>
         <md-card-title-media>
-          <div class="md-media-sm card-media" layout>
-            <md-icon>info</md-icon>
-          </div>
-        </md-card-title-media>
-        <md-card-title-text>
           <span class="md-subhead description">
               <code>
                 #!/bin/bash<br />
                 curl https://releases.rancher.com/install-docker/17.12.sh | sh<br />
                 docker run -e CATTLE_HOST_LABELS='account={{account.name}}' --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</code>
           </span>
-        </md-card-title-text>
       </md-card-title>
     </md-card>
+    <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i></p>
   </div>
 </md-content>
