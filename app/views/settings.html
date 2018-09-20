@@ -1,29 +1,36 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-switch ng-model="settingsCtrl.auto_deploy">
+      <small>Auto Deploy Miners</small>
+    </md-switch>
+
+    <span flex md-truncate></span>
+
+    <md-button ng-click="settingsCtrl.update()" md-autofocus ng-disabled="!settingsCtrl.form.$valid" class="md-raised">
+      Update
+    </md-button>
+  </div>
+</md-toolbar>
+
 <md-content flex layout-padding>
   <center ng-if="!settingsCtrl.mining_pool_url">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </center>
 
   <div ng-if="settingsCtrl.mining_pool_url">
-    <p>The settings are going to be used for all miners:</p>
-    <md-divider></md-divider>
-    <br />
     <form name="settingsCtrl.form" novalidate>
       <div>
         <md-input-container class="md-block" flex-gt-xs>
           <label>Mining Pool URL</label>
-          <input ng-model="settingsCtrl.mining_pool_url" name="pool_url" required />
+          <textarea ng-model="settingsCtrl.mining_pool_url" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
         </md-input-container>
         <md-input-container class="md-block">
           <label>Wallet Address</label>
-          <input ng-model="settingsCtrl.wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" required />
+          <input ng-model="settingsCtrl.wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" md-select-on-focus required />
         </md-input-container>
-        <md-switch ng-model="settingsCtrl.auto_deploy">
-          Auto Deploy
-        </md-switch>
-        <md-button ng-click="settingsCtrl.update()" md-autofocus ng-disabled="!settingsCtrl.form.$valid">
-          Update
-        </md-button>
       </div>
     </form>
+
+    <p><strong>Note</strong>: The settings are going to be used for all miners. If you already deployed miners, you need to restarted them for the settings to take effect.</p>
   </div>
 </md-content>
