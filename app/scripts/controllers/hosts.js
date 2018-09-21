@@ -101,6 +101,7 @@ angular.module('atlasApp')
         minersService.save({}, {
           name: name,
           status: 'stopped',
+          deployed: '2',
           server_port: '8000',
           mining_pool_url: mining_pool_url,
           domain: 'wd.hoste.ro',
