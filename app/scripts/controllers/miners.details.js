@@ -17,6 +17,14 @@ angular.module('atlasApp')
       });
     };
 
+    $scope.logs = function() {
+      $mdBottomSheet.hide();
+
+      $state.go('miner_logs', {
+        miner: miner.id
+      });
+    };
+
     $scope.remove = function() {
       $mdBottomSheet.hide();
 

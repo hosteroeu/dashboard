@@ -1,0 +1,23 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button aria-label="Go Back" ui-sref="miners">
+      Back
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-content flex layout-padding>
+  <md-card>
+    <md-card-title>
+      <span class="md-subhead description">
+        <small>
+          <ul style="list-style: none;padding:0;margin:0">
+            <li ng-repeat="log in logs">
+              {{log.message}}
+            </li>
+          </ul>
+        </small>
+      </span>
+    </md-card-title>
+  </md-card>
+</md-content>

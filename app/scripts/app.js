@@ -95,6 +95,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('miner_logs', {
+        url: '/miners/:miner/logs',
+        templateUrl: 'views/miners.logs.html',
+        controller: 'MinersLogsCtrl',
+        controllerAs: 'minersLogsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('install', {
         url: '/install',
         templateUrl: 'views/install.html',
