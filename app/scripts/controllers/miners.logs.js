@@ -23,10 +23,10 @@ angular.module('atlasApp')
       };
 
       socket.onmessage = function(event) {
-        console.log(event.data);
         $scope.logs.push({
           message: event.data
         });
+        $scope.$apply();
       };
     });
 
