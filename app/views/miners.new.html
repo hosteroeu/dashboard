@@ -15,7 +15,7 @@
         <div>
           <md-input-container class="md-block" flex-gt-xs>
             <label>Mining Pool URL</label>
-            <input ng-model="mining_pool_url" name="pool_url" required />
+            <textarea ng-model="mining_pool_url" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
           </md-input-container>
           <md-input-container class="md-block">
             <label>Wallet Address</label>
