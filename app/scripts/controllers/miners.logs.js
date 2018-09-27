@@ -10,7 +10,6 @@
 angular.module('atlasApp')
   .controller('MinersLogsCtrl', function($state, minersService, $scope, ansi2html) {
     var socket;
-
     $scope.logs = [];
     $scope.miner = $state.params.miner;
 
