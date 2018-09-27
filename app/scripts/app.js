@@ -21,7 +21,8 @@ angular
     'auth0.lock',
     'angular-jwt',
     'angular.filter',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ansiToHtml'
   ])
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;

@@ -8,8 +8,9 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersLogsCtrl', function($state, minersService, $scope) {
+  .controller('MinersLogsCtrl', function($state, minersService, $scope, ansi2html) {
     $scope.logs = [];
+    $scope.miner = $state.params.miner;
     var socket;
 
     minersService.get({
@@ -24,7 +25,7 @@ angular.module('atlasApp')
 
       socket.onmessage = function(event) {
         $scope.logs.push({
-          message: event.data
+          message: ansi2html.toHtml(event.data)
         });
         $scope.$apply();
       };

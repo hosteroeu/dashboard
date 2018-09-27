@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <md-button aria-label="Go Back" ui-sref="miners">
+    <md-button aria-label="Go Back" ui-sref="miner({miner:miner})">
       Back
     </md-button>
   </div>
@@ -11,9 +11,9 @@
     <md-card-title>
       <span class="md-subhead description">
         <small>
-          <ul style="list-style: none;padding:0;margin:0">
+          <ul class="logs_list">
             <li ng-repeat="log in logs.slice().reverse() | limitTo:1000">
-              {{log.message}}
+              <div ng-bind-html="log.message"></div>
             </li>
           </ul>
         </small>
