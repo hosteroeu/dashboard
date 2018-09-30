@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $mdDialog, $mdToast, $mdBottomSheet, minersService, hostsService) {
+  .controller('MinersCtrl', function($scope, $mdDialog, $state, $mdToast, $mdBottomSheet, minersService, hostsService) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
@@ -17,7 +17,7 @@ angular.module('atlasApp')
 
     minersService.query().$promise.then(function(res) {
       var yesterday = new Date();
-      yesterday.setDate(yesterday.getDate()-1);
+      yesterday.setDate(yesterday.getDate() - 1);
 
       $scope.miners = [];
 
@@ -90,6 +90,35 @@ angular.module('atlasApp')
         locals: {
           miner: miner
         }
+      });
+    };
+
+    this.redeploy = function($event) {
+      var confirm = $mdDialog.confirm()
+        .title('Do you want to re-deploy all the miners?')
+        .textContent('Re-deploying the miners takes several minutes and will delete all your hosts and miners.')
+        .ariaLabel('Redeploy')
+        .targetEvent($event)
+        .ok('Redeploy')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function() {
+        $scope.miners.forEach(function(miner) {
+          minersService.remove({
+            id: miner.id
+          });
+        });
+
+        $scope.hosts.forEach(function(host) {
+          hostsService.remove({
+            id: host.id
+          });
+        });
+
+        setTimeout(function() {
+          $mdToast.showSimple('Re-deploying started... It will take several minutes');
+          $state.reload();
+        }, 2000);
       });
     };
   });
