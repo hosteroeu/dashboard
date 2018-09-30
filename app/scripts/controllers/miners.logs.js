@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersLogsCtrl', function($state, minersService, $scope, ansi2html) {
+  .controller('MinersLogsCtrl', function($state, minersService, $sce, $scope, ansi2html) {
     var socket;
     $scope.logs = [];
     $scope.miner = $state.params.miner;
@@ -38,6 +38,10 @@ angular.module('atlasApp')
         $scope.$apply();
       };
     });
+
+    $scope.to_trusted = function(html_code) {
+      return $sce.trustAsHtml(html_code);
+    };
 
     $scope.$on("$destroy", function() {
       socket.close();
