@@ -13,25 +13,34 @@
   </div>
 </md-toolbar>
 
-<md-content flex layout-padding>
+<md-content flex>
   <center ng-if="!settingsCtrl.mining_pool_url">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </center>
 
   <div ng-if="settingsCtrl.mining_pool_url">
-    <form name="settingsCtrl.form" novalidate>
-      <div>
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>Mining Pool URL</label>
-          <textarea ng-model="settingsCtrl.mining_pool_url" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
-        </md-input-container>
-        <md-input-container class="md-block">
-          <label>Wallet Address</label>
-          <input ng-model="settingsCtrl.wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" md-select-on-focus required />
-        </md-input-container>
-      </div>
-    </form>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Miners Settings</span>
+          <span class="md-subhead description">
+            <form name="settingsCtrl.form" novalidate>
+              <div>
+                <md-input-container class="md-block" flex-gt-xs>
+                  <label>Mining Pool URL</label>
+                  <textarea ng-model="settingsCtrl.mining_pool_url" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
+                </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Wallet Address</label>
+                  <input ng-model="settingsCtrl.wallet" name="wallet" placeholder="WEBD$000000000000000000000000000000000$" md-select-on-focus required />
+                </md-input-container>
+              </div>
 
-    <p><strong>Note</strong>: The settings are going to be used for all miners. If you already deployed miners, you need to restart them for the settings to take effect.</p>
+              <p><strong>Note</strong>: The settings are going to be used for all miners. If you already deployed miners, you need to restart them for the settings to take effect.</p>
+            </form>
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
   </div>
 </md-content>

@@ -1,14 +1,16 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <md-button aria-label="Go Back" ui-sref="hosts">
-      Back
+    <md-button aria-label="Go Back" ui-sref="hosts" class="md-raised">
+      <md-icon>chevron_left</md-icon>Back
     </md-button>
 
+    &nbsp;&nbsp;
     <h2 flex md-truncate><strong>{{ host.hostname }}</strong></h2>
-    <md-button class="md-icon-button md-raised md-primary" aria-label="toggle" ng-click="open_details(host)">
+    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="open_details(host)">
       <md-tooltip>Host Details</md-tooltip>
       <md-icon>more_vert</md-icon>
     </md-button>
+    &nbsp;&nbsp;
   </div>
 </md-toolbar>
 

@@ -1,14 +1,16 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <md-button aria-label="Go Back" ui-sref="miners">
-      Back
+    <md-button aria-label="Go Back" ui-sref="miners" class="md-raised">
+      <md-icon>chevron_left</md-icon>Back
     </md-button>
 
+    &nbsp;&nbsp;
     <h2 flex md-truncate><strong>{{ miner.name }}</strong></h2>
     <md-button class="md-icon-button md-raised md-primary" aria-label="toggle" ng-click="open_details(miner)">
       <md-tooltip>Miner Details</md-tooltip>
       <md-icon>more_vert</md-icon>
-    </md-button>&nbsp;&nbsp;
+    </md-button>
+    &nbsp;&nbsp;
   </div>
 </md-toolbar>
 
