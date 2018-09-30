@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersDetailsCtrl', function(miner, minersService, hostsService, $state, $scope, $mdBottomSheet) {
+  .controller('MinersDetailsCtrl', function(miner, minersService, hostsService, $state, $scope, $mdDialog, $mdToast, $mdBottomSheet) {
     var socket;
 
     minersService.get({
@@ -42,6 +42,38 @@ angular.module('atlasApp')
 
       $state.go('miner', {
         miner: miner.id
+      });
+    };
+
+    $scope.redeploy = function($event) {
+      var confirm = $mdDialog.confirm()
+        .title('Do you want to re-deploy the miner?')
+        .textContent('Re-deploying the miner takes several minutes and will delete the host and the miner.')
+        .ariaLabel('Re-deploy')
+        .targetEvent($event)
+        .ok('Re-deploy')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function() {
+        minersService.remove({
+          id: miner.id
+        });
+
+        hostsService.remove({
+          id: miner.host_id
+        });
+
+        $mdToast.showSimple('Re-deploying started... It will take several minutes');
+
+        setTimeout(function() {
+          $mdBottomSheet.hide();
+
+          if ($state.current.name === 'miners') {
+            $state.reload();
+          } else {
+            $state.go('miners');
+          }
+        }, 2000);
       });
     };
 

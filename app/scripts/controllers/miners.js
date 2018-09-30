@@ -99,7 +99,7 @@ angular.module('atlasApp')
         .textContent('Re-deploying the miners takes several minutes and will delete all your hosts and miners.')
         .ariaLabel('Redeploy')
         .targetEvent($event)
-        .ok('Redeploy')
+        .ok('Re-deploy')
         .cancel('Cancel');
 
       $mdDialog.show(confirm).then(function() {
