@@ -4,31 +4,52 @@
       Back
     </md-button>
 
-    <h2 flex md-truncate><strong>{{ miner.name }}</strong> ({{ miner.terminal_workers_cpu_max }} threads)</h2>
-    <small>{{ miner.status }}</small>
-    &nbsp;
-    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="open_details(miner)">
+    <h2 flex md-truncate><strong>{{ miner.name }}</strong></h2>
+    <md-button class="md-icon-button md-raised md-primary" aria-label="toggle" ng-click="open_details(miner)">
       <md-tooltip>Miner Details</md-tooltip>
-      <md-icon>details</md-icon>
-    </md-button>
+      <md-icon>more_vert</md-icon>
+    </md-button>&nbsp;&nbsp;
   </div>
 </md-toolbar>
 
-<md-content flex layout-padding>
+<md-content flex>
   <center ng-if="!miner">
+    <br />
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </center>
 
   <div ng-if="miner">
-    <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
-    <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
+    <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-align-tabs="top">
+      <md-tab label="Details">
+        <md-content class="md-padding">
+          <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
+          <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
+          <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
+          <p>Threads: <strong>{{ miner.terminal_workers_cpu_max }}</strong></p>
+          <p>Type: <strong>{{ miner.terminal_workers_type }}</strong></p>
+          <p>Server Port: <strong>{{ miner.server_port }}</strong></p>
+          <p>Domain: <strong>{{ miner.domain }}</strong></p>
+          <p>Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Charts">
+        <md-content class="md-padding">
+          <div ng-if="show_chart">
+            <iframe ng-src="{{ getIframeSrc(1, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
+            <iframe ng-src="{{ getIframeSrc(3, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
+          </div>
 
-    <div ng-if="show_chart">
-      <iframe ng-src="{{ getIframeSrc(1, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
-      <iframe ng-src="{{ getIframeSrc(3, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
-    </div>
-
-    <p ng-if="!show_chart">Note: Mining in WMP allows you to see mining charts on this screen.</p>
-    <!--<p><strong>Note</strong>: To see the logs you can connect to the server and run: <code>docker logs -f $(docker ps | grep node | cut -c1-5)</code></p>-->
+          <p ng-if="!show_chart">Note: Mining in WMP allows you to see mining charts on this screen.</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Logs">
+        <md-content class="md-padding">
+          <center>
+            <md-button class="md-primary md-raised" ui-sref="miner_logs({miner: miner.id})">View Miner Logs</md-button>
+          </center>
+          <p><strong>Note</strong>: To see the logs straight on the server, run: <code>docker logs -f $(docker ps | grep node | cut -c1-5)</code></p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
   </div>
 </md-content>

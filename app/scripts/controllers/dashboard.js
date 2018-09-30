@@ -8,11 +8,14 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('DashboardCtrl', function ($scope, accountsService) {
+  .controller('DashboardCtrl', function ($scope, accountsService, hostsService, minersService) {
     var profile = JSON.parse(localStorage.getItem('profile'));
     var account = {
       name: ''
     };
+
+    $scope.hosts = hostsService.query();
+    $scope.miners = minersService.query();
 
     accountsService.get({
       controller: 'sync'

@@ -25,7 +25,7 @@
             <label>Host</label>
             <md-select ng-model="selected_host" required>
               <md-option ng-repeat="host in hosts" value="{{host}}" selected="selected_host">
-                {{host.name}}
+                {{host.name | limitTo:20}}
               </md-option>
             </md-select>
           </md-input-container>

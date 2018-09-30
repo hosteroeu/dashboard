@@ -8,13 +8,13 @@
   <md-list>
     <md-list-item ng-repeat="miner in miners | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
       <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
-      <p><strong>{{ miner.name | limitTo:20 }}</strong></p>
-      <md-button ui-sref="host({host:miner.Host.id})">
+      <p>{{ miner.name | limitTo:20 }}</p>
+      <md-button class="md-accent" ui-sref="host({host:miner.Host.id})">
         {{ miner.Host.name | limitTo:20 }}
       </md-button>
-      <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="minersCtrl.open_details(miner)">
+      <md-button class="md-icon-button" aria-label="toggle" ng-click="minersCtrl.open_details(miner)">
         <md-tooltip>Miner Details</md-tooltip>
-        <md-icon>details</md-icon>
+        <md-icon>more_vert</md-icon>
       </md-button>
       <md-divider ng-if="!$last"></md-divider>
     </md-list-item>

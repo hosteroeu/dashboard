@@ -12,6 +12,7 @@ angular.module('atlasApp')
     var socket;
     $scope.logs = [];
     $scope.miner = $state.params.miner;
+    $scope.power = '0 h/s';
 
     minersService.get({
       id: $state.params.miner,
@@ -24,6 +25,13 @@ angular.module('atlasApp')
       };
 
       socket.onmessage = function(event) {
+        var regex = /([0-9.])+ hashes\/s/g;
+        var found = event.data.match(regex);
+
+        if (found) {
+          $scope.power = found[0];
+        }
+
         $scope.logs.push({
           message: ansi2html.toHtml(event.data)
         });

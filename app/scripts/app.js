@@ -149,8 +149,9 @@ angular
       });
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue');
-    //.accentPalette('orange');
+      .primaryPalette('blue')
+      .accentPalette('indigo')
+      .backgroundPalette('grey');
 
     //$mdThemingProvider.theme('default').dark();
   })

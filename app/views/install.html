@@ -1,5 +1,5 @@
-<md-content class="layout-padding">
-  <md-tabs md-dynamic-height md-border-bottom>
+<md-content>
+  <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-align-tabs="top">
     <md-tab label="Requirements">
       <md-content class="md-padding">
         <h2>Requirements for Host</h2>
@@ -43,12 +43,11 @@
 
         <p><strong>Note</strong>: This command is specific to your account, do not share it with others</i>
         </p>
-        <p><strong>Note</strong>: After you install the Hostero client, wait a few minutes for the host to appear in the <a ui-sref="hosts">Hosts</a> page.</p>
       </md-content>
     </md-tab>
     <md-tab label="Startup Script (optional)">
       <md-content class="md-padding">
-        <p>Cloud providers like AWS, Google, etc, have an option to set a start-up script. The script will execute after the VPS is created, so you don't have to manually install it. This step is optional, you can always install Hostero manually.</p>
+        <p>Cloud providers like AWS, Google, etc, have an option to set a start-up script. The script will execute after the VPS is created, so you don't have to manually install it.</p>
         <p>Add this script to user data:</p>
         <md-card>
           <md-card-title>

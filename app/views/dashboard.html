@@ -1,7 +1,15 @@
 <md-content flex layout-padding>
-  <p>To get started <a href="#" ui-sref="install">install</a> a new host and then <a href="#" ui-sref="miners">manage</a> your miners.</p>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{ miners.length }} Miners deployed on {{ hosts.length }} Hosts</span>
+        <span class="md-subhead description">
+          <p>To get started <a href="#" ui-sref="install">install</a> a new host and then <a href="#" ui-sref="miners">manage</a> your miners.</p>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
 
   <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
-
-  <p><strong>Note</strong>: We do not offer mining services, you will mine with your own equiment.</p>
 </md-content>
