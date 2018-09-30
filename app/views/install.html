@@ -1,5 +1,5 @@
 <md-content>
-  <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-align-tabs="top">
+  <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-align-tabs="top" md-selected="selectedTab">
     <md-tab label="Requirements">
       <md-content class="md-padding">
         <h2>Requirements for Host</h2>
@@ -12,6 +12,10 @@
             <li>1 GiB Storage</li>
           </ul>
         </p>
+
+        <center>
+          <md-button class="md-primary md-raised" ng-click="selectedTab = 1">Go to install</md-button>
+        </center>
       </md-content>
     </md-tab>
     <md-tab label="Install">

@@ -12,5 +12,7 @@ angular.module('atlasApp')
     var account = JSON.parse(localStorage.getItem('account'));
     //var profile = JSON.parse(localStorage.getItem('profile'));
 
+    $scope.selectedTab = 0;
+
     $scope.account = account;
   });
