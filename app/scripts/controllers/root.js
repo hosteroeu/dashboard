@@ -14,7 +14,6 @@ angular.module('atlasApp')
     $scope.profile = profile;
 
     this.openMenu = function($mdMenu, ev) {
-      console.log('a');
       $mdMenu.open(ev);
     };
   });
