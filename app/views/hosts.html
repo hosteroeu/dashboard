@@ -6,7 +6,7 @@
 
 <md-content flex layout-padding>
   <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
-    <md-grid-tile ng-repeat="host in hosts | filter:filter">
+    <md-grid-tile ng-repeat="host in hosts | orderBy:'name' | filter:filter">
       <md-card>
         <md-card-header>
           <md-card-avatar>

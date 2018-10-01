@@ -11,7 +11,7 @@
 
 <md-content flex layout-padding>
   <md-list>
-    <md-list-item ng-repeat="miner in miners | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
+    <md-list-item ng-repeat="miner in miners | orderBy:'name' | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
       <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
       <p>{{ miner.name | limitTo:20 }}</p>
       <md-button class="md-accent" ui-sref="host({host:miner.Host.id})">
