@@ -2,14 +2,13 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:AccountCtrl
+ * @name atlasApp.controller:BillingCtrl
  * @description
- * # AccountCtrl
+ * # BillingCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('AccountCtrl', function($scope, accountsService, $mdDialog) {
-    $scope.profile = JSON.parse(localStorage.getItem('profile'));
+  .controller('BillingCtrl', function($scope, accountsService, $mdDialog) {
     $scope.account = JSON.parse(localStorage.getItem('account'));
 
     accountsService.get({

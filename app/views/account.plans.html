@@ -1,0 +1,67 @@
+<md-dialog flex="50">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Hostero Plans</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="accountPlansCtrl.close()">
+        <md-icon class="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-selected="accountPlansCtrl.selectedPlanIndex">
+      <md-tab label="Free">
+        <md-content class="md-padding">
+          <p><strong>0</strong> WEBD / Month</p>
+          <ul>
+            <li>Deploy up to 5 Hosts</li>
+            <li>No support</li>
+          </ul>
+        </md-content>
+      </md-tab>
+      <md-tab label="Miner">
+        <md-content class="md-padding">
+          <p><strong>50000</strong> WEBD / Month</p>
+          <ul>
+            <li>Deploy up to 20 Hosts</li>
+            <li>E-mail support</li>
+          </ul>
+        </md-content>
+      </md-tab>
+      <md-tab label="Farm">
+        <md-content class="md-padding">
+          <p><strong>150000</strong> WEBD / Month</p>
+          <ul>
+            <li>Deploy up to 100 Hosts</li>
+            <li>E-mail/Telegram support</li>
+          </ul>
+        </md-content>
+      </md-tab>
+      <md-tab label="Other">
+        <md-content class="md-padding">
+          <p>Contact <a href="mailto:hosteroeu@gmail.com">hosteroeu@gmail.com</a> for custom plans.</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+
+    <md-content class="layout-padding">
+      <p>Select a new plan:</p>
+      <md-radio-group ng-model="accountPlansCtrl.plan">
+        <md-radio-button value="free" class="md-primary">Free</md-radio-button>
+        <md-radio-button value="miner"> Miner </md-radio-button>
+        <md-radio-button value="farm"> Farm </md-radio-button>
+      </md-radio-group>
+    </md-content>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="accountPlansCtrl.close()" class="md-warn">
+      Cancel
+    </md-button>
+    <md-button ng-click="accountPlansCtrl.change()" class="md-primary">
+      Change
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

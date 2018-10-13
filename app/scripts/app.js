@@ -141,6 +141,24 @@ angular
           requiresLogin: true
         }
       })
+      .state('coins', {
+        url: '/coins',
+        templateUrl: 'views/coins.html',
+        controller: 'CoinsCtrl',
+        controllerAs: 'coinsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('billing', {
+        url: '/billing',
+        templateUrl: 'views/billing.html',
+        controller: 'BillingCtrl',
+        controllerAs: 'billingCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',

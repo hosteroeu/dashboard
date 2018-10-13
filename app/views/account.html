@@ -1,7 +1,17 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Account ID: <strong>{{account.name}}</strong></h2>
+
+    <span flex md-truncate></span>
+
+    <md-button ng-disabled="true" class="md-raised">Delete Account</md-button>
+  </div>
+</md-toolbar>
+
 <md-content flex layout-padding>
   <p>Email: {{profile.email}}</p>
   <p>Name: {{profile.name}}</p>
-  <p>Account ID: <strong>{{account.name}}</strong></p>
+  <p>Plan: <strong>{{plan}}</strong></p>
 
-  <!--<md-button ng-disabled="true">Delete Account</md-button>-->
+  <md-button ng-click="accountCtrl.change_plan()" class="md-raised">Change Plan</md-button>
 </md-content>

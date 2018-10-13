@@ -28,7 +28,7 @@
   <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
       <!--<img src="images/hostero_logo_white_small.png" height="40" />&nbsp;-->
-      <h2><span>Hostero</span> <sup><small>Beta</small></sup></h2>
+      <h2><span>Hostero</span></h2>
       <span flex></span>
       <span ng-if="isAuthenticated">
         <md-menu hide-gt-xs>
@@ -109,6 +109,10 @@
           <md-icon>get_app</md-icon>
           <p>Install</p>
         </md-list-item>
+        <md-list-item ui-sref="billing" ui-sref-active="active">
+          <md-icon>money</md-icon>
+          <p>Billing</p>
+        </md-list-item>
         <md-subheader class="md-no-sticky" show-gt-sm hide>Management</md-subheader>
         <md-list-item ui-sref="hosts" ui-sref-active="active">
           <md-icon>view_agenda</md-icon>
@@ -117,6 +121,10 @@
         <md-list-item ui-sref="miners" ui-sref-active="active">
           <md-icon>storage</md-icon>
           <p>Miners</p>
+        </md-list-item>
+        <md-list-item ui-sref="coins" ui-sref-active="active">
+          <md-icon>monetization_on</md-icon>
+          <p>Coins</p>
         </md-list-item>
       </md-list>
     </md-sidenav>
@@ -163,6 +171,8 @@
   <script src="scripts/controllers/root.js"></script>
   <script src="scripts/controllers/dashboard.js"></script>
   <script src="scripts/controllers/settings.js"></script>
+  <script src="scripts/controllers/coins.js"></script>
+  <script src="scripts/controllers/billing.js"></script>
   <script src="scripts/controllers/hosts.js"></script>
   <script src="scripts/controllers/host.js"></script>
   <script src="scripts/controllers/hosts.new.js"></script>
@@ -174,6 +184,7 @@
   <script src="scripts/controllers/miners.logs.js"></script>
   <script src="scripts/controllers/login.js"></script>
   <script src="scripts/controllers/account.js"></script>
+  <script src="scripts/controllers/account.plans.js"></script>
   <script src="scripts/controllers/install.js"></script>
   <script src="scripts/services/auth.js"></script>
   <script src="scripts/services/hosts.js"></script>
