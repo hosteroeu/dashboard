@@ -3,6 +3,7 @@ var static = require('node-static'),
 
 require('http').createServer(function(request, response) {
   request.addListener('end', function() {
+    console.log(request.method, request.url);
     file.serve(request, response);
   }).resume();
 }).listen(80);
