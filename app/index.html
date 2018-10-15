@@ -1,161 +1,255 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- End Required meta tags -->
+  <!-- Begin SEO tag -->
   <title>Hostero Dashboard</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <meta property="og:title" content="Hostero Dashboard">
+  <meta name="author" content="Hostero">
+  <meta property="og:locale" content="en_US">
+  <meta name="description" content="Mining Software">
+  <meta property="og:description" content="Mining Software">
+  <link rel="canonical" href="https://www.hostero.eu">
+  <meta property="og:url" content="https://www.hostero.eu">
+  <meta property="og:site_name" content="Hostero Dsahboard">
+  <!-- FAVICONS -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <meta name="theme-color" content="#3063A0">
+  <!-- End FAVICONS -->
+
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.css" />
+  <link rel="stylesheet" href="bower_components/PACE/themes/blue/pace-theme-flash.css" />
   <!-- endbower -->
   <!-- endbuild -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/looper.css">
+  <link rel="stylesheet" href="styles/looper_custom.css">
   <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body ng-app="atlasApp" ng-cloak layout="column" ng-controller="RootCtrl as rootCtrl">
-  <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<body ng-app="atlasApp" ng-controller="RootCtrl as rootCtrl">
+  <!-- .app -->
+  <div class="app">
+    <!-- .app-header -->
+    <header class="app-header">
+      <!-- .top-bar -->
+      <div class="top-bar">
+        <!-- .top-bar-brand -->
+        <div class="top-bar-brand">
+          <a href="index.html">
+            <!--<img src="assets/images/brand-inverse.png" height="32" alt="">-->
+            <span>Hostero</span> <sup><small>v1</small></sup>
+          </a>
+        </div>
+        <!-- /.top-bar-brand -->
+        <!-- .top-bar-list -->
+        <div class="top-bar-list">
+          <!-- .top-bar-item -->
+          <div class="top-bar-item px-2 d-md-none d-lg-none d-xl-none">
+            <!-- toggle menu -->
+            <button class="hamburger hamburger-squeeze" type="button" data-toggle="aside" aria-label="Menu" aria-controls="navigation">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
+            <!-- /toggle menu -->
+          </div>
+          <!-- /.top-bar-item -->
+          <!-- .top-bar-item -->
+          <div class="top-bar-item top-bar-item-full">
 
-  <!-- Add your site or application content here -->
-  <md-toolbar class="md-hue-2">
-    <div class="md-toolbar-tools">
-      <!--<img src="images/hostero_logo_white_small.png" height="40" />&nbsp;-->
-      <h2><span>Hostero</span> <sup><small>v1</small></sup></h2>
-      <span flex></span>
-      <span ng-if="isAuthenticated">
-        <md-menu hide-gt-xs>
-          <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="rootCtrl.openMenu($mdMenu, $event)">
-            <md-tooltip>Navigation</md-tooltip>
-            <md-icon>menu</md-icon>
-          </md-button>
-          <md-menu-content width="3">
-            <md-menu-item>
-              <md-button aria-label="Dashboard" ui-sref="dashboard">
-                <md-icon>dashboard</md-icon>
-                Dashboard
-              </md-button>
-            </md-menu-item>
-            <md-menu-item>
-              <md-button aria-label="Settings" ui-sref="settings">
-                <md-icon>settings_applications</md-icon>
-                Settings
-              </md-button>
-            </md-menu-item>
-            <md-menu-item>
-              <md-button aria-label="Install" ui-sref="install">
-                <md-icon>get_app</md-icon>
-                Install
-              </md-button>
-            </md-menu-item>
-            <md-menu-item>
-              <md-button aria-label="Hosts" ui-sref="hosts">
-                <md-icon>storage</md-icon>
-                Hosts
-              </md-button>
-            </md-menu-item>
-            <md-menu-item>
-              <md-button aria-label="Miners" ui-sref="miners">
-                <md-icon>view_agenda</md-icon>
-                Miners
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-        <md-menu>
-          <md-button aria-label="Open menu" class="md-icon-button md-raised" ng-click="rootCtrl.openMenu($mdMenu, $event)">
-            <md-tooltip>More</md-tooltip>
-            <md-icon>more_horiz</md-icon>
-          </md-button>
-          <md-menu-content width="3">
-            <md-menu-item>
-              <md-button aria-label="Account" ui-sref="account">
-                <md-icon>account_box</md-icon>
-                Account
-              </md-button>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-            <md-menu-item>
-              <md-button aria-label="Log out" ng-click="authService.logout()">
-                <md-icon>exit_to_app</md-icon>
-                Log Out
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-      </span>
-    </div>
-  </md-toolbar>
+          </div>
+          <!-- /.top-bar-item -->
+          <!-- .top-bar-item -->
+          <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
+            <!-- .btn-account -->
+            <div class="dropdown" ng-if="isAuthenticated">
+              <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="user-avatar">
+                    <img src="{{profile.picture}}" alt="">
+                  </span>
+                  <span class="account-summary pr-lg-4 d-none d-lg-block">
+                    <span class="account-name">{{profile.name}}</span>
+                    <span class="account-description">{{profile.email}}</span>
+                  </span>
+                </button>
+              <div class="dropdown-arrow dropdown-arrow-left"></div>
+              <!-- .dropdown-menu -->
+              <div class="dropdown-menu">
+                <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{profile.name}} </h6>
+                <a class="dropdown-item" ui-sref="account">
+                    <span class="dropdown-icon oi oi-person"></span> Account</a>
+                <a class="dropdown-item" href="#" ng-click="authService.logout()">
+                    <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://www.hostero.eu/getting-started.html">Help Center</a>
+              </div>
+              <!-- /.dropdown-menu -->
+            </div>
+            <!-- /.btn-account -->
+          </div>
+          <!-- /.top-bar-item -->
+        </div>
+        <!-- /.top-bar-list -->
+      </div>
+      <!-- /.top-bar -->
+    </header>
+    <!-- /.app-header -->
+    <!-- .app-aside -->
+    <aside class="app-aside">
+      <!-- .aside-content -->
+      <div class="aside-content">
+        <!-- .aside-header -->
+        <header class="aside-header d-block d-md-none">
+          <!-- .btn-account -->
+          <button class="btn-account" type="button" data-toggle="collapse" data-target="#dropdown-aside">
+              <span class="user-avatar user-avatar-lg">
+                <img src="{{profile.picture}}" alt="">
+              </span>
+              <span class="account-icon">
+                <span class="fa fa-caret-down fa-lg"></span>
+              </span>
+              <span class="account-summary">
+                <span class="account-name">{{profile.name}}</span>
+                <span class="account-description">{{profile.email}}</span>
+              </span>
+            </button>
+          <!-- /.btn-account -->
+          <!-- .dropdown-aside -->
+          <div id="dropdown-aside" class="dropdown-aside collapse">
+            <!-- dropdown-items -->
+            <div class="pb-3">
+              <a class="dropdown-item" ui-sref="account">
+                  <span class="dropdown-icon oi oi-person"></span> Account</a>
+              <a class="dropdown-item" href="#" ng-click="authService.logout()">
+                  <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://www.hostero.eu/getting-started.html">Help Center</a>
+            </div>
+            <!-- /dropdown-items -->
+          </div>
+          <!-- /.dropdown-aside -->
+        </header>
+        <!-- /.aside-header -->
+        <!-- .aside-menu -->
+        <section class="aside-menu has-scrollable">
+          <!-- .stacked-menu -->
+          <nav id="stacked-menu" class="stacked-menu">
+            <!-- .menu -->
+            <ul class="menu">
+              <!-- .menu-item -->
+              <li class="menu-item">
+                <a ui-sref="dashboard" class="menu-link">
+                    <span class="menu-icon fas fa-tachometer-alt"></span>
+                    <span class="menu-text">Dashboard</span>
+                  </a>
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-item -->
+              <li class="menu-item has-child">
+                <a ui-sref="settings" class="menu-link">
+                    <span class="menu-icon fas fa-cog"></span>
+                    <span class="menu-text">Settings</span>
+                  </a>
+                <!-- /child menu -->
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-item -->
+              <li class="menu-item has-child">
+                <a ui-sref="install" class="menu-link">
+                    <span class="menu-icon fas fa-download"></span>
+                    <span class="menu-text">Install</span>
+                  </a>
+                <!-- /child menu -->
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-header -->
+              <li class="menu-header">Management </li>
+              <!-- /.menu-header -->
+              <!-- .menu-item -->
+              <li class="menu-item has-child">
+                <a ui-sref="hosts" class="menu-link">
+                    <span class="menu-icon fas fa-list-alt"></span>
+                    <span class="menu-text">Hosts</span>
+                  </a>
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-item -->
+              <li class="menu-item has-child">
+                <a ui-sref="miners" class="menu-link">
+                    <span class="menu-icon fas fa-th-list"></span>
+                    <span class="menu-text">Miners</span>
+                  </a>
+              </li>
+              <!-- /.menu-item -->
+            </ul>
+            <!-- /.menu -->
+          </nav>
+          <!-- /.stacked-menu -->
+        </section>
+        <!-- /.aside-menu -->
+      </div>
+      <!-- /.aside-content -->
+    </aside>
+    <!-- /.app-aside -->
 
-  <div flex layout="row">
-    <md-sidenav flex-gt-md="20" flex-md="20" flex="10" md-is-locked-open="$mdMedia('gt-xs')" class="md-whiteframe-z1">
-      <md-list>
-        <md-list-item ui-sref="dashboard" ui-sref-active="active">
-          <md-icon>dashboard</md-icon>
-          <p>Dashboard</p>
-        </md-list-item>
-        <md-list-item ui-sref="settings" ui-sref-active="active">
-          <md-icon>settings_applications</md-icon>
-          <p>Settings</p>
-        </md-list-item>
-        <md-list-item ui-sref="install" ui-sref-active="active">
-          <md-icon>get_app</md-icon>
-          <p>Install</p>
-        </md-list-item>
-        <md-list-item ui-sref="billing" ui-sref-active="active">
-          <md-icon>attach_money</md-icon>
-          <p>Billing</p>
-        </md-list-item>
-        <md-subheader class="md-no-sticky" show-gt-sm hide>Management</md-subheader>
-        <md-list-item ui-sref="hosts" ui-sref-active="active">
-          <md-icon>view_agenda</md-icon>
-          <p>Hosts</p>
-        </md-list-item>
-        <md-list-item ui-sref="miners" ui-sref-active="active">
-          <md-icon>storage</md-icon>
-          <p>Miners</p>
-        </md-list-item>
-        <md-list-item ui-sref="coins" ui-sref-active="active">
-          <md-icon>monetization_on</md-icon>
-          <p>Coins</p>
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
+    <!-- .app-main -->
+    <main class="app-main">
+      <!-- .wrapper -->
+      <div class="wrapper">
+        <!-- .page -->
+        <div class="page" ui-view>
+          <!-- .page-inner -->
+          <div class="page-inner">
 
-    <div layout="column" flex ui-view></div>
+          </div>
+          <!-- /.page-inner -->
+        </div>
+        <!-- /.page -->
+      </div>
+      <!-- .app-footer -->
+      <footer class="app-footer">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a class="text-muted" href="mailto:hosteroeu@gmail.com">Support</a>
+          </li>
+          <li class="list-inline-item">
+            <a class="text-muted" href="https://www.hostero.eu/getting-started.html">Help Center</a>
+          </li>
+        </ul>
+        <div class="copyright"> Copyright © 2018. All right reserved. </div>
+      </footer>
+      <!-- /.app-footer -->
+      <!-- /.wrapper -->
+    </main>
+    <!-- /.app-main -->
   </div>
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-  <script>
-    ! function(A, n, g, u, l, a, r) {
-      A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-          (A[l].q = A[l].q || []).push(arguments)
-        }, A[l].l = +new Date, a = n.createElement(g),
-        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-  </script>
+  <!-- /.app -->
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/auth0-lock/build/lock.js"></script>
   <script src="bower_components/angular-lock/angular-lock.js"></script>
   <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
@@ -163,6 +257,9 @@
   <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
   <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
   <script src="bower_components/ansi-to-html/ansi2html.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/popper.js/dist/umd/popper.js"></script>
+  <script src="bower_components/PACE/pace.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -192,6 +289,13 @@
   <script src="scripts/services/accounts.js"></script>
   <script src="scripts/services/api.js"></script>
   <!-- endbuild -->
+
+  <!-- BEGIN PLUGINS JS -->
+  <!--
+  <script src="assets/vendor/stacked-menu/stacked-menu.min.js"></script>
+  <script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  -->
+  <!-- END PLUGINS JS -->
 </body>
 
 </html>
