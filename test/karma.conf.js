@@ -20,15 +20,16 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
+      'bower_components/angular-aria/angular-aria.js',
       'bower_components/angular-messages/angular-messages.js',
+      'bower_components/angular-material/angular-material.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-aria/angular-aria.js',
-      'bower_components/angular-material/angular-material.js',
       'bower_components/auth0-lock/build/lock.js',
       'bower_components/angular-lock/angular-lock.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
@@ -36,6 +37,9 @@ module.exports = function(config) {
       'bower_components/angular-filter/dist/angular-filter.js',
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/ansi-to-html/ansi2html.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/popper.js/dist/umd/popper.js',
+      'bower_components/PACE/pace.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
