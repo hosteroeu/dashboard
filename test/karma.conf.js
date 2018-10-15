@@ -37,8 +37,7 @@ module.exports = function(config) {
       'bower_components/angular-filter/dist/angular-filter.js',
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/ansi-to-html/ansi2html.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/popper.js/dist/umd/popper.js',
+      'bower_components/bootstrap/dist/js/bootstrap.bundle.js',
       'bower_components/PACE/pace.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

@@ -15,7 +15,7 @@
   <meta property="og:description" content="Mining Software">
   <link rel="canonical" href="https://www.hostero.eu">
   <meta property="og:url" content="https://www.hostero.eu">
-  <meta property="og:site_name" content="Hostero Dsahboard">
+  <meta property="og:site_name" content="Hostero Dashboard">
   <!-- FAVICONS -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/apple-touch-icon.png">
   <link rel="shortcut icon" href="assets/favicon.ico">
@@ -48,7 +48,7 @@
       <div class="top-bar">
         <!-- .top-bar-brand -->
         <div class="top-bar-brand">
-          <a href="index.html">
+          <a ui-sref="dashboard">
             <!--<img src="assets/images/brand-inverse.png" height="32" alt="">-->
             <span>Hostero</span> <sup><small>v1</small></sup>
           </a>
@@ -257,8 +257,7 @@
   <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
   <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
   <script src="bower_components/ansi-to-html/ansi2html.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/popper.js/dist/umd/popper.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="bower_components/PACE/pace.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
@@ -288,6 +287,7 @@
   <script src="scripts/services/miners.js"></script>
   <script src="scripts/services/accounts.js"></script>
   <script src="scripts/services/api.js"></script>
+  <script src="scripts/vendor/stacked-menu/stacked-menu.js"></script>
   <!-- endbuild -->
 
   <!-- BEGIN PLUGINS JS -->
