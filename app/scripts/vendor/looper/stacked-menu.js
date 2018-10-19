@@ -218,7 +218,9 @@ StackedMenu.prototype._generateSubhead = function _generateSubhead () {
         subhead.appendChild(label);
         self._addClass(subhead, 'menu-subhead');
 
-        menu.insertBefore(subhead, menu.firstChild);
+        if (menu) {
+          menu.insertBefore(subhead, menu.firstChild);
+        }
       }
     });
   });
