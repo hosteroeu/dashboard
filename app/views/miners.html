@@ -66,18 +66,18 @@
                   </button>
               </td>
               <td class="align-middle text-right">
-                <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Logs">
-                <i class="fa fa-database"></i>
-                <span class="sr-only">Logs</span>
-              </a>
-                <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Re-deploy">
-                <i class="fa fa-redo"></i>
-                <span class="sr-only">Re-deploy</span>
-              </a>
-                <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Remove">
-                <i class="far fa-trash-alt"></i>
-                <span class="sr-only">Remove</span>
-              </a>
+                <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Logs">
+                  <i class="fa fa-database"></i>
+                  <span class="sr-only">Logs</span>
+                </a>
+                <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
+                  <i class="fa fa-redo"></i>
+                  <span class="sr-only">Re-deploy</span>
+                </a>
+                <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
+                  <i class="far fa-trash-alt"></i>
+                  <span class="sr-only">Remove</span>
+                </a>
               </td>
             </tr>
           </tbody>
