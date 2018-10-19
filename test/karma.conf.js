@@ -39,6 +39,9 @@ module.exports = function(config) {
       'bower_components/ansi-to-html/ansi2html.js',
       'bower_components/bootstrap/dist/js/bootstrap.bundle.js',
       'bower_components/PACE/pace.js',
+      'bower_components/datatables/media/js/jquery.dataTables.js',
+      'bower_components/datatables/media/js/dataTables.bootstrap4.js',
+      'bower_components/popper.js/dist/umd/popper.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
