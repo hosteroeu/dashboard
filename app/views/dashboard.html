@@ -1,62 +1,67 @@
 <!-- .page-inner -->
 <div class="page-inner">
 
-  <div class="section-block">
-    <h2 class="section-title"> Welcome, {{profile.name}} </h2>
-    <!-- metric row -->
-    <div class="metric-row">
-      <!-- metric column -->
-      <div class="col-12 col-sm-6 col-lg-3">
-        <!-- .metric -->
-        <div class="card-metric">
-          <div class="metric">
-            <p class="metric-value h3">
-              <sub>
+  <!-- .page-section -->
+  <div class="page-section">
+
+    <div class="section-block">
+      <h2 class="section-title"> Welcome, {{profile.name}} </h2>
+      <!-- metric row -->
+      <div class="metric-row">
+        <!-- metric column -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <!-- .metric -->
+          <div class="card-metric">
+            <div class="metric">
+              <p class="metric-value h3">
+                <sub>
                               <i class="oi oi-fork"></i>
                             </sub>
-              <span class="value">{{ miners.length }}</span>
-            </p>
-            <h2 class="metric-label"> Miners </h2>
+                <span class="value">{{ miners.length }}</span>
+              </p>
+              <h2 class="metric-label"> Miners </h2>
+            </div>
           </div>
+          <!-- /.metric -->
         </div>
-        <!-- /.metric -->
-      </div>
-      <!-- /metric column -->
-      <!-- metric column -->
-      <div class="col-12 col-sm-6 col-lg-3">
-        <!-- .metric -->
-        <div class="card-metric">
-          <div class="metric">
-            <p class="metric-value h3">
-              <sub>
+        <!-- /metric column -->
+        <!-- metric column -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <!-- .metric -->
+          <div class="card-metric">
+            <div class="metric">
+              <p class="metric-value h3">
+                <sub>
                               <i class="oi oi-people"></i>
                             </sub>
-              <span class="value">{{ hosts.length }}</span>
-            </p>
-            <h2 class="metric-label"> Hosts </h2>
+                <span class="value">{{ hosts.length }}</span>
+              </p>
+              <h2 class="metric-label"> Hosts </h2>
+            </div>
           </div>
+          <!-- /.metric -->
         </div>
-        <!-- /.metric -->
+        <!-- /metric column -->
       </div>
-      <!-- /metric column -->
-    </div>
-    <!-- /metric row -->
+      <!-- /metric row -->
 
-    <!-- metric row -->
-    <div class="metric-row">
-      <!-- metric column -->
-      <div class="col-12">
-        <!-- .metric -->
-        <div class="card-metric">
-          <div class="metric">
-            <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
+      <!-- metric row -->
+      <div class="metric-row">
+        <!-- metric column -->
+        <div class="col-12">
+          <!-- .metric -->
+          <div class="card-metric">
+            <div class="metric">
+              <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
+            </div>
           </div>
+          <!-- /.metric -->
         </div>
-        <!-- /.metric -->
+        <!-- /metric column -->
       </div>
-      <!-- /metric column -->
+      <!-- /metric row -->
     </div>
-    <!-- /metric row -->
   </div>
+  <!-- /.page-section -->
 </div>
 <!-- /.page-inner -->
