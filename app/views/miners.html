@@ -1,45 +1,75 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2 flex md-truncate><strong>{{ miners.length }}</strong> <a href="" ng-click="filter=''">Miners</a> (<strong>{{ miners_running.length }}</strong> <a href="" ng-click="filter='started'">running</a>, <strong>{{ miners_stopped.length }}</strong> <a href="" ng-click="filter='stopped'">stopped</a>)</h2>
-    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="minersCtrl.redeploy($event)">
-      <md-tooltip>Re-deploy Miners</md-tooltip>
-      <md-icon>settings_backup_restore</md-icon>
-    </md-button>
-    &nbsp;&nbsp;
+<!-- .page-inner -->
+<div class="page-inner">
+  <!-- .page-title-bar -->
+  <header class="page-title-bar">
+    <!-- floating action -->
+    <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)">
+        <span class="fa fa-plus"></span>
+      </button>
+    <!-- /floating action -->
+    <!-- title and toolbar -->
+    <div class="d-md-flex align-items-md-start">
+      <h1 class="page-title mr-sm-auto"> {{miners.length}} Miners </h1>
+      <!-- .btn-toolbar -->
+      <div class="btn-toolbar">
+        <div class="dropdown">
+          <button type="button" class="btn btn-light" data-toggle="dropdown">
+              <span>More</span>
+              <span class="caret"></span>
+            </button>
+          <div class="dropdown-arrow dropdown-arrow-right"></div>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all($event)">Re-deploy Miners</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.btn-toolbar -->
+    </div>
+    <!-- /title and toolbar -->
+  </header>
+  <!-- /.page-title-bar -->
+
+  <!-- .page-section -->
+  <div class="page-section">
+    <p ng-if="miners != null && !miners.length">
+      You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
+    </p>
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Miner</th>
+          <th>Host</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="miner in miners | orderBy:'name' | filter:filter">
+          <td>
+            <a ui-sref="miner({miner:miner.id})" href="">{{miner.name}}</a>
+          </td>
+          <td>
+            <a ui-sref="host({host:miner.Host.id})">
+                {{ miner.Host.name | limitTo:20 }}
+              </a>
+          </td>
+          <td class="align-middle text-right">
+            <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Logs">
+                <i class="fa fa-database"></i>
+                <span class="sr-only">Logs</span>
+              </a>
+            <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
+                <i class="fa fa-redo"></i>
+                <span class="sr-only">Re-deploy</span>
+              </a>
+            <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Remove">
+                <i class="far fa-trash-alt"></i>
+                <span class="sr-only">Remove</span>
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</md-toolbar>
-
-<md-content flex layout-padding>
-  <md-list>
-    <md-list-item ng-repeat="miner in miners | orderBy:'name' | filter:filter" ui-sref="miner({miner:miner.id})" class="noright">
-      <md-icon class="material-icons" md-colors="{color: 'blue-grey'}">{{minersCtrl.get_status_icon(miner.status)}}</md-icon>
-      <p>{{ miner.name | limitTo:20 }}</p>
-      <md-button class="md-accent" ui-sref="host({host:miner.Host.id})">
-        {{ miner.Host.name | limitTo:20 }}
-      </md-button>
-      <md-button class="md-icon-button" aria-label="toggle" ng-click="minersCtrl.open_details(miner)">
-        <md-tooltip>Miner Details</md-tooltip>
-        <md-icon>more_vert</md-icon>
-      </md-button>
-      <md-divider ng-if="!$last"></md-divider>
-    </md-list-item>
-  </md-list>
-
-  <center ng-if="!miners">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </center>
-
-  <p ng-if="miners != null && !miners.length">
-    You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
-  </p>
-
-  <br />
-  <br />
-  <br />
-  <br />
-</md-content>
-
-<md-button class="md-fab md-primary add-button" ng-click="minersCtrl.open_new_modal($event)">
-  <md-icon class="material-icons">cloud_upload</md-icon>
-  <md-tooltip>Deploy Miner</md-tooltip>
-</md-button>
+</div>
+<!-- /.page-inner -->
