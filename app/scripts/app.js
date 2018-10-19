@@ -22,7 +22,8 @@ angular
     'angular-jwt',
     'angular.filter',
     'angular-loading-bar',
-    'ansiToHtml'
+    'ansiToHtml',
+    'yaru22.angular-timeago'
   ])
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;

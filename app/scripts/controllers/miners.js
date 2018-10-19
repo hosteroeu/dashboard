@@ -70,10 +70,10 @@ angular.module('atlasApp')
     this.get_status_icon = function(status) {
       switch (status) {
         case 'started':
-          return 'cloud';
+          return 'plug';
 
         case 'stopped':
-          return 'cloud_off';
+          return 'power-off';
       }
     };
 

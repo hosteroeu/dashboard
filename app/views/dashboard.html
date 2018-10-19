@@ -3,9 +3,16 @@
 
   <!-- .page-section -->
   <div class="page-section">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <p class="lead">
+        <span class="font-weight-bold">Hi, {{profile.name}}.</span>
+        <span class="d-block text-muted">Here’s what’s happening with your miners today.</span>
+      </p>
+    </header>
+    <!-- /.page-title-bar -->
 
     <div class="section-block">
-      <h2 class="section-title"> Welcome, {{profile.name}} </h2>
       <!-- metric row -->
       <div class="metric-row">
         <!-- metric column -->
@@ -15,8 +22,8 @@
             <div class="metric">
               <p class="metric-value h3">
                 <sub>
-                              <i class="oi oi-fork"></i>
-                            </sub>
+                  <i class="fas fa-th-list"></i>
+                </sub>
                 <span class="value">{{ miners.length }}</span>
               </p>
               <h2 class="metric-label"> Miners </h2>
@@ -32,8 +39,8 @@
             <div class="metric">
               <p class="metric-value h3">
                 <sub>
-                              <i class="oi oi-people"></i>
-                            </sub>
+                  <i class="fas fa-list-alt"></i>
+                </sub>
                 <span class="value">{{ hosts.length }}</span>
               </p>
               <h2 class="metric-label"> Hosts </h2>

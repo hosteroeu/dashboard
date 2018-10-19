@@ -38,7 +38,8 @@
     <table class="table table-hover">
       <thead class="thead-dark">
         <tr>
-          <th>Miner</th>
+          <th>&nbsp;</th>
+          <th>Updated</th>
           <th>Host</th>
           <th>&nbsp;</th>
         </tr>
@@ -46,23 +47,30 @@
       <tbody>
         <tr ng-repeat="miner in miners | orderBy:'name' | filter:filter">
           <td>
+            <div class="tile bg-success">
+              <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
+            </div>
+            &nbsp;
             <a ui-sref="miner({miner:miner.id})" href="">{{miner.name}}</a>
           </td>
           <td>
+            {{ miner.updated_at | timeAgo }}
+          </td>
+          <td>
             <a ui-sref="host({host:miner.Host.id})">
-                {{ miner.Host.name | limitTo:20 }}
+                <span class="badge badge-info">{{ miner.Host.name | limitTo:20 }}</span>
               </a>
           </td>
           <td class="align-middle text-right">
-            <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Logs">
+            <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Logs">
                 <i class="fa fa-database"></i>
                 <span class="sr-only">Logs</span>
               </a>
-            <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
+            <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Re-deploy">
                 <i class="fa fa-redo"></i>
                 <span class="sr-only">Re-deploy</span>
               </a>
-            <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Remove">
+            <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Remove">
                 <i class="far fa-trash-alt"></i>
                 <span class="sr-only">Remove</span>
               </a>
