@@ -1,83 +1,90 @@
-<!-- .page-inner -->
-<div class="page-inner">
-  <!-- .page-title-bar -->
-  <header class="page-title-bar">
-    <!-- floating action -->
-    <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)">
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <!-- floating action -->
+      <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)">
         <span class="fa fa-plus"></span>
       </button>
-    <!-- /floating action -->
-    <!-- title and toolbar -->
-    <div class="d-md-flex align-items-md-start">
-      <h1 class="page-title mr-sm-auto"> {{miners.length}} Miners </h1>
-      <!-- .btn-toolbar -->
-      <div class="btn-toolbar">
-        <div class="dropdown">
-          <button type="button" class="btn btn-light" data-toggle="dropdown">
+      <!-- /floating action -->
+      <!-- title and toolbar -->
+      <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto"> {{miners.length}} Miners </h1>
+        <!-- .btn-toolbar -->
+        <div class="btn-toolbar">
+          <div class="dropdown">
+            <button type="button" class="btn btn-light" data-toggle="dropdown">
               <span>More</span>
               <span class="caret"></span>
             </button>
-          <div class="dropdown-arrow dropdown-arrow-right"></div>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all($event)">Re-deploy Miners</a>
+            <div class="dropdown-arrow dropdown-arrow-right"></div>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all($event)">Re-deploy Miners</a>
+            </div>
           </div>
         </div>
+        <!-- /.btn-toolbar -->
       </div>
-      <!-- /.btn-toolbar -->
-    </div>
-    <!-- /title and toolbar -->
-  </header>
-  <!-- /.page-title-bar -->
+      <!-- /title and toolbar -->
+    </header>
+    <!-- /.page-title-bar -->
 
-  <!-- .page-section -->
-  <div class="page-section">
-    <p ng-if="miners != null && !miners.length">
-      You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
-    </p>
+    <!-- .page-section -->
+    <section class="card card-fluid">
+      <p ng-if="miners != null && !miners.length">
+        You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
+      </p>
 
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>&nbsp;</th>
-          <th>Updated</th>
-          <th>Host</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="miner in miners | orderBy:'name' | filter:filter">
-          <td>
-            <div class="tile bg-success">
-              <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
-            </div>
-            &nbsp;
-            <a ui-sref="miner({miner:miner.id})" href="">{{miner.name}}</a>
-          </td>
-          <td>
-            {{ miner.updated_at | timeAgo }}
-          </td>
-          <td>
-            <a ui-sref="host({host:miner.Host.id})">
-                <span class="badge badge-info">{{ miner.Host.name | limitTo:20 }}</span>
-              </a>
-          </td>
-          <td class="align-middle text-right">
-            <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Logs">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Miner</th>
+              <th>Updated</th>
+              <th>Host</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="miner in miners | orderBy:'name' | filter:filter">
+              <td>
+                <div class="tile bg-success">
+                  <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
+                </div>
+                &nbsp;
+                <a ui-sref="miner({miner:miner.id})" href="">{{miner.name}}</a>
+              </td>
+              <td>
+                {{ miner.updated_at | timeAgo }}
+              </td>
+              <td>
+                  <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})">
+                    <i class="fas fa-list-alt"></i>
+                    {{ miner.Host.name | limitTo:20 }}...
+                  </button>
+              </td>
+              <td class="align-middle text-right">
+                <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Logs">
                 <i class="fa fa-database"></i>
                 <span class="sr-only">Logs</span>
               </a>
-            <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Re-deploy">
+                <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Re-deploy">
                 <i class="fa fa-redo"></i>
                 <span class="sr-only">Re-deploy</span>
               </a>
-            <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Remove">
+                <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Remove">
                 <i class="far fa-trash-alt"></i>
                 <span class="sr-only">Remove</span>
               </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
+  <!-- /.page-inner -->
 </div>
-<!-- /.page-inner -->
+<!-- /.page -->

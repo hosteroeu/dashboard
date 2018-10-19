@@ -1,74 +1,77 @@
-<!-- .page-inner -->
-<div class="page-inner">
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-section -->
+    <div class="page-section">
+      <!-- .page-title-bar -->
+      <header class="page-title-bar">
+        <p class="lead">
+          <span class="font-weight-bold">Hi, {{profile.name}}.</span>
+          <span class="d-block text-muted">Here’s what’s happening with your miners today.</span>
+        </p>
+      </header>
+      <!-- /.page-title-bar -->
 
-  <!-- .page-section -->
-  <div class="page-section">
-    <!-- .page-title-bar -->
-    <header class="page-title-bar">
-      <p class="lead">
-        <span class="font-weight-bold">Hi, {{profile.name}}.</span>
-        <span class="d-block text-muted">Here’s what’s happening with your miners today.</span>
-      </p>
-    </header>
-    <!-- /.page-title-bar -->
-
-    <div class="section-block">
-      <!-- metric row -->
-      <div class="metric-row">
-        <!-- metric column -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <!-- .metric -->
-          <div class="card-metric">
-            <div class="metric">
-              <p class="metric-value h3">
-                <sub>
+      <div class="section-block">
+        <!-- metric row -->
+        <div class="metric-row">
+          <!-- metric column -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <p class="metric-value h3">
+                  <sub>
                   <i class="fas fa-th-list"></i>
                 </sub>
-                <span class="value">{{ miners.length }}</span>
-              </p>
-              <h2 class="metric-label"> Miners </h2>
+                  <span class="value">{{ miners.length }}</span>
+                </p>
+                <h2 class="metric-label"> Miners </h2>
+              </div>
             </div>
+            <!-- /.metric -->
           </div>
-          <!-- /.metric -->
-        </div>
-        <!-- /metric column -->
-        <!-- metric column -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <!-- .metric -->
-          <div class="card-metric">
-            <div class="metric">
-              <p class="metric-value h3">
-                <sub>
+          <!-- /metric column -->
+          <!-- metric column -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <p class="metric-value h3">
+                  <sub>
                   <i class="fas fa-list-alt"></i>
                 </sub>
-                <span class="value">{{ hosts.length }}</span>
-              </p>
-              <h2 class="metric-label"> Hosts </h2>
+                  <span class="value">{{ hosts.length }}</span>
+                </p>
+                <h2 class="metric-label"> Hosts </h2>
+              </div>
             </div>
+            <!-- /.metric -->
           </div>
-          <!-- /.metric -->
+          <!-- /metric column -->
         </div>
-        <!-- /metric column -->
-      </div>
-      <!-- /metric row -->
+        <!-- /metric row -->
 
-      <!-- metric row -->
-      <div class="metric-row">
-        <!-- metric column -->
-        <div class="col-12">
-          <!-- .metric -->
-          <div class="card-metric">
-            <div class="metric">
-              <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
+        <!-- metric row -->
+        <div class="metric-row">
+          <!-- metric column -->
+          <div class="col-12">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
+              </div>
             </div>
+            <!-- /.metric -->
           </div>
-          <!-- /.metric -->
+          <!-- /metric column -->
         </div>
-        <!-- /metric column -->
+        <!-- /metric row -->
       </div>
-      <!-- /metric row -->
     </div>
+    <!-- /.page-section -->
   </div>
-  <!-- /.page-section -->
+  <!-- /.page-inner -->
 </div>
-<!-- /.page-inner -->
+<!-- /.page -->
