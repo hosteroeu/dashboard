@@ -38,7 +38,7 @@
       </p>
 
       <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover" datatable="ng">
           <thead class="thead-light">
             <tr>
               <th>Miner</th>
@@ -60,10 +60,11 @@
                 {{ miner.updated_at | timeAgo }}
               </td>
               <td>
-                  <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})">
+                  <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" ng-if="miner.Host">
                     <i class="fas fa-list-alt"></i>
                     {{ miner.Host.name | limitTo:20 }}...
                   </button>
+                  <span ng-if="!miner.Host">Orphaned</span>
               </td>
               <td class="align-middle text-right">
                 <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Logs">

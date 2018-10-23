@@ -23,7 +23,8 @@ angular
     'angular.filter',
     'angular-loading-bar',
     'ansiToHtml',
-    'yaru22.angular-timeago'
+    'yaru22.angular-timeago',
+    'datatables'
   ])
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;

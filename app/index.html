@@ -31,6 +31,9 @@
   <link rel="stylesheet" href="bower_components/PACE/themes/blue/pace-theme-flash.css" />
   <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
   <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.css" />
+  <link rel="stylesheet" href="bower_components/angular-datatables/dist/css/angular-datatables.css" />
+  <link rel="stylesheet" href="bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -93,7 +96,7 @@
                 <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{profile.name}} </h6>
                 <a class="dropdown-item" ui-sref="account">
                     <span class="dropdown-icon oi oi-person"></span> Account</a>
-                <a class="dropdown-item" href="#" ng-click="authService.logout()">
+                <a class="dropdown-item" href="" ng-click="authService.logout()">
                     <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="https://www.hostero.eu/getting-started.html">Help Center</a>
@@ -135,7 +138,7 @@
             <div class="pb-3">
               <a class="dropdown-item" ui-sref="account">
                   <span class="dropdown-icon oi oi-person"></span> Account</a>
-              <a class="dropdown-item" href="#" ng-click="authService.logout()">
+              <a class="dropdown-item" href="" ng-click="authService.logout()">
                   <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="https://www.hostero.eu/getting-started.html">Help Center</a>
@@ -256,6 +259,19 @@
   <script src="bower_components/datatables/media/js/dataTables.bootstrap4.js"></script>
   <script src="bower_components/popper.js/dist/umd/popper.js"></script>
   <script src="bower_components/angular-timeago/dist/angular-timeago.js"></script>
+  <script src="bower_components/datatables.net/js/jquery.dataTables.js"></script>
+  <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+  <script src="bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
