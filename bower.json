@@ -63,5 +63,8 @@
         "media/images/sort_desc_disabled.png"
       ]
     }
+  },
+  "resolutions": {
+    "angular": "~1.6.0"
   }
 }
