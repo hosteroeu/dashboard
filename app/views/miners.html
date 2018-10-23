@@ -48,7 +48,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="miner in miners | orderBy:'name' | filter:filter">
+            <tr ng-repeat="miner in miners">
               <td>
                 <div class="tile bg-success">
                   <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>

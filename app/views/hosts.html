@@ -1,66 +1,87 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2 flex md-truncate><strong>{{ hosts.length }}</strong> <a href="" ng-click="filter=''">Hosts</a> (<strong>{{ hosts_deployed.length }}</strong> <a href="" ng-click="filter='1'">deployed</a>, <strong>{{ hosts_stopped.length }}</strong> <a href="" ng-click="filter='stopped'">stopped</a>)</h2>
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <!-- floating action -->
+      <button type="button" class="btn btn-success btn-floated" ui-sref="install">
+        <span class="fa fa-download"></span>
+      </button>
+      <!-- /floating action -->
+      <!-- title and toolbar -->
+      <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto"> {{hosts.length}} Hosts </h1>
+      </div>
+      <!-- /title and toolbar -->
+    </header>
+    <!-- /.page-title-bar -->
+
+    <!-- .page-section -->
+    <section class="card card-fluid">
+      <p ng-if="miners != null && !miners.length">
+        You have not installed any hosts. <a href="" ui-sref="install">Install a host</a>.
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-hover" datatable="ng">
+          <thead class="thead-light">
+            <tr>
+              <th>Host</th>
+              <th>Status</th>
+              <th>CPUs</th>
+              <th>Frequency</th>
+              <th>Updated</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="host in hosts">
+              <td>
+                <div class="tile bg-success">
+                  <i class="fa fa-{{hostsCtrl.get_status_icon(host.status)}}"></i>
+                </div>
+                &nbsp;
+                <a ui-sref="host({host:host.id})" href="">{{ host.name | limitTo:40 }}</a>
+              </td>
+              <td>
+                <span ng-if="host.deployed == 1 && host.status == 'started'">Deployed</span>
+                <span ng-if="host.deployed == 2">Deploying...</span>
+                <span ng-if="host.status == 'stopped'">Stopped</span>
+              </td>
+              <td>
+                {{host.cpu_count}}
+              </td>
+              <td>
+                {{host.cpu_mhz | number:0}} Mhz
+              </td>
+              <td>
+                {{ host.updated_at | timeAgo }}
+              </td>
+              <td class="align-middle text-right">
+                <!--
+                <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
+                  <md-tooltip>Fast Deploy Miner</md-tooltip>
+                  <md-icon>cloud_upload</md-icon>
+                </md-button>
+                -->
+
+                <a ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0 && host.status == 'started'" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Deploy">
+                  <i class="far fa-cloud-upload-alt"></i>
+                  <span class="sr-only">deploy</span>
+                </a>
+
+                <a ng-click="hostsCtrl.remove($event, host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
+                  <i class="far fa-trash-alt"></i>
+                  <span class="sr-only">Remove</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
-</md-toolbar>
-
-<md-content flex layout-padding>
-  <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="4px" md-gutter-gt-sm="8px">
-    <md-grid-tile ng-repeat="host in hosts | orderBy:'name' | filter:filter">
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <md-icon class="md-avatar-icon" md-colors="{color: 'blue-grey'}">
-              {{hostsCtrl.get_status_icon(host.status)}}
-            </md-icon>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">
-              <a href="#" ui-sref="host({host:host.id})" class="md-accent">{{host.name | limitTo:20}}</a>
-            </span>
-            <span class="md-subhead"><strong>{{host.cpu_count}}</strong> CPUs @ {{host.cpu_mhz | number:0}} Mhz</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content>
-          <small>{{host.os}}</small>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-if="host.deployed == 1 && host.status == 'started'" disabled>deployed</md-button>
-          <md-button ng-if="host.deployed == 2" disabled>deploying...</md-button>
-          <md-button ng-if="host.status == 'stopped'" disabled>stopped</md-button>
-          <md-button class="md-primary" ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
-            deploy
-          </md-button>
-          <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
-            <md-tooltip>Fast Deploy Miner</md-tooltip>
-            <md-icon>cloud_upload</md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="toggle" ng-click="hostsCtrl.open_details(host)">
-            <md-tooltip>Host Details</md-tooltip>
-            <md-icon>more_vert</md-icon>
-          </md-button>
-        </md-card-actions>
-      </md-card>
-    </md-grid-tile>
-  </md-grid-list>
-
-  <center ng-if="!hosts">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </center>
-
-  <p ng-if="hosts != null && !hosts.length">
-    You have not added any hosts. <a href="#" ui-sref="install">Add a host</a>.
-  </p>
-
-  <!--<md-button class="md-raised md-primary" ng-click="hostsCtrl.open_new_modal($event)">Add a Host</md-button>-->
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
-</md-content>
-
-<md-button class="md-fab md-primary add-button" ui-sref="install">
-  <md-icon class="material-icons">get_app</md-icon>
-  <md-tooltip>Install</md-tooltip>
-</md-button>
+  <!-- /.page-inner -->
+</div>
+<!-- /.page -->

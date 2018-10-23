@@ -16,7 +16,7 @@ angular.module('atlasApp')
 
     hostsService.query().$promise.then(function(res) {
       var yesterday = new Date();
-      yesterday.setDate(yesterday.getDate()-1);
+      yesterday.setDate(yesterday.getDate() - 1);
 
       $scope.hosts = [];
 
@@ -142,6 +142,30 @@ angular.module('atlasApp')
         locals: {
           host: host
         }
+      });
+    };
+
+    this.remove = function($event, host) {
+      var confirm = $mdDialog.confirm()
+        .title('Do you want to remove the host?')
+        .textContent('The host will not be powered-off. You need to manually power-off the machine.')
+        .ariaLabel('Remove')
+        .targetEvent($event)
+        .ok('Remove')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function() {
+        hostsService.remove({
+            id: host.id
+          }).$promise
+          .then(function() {
+            if ($state.current.name === 'hosts') {
+              $state.reload();
+            } else {
+              $state.go('hosts');
+            }
+          })
+          .catch(console.error);
       });
     };
   });
