@@ -42,11 +42,12 @@
                   <i class="fa fa-{{hostsCtrl.get_status_icon(host.status)}}"></i>
                 </div>
                 &nbsp;
-                <a ui-sref="host({host:host.id})" href="">{{ host.name | limitTo:40 }}</a>
+                <a ui-sref="host({host:host.id})" href="">{{ host.name | limitTo:20 }}</a>
               </td>
               <td>
+                <span ng-if="host.deployed == 0 && host.status == 'started'">Ready</span>
                 <span ng-if="host.deployed == 1 && host.status == 'started'">Deployed</span>
-                <span ng-if="host.deployed == 2">Deploying...</span>
+                <span ng-if="host.deployed == 2 && host.status == 'started'">Deploying...</span>
                 <span ng-if="host.status == 'stopped'">Stopped</span>
               </td>
               <td>
@@ -67,12 +68,12 @@
                 -->
 
                 <a ng-click="hostsCtrl.deploy_miner($event, host)" ng-if="host.deployed == 0 && host.status == 'started'" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Deploy">
-                  <i class="far fa-cloud-upload-alt"></i>
-                  <span class="sr-only">deploy</span>
+                  <i class="fas fa-wrench"></i>
+                  <span class="sr-only">Deploy</span>
                 </a>
 
                 <a ng-click="hostsCtrl.remove($event, host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
-                  <i class="far fa-trash-alt"></i>
+                  <i class="fas fa-trash-alt"></i>
                   <span class="sr-only">Remove</span>
                 </a>
               </td>
