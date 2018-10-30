@@ -25,6 +25,7 @@
       <md-tab label="Details">
         <md-content class="md-padding">
           <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
+          <p>CPU Usage: <strong>{{ cpu_usage }}%</strong></p>
           <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
           <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
           <p>Threads: <strong>{{ miner.terminal_workers_cpu_max }}</strong></p>

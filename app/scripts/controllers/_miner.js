@@ -12,6 +12,35 @@ angular.module('atlasApp')
     $scope.miner = null;
     $scope.show_chart = false;
 
+    var socket;
+
+    minersService.get({
+      id: $state.params.miner,
+      controller: 'stats'
+    }).$promise.then(function(data) {
+      socket = new WebSocket(data.ws);
+
+      socket.onopen = function(event) {
+        console.log(event);
+      };
+
+      socket.onmessage = function(event) {
+        var data = JSON.parse(event.data);
+
+        if (data.length) {
+          var cpu_usage = (data[0].cpu.usage.system + data[0].cpu.usage.user) / data[0].cpu.usage.total * 100;
+
+          $scope.cpu_usage = cpu_usage.toFixed(2);
+          $scope.$apply();
+        }
+      };
+    });
+
+    $scope.$on("$destroy", function() {
+      socket.close();
+    });
+
+
     minersService.get({
       id: $state.params.miner
     }).$promise.then(function(res) {

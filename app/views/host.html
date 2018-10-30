@@ -25,6 +25,7 @@
       <md-tab label="Details">
         <md-content class="md-padding">
           <p>Status: <strong>{{ host.status | ucfirst }}</strong></p>
+          <p>CPU Usage: <strong>{{ cpu_usage }}%</strong></p>
           <p>Created: <strong>{{ host.internal_created | date }}</strong></p>
           <p>Virtualization: <strong>{{ host.docker_version }}</strong></p>
           <p>OS: <strong>{{ host.os }}</strong>, Kernel <strong>{{ host.os_kernel }}</strong></p>
