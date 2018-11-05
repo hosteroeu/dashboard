@@ -28,8 +28,7 @@
           <p>CPU Usage: <strong>{{ cpu_usage }}%</strong></p>
           <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
           <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
-          <p>Threads: <strong>{{ miner.terminal_workers_cpu_max }}</strong></p>
-          <p>Type: <strong>{{ miner.terminal_workers_type }}</strong></p>
+          <p>Threads: <strong>{{ miner.threads }}</strong></p>
           <p>Server Port: <strong>{{ miner.server_port }}</strong></p>
           <p>Domain: <strong>{{ miner.domain }}</strong></p>
           <p>Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
