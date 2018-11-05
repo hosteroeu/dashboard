@@ -45,19 +45,27 @@ angular.module('atlasApp')
       id: $state.params.miner
     }).$promise.then(function(res) {
       $scope.miner = res;
-      $scope.miner.wallet = JSON.parse($scope.miner.wallet);
 
-      switch ($scope.miner.mining_pool_url) {
-        case 'https://www.webdollarminingpool.com/pool/1/WMP/0.02/c01f57930c27e78e434de1243ae02b98e56d6cd3df42d136be1a1c0a0a9a8624/https:$$server.webdollarminingpool.com:443':
-          $scope.miner.friendly_name = 'WMP';
-          break;
-        default:
-          $scope.miner.friendly_name = $scope.miner.mining_pool_url;
-          break;
+      try {
+         var wallet = JSON.parse($scope.miner.wallet);
+         $scope.miner.wallet = wallet.address;
+      } catch (e) {
+
       }
 
-      if ($scope.miner.mining_pool_url.indexOf('WMP') !== -1) {
-        $scope.show_chart = true;
+      if ($scope.miner.mining_pool_url) {
+        switch ($scope.miner.mining_pool_url) {
+          case 'https://www.webdollarminingpool.com/pool/1/WMP/0.02/c01f57930c27e78e434de1243ae02b98e56d6cd3df42d136be1a1c0a0a9a8624/https:$$server.webdollarminingpool.com:443/r/WEBD$gAFytJYWxxEXSgfKGuBMLGNdA8dzk@hrY7$':
+            $scope.miner.friendly_name = 'WMP';
+            break;
+          default:
+            $scope.miner.friendly_name = $scope.miner.mining_pool_url;
+            break;
+        }
+
+        if ($scope.miner.mining_pool_url.indexOf('WMP') !== -1) {
+          $scope.show_chart = true;
+        }
       }
     });
 

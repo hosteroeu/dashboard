@@ -25,23 +25,25 @@
       <md-tab label="Details">
         <md-content class="md-padding">
           <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
+          <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
+          <p>Host: <strong>{{ miner.Host.name }}</strong></p>
           <p>CPU Usage: <strong>{{ cpu_usage }}%</strong></p>
-          <p>Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
-          <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet.address) }}" target="_blank">{{ miner.wallet.address }}</a></strong></p>
+          <p ng-if="miner.coin == 'webdollar'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
+          <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
           <p>Threads: <strong>{{ miner.threads }}</strong></p>
-          <p>Server Port: <strong>{{ miner.server_port }}</strong></p>
-          <p>Domain: <strong>{{ miner.domain }}</strong></p>
-          <p>Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
+          <p ng-if="miner.coin == 'webdollar'">Server Port: <strong>{{ miner.server_port }}</strong></p>
+          <p ng-if="miner.coin == 'webdollar'">Domain: <strong>{{ miner.domain }}</strong></p>
+          <p ng-if="miner.coin == 'webdollar'">Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
         </md-content>
       </md-tab>
       <md-tab label="Charts">
         <md-content class="md-padding">
           <div ng-if="show_chart">
-            <iframe ng-src="{{ getIframeSrc(1, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
-            <iframe ng-src="{{ getIframeSrc(3, miner.wallet.address) }}" width="100%" height="300" frameborder="0"></iframe>
+            <iframe ng-src="{{ getIframeSrc(1, miner.wallet) }}" width="100%" height="300" frameborder="0"></iframe>
+            <iframe ng-src="{{ getIframeSrc(3, miner.wallet) }}" width="100%" height="300" frameborder="0"></iframe>
           </div>
 
-          <p ng-if="!show_chart">Note: Mining in WMP allows you to see mining charts on this screen.</p>
+          <p ng-if="!show_chart">Note: Power and Rewards chart are only available for WebDollar miners running on the WMP pool.</p>
         </md-content>
       </md-tab>
       <md-tab label="Logs">
