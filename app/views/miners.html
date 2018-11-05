@@ -42,6 +42,8 @@
           <thead class="thead-light">
             <tr>
               <th>Miner</th>
+              <th>Coin</th>
+              <th>Threads</th>
               <th>Updated</th>
               <th>Host</th>
               <th>&nbsp;</th>
@@ -54,7 +56,13 @@
                   <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
                 </div>
                 &nbsp;
-                <a ui-sref="miner({miner:miner.id})" href="">{{miner.name}}</a>
+                <a ui-sref="miner({miner:miner.id})" href="">{{ miner.name }}</a>
+              </td>
+              <td>
+                {{ miner.coin | ucfirst }}
+              </td>
+              <td>
+                {{ miner.threads }}
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}

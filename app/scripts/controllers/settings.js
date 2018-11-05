@@ -24,11 +24,11 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(_account) {
-      _this.mining_pool_url = _account.mining_pool_url;
+      _this.mining_pool_url = _account.mining_pool_url_webdollar;
       _this.auto_deploy = _account.auto_deploy;
 
-      if (_account.wallet) {
-        var wallet = JSON.parse(_account.wallet);
+      if (_account.wallet_webdollar) {
+        var wallet = JSON.parse(_account.wallet_webdollar);
         _this.wallet = wallet.address;
       }
     });
@@ -39,8 +39,8 @@ angular.module('atlasApp')
       accountsService.update({
         id: account.id
       }, {
-        mining_pool_url: this.mining_pool_url,
-        wallet: JSON.stringify(default_wallet),
+        mining_pool_url_webdollar: this.mining_pool_url,
+        wallet_webdollar: JSON.stringify(default_wallet),
         auto_deploy: this.auto_deploy
       }).$promise.then(function() {
         $mdToast.showSimple('Settings Updated Successfully');
