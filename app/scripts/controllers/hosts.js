@@ -72,6 +72,7 @@ angular.module('atlasApp')
       });
     };
 
+    // TODO: Refactor this code to support multiple coins
     this.deploy_miner_fast = function($event, host) {
       var account = JSON.parse(localStorage.getItem('account'));
       var default_wallet = {
@@ -86,7 +87,7 @@ angular.module('atlasApp')
       }).$promise.then(function(account) {
         var mining_pool_url = account.mining_pool_url;
         var selected_host = host;
-        var name = 'webd-miner-' + selected_host.id;
+        var name = 'miner-' + selected_host.id;
         var wallet;
 
         try {
