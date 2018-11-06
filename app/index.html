@@ -80,7 +80,7 @@
           <!-- .top-bar-item -->
           <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
             <!-- .btn-account -->
-            <div class="dropdown" ng-if="isAuthenticated">
+            <div class="dropdown" ng-if="isAuthenticated" ng-cloak>
               <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="user-avatar">
                     <img ng-src="{{profile.picture}}" alt="">
@@ -163,25 +163,29 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
-                <a ui-sref="settings" class="menu-link">
-                    <span class="menu-icon fas fa-cog"></span>
-                    <span class="menu-text">Settings</span>
-                  </a>
-                <!-- /child menu -->
-              </li>
-              <!-- /.menu-item -->
-              <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item">
                 <a ui-sref="install" class="menu-link">
                     <span class="menu-icon fas fa-download"></span>
                     <span class="menu-text">Install</span>
+                    <span class="badge badge-warning">2 steps</span>
+                  </a>
+                <!-- /child menu -->
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-header -->
+              <li class="menu-header">Settings </li>
+              <!-- /.menu-header -->
+              <!-- .menu-item -->
+              <li class="menu-item">
+                <a ui-sref="settings" class="menu-link">
+                    <span class="menu-icon fas fa-cog"></span>
+                    <span class="menu-text">Wallets</span>
                   </a>
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item">
                 <a ui-sref="billing" class="menu-link">
                     <span class="menu-icon fas fa-search-dollar"></span>
                     <span class="menu-text">Billing</span>
@@ -193,7 +197,7 @@
               <li class="menu-header">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item">
                 <a ui-sref="coins" class="menu-link">
                     <span class="menu-icon fas fa-dollar-sign"></span>
                     <span class="menu-text">Coins</span>
@@ -201,18 +205,20 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item">
                 <a ui-sref="hosts" class="menu-link">
                     <span class="menu-icon fas fa-list-alt"></span>
                     <span class="menu-text">Hosts</span>
+                    <span class="badge badge-success" ng-cloak>{{global_hosts.length}}</span>
                   </a>
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item">
                 <a ui-sref="miners" class="menu-link">
                     <span class="menu-icon fas fa-th-list"></span>
                     <span class="menu-text">Miners</span>
+                    <span class="badge badge-success" ng-cloak>{{global_miners.length}}</span>
                   </a>
               </li>
               <!-- /.menu-item -->

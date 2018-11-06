@@ -40,7 +40,6 @@ angular.module('atlasApp')
       socket.close();
     });
 
-
     minersService.get({
       id: $state.params.miner
     }).$promise.then(function(res) {
