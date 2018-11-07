@@ -73,7 +73,7 @@ angular
       })
       .state('settings', {
         url: '/settings',
-        templateUrl: 'views/settings.html',
+        templateUrl: 'views/wallets.html',
         controller: 'SettingsCtrl',
         controllerAs: 'settingsCtrl',
         data: {
