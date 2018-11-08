@@ -68,7 +68,7 @@
                 {{ miner.updated_at | timeAgo }}
               </td>
               <td>
-                <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" ng-if="miner.Host">
+                <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
                   <i class="fas fa-list-alt"></i>
                   {{ miner.Host.name | limitTo:20 }}...
                 </button>
