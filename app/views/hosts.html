@@ -42,7 +42,7 @@
                   <i class="fa fa-{{hostsCtrl.get_status_icon(host.status)}}"></i>
                 </div>
                 &nbsp;
-                <a ui-sref="host({host:host.id})" href="">{{ host.name | limitTo:20 }}</a>
+                <a ui-sref="host({host:host.id})" href="">{{ host.name | limitTo:100 }}</a>
               </td>
               <td>
                 <span ng-if="host.deployed == 0 && host.status == 'started'">Ready</span>

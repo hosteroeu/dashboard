@@ -27,7 +27,7 @@
           <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
           <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
           <p>Host: <strong>{{ miner.Host.name }}</strong></p>
-          <p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>
+          <!--<p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>-->
           <p ng-if="miner.coin == 'webdollar'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
           <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
           <p ng-if="miner.coin == 'nerva'">Wallet: <strong>{{ miner.wallet }}</strong></p>
