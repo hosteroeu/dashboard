@@ -29,23 +29,24 @@ angular.module('atlasApp')
       };
 
       socket.onmessage = function(event) {
-        var regex = /([0-9.])+ hashes\/s/g;
+        var regex1 = /([0-9.])+ hashes\/s/g;
+        var regex2 = /([0-9.])+ H\/s/g;
+        var regex3 = /([0-9.])+ kH\/s/g;
 
-        if (miner) {
-          switch (miner.coin) {
-            case 'webdollar':
-              regex = /([0-9.])+ hashes\/s/g;
-              break;
-            case 'nerva':
-              regex = /([0-9.])+ H\/s/g;
-              break;
-          }
+        var found1 = event.data.match(regex1);
+        var found2 = event.data.match(regex2);
+        var found3 = event.data.match(regex3);
+
+        if (found1) {
+          $scope.power = found1[0];
         }
 
-        var found = event.data.match(regex);
+        if (found2) {
+          $scope.power = found2[0];
+        }
 
-        if (found) {
-          $scope.power = found[0];
+        if (found3) {
+          $scope.power = found3[0];
         }
 
         $scope.logs.push({
