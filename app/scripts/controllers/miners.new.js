@@ -31,6 +31,7 @@ angular.module('atlasApp')
       var wallet = JSON.parse(account.wallet_webdollar);
       $scope.wallet_webdollar = wallet.address;
       $scope.wallet_nerva = account.wallet_nerva;
+      $scope.selected_coin = account.auto_deploy_coin;
     });
 
     this.create = function() {

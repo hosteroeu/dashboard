@@ -68,17 +68,23 @@
                 {{ miner.updated_at | timeAgo }}
               </td>
               <td>
-                  <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" ng-if="miner.Host">
-                    <i class="fas fa-list-alt"></i>
-                    {{ miner.Host.name | limitTo:20 }}...
-                  </button>
-                  <span ng-if="!miner.Host">Orphaned</span>
+                <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" ng-if="miner.Host">
+                  <i class="fas fa-list-alt"></i>
+                  {{ miner.Host.name | limitTo:20 }}...
+                </button>
+                <span ng-if="!miner.Host">Orphaned</span>
               </td>
               <td class="align-middle text-right">
                 <a ui-sref="miner_logs({miner:miner.id})" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Logs">
                   <i class="fa fa-database"></i>
                   <span class="sr-only">Logs</span>
                 </a>
+                <!--
+                <a ng-click="minersCtrl.fast_deploy($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Fast deploy">
+                  <i class="fa fa-bolt"></i>
+                  <span class="sr-only">Fast deploy</span>
+                </a>
+                -->
                 <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
                   <i class="fa fa-redo"></i>
                   <span class="sr-only">Re-deploy</span>
