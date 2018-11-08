@@ -19,11 +19,11 @@
 
     <!-- .page-section -->
     <section class="card card-fluid">
-      <p ng-if="miners != null && !miners.length">
+      <div class="card-body" ng-if="hosts != null && !hosts.length">
         You have not installed any hosts. <a href="" ui-sref="install">Install a host</a>.
-      </p>
+      </div>
 
-      <div class="table-responsive">
+      <div class="table-responsive" ng-if="hosts != null && hosts.length">
         <table class="table table-hover" datatable="ng">
           <thead class="thead-light">
             <tr>

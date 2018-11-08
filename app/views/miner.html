@@ -27,9 +27,10 @@
           <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
           <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
           <p>Host: <strong>{{ miner.Host.name }}</strong></p>
-          <p>CPU Usage: <strong>{{ cpu_usage }}%</strong></p>
+          <p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
-          <p>Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
+          <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
+          <p ng-if="miner.coin == 'nerva'">Wallet: <strong>{{ miner.wallet }}</strong></p>
           <p>Threads: <strong>{{ miner.threads }}</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Server Port: <strong>{{ miner.server_port }}</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Domain: <strong>{{ miner.domain }}</strong></p>
@@ -51,7 +52,7 @@
           <center>
             <md-button class="md-primary md-raised" ui-sref="miner_logs({miner: miner.id})">View Miner Logs</md-button>
           </center>
-          <p><strong>Note</strong>: To see the logs straight on the server, run: <code>docker logs -f $(docker ps | grep node | cut -c1-5)</code></p>
+          <p><strong>Note</strong>: To see the logs straight on the server, run: <code>docker logs -f $(docker ps | grep miner | cut -c1-5)</code></p>
         </md-content>
       </md-tab>
     </md-tabs>
