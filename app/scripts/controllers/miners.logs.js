@@ -14,6 +14,10 @@ angular.module('atlasApp')
     $scope.miner = $state.params.miner;
     $scope.power = '0 h/s';
 
+    var miner = minersService.get({
+      id: $state.params.miner
+    });
+
     minersService.get({
       id: $state.params.miner,
       controller: 'logs'
@@ -26,6 +30,18 @@ angular.module('atlasApp')
 
       socket.onmessage = function(event) {
         var regex = /([0-9.])+ hashes\/s/g;
+
+        if (miner) {
+          switch (miner.coin) {
+            case 'webdollar':
+              regex = /([0-9.])+ hashes\/s/g;
+              break;
+            case 'nerva':
+              regex = /([0-9.])+ H\/s/g;
+              break;
+          }
+        }
+
         var found = event.data.match(regex);
 
         if (found) {
