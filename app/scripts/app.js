@@ -73,6 +73,15 @@ angular
       })
       .state('settings', {
         url: '/settings',
+        templateUrl: 'views/settings.html',
+        controller: 'SettingsCtrl',
+        controllerAs: 'settingsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+      .state('wallets', {
+        url: '/settings/wallets',
         templateUrl: 'views/wallets.html',
         controller: 'SettingsCtrl',
         controllerAs: 'settingsCtrl',
