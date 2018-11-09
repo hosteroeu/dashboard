@@ -4,6 +4,16 @@
   <div class="page-inner">
     <!-- .page-section -->
     <div class="page-section">
+      <div class="alert alert-secondary has-icon fade show">
+        <div class="alert-icon">
+          <span class="fa fa-bell"></span>
+        </div>
+        <h4 class="alert-heading">New Coin Added</h4>
+        <p class="mb-0">We are happy to announce we integrated <a href="https://getnerva.org" class="alert-link" target="_blank">Nerva</a> into Hostero. <a ui-sref="coins" class="alert-link">Start Mining Nerva!</a></p>
+      </div>
+
+      <br />
+
       <!-- .page-title-bar -->
       <header class="page-title-bar">
         <p class="lead">
@@ -12,6 +22,57 @@
         </p>
       </header>
       <!-- /.page-title-bar -->
+
+      <hr />
+
+      <!-- .steps -->
+      <section class="steps steps-">
+        <ul>
+          <li class="success">
+            <a ui-sref="wallets" tabindex="-1">
+              <span class="step-indicator step-indicator-icon">
+                <i class="fas fa-cog"></i>
+              </span>
+              <span class="d-none d-sm-inline">Add Wallet</span>
+            </a>
+          </li>
+          <li class="active">
+            <a ui-sref="install" tabindex="-1">
+              <span class="step-indicator step-indicator-icon">
+                <i class="fas fa-download"></i>
+              </span>
+              <span class="d-none d-sm-inline">Install Host</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="hosts" tabindex="-1">
+              <span class="step-indicator step-indicator-icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="d-none d-sm-inline">Deploy Miner</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="miners" tabindex="-1">
+              <span class="step-indicator step-indicator-icon">
+                <i class="fas fa-th-list"></i>
+              </span>
+              <span class="d-none d-sm-inline">Monitor Miners</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- /.steps -->
+      <!-- .card -->
+      <div class="card">
+        <!-- .card-body -->
+        <div class="card-body">
+          <p>In order to start mining you must first add the wallet for the coin you want to mine. Afterwards install Hostero on the host (PC/server) you have. After the host shows up in the Hosts table (wait a few minutes), you can deploy the miner on it.</p>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
 
       <div class="section-block">
         <!-- metric row -->
