@@ -79,6 +79,46 @@
           <!-- /.top-bar-item -->
           <!-- .top-bar-item -->
           <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
+            <!-- .nav -->
+            <ul class="header-nav nav">
+              <!-- .nav-item -->
+              <li class="nav-item dropdown header-nav-dropdown has-notified">
+                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="fa fa-dollar-sign"></span>
+                </a>
+                <div class="dropdown-arrow"></div>
+                <!-- .dropdown-menu -->
+                <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+                  <!-- .dropdown-sheets -->
+                  <div class="dropdown-sheets">
+                    <!-- .dropdown-sheet-item -->
+                    <div class="dropdown-sheet-item">
+                      <a ui-sref="coins" class="tile-wrapper">
+                        <span class="tile tile-lg bg-blue">
+                          <i class="fa fa-money-bill-alt"></i>
+                        </span>
+                        <span class="tile-peek">Webdollar</span>
+                      </a>
+                    </div>
+                    <!-- /.dropdown-sheet-item -->
+                    <!-- .dropdown-sheet-item -->
+                    <div class="dropdown-sheet-item">
+                      <a ui-sref="coins" class="tile-wrapper">
+                        <span class="tile tile-lg bg-green">
+                          <i class="fa fa-money-bill-alt"></i>
+                        </span>
+                        <span class="tile-peek">Nerva</span>
+                      </a>
+                    </div>
+                    <!-- /.dropdown-sheet-item -->
+                  </div>
+                  <!-- .dropdown-sheets -->
+                </div>
+                <!-- .dropdown-menu -->
+              </li>
+              <!-- /.nav-item -->
+            </ul>
+            <!-- /.nav -->
             <!-- .btn-account -->
             <div class="dropdown" ng-if="isAuthenticated" ng-cloak>
               <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -236,6 +276,10 @@
 
     <!-- .app-main -->
     <main class="app-main">
+      <div class="page-message">
+        <i class="fa fa-fw fa-bell"></i> We are happy to announce we integrated <a href="https://getnerva.org" class="alert-link" target="_blank">Nerva</a> into Hostero. <a ui-sref="coins" class="alert-link">Start Mining Nerva!</a>
+      </div>
+
       <!-- .wrapper -->
       <div class="wrapper" ui-view>
       </div>
