@@ -200,6 +200,12 @@ angular
     $rootScope.$on('$locationChangeStart', function() {
       var token = localStorage.getItem('token');
 
+      if (gtag) {
+        gtag('config', 'UA-128907941-2', {
+          'page_path': $location.path()
+        });
+      }
+
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           authManager.authenticate();
