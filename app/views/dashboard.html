@@ -77,7 +77,6 @@
       </div>
       <!-- /.card -->
 
-
       <div class="section-block">
         <!-- metric row -->
         <div class="metric-row">
@@ -122,7 +121,7 @@
               <div class="metric">
                 <p class="metric-value h3">
                   <sub>
-                  <i class="fas fa-list-alt"></i>
+                  <i class="fas fa-user"></i>
                 </sub>
                   <span class="value">{{ accounts.length }}</span>
                 </p>
@@ -130,6 +129,35 @@
               </div>
             </div>
             <!-- /.metric -->
+          </div>
+          <!-- /metric column -->
+        </div>
+        <!-- /metric row -->
+
+        <!-- metric row -->
+        <div class="metric-row">
+          <!-- metric column -->
+          <div class="col-6">
+            <!-- .card -->
+            <section class="card card-fluid">
+              <!-- .list-group -->
+              <div class="list-group list-group-flush list-group-divider">
+                <a href="#" class="list-group-item list-group-item-action" ng-repeat="log in logs">
+                  <div class="list-group-item-figure">
+                    <div class="user-avatar user-avatar-lg">
+                      <!--<img src="assets/images/avatars/profile.jpg" alt="User Avatar">-->
+                    </div>
+                  </div>
+                  <div class="list-group-item-body">
+                    <h4 class="list-group-item-title"> {{ log.message }} </h4>
+                    <h5 class="list-group-item-subtitle"> {{ log.created_at | timeAgo }} </h5>
+                    <p class="list-group-item-text text-truncate"> </p>
+                  </div>
+                </a>
+              </div>
+              <!-- /.list-group -->
+            </section>
+            <!-- /.card -->
           </div>
           <!-- /metric column -->
         </div>
