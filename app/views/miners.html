@@ -43,6 +43,7 @@
             <tr>
               <th>Miner</th>
               <th>Coin</th>
+              <th>Power</th>
               <th>Threads</th>
               <th>Updated</th>
               <th>Host</th>
@@ -60,6 +61,9 @@
               </td>
               <td>
                 {{ miner.coin | ucfirst }}
+              </td>
+              <td>
+                {{ miner.power || 0 }} h/s
               </td>
               <td>
                 {{ miner.threads }}

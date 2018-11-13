@@ -70,7 +70,7 @@
           <h4>Mining with Hostero is easy as &pi;</h4>
           <hr />
           <p>Add the wallet for the coin you want to mine.</p>
-          <p>Install Hostero on the host (PC/server) you have - the host will shop up in a few minutes.</p>
+          <p>Install Hostero on the host (PC/server) you have - the host will show up in a few minutes.</p>
           <p>Deploy a miner on the new host.</p>
         </div>
         <!-- /.card-body -->
@@ -78,8 +78,24 @@
       <!-- /.card -->
 
       <div class="section-block">
-        <!-- metric row -->
         <div class="metric-row">
+          <!-- metric column -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <p class="metric-value h3">
+                  <sub>
+                  <i class="fas fa-bolt"></i>
+                </sub>
+                  <span class="value">{{ total_power }} <small>h/s</small></span>
+                </p>
+                <h2 class="metric-label"> Total Power </h2>
+              </div>
+            </div>
+            <!-- /.metric -->
+          </div>
+          <!-- /metric column -->
           <!-- metric column -->
           <div class="col-12 col-sm-6 col-lg-3">
             <!-- .metric -->
@@ -142,10 +158,10 @@
             <section class="card card-fluid">
               <!-- .list-group -->
               <div class="list-group list-group-flush list-group-divider">
-                <a href="#" class="list-group-item list-group-item-action" ng-repeat="log in logs">
+                <a class="list-group-item list-group-item-action" ng-repeat="log in logs.slice().reverse() | reverse | limitTo:10">
                   <div class="list-group-item-figure">
-                    <div class="user-avatar user-avatar-lg">
-                      <!--<img src="assets/images/avatars/profile.jpg" alt="User Avatar">-->
+                    <div class="tile">
+                      <span class="fa fa-info"></span>
                     </div>
                   </div>
                   <div class="list-group-item-body">

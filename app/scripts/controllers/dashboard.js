@@ -14,9 +14,17 @@ angular.module('atlasApp')
     };
 
     $scope.hosts = hostsService.query();
-    $scope.miners = minersService.query();
     $scope.accounts = accountsService.query();
     $scope.logs = logsService.query();
+    $scope.total_power = 0;
+
+    minersService.query().$promise.then(function(res) {
+      $scope.miners = res;
+
+      res.forEach(function(miner) {
+        $scope.total_power += parseInt(miner.power) || 0;
+      });
+    });
 
     accountsService.get({
       controller: 'sync'
