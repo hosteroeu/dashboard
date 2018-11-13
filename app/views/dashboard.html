@@ -158,7 +158,7 @@
             <section class="card card-fluid">
               <!-- .list-group -->
               <div class="list-group list-group-flush list-group-divider">
-                <a class="list-group-item list-group-item-action" ng-repeat="log in logs.slice().reverse() | reverse | limitTo:10">
+                <a class="list-group-item list-group-item-action" ng-repeat="log in logs | reverse | limitTo:5">
                   <div class="list-group-item-figure">
                     <div class="tile">
                       <span class="fa fa-info"></span>
@@ -167,7 +167,11 @@
                   <div class="list-group-item-body">
                     <h4 class="list-group-item-title"> {{ log.message }} </h4>
                     <h5 class="list-group-item-subtitle"> {{ log.created_at | timeAgo }} </h5>
-                    <p class="list-group-item-text text-truncate"> </p>
+                    <p class="list-group-item-text text-truncate">
+                      <span ng-repeat="extra in log.extra_message">
+                        <span class="badge badge-subtle badge-dark">{{ extra }}</span>
+                      </span>
+                    </p>
                   </div>
                 </a>
               </div>

@@ -13,9 +13,9 @@ angular.module('atlasApp')
       name: ''
     };
 
+    $scope.logs = [];
     $scope.hosts = hostsService.query();
     $scope.accounts = accountsService.query();
-    $scope.logs = logsService.query();
     $scope.total_power = 0;
 
     minersService.query().$promise.then(function(res) {
@@ -23,6 +23,24 @@ angular.module('atlasApp')
 
       res.forEach(function(miner) {
         $scope.total_power += parseInt(miner.power) || 0;
+      });
+    });
+
+    logsService.query().$promise.then(function(res) {
+      res.forEach(function(log) {
+        var extra_message = JSON.parse(log.extra_message);
+        var extra_message_curated = [];
+
+        Object.keys(extra_message).forEach(function(key) {
+          if (key !== 'id' && key !== 'status' && key !== 'deployed') {
+            return;
+          }
+
+          extra_message_curated.push(key + '=' + extra_message[key]);
+        });
+
+        log.extra_message = extra_message_curated;
+        $scope.logs.push(log);
       });
     });
 
