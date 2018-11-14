@@ -13,8 +13,11 @@ angular.module('atlasApp')
 
     $scope.profile = profile;
 
-    $scope.global_hosts = hostsService.query();
-    $scope.global_miners = minersService.query();
+    // Wait for auth to work it's magic
+    setTimeout(function() {
+      $scope.global_hosts = hostsService.query();
+      $scope.global_miners = minersService.query();
+    }, 2000);
 
     this.openMenu = function($mdMenu, ev) {
       $mdMenu.open(ev);
