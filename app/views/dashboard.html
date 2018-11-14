@@ -158,7 +158,7 @@
             <section class="card card-fluid">
               <!-- .list-group -->
               <div class="list-group list-group-flush list-group-divider">
-                <a class="list-group-item list-group-item-action" ng-repeat="log in logs | reverse | limitTo:5">
+                <a class="list-group-item list-group-item-action" ng-repeat="log in logs | reverse | limitTo:4">
                   <div class="list-group-item-figure">
                     <div class="tile">
                       <span class="fa fa-info"></span>
@@ -182,13 +182,11 @@
           <!-- /metric column -->
           <!-- metric column -->
           <div class="col-6">
-            <!-- .metric -->
-            <div class="card-metric">
-              <div class="metric">
-                <iframe ng-src="{{ getIframeSrcAlt(5) }}" width="100%" height="300" frameborder="0"></iframe>
-              </div>
-            </div>
-            <!-- /.metric -->
+            <!-- .card -->
+            <section class="card card-fluid">
+              <iframe ng-src="{{ getIframeSrcAlt(5) }}" width="100%" height="300" frameborder="0"></iframe>
+            </section>
+            <!-- /.card -->
           </div>
           <!-- /metric column -->
         </div>
@@ -198,13 +196,11 @@
         <div class="metric-row">
           <!-- metric column -->
           <div class="col-12">
-            <!-- .metric -->
-            <div class="card-metric">
-              <div class="metric">
-                <iframe ng-src="{{ getIframeSrcAlt(3) }}" width="100%" height="300" frameborder="0"></iframe>
-              </div>
-            </div>
-            <!-- /.metric -->
+            <!-- .card -->
+            <section class="card card-fluid">
+              <iframe ng-src="{{ getIframeSrcAlt(3) }}" width="100%" height="300" frameborder="0"></iframe>
+            </section>
+            <!-- /.card -->
           </div>
           <!-- /metric column -->
         </div>
@@ -214,13 +210,11 @@
         <div class="metric-row">
           <!-- metric column -->
           <div class="col-12">
-            <!-- .metric -->
-            <div class="card-metric">
-              <div class="metric">
-                <iframe ng-src="{{ getIframeSrc(3) }}" width="100%" height="300" frameborder="0"></iframe>
-              </div>
-            </div>
-            <!-- /.metric -->
+            <!-- .card -->
+            <section class="card card-fluid">
+              <iframe ng-src="{{ getIframeSrc(3) }}" width="100%" height="300" frameborder="0"></iframe>
+            </section>
+            <!-- /.card -->
           </div>
           <!-- /metric column -->
         </div>
