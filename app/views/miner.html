@@ -39,12 +39,14 @@
       </md-tab>
       <md-tab label="Charts">
         <md-content class="md-padding">
+          <iframe ng-src="{{ getIframeSrcAlt(2, miner.id) }}" width="100%" height="300" frameborder="0"></iframe>
+
           <div ng-if="show_chart">
             <iframe ng-src="{{ getIframeSrc(1, miner.wallet) }}" width="100%" height="300" frameborder="0"></iframe>
             <iframe ng-src="{{ getIframeSrc(3, miner.wallet) }}" width="100%" height="300" frameborder="0"></iframe>
           </div>
 
-          <p ng-if="!show_chart">Note: Power and Rewards chart are only available for WebDollar miners running on the WMP pool.</p>
+          <p ng-if="!show_chart">Note: More charts are exclusively available for WebDollar miners running on the <a href="https://www.webdollarminingpool.com" target="_blank">WMP</a> pool.</p>
         </md-content>
       </md-tab>
       <md-tab label="Logs">
