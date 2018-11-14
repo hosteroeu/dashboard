@@ -1,5 +1,5 @@
 <!-- .page -->
-<div class="page">
+<div class="page" ng-cloak>
   <!-- .page-inner -->
   <div class="page-inner">
     <!-- .page-section -->
@@ -168,7 +168,7 @@
                     <h4 class="list-group-item-title"> {{ log.message }} </h4>
                     <h5 class="list-group-item-subtitle"> {{ log.created_at | timeAgo }} </h5>
                     <p class="list-group-item-text text-truncate">
-                      <span ng-repeat="extra in log.extra_message">
+                      <span ng-repeat="extra in log.extra_message_curated">
                         <span class="badge badge-subtle badge-dark">{{ extra }}</span>
                       </span>
                     </p>
@@ -178,6 +178,17 @@
               <!-- /.list-group -->
             </section>
             <!-- /.card -->
+          </div>
+          <!-- /metric column -->
+          <!-- metric column -->
+          <div class="col-6">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <iframe ng-src="{{ getIframeSrcAlt(5) }}" width="100%" height="300" frameborder="0"></iframe>
+              </div>
+            </div>
+            <!-- /.metric -->
           </div>
           <!-- /metric column -->
         </div>
@@ -190,7 +201,23 @@
             <!-- .metric -->
             <div class="card-metric">
               <div class="metric">
-                <iframe ng-src="{{ getIframeSrc(3) }}" width="95%" height="300" frameborder="0"></iframe>
+                <iframe ng-src="{{ getIframeSrcAlt(3) }}" width="100%" height="300" frameborder="0"></iframe>
+              </div>
+            </div>
+            <!-- /.metric -->
+          </div>
+          <!-- /metric column -->
+        </div>
+        <!-- /metric row -->
+
+        <!-- metric row -->
+        <div class="metric-row">
+          <!-- metric column -->
+          <div class="col-12">
+            <!-- .metric -->
+            <div class="card-metric">
+              <div class="metric">
+                <iframe ng-src="{{ getIframeSrc(3) }}" width="100%" height="300" frameborder="0"></iframe>
               </div>
             </div>
             <!-- /.metric -->

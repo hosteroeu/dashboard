@@ -39,7 +39,7 @@ angular.module('atlasApp')
           extra_message_curated.push(key + '=' + extra_message[key]);
         });
 
-        log.extra_message = extra_message_curated;
+        log.extra_message_curated = extra_message_curated;
         $scope.logs.push(log);
       });
     });
@@ -54,5 +54,9 @@ angular.module('atlasApp')
 
     $scope.getIframeSrc = function(panelId) {
       return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+    };
+
+    $scope.getIframeSrcAlt = function(panelId) {
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
     };
   });
