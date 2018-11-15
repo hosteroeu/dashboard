@@ -10,7 +10,6 @@
 angular.module('atlasApp')
   .controller('MinerCtrl', function($scope, $state, $mdDialog, $mdBottomSheet, minersService) {
     $scope.miner = null;
-    $scope.show_chart = false;
 
     var socket;
 
@@ -46,8 +45,8 @@ angular.module('atlasApp')
       $scope.miner = res;
 
       try {
-         var wallet = JSON.parse($scope.miner.wallet);
-         $scope.miner.wallet = wallet.address;
+        var wallet = JSON.parse($scope.miner.wallet);
+        $scope.miner.wallet = wallet.address;
       } catch (e) {
 
       }
@@ -60,10 +59,6 @@ angular.module('atlasApp')
           default:
             $scope.miner.friendly_name = $scope.miner.mining_pool_url;
             break;
-        }
-
-        if ($scope.miner.mining_pool_url.indexOf('WMP') !== -1) {
-          $scope.show_chart = true;
         }
       }
     });

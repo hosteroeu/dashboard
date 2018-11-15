@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('DashboardCtrl', function ($scope, accountsService, hostsService, minersService, logsService) {
+  .controller('DashboardCtrl', function($scope, accountsService, hostsService, minersService, logsService) {
     var account = {
       name: ''
     };
@@ -17,6 +17,7 @@ angular.module('atlasApp')
     $scope.hosts = hostsService.query();
     $scope.accounts = accountsService.query();
     $scope.total_power = 0;
+    $scope.show_chart = false;
 
     minersService.query().$promise.then(function(res) {
       $scope.miners = res;
@@ -40,6 +41,7 @@ angular.module('atlasApp')
         });
 
         log.extra_message_curated = extra_message_curated;
+
         $scope.logs.push(log);
       });
     });
@@ -50,6 +52,14 @@ angular.module('atlasApp')
       account = _account;
 
       localStorage.setItem('account', JSON.stringify(account));
+
+      if (account.wallet_webdollar && account.mining_pool_url_webdollar && account.mining_pool_url_webdollar.indexOf('WMP') !== -1) {
+        $scope.show_chart = true;
+
+        var wallet_webdollar = JSON.parse(account.wallet_webdollar);
+
+        $scope.wallet_webdollar = wallet_webdollar.address;
+      }
     });
 
     $scope.getIframeSrc = function(panelId) {
@@ -58,5 +68,9 @@ angular.module('atlasApp')
 
     $scope.getIframeSrcAlt = function(panelId) {
       return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+    };
+
+    $scope.getIframeSrcAlt2 = function(panelId, address) {
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/wmp-miner-hash?orgId=1&from=now-1d&to=now&panelId=' + panelId + '&theme=light&var-address=' + encodeURIComponent(address);
     };
   });
