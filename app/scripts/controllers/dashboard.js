@@ -61,15 +61,27 @@ angular.module('atlasApp')
       }
     });
 
-    $scope.getIframeSrc = function(panelId) {
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+    $scope.getIframeSrc = function(panelId, from) {
+      if (!from) {
+        from = 'now-1d';
+      }
+
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=' + from+ '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
     };
 
-    $scope.getIframeSrcAlt = function(panelId) {
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+    $scope.getIframeSrcAlt = function(panelId, from) {
+      if (!from) {
+        from = 'now-1d';
+      }
+
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=' + from+ '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
     };
 
-    $scope.getIframeSrcAlt2 = function(panelId, address) {
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/wmp-miner-hash?orgId=1&from=now-1d&to=now&panelId=' + panelId + '&theme=light&var-address=' + encodeURIComponent(address);
+    $scope.getIframeSrcAlt2 = function(panelId, address, from) {
+      if (!from) {
+        from = 'now-1d';
+      }
+
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/wmp-miner-hash?orgId=1&from=' + from + '&to=now&panelId=' + panelId + '&theme=light&var-address=' + encodeURIComponent(address);
     };
   });
