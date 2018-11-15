@@ -44,7 +44,6 @@
               <th>Miner</th>
               <th>Coin</th>
               <th>Power</th>
-              <th>Threads</th>
               <th>Updated</th>
               <th>Host</th>
               <th>&nbsp;</th>
@@ -63,10 +62,7 @@
                 {{ miner.coin | ucfirst }}
               </td>
               <td>
-                {{ miner.power || 0 }} h/s
-              </td>
-              <td>
-                {{ miner.threads }}
+                {{ miner.power || 0 }} <small>h/s</small>
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}
