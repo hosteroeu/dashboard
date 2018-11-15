@@ -17,7 +17,7 @@ angular.module('atlasApp')
     $scope.hosts = hostsService.query();
     $scope.accounts = accountsService.query();
     $scope.total_power = 0;
-    $scope.show_chart = false;
+    $scope.show_wmp_chart = false;
 
     minersService.query().$promise.then(function(res) {
       $scope.miners = res;
@@ -54,10 +54,9 @@ angular.module('atlasApp')
       localStorage.setItem('account', JSON.stringify(account));
 
       if (account.wallet_webdollar && account.mining_pool_url_webdollar && account.mining_pool_url_webdollar.indexOf('WMP') !== -1) {
-        $scope.show_chart = true;
+        $scope.show_wmp_chart = true;
 
         var wallet_webdollar = JSON.parse(account.wallet_webdollar);
-
         $scope.wallet_webdollar = wallet_webdollar.address;
       }
     });

@@ -207,7 +207,7 @@
         <!-- /metric row -->
 
         <!-- metric row -->
-        <div class="metric-row">
+        <div class="metric-row" ng-if="show_wmp_chart">
           <!-- metric column -->
           <div class="col-12">
             <!-- .card -->
@@ -220,7 +220,7 @@
         </div>
         <!-- /metric row -->
 
-        <p ng-if="!show_chart">Note: More charts are exclusively available for WebDollar miners running on the <a href="https://www.webdollarminingpool.com" target="_blank">WMP</a> pool.</p>
+        <p ng-if="!show_wmp_chart"><strong>Note:</strong> More charts are exclusively available for WebDollar miners running on the <a href="https://www.webdollarminingpool.com" target="_blank">WMP</a> pool.</p>
       </div>
     </div>
     <!-- /.page-section -->
