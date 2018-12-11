@@ -45,14 +45,14 @@
               <th>Coin</th>
               <th>Power</th>
               <th>Updated</th>
-              <th class="d-none d-sm-none d-md-block">Host</th>
+              <th class="d-none d-sm-none d-md-none d-lg-block">Host</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="miner in miners">
               <td>
-                <div class="tile bg-success d-none d-sm-none d-md-block">
+                <div class="tile bg-success">
                   <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
                 </div>
                 &nbsp;
@@ -67,7 +67,7 @@
               <td>
                 {{ miner.updated_at | timeAgo }}
               </td>
-              <td class="d-none d-sm-none d-md-block">
+              <td class="d-none d-sm-none d-md-none d-lg-block">
                 <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
                   <i class="fas fa-list-alt"></i>
                   {{ miner.Host.name | limitTo:20 }}...
