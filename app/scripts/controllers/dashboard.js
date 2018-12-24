@@ -29,7 +29,7 @@ angular.module('atlasApp')
 
     logsService.query().$promise.then(function(res) {
       res.forEach(function(log) {
-        var extra_message = JSON.parse(log.extra_message);
+        var extra_message = JSON.parse(log.extra_message) || {};
         var extra_message_curated = [];
 
         Object.keys(extra_message).forEach(function(key) {

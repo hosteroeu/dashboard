@@ -280,6 +280,10 @@
         <i class="fa fa-fw fa-bell"></i> We are happy to announce we integrated <a href="https://getnerva.org" class="alert-link" target="_blank">Nerva</a> into Hostero. <a href="https://www.hostero.eu/getting-started.html" target="_blank" class="alert-link">Start Mining Nerva!</a>
       </div>
 
+      <div class="page-message" ng-if="global_miners.length >= global_account.plan_hosts">
+        <i class="fa fa-fw fa-bell"></i> <a ui-sref="billing" class="alert-link">Upgrade</a> your account to add more miners and avoid termination!
+      </div>
+
       <!-- .wrapper -->
       <div class="wrapper" ui-view>
       </div>
@@ -293,7 +297,7 @@
             <a class="text-muted" href="https://www.hostero.eu/getting-started.html" target="_blank">Help Center</a>
           </li>
         </ul>
-        <div class="copyright"> Copyright © 2018. All right reserved. </div>
+        <div class="copyright"> Copyright &copy; 2018. All right reserved. </div>
       </footer>
       <!-- /.app-footer -->
       <!-- /.wrapper -->
