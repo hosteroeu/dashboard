@@ -39,13 +39,9 @@ angular.module('atlasApp')
 
         if (found1) {
           $scope.power = found1[0];
-        }
-
-        if (found2) {
+        } else if (found2) {
           $scope.power = found2[0];
-        }
-
-        if (found3) {
+        } else if (found3) {
           $scope.power = found3[0];
         }
 
