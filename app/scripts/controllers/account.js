@@ -12,29 +12,6 @@ angular.module('atlasApp')
     $scope.profile = JSON.parse(localStorage.getItem('profile'));
     $scope.account = JSON.parse(localStorage.getItem('account'));
 
-    accountsService.get({
-      id: $scope.account.id
-    }).$promise.then(function(_account) {
-      $scope.account = _account;
-
-      switch (_account.plan_hosts) {
-        case 5:
-          $scope.plan = 'Free (5 Hosts)';
-          break;
-        case 20:
-          $scope.plan = 'Miner (20 Hosts)';
-          break;
-        case 100:
-          $scope.plan = 'Farm (100 Hosts)';
-          break;
-        case -1:
-          $scope.plan = 'Unlimited';
-          break;
-        default:
-          $scope.plan = 'Custom (' + _account.plan_hosts + ' Hosts)';
-      }
-    });
-
     this.change_plan = function($event) {
       $mdDialog.show({
         controller: 'AccountPlansCtrl',
