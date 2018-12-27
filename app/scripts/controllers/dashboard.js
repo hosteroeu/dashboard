@@ -33,7 +33,7 @@ angular.module('atlasApp')
         var extra_message_curated = [];
 
         Object.keys(extra_message).forEach(function(key) {
-          if (key !== 'id' && key !== 'status' && key !== 'deployed') {
+          if (key !== 'id' && key !== 'status' && key !== 'deployed' && key !== 'miners') {
             return;
           }
 
