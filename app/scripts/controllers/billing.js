@@ -9,30 +9,30 @@
  */
 angular.module('atlasApp')
   .controller('BillingCtrl', function($scope, accountsService, paymentsService, $mdDialog) {
-    $scope.account = JSON.parse(localStorage.getItem('account'));
+    var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.payments = paymentsService.query();
 
     accountsService.get({
-      id: $scope.account.id
+      id: account.id
     }).$promise.then(function(_account) {
       $scope.account = _account;
 
       switch (_account.plan_hosts) {
         case 5:
-          $scope.plan = 'Free (5 Hosts)';
+          $scope.plan = 'Free (5 Miners)';
           break;
         case 20:
-          $scope.plan = 'Miner (20 Hosts)';
+          $scope.plan = 'Miner (20 Miners)';
           break;
         case 100:
-          $scope.plan = 'Farm (100 Hosts)';
+          $scope.plan = 'Farm (100 Miners)';
           break;
         case -1:
-          $scope.plan = 'Unlimited';
+          $scope.plan = 'Unlimited Miners';
           break;
         default:
-          $scope.plan = 'Custom (' + _account.plan_hosts + ' Hosts)';
+          $scope.plan = 'Custom (' + _account.plan_hosts + ' Miners)';
       }
     });
 
