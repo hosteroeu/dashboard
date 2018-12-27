@@ -19,8 +19,11 @@ angular.module('atlasApp')
       $scope.account = _account;
 
       switch (_account.plan_hosts) {
+        case 1:
+          $scope.plan = 'Free (1 Miner)';
+          break;
         case 5:
-          $scope.plan = 'Free (5 Miners)';
+          $scope.plan = 'Hobby (5 Miners)';
           break;
         case 20:
           $scope.plan = 'Miner (20 Miners)';
