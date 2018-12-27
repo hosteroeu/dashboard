@@ -1,6 +1,9 @@
-FROM node:8
+FROM ubuntu:16.04
 
-RUN apt install git ruby-full make gcc libc-dev
+RUN apt-get update && apt-get install -y linuxbrew-wrapper clang wget software-properties-common ruby-dev make gcc libc-dev
+RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get install -y nodejs
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
