@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 ADD . /usr/src/app
 
-RUN gem update --system && gem install compass
+RUN gem install rdoc && gem update --system && gem install compass
 RUN npm install
 RUN npm install -g bower
 RUN npm install -g grunt-cli
