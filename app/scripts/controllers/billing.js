@@ -20,22 +20,22 @@ angular.module('atlasApp')
 
       switch (_account.plan_hosts) {
         case 1:
-          $scope.plan = 'Free (1 Miner)';
+          $scope.plan = 'free';
           break;
         case 5:
-          $scope.plan = 'Hobby (5 Miners)';
+          $scope.plan = 'hobby';
           break;
         case 20:
-          $scope.plan = 'Miner (20 Miners)';
+          $scope.plan = 'miner';
           break;
         case 100:
-          $scope.plan = 'Farm (100 Miners)';
+          $scope.plan = 'farm';
           break;
         case -1:
-          $scope.plan = 'Unlimited Miners';
+          $scope.plan = 'unlimited';
           break;
         default:
-          $scope.plan = 'Custom (' + _account.plan_hosts + ' Miners)';
+          $scope.plan = 'custom';
       }
     });
 
