@@ -18,7 +18,7 @@ angular.module('atlasApp')
     }).$promise.then(function(_account) {
       $scope.account = _account;
 
-      switch (_account.plan_hosts) {
+      switch (_account.plan_miners) {
         case 1:
           $scope.plan = 'free';
           break;

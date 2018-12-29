@@ -12,7 +12,7 @@ angular.module('atlasApp')
     this.account = JSON.parse(localStorage.getItem('account'));
     this.selectedPlanIndex = 0;
 
-    switch(this.account.plan_hosts) {
+    switch(this.account.plan_miners) {
       case 5:
         this.selectedPlanIndex = 0;
         this.plan = 'free';
