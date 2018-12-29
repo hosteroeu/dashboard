@@ -53,7 +53,7 @@ angular.module('atlasApp')
 
       localStorage.setItem('account', JSON.stringify(account));
 
-      if (account.wallet_webdollar && account.mining_pool_url_webdollar && account.mining_pool_url_webdollar.indexOf('WMP') !== -1) {
+      if (account.wallet_webdollar && account.mining_pool_url_webdollar && account.mining_pool_url_webdollar.indexOf('WMP_CLOSED') !== -1) {
         $scope.show_wmp_chart = true;
 
         var wallet_webdollar = JSON.parse(account.wallet_webdollar);
