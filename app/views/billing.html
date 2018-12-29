@@ -163,6 +163,9 @@
                 <td>{{payment.amount | currency}}</td>
                 <td>{{payment.created_at | date}}</td>
               </tr>
+              <tr ng-if="payments != null && !payments.length">
+                <td colspan="4"><center>No payments.</center></td>
+              </tr>
             </tbody>
           </table>
       </section>
