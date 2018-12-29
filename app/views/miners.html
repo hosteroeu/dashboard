@@ -12,7 +12,9 @@
       <!-- title and toolbar -->
       <div class="d-md-flex align-items-md-start">
         <h1 class="page-title mr-sm-auto"> {{miners.length}} Miners
-          <small class="badge"> {{global_account.plan_miners}} Available</small>
+          <small class="badge">
+            <a ui-sref="billing">{{global_account.plan_miners || 0}} Available</a>
+          </small>
         </h1>
         <!-- .btn-toolbar -->
         <div class="btn-toolbar">
@@ -58,10 +60,10 @@
                   <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
                 </div>
                 &nbsp;
-                <a ui-sref="miner({miner:miner.id})" href="">{{ miner.name }}</a>
+                <a ui-sref="miner({miner:miner.id})">{{ miner.name }}</a>
               </td>
               <td>
-                {{ miner.coin | ucfirst }}
+                <a ui-sref="coins">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
                 {{ miner.power || 0 }} <small>h/s</small>
