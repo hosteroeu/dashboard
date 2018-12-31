@@ -34,7 +34,9 @@ angular.module('atlasApp')
     });
 
     this.update = function() {
-      default_wallet_webdollar.address = decodeURIComponent(this.wallet_webdollar);
+      if (this.wallet_webdollar) {
+        default_wallet_webdollar.address = decodeURIComponent(this.wallet_webdollar);
+      }
 
       accountsService.update({
         id: account.id

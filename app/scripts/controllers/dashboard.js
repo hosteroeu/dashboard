@@ -13,6 +13,10 @@ angular.module('atlasApp')
       name: ''
     };
 
+    setTimeout(function() {
+      account = JSON.parse(localStorage.getItem('account'));
+    }, 2000);
+
     $scope.logs = [];
     $scope.hosts = hostsService.query();
     $scope.accounts = accountsService.query();
@@ -46,27 +50,12 @@ angular.module('atlasApp')
       });
     });
 
-    accountsService.get({
-      controller: 'sync'
-    }).$promise.then(function(_account) {
-      account = _account;
-
-      localStorage.setItem('account', JSON.stringify(account));
-
-      if (account.wallet_webdollar && account.mining_pool_url_webdollar && account.mining_pool_url_webdollar.indexOf('WMP_CLOSED') !== -1) {
-        $scope.show_wmp_chart = true;
-
-        var wallet_webdollar = JSON.parse(account.wallet_webdollar);
-        $scope.wallet_webdollar = wallet_webdollar.address;
-      }
-    });
-
     $scope.getIframeSrc = function(panelId, from) {
       if (!from) {
         from = 'now-1d';
       }
 
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=' + from+ '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=' + from + '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
     };
 
     $scope.getIframeSrcAlt = function(panelId, from) {
@@ -74,7 +63,7 @@ angular.module('atlasApp')
         from = 'now-1d';
       }
 
-      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=' + from+ '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
+      return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-miners-power?orgId=1&from=' + from + '&to=now&theme=light&panelId=' + panelId + '&var-account=' + account.name;
     };
 
     $scope.getIframeSrcAlt2 = function(panelId, address, from) {
