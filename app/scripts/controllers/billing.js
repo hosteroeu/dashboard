@@ -18,6 +18,8 @@ angular.module('atlasApp')
     }).$promise.then(function(_account) {
       $scope.account = _account;
 
+      localStorage.setItem('account', JSON.stringify(_account));
+
       switch (_account.plan_miners) {
         case 1:
           $scope.plan = 'free';

@@ -22,6 +22,8 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(_account) {
+      localStorage.setItem('account', JSON.stringify(_account));
+
       _this.mining_pool_url_webdollar = _account.mining_pool_url_webdollar;
       _this.wallet_nerva = _account.wallet_nerva;
       _this.auto_deploy = _account.auto_deploy;
