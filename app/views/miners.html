@@ -8,6 +8,9 @@
       <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)" ng-if="global_miners.length < global_account.plan_miners">
         <span class="fa fa-plus"></span>
       </button>
+      <button type="button" class="btn btn-success btn-floated" ng-if="global_miners.length >= global_account.plan_miners" disabled>
+        <span class="fa fa-plus"></span>
+      </button>
       <!-- /floating action -->
       <!-- title and toolbar -->
       <div class="d-md-flex align-items-md-start">
