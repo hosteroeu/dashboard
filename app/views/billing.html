@@ -162,7 +162,7 @@
               <tr ng-repeat="payment in payments | reverse">
                 <td>{{payment.id}}</td>
                 <td>{{payment.gateway | ucfirst}}</td>
-                <td>{{payment.amount | currency}}</td>
+                <td>{{payment.amount | currency: '€'}}</td>
                 <td>{{payment.created_at | date}}</td>
               </tr>
               <tr ng-if="payments != null && !payments.length">

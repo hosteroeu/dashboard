@@ -8,6 +8,6 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('CoinsCtrl', function () {
-
+  .controller('CoinsCtrl', function($scope, coinsService) {
+    $scope.coins = coinsService.query();
   });

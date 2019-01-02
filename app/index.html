@@ -92,22 +92,12 @@
                   <!-- .dropdown-sheets -->
                   <div class="dropdown-sheets">
                     <!-- .dropdown-sheet-item -->
-                    <div class="dropdown-sheet-item">
+                    <div class="dropdown-sheet-item" ng-repeat="coin in global_coins">
                       <a ui-sref="coins" class="tile-wrapper">
-                        <span class="tile tile-lg bg-blue">
-                          <i class="fa fa-money-bill-alt"></i>
+                        <span class="tile tile-lg bg-{{coin.color}}">
+                          {{coin.short_name}}
                         </span>
-                        <span class="tile-peek">Webdollar</span>
-                      </a>
-                    </div>
-                    <!-- /.dropdown-sheet-item -->
-                    <!-- .dropdown-sheet-item -->
-                    <div class="dropdown-sheet-item">
-                      <a ui-sref="coins" class="tile-wrapper">
-                        <span class="tile tile-lg bg-green">
-                          <i class="fa fa-money-bill-alt"></i>
-                        </span>
-                        <span class="tile-peek">Nerva</span>
+                        <span class="tile-peek">{{coin.name}}</span>
                       </a>
                     </div>
                     <!-- /.dropdown-sheet-item -->
@@ -379,6 +369,7 @@
   <script src="scripts/services/accounts.js"></script>
   <script src="scripts/services/logs.js"></script>
   <script src="scripts/services/payments.js"></script>
+  <script src="scripts/services/coins.js"></script>
   <script src="scripts/services/api.js"></script>
   <script src="scripts/vendor/looper/stacked-menu.js"></script>
   <script src="scripts/vendor/looper/main.js"></script>
