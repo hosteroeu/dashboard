@@ -29,8 +29,10 @@
           <p>Host: <strong>{{ miner.Host.name }}</strong></p>
           <!--<p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>-->
           <p ng-if="miner.coin == 'webdollar'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
+          <p ng-if="miner.coin == 'webchain'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.mining_pool_url }}</a></strong></p>
+          <p ng-if="miner.coin == 'webchain'">Password: <strong>{{ miner.password }}</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
-          <p ng-if="miner.coin == 'nerva'">Wallet: <strong>{{ miner.wallet }}</strong></p>
+          <p ng-if="miner.coin != 'webdollar'">Wallet: <strong>{{ miner.wallet }}</strong></p>
           <p>Threads: <strong>{{ miner.threads }}</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Server Port: <strong>{{ miner.server_port }}</strong></p>
           <p ng-if="miner.coin == 'webdollar'">Domain: <strong>{{ miner.domain }}</strong></p>

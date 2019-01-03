@@ -26,6 +26,9 @@ angular.module('atlasApp')
 
       _this.mining_pool_url_webdollar = _account.mining_pool_url_webdollar;
       _this.wallet_nerva = _account.wallet_nerva;
+      _this.wallet_webchain = _account.wallet_webchain;
+      _this.password_webchain = _account.password_webchain;
+      _this.mining_pool_url_webchain = _account.mining_pool_url_webchain;
       _this.auto_deploy = _account.auto_deploy;
       _this.auto_deploy_coin = _account.auto_deploy_coin;
 
@@ -46,6 +49,9 @@ angular.module('atlasApp')
         mining_pool_url_webdollar: this.mining_pool_url_webdollar,
         wallet_webdollar: JSON.stringify(default_wallet_webdollar),
         wallet_nerva: this.wallet_nerva,
+        wallet_webchain: this.wallet_webchain,
+        password_webchain: this.password_webchain,
+        mining_pool_url_webchain: this.mining_pool_url_webchain,
         auto_deploy: this.auto_deploy,
         auto_deploy_coin: this.auto_deploy_coin
       }).$promise.then(function() {

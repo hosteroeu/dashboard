@@ -17,10 +17,13 @@
             <label>Coin</label>
             <md-select ng-model="selected_coin" required>
               <md-option value="webdollar" selected="true">
-                Webdollar
+                WebDollar
               </md-option>
               <md-option value="nerva">
                 Nerva
+              </md-option>
+              <md-option value="webchain">
+                WebChain
               </md-option>
             </md-select>
           </md-input-container>
@@ -29,7 +32,12 @@
 
           <md-input-container class="md-block" flex-gt-xs ng-if="selected_coin == 'webdollar'">
             <label>Mining Pool URL</label>
-            <textarea ng-model="mining_pool_url" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
+            <textarea ng-model="mining_pool_url_webdollar" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-xs ng-if="selected_coin == 'webchain'">
+            <label>Mining Pool URL</label>
+            <textarea ng-model="mining_pool_url_webchain" name="pool_url" md-maxlength="255" rows="3" md-select-on-focus required></textarea>
           </md-input-container>
 
           <br />
@@ -44,6 +52,16 @@
           <md-input-container class="md-block" ng-if="selected_coin == 'nerva'">
             <label>Wallet Address</label>
             <input ng-model="wallet_nerva" name="wallet_nerva" required />
+          </md-input-container>
+
+          <md-input-container class="md-block" ng-if="selected_coin == 'webchain'">
+            <label>Wallet Address</label>
+            <input ng-model="wallet_webchain" name="wallet_webchain" required />
+          </md-input-container>
+
+          <md-input-container class="md-block" ng-if="selected_coin == 'webchain'">
+            <label>Password</label>
+            <input ng-model="password_webchain" name="password_webchain" required />
           </md-input-container>
 
           <br />

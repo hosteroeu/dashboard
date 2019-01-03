@@ -27,10 +27,14 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(account) {
-      $scope.mining_pool_url = account.mining_pool_url_webdollar;
+      $scope.mining_pool_url_webdollar = account.mining_pool_url_webdollar;
       var wallet = JSON.parse(account.wallet_webdollar);
       $scope.wallet_webdollar = wallet.address;
+
       $scope.wallet_nerva = account.wallet_nerva;
+      $scope.wallet_webchain = account.wallet_webchain;
+      $scope.password_webchain = account.password_webchain;
+      $scope.mining_pool_url_webchain = account.mining_pool_url_webchain;
       $scope.selected_coin = account.auto_deploy_coin;
     });
 
@@ -51,7 +55,7 @@ angular.module('atlasApp')
       switch ($scope.selected_coin) {
         case 'webdollar':
           new_miner.server_port = '8000';
-          new_miner.mining_pool_url = $scope.mining_pool_url;
+          new_miner.mining_pool_url = $scope.mining_pool_url_webdollar;
           new_miner.domain = 'wd.hoste.ro';
           new_miner.wallet = JSON.stringify(default_wallet_webdollar);
           new_miner.image_uuid = 'docker:morion4000/node:v2';
@@ -62,6 +66,13 @@ angular.module('atlasApp')
         case 'nerva':
           new_miner.wallet = $scope.wallet_nerva;
           new_miner.image_uuid = 'docker:morion4000/nerva';
+          break;
+
+        case 'webchain':
+          new_miner.wallet = $scope.wallet_webchain;
+          new_miner.password = $scope.password_webchain;
+          new_miner.mining_pool_url = $scope.mining_pool_url_webchain;
+          new_miner.image_uuid = 'docker:morion4000/webchain';
           break;
       }
 
