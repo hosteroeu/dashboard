@@ -156,6 +156,7 @@
                 <th>Gateway</th>
                 <th>Amount</th>
                 <th>Date</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -164,9 +165,10 @@
                 <td>{{payment.gateway | ucfirst}}</td>
                 <td>{{payment.amount | currency: '€'}}</td>
                 <td>{{payment.created_at | date}}</td>
+                <td>{{payment.description}}</td>
               </tr>
               <tr ng-if="payments != null && !payments.length">
-                <td colspan="4"><center>No payments.</center></td>
+                <td colspan="5"><center>No payments.</center></td>
               </tr>
             </tbody>
           </table>

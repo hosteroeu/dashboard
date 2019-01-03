@@ -51,7 +51,6 @@
               <th>Miner</th>
               <th>Coin</th>
               <th>Power</th>
-              <th>Block</th>
               <th>Updated</th>
               <th class="d-none d-sm-none d-md-none d-lg-block">Host</th>
               <th>&nbsp;</th>
@@ -71,9 +70,6 @@
               </td>
               <td>
                 {{ miner.power || 0 }} <small>h/s</small>
-              </td>
-              <td>
-                {{ miner.block || 0 | number }} <small></small>
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}
