@@ -51,6 +51,11 @@ angular.module('atlasApp')
               email: profile.email,
               full_name: profile.name
             });
+
+            // Force reload, 5 seconds after login to sort out some bugs
+            setTimeout(function() {
+              location.reload();
+            }, 5 * 1000);
           });
         });
       });
