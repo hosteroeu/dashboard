@@ -275,7 +275,7 @@
       </div>
       -->
 
-      <div class="page-message" ng-if="global_miners.length > global_account.plan_miners">
+      <div class="page-message" ng-if="global_miners.length > (global_account.plan_miners + global_account.bonus_miners)">
         <i class="fa fa-fw fa-bell"></i> <a ui-sref="billing" class="alert-link">Upgrade</a> your account or remove some miners to avoid termination!
       </div>
 

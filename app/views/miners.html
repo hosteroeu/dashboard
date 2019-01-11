@@ -5,10 +5,7 @@
     <!-- .page-title-bar -->
     <header class="page-title-bar">
       <!-- floating action -->
-      <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)" ng-if="global_miners.length < global_account.plan_miners">
-        <span class="fa fa-plus"></span>
-      </button>
-      <button type="button" class="btn btn-success btn-floated" ng-if="global_miners.length >= global_account.plan_miners" disabled>
+      <button type="button" class="btn btn-success btn-floated" ng-click="minersCtrl.open_new_modal($event)" ng-if="global_miners.length < (global_account.plan_miners + global_account.bonus_miners)">
         <span class="fa fa-plus"></span>
       </button>
       <!-- /floating action -->
@@ -16,7 +13,7 @@
       <div class="d-md-flex align-items-md-start">
         <h1 class="page-title mr-sm-auto"> {{miners.length}} Miners
           <small class="badge">
-            <a ui-sref="billing">{{global_account.plan_miners || 0}} Available</a>
+            <a ui-sref="billing">{{(global_account.plan_miners + global_account.bonus_miners) || 0}} Available</a>
           </small>
         </h1>
         <!-- .btn-toolbar -->
