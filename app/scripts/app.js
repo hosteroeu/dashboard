@@ -35,11 +35,11 @@ angular
       options: {
         closable: false,
         languageDictionary: {
-          title: 'Hostero'
+          title: 'Hostero Dashboard'
         },
         theme: {
-          //logo: '/images/hostero_logo_black.png',
-          //primaryColor: 'blue'
+          logo: '/images/hostero_logo_black_square.png',
+          primaryColor: 'blue'
         }
       }
     });
