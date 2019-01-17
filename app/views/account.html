@@ -1,15 +1,27 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2 class="md-flex">Account ID: <strong>{{account.name}}</strong></h2>
-
-    <span flex md-truncate></span>
-
-    <md-button ng-disabled="true" class="md-raised">Delete Account</md-button>
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <h1 class="page-title"> Account
+        <small class="badge">{{global_account.name}}</small>
+      </h1>
+    </header>
+    <!-- /.page-title-bar -->
+    <!-- .page-section -->
+    <div class="page-section">
+      <div class="card card-fluid">
+        <div class="card-body">
+          <h4 class="card-title">Information</h4>
+          <p><strong>Email:</strong> {{profile.email}}</p>
+          <p><strong>Name:</strong> {{profile.name}}</p>
+          <p><strong>Server ID:</strong> {{account.rancher_uri}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-section -->
   </div>
-</md-toolbar>
-
-<md-content flex layout-padding>
-  <p>Email: {{profile.email}}</p>
-  <p>Name: {{profile.name}}</p>
-  <p>Server: <strong>{{account.rancher_uri}}</strong></p>
-</md-content>
+  <!-- /.page-inner -->
+</div>
+<!-- /.page -->
