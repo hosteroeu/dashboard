@@ -13,7 +13,9 @@ angular.module('atlasApp')
     setTimeout(function() {
       $scope.global_hosts = hostsService.query();
       $scope.global_miners = minersService.query();
-      $scope.global_coins = coinsService.query();
+      $scope.global_coins = coinsService.query({
+        on_hostero: 1
+      });
 
       $scope.profile = JSON.parse(localStorage.getItem('profile')) || {};
       $scope.global_account = JSON.parse(localStorage.getItem('account')) || {};

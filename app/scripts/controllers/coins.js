@@ -9,5 +9,7 @@
  */
 angular.module('atlasApp')
   .controller('CoinsCtrl', function($scope, coinsService) {
-    $scope.coins = coinsService.query();
+    $scope.coins = coinsService.query({
+      on_hostero: 1
+    });
   });
