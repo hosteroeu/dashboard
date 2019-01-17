@@ -80,15 +80,6 @@ angular
           requiresLogin: true
         }
       })
-      .state('wallets', {
-        url: '/settings/wallets',
-        templateUrl: 'views/wallets.html',
-        controller: 'SettingsCtrl',
-        controllerAs: 'settingsCtrl',
-        data: {
-          requiresLogin: true
-        }
-      })
       .state('miners', {
         url: '/miners',
         templateUrl: 'views/miners.html',
@@ -152,14 +143,29 @@ angular
           requiresLogin: true
         }
       })
-      .state('coins', {
-        url: '/coins',
-        templateUrl: 'views/coins.html',
-        controller: 'CoinsCtrl',
-        controllerAs: 'coinsCtrl',
+      .state('wallets', {
+        url: '/wallets',
+        templateUrl: 'views/wallets.html',
+        controller: 'WalletsCtrl',
+        controllerAs: 'walletsCtrl',
         data: {
           requiresLogin: true
         }
+      })
+      .state('wallets.webdollar', {
+        parent: 'wallets',
+        url: '/webdollar',
+        templateUrl: 'views/wallets/webdollar.html',
+      })
+      .state('wallets.nerva', {
+        parent: 'wallets',
+        url: '/nerva',
+        templateUrl: 'views/wallets/nerva.html',
+      })
+      .state('wallets.webchain', {
+        parent: 'wallets',
+        url: '/webchain',
+        templateUrl: 'views/wallets/webchain.html',
       })
       .state('billing', {
         url: '/billing',

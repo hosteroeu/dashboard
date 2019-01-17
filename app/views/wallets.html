@@ -9,11 +9,13 @@
         <div class="col-lg-4">
           <!-- .card -->
           <div class="card card-fluid">
-            <h6 class="card-header"> Your Settings </h6>
+            <h6 class="card-header"> Coins </h6>
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
-              <a ui-sref="settings" class="nav-link">General</a>
-              <a ui-sref="wallets" class="nav-link active">Wallets</a>
+              <a ui-sref="wallets" class="nav-link active">General</a>
+              <a ui-sref="wallets.webdollar" class="nav-link">WebDollar</a>
+              <a ui-sref="wallets.nerva" class="nav-link">Nerva</a>
+              <a ui-sref="wallets.webchain" class="nav-link">WebChain</a>
             </nav>
             <!-- /.nav -->
           </div>
@@ -22,107 +24,22 @@
         <!-- /grid column -->
         <!-- grid column -->
         <div class="col-lg-8">
-          <!-- .card -->
-          <section id="labels" class="card">
-            <!-- .card-body -->
-            <div class="card-body">
-              <!-- .form -->
-              <form>
-                <!-- .fieldset -->
-                <fieldset>
-                  <legend>WebDollar</legend>
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl2">Wallet
-                    </label>
-                    <input type="text" class="form-control" id="lbl2" ng-model="settingsCtrl.wallet_webdollar" placeholder="WEBD$000000000000000000000000000000000$"> </div>
-                  <!-- /.form-group -->
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl3">Mining Pool URL
-                    </label>
-                    <textarea class="form-control" id="lbl3" rows="3" ng-model="settingsCtrl.mining_pool_url_webdollar"></textarea>
-                  </div>
-                  <!-- /.form-group -->
-                </fieldset>
-                <!-- /.fieldset -->
-              </form>
-              <!-- /.form -->
-
-              <a href="https://webdollar.io" target="_blank">Tutorial to create a wallet for WebDollar</a>
-            </div>
-            <!-- /.card-body -->
-          </section>
-          <!-- /.card -->
-          <hr class="my-5">
-          <!-- .card -->
-          <section id="labels" class="card">
-            <!-- .card-body -->
-            <div class="card-body">
-              <!-- .form -->
-              <form>
-                <!-- .fieldset -->
-                <fieldset>
-                  <legend>Nerva</legend>
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl5">Wallet
-                    </label>
-                    <input type="text" class="form-control" id="lbl5" ng-model="settingsCtrl.wallet_nerva" required=""> </div>
-                  <!-- /.form-group -->
-                </fieldset>
-                <!-- /.fieldset -->
-              </form>
-              <!-- /.form -->
-
-              <a href="https://getnerva.org" target="_blank">Tutorial to create a wallet for Nerva</a>
-            </div>
-            <!-- /.card-body -->
-          </section>
-          <!-- /.card -->
-          <!-- /.card -->
-          <hr class="my-5">
-          <!-- .card -->
-          <section id="labels" class="card">
-            <!-- .card-body -->
-            <div class="card-body">
-              <!-- .form -->
-              <form>
-                <!-- .fieldset -->
-                <fieldset>
-                  <legend>WebChain</legend>
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl5">Wallet
-                    </label>
-                    <input type="text" class="form-control" id="lbl5" ng-model="settingsCtrl.wallet_webchain" required=""> </div>
-                  <!-- /.form-group -->
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl6">Password
-                    </label>
-                    <input type="text" class="form-control" id="lbl6" ng-model="settingsCtrl.password_webchain" required=""> </div>
-                  <!-- /.form-group -->
-                  <!-- .form-group -->
-                  <div class="form-group">
-                    <label for="lbl7">Mining Pool URL
-                    </label>
-                    <textarea class="form-control" id="lbl7" rows="3" ng-model="settingsCtrl.mining_pool_url_webchain"></textarea>
-                  </div>
-                  <!-- /.form-group -->
-                </fieldset>
-                <!-- /.fieldset -->
-              </form>
-              <!-- /.form -->
-
-              <a href="https://webchain.network/start" target="_blank">Tutorial to create a wallet for WebChain</a>
-            </div>
-            <!-- /.card-body -->
-          </section>
-          <!-- /.card -->
-
-          <hr class="my-5">
-          <button class="btn btn-primary btn-lg btn-block" ng-click="settingsCtrl.update()">Update</button>
+          <div ng-if="walletsCtrl.state.current.name === 'wallets'">
+            Nothing to see here. Select coin from left side.
+          </div>
+          <div ng-if="walletsCtrl.state.current.name !== 'wallets'">
+            <!-- .card -->
+            <section id="labels" class="card">
+              <!-- .card-body -->
+              <div class="card-body">
+                <div ui-view></div>
+              </div>
+              <!-- /.card-body -->
+            </section>
+            <!-- /.card -->
+            <hr class="my-5">
+            <button class="btn btn-primary btn-lg btn-block" ng-click="walletsCtrl.update()">Update</button>
+          </div>
         </div>
     </div>
     <!-- /.page-section -->
