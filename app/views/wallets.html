@@ -12,8 +12,8 @@
             <h6 class="card-header"> Coins </h6>
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
-              <a ui-sref="wallets" class="nav-link">General</a>
-              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins">{{coin.name}}</a>
+              <!--<a ui-sref="wallets" class="nav-link" ng-class="{active: walletsCtrl.state.current.name == 'wallets'}">General</a>-->
+              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins" ng-class="{active: walletsCtrl.state.current.name == 'wallets.' + coin.internal_name}">{{coin.name}}</a>
             </nav>
             <!-- /.nav -->
           </div>
