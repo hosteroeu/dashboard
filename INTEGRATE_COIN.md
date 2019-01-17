@@ -8,9 +8,8 @@ workers/mysql/miners_create.js
 
 atlas:
 app/scripts/controllers/miners.new.js
-app/scripts/controllers/settings.js
 app/views/miner.html
 app/views/miners.new.html
-app/views/settings.html
-app/views/wallets.html
+app/scripts/controllers/wallets.js
+app/views/wallets/
 INTEGRATE_COIN.md

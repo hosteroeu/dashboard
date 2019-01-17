@@ -52,7 +52,7 @@ angular.module('atlasApp')
         password_webchain: this.password_webchain,
         mining_pool_url_webchain: this.mining_pool_url_webchain
       }).$promise.then(function() {
-        $mdToast.showSimple('Settings Updated Successfully');
+        $mdToast.showSimple('Wallet Updated Successfully');
         $state.reload();
       });
     };

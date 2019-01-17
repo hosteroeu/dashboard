@@ -12,10 +12,8 @@
             <h6 class="card-header"> Coins </h6>
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
-              <a ui-sref="wallets" class="nav-link active">General</a>
-              <a ui-sref="wallets.webdollar" class="nav-link">WebDollar</a>
-              <a ui-sref="wallets.nerva" class="nav-link">Nerva</a>
-              <a ui-sref="wallets.webchain" class="nav-link">WebChain</a>
+              <a ui-sref="wallets" class="nav-link">General</a>
+              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins">{{coin.name}}</a>
             </nav>
             <!-- /.nav -->
           </div>
@@ -25,7 +23,15 @@
         <!-- grid column -->
         <div class="col-lg-8">
           <div ng-if="walletsCtrl.state.current.name === 'wallets'">
-            Nothing to see here. Select coin from left side.
+            <!-- .card -->
+            <section id="labels" class="card">
+              <!-- .card-body -->
+              <div class="card-body">
+                Select coin from the left side.
+              </div>
+              <!-- /.card-body -->
+            </section>
+            <!-- /.card -->
           </div>
           <div ng-if="walletsCtrl.state.current.name !== 'wallets'">
             <!-- .card -->
@@ -41,9 +47,9 @@
             <button class="btn btn-primary btn-lg btn-block" ng-click="walletsCtrl.update()">Update</button>
           </div>
         </div>
+      </div>
+      <!-- /.page-section -->
     </div>
-    <!-- /.page-section -->
+    <!-- /.page-inner -->
   </div>
-  <!-- /.page-inner -->
-</div>
-<!-- /.page -->
+  <!-- /.page -->
