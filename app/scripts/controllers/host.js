@@ -8,8 +8,9 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostCtrl', function($scope, $state, $mdDialog, $mdBottomSheet, hostsService) {
+  .controller('HostCtrl', function($scope, $state, hostsService) {
     $scope.host = null;
+    $scope.state = $state;
     var socket;
 
     hostsService.get({
@@ -47,15 +48,5 @@ angular.module('atlasApp')
 
     $scope.getIframeSrc = function(panelId, host) {
       return 'https://charts.webdollarminingpool.com/dashboard-solo/db/hostero-hosts?orgId=1&from=now-1d&to=now&theme=light&panelId=' + panelId + '&var-host=' + host;
-    };
-
-    $scope.open_details = function() {
-      $mdBottomSheet.show({
-        templateUrl: 'views/hosts.details.html',
-        controller: 'HostsDetailsCtrl',
-        locals: {
-          host: $scope.host
-        }
-      });
     };
   });

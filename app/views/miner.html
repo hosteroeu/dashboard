@@ -1,57 +1,61 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <md-button aria-label="Go Back" ui-sref="miners" class="md-raised">
-      <md-icon>chevron_left</md-icon>Back
-    </md-button>
+<!-- .page -->
+<div class="page">
+  <!-- .page-navs -->
+  <nav class="page-navs">
+    <!-- .nav-scroller -->
+    <div class="nav-scroller">
+      <!-- .nav -->
+      <div class="nav nav-center nav-tabs">
+        <a class="nav-link" ui-sref="miner({miner: miner.id})" ng-class="{active: state.current.name == 'miner'}">Details</a>
+        <a class="nav-link" ui-sref="miner.charts({miner: miner.id})" ng-class="{active: state.current.name == 'miner.charts'}">Charts</a>
+        <a class="nav-link" ui-sref="miner.logs({miner: miner.id})" ng-class="{active: state.current.name == 'miner.logs'}">Logs</a>
+      </div>
+      <!-- /.nav -->
+    </div>
+    <!-- /.nav-scroller -->
+  </nav>
+  <!-- /.page-navs -->
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a ui-sref="miners">
+              <i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Miners
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <!-- /.page-title-bar -->
+    <!-- .page-section -->
+    <div class="page-section">
+      <div class="card card-fluid">
+        <div class="card-body">
+          <div ui-view></div>
 
-    &nbsp;&nbsp;
-    <h2 flex md-truncate><strong>{{ miner.name }}</strong></h2>
-    <md-button class="md-icon-button md-raised" aria-label="toggle" ng-click="open_details(miner)">
-      <md-tooltip>Miner Details</md-tooltip>
-      <md-icon>more_vert</md-icon>
-    </md-button>
-    &nbsp;&nbsp;
+          <div ng-if="state.current.name == 'miner'">
+            <h4 class="card-title">{{miner.name}}</h4>
+            <br />
+            <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
+            <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
+            <p>Host: <strong><a ui-sref="host({host: miner.Host.id})">{{ miner.Host.name }}</a></strong></p>
+            <p ng-if="miner.mining_pool_url">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.mining_pool_url }}</a></strong></p>
+            <p ng-if="miner.password">Password: <strong>{{ miner.password }}</strong></p>
+            <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
+            <p ng-if="miner.coin != 'webdollar'">Wallet: <strong>{{ miner.wallet }}</strong></p>
+            <p>Threads: <strong>{{ miner.threads }}</strong></p>
+            <p ng-if="miner.server_port">Server Port: <strong>{{ miner.server_port }}</strong></p>
+            <p ng-if="miner.domain">Domain: <strong>{{ miner.domain }}</strong></p>
+            <p ng-if="miner.wallet_secret_url">Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.page-section -->
   </div>
-</md-toolbar>
-
-<md-content flex>
-  <center ng-if="!miner">
-    <br />
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </center>
-
-  <div ng-if="miner">
-    <md-tabs md-dynamic-height md-border-bottom class="md-accent" md-align-tabs="top">
-      <md-tab label="Details">
-        <md-content class="md-padding">
-          <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
-          <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
-          <p>Host: <strong>{{ miner.Host.name }}</strong></p>
-          <!--<p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>-->
-          <p ng-if="miner.coin == 'webdollar'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.friendly_name }}</a></strong></p>
-          <p ng-if="miner.coin == 'webchain'">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.mining_pool_url }}</a></strong></p>
-          <p ng-if="miner.coin == 'webchain'">Password: <strong>{{ miner.password }}</strong></p>
-          <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
-          <p ng-if="miner.coin != 'webdollar'">Wallet: <strong>{{ miner.wallet }}</strong></p>
-          <p>Threads: <strong>{{ miner.threads }}</strong></p>
-          <p ng-if="miner.coin == 'webdollar'">Server Port: <strong>{{ miner.server_port }}</strong></p>
-          <p ng-if="miner.coin == 'webdollar'">Domain: <strong>{{ miner.domain }}</strong></p>
-          <p ng-if="miner.coin == 'webdollar'">Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
-        </md-content>
-      </md-tab>
-      <md-tab label="Charts">
-        <md-content class="md-padding">
-          <iframe ng-src="{{ getIframeSrcAlt(2, miner.id) }}" width="100%" height="300" frameborder="0"></iframe>
-        </md-content>
-      </md-tab>
-      <md-tab label="Logs">
-        <md-content class="md-padding">
-          <center>
-            <md-button class="md-primary md-raised" ui-sref="miner_logs({miner: miner.id})">View Miner Logs</md-button>
-          </center>
-          <p><strong>Note</strong>: To see the logs straight on the server, run: <code>docker logs -f $(docker ps | grep miner | cut -c1-5)</code></p>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </div>
-</md-content>
+  <!-- /.page-inner -->
+</div>
+<!-- /.page -->

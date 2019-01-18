@@ -23,7 +23,6 @@
 
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/font-awesome/css/all.css" />
@@ -33,6 +32,7 @@
   <link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.css" />
   <link rel="stylesheet" href="bower_components/angular-datatables/dist/css/angular-datatables.css" />
   <link rel="stylesheet" href="bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -40,7 +40,6 @@
   <link rel="stylesheet" href="styles/looper.css">
   <link rel="stylesheet" href="styles/looper_custom.css">
   <!-- endbuild -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body ng-app="atlasApp" ng-controller="RootCtrl as rootCtrl">
@@ -360,9 +359,7 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -394,6 +391,7 @@
   <script src="bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
   <script src="bower_components/clipboard/dist/clipboard.js"></script>
   <script src="bower_components/ngclipboard/dist/ngclipboard.js"></script>
+  <script src="bower_components/toastr/toastr.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -406,16 +404,12 @@
   <script src="scripts/controllers/billing.js"></script>
   <script src="scripts/controllers/hosts.js"></script>
   <script src="scripts/controllers/host.js"></script>
-  <script src="scripts/controllers/hosts.new.js"></script>
-  <script src="scripts/controllers/hosts.details.js"></script>
   <script src="scripts/controllers/miners.js"></script>
   <script src="scripts/controllers/_miner.js"></script>
   <script src="scripts/controllers/miners.new.js"></script>
-  <script src="scripts/controllers/miners.details.js"></script>
   <script src="scripts/controllers/miners.logs.js"></script>
   <script src="scripts/controllers/login.js"></script>
   <script src="scripts/controllers/account.js"></script>
-  <script src="scripts/controllers/account.plans.js"></script>
   <script src="scripts/controllers/install.js"></script>
   <script src="scripts/controllers/wallets.js"></script>
   <script src="scripts/services/auth.js"></script>

@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('WalletsCtrl', function($scope, $mdToast, $state, accountsService) {
+  .controller('WalletsCtrl', function($scope, $state, accountsService) {
     var account = JSON.parse(localStorage.getItem('account'));
     var default_wallet_webdollar = {
       version: '0.1',
@@ -52,7 +52,8 @@ angular.module('atlasApp')
         password_webchain: this.password_webchain,
         mining_pool_url_webchain: this.mining_pool_url_webchain
       }).$promise.then(function() {
-        $mdToast.showSimple('Wallet Updated Successfully');
+        window.toastr.success('Wallet was updated');
+
         $state.reload();
       });
     };

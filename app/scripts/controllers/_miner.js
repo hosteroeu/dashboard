@@ -8,11 +8,15 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinerCtrl', function($scope, $state, $mdDialog, $mdBottomSheet, minersService) {
+  .controller('MinerCtrl', function($scope, $state, minersService, $sce, ansi2html) {
     $scope.miner = null;
+    $scope.state = $state;
+    $scope.logs = [];
+    $scope.power = '0 h/s';
 
     var socket;
 
+    /*
     minersService.get({
       id: $state.params.miner,
       controller: 'stats'
@@ -34,6 +38,45 @@ angular.module('atlasApp')
         }
       };
     });
+    */
+
+    minersService.get({
+      id: $state.params.miner,
+      controller: 'logs'
+    }).$promise.then(function(data) {
+      socket = new WebSocket(data.ws);
+
+      socket.onopen = function(event) {
+        console.log(event);
+      };
+
+      socket.onmessage = function(event) {
+        var regex1 = /([0-9.])+ hashes\/s/g;
+        var regex2 = /([0-9.])+ H\/s/g;
+        var regex3 = /([0-9.])+ kH\/s/g;
+
+        var found1 = event.data.match(regex1);
+        var found2 = event.data.match(regex2);
+        var found3 = event.data.match(regex3);
+
+        if (found1) {
+          $scope.power = found1[0];
+        } else if (found2) {
+          $scope.power = found2[0];
+        } else if (found3) {
+          $scope.power = found3[0];
+        }
+
+        $scope.logs.push({
+          message: ansi2html.toHtml(event.data)
+        });
+        $scope.$apply();
+      };
+    });
+
+    $scope.to_trusted = function(html_code) {
+      return $sce.trustAsHtml(html_code);
+    };
 
     $scope.$on("$destroy", function() {
       socket.close();
@@ -50,17 +93,6 @@ angular.module('atlasApp')
       } catch (e) {
 
       }
-
-      if ($scope.miner.mining_pool_url) {
-        switch ($scope.miner.mining_pool_url) {
-          case 'https://www.webdollarminingpool.com/pool/1/WMP/0.02/c01f57930c27e78e434de1243ae02b98e56d6cd3df42d136be1a1c0a0a9a8624/https:$$server.webdollarminingpool.com:443/r/WEBD$gAFytJYWxxEXSgfKGuBMLGNdA8dzk@hrY7$':
-            $scope.miner.friendly_name = 'WMP';
-            break;
-          default:
-            $scope.miner.friendly_name = $scope.miner.mining_pool_url;
-            break;
-        }
-      }
     });
 
     $scope.getIframeSrc = function(panelId, address) {
@@ -73,15 +105,5 @@ angular.module('atlasApp')
 
     $scope.getHref = function(address) {
       return 'https://www.webdscan.io/address/' + encodeURIComponent(address);
-    };
-
-    $scope.open_details = function() {
-      $mdBottomSheet.show({
-        templateUrl: 'views/miners.details.html',
-        controller: 'MinersDetailsCtrl',
-        locals: {
-          miner: $scope.miner
-        }
-      });
     };
   });

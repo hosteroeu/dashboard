@@ -16,7 +16,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngMaterial',
     'ui.router',
     'auth0.lock',
     'angular-jwt',
@@ -27,7 +26,7 @@ angular
     'datatables',
     'ngclipboard'
   ])
-  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 
     lockProvider.init({
@@ -99,14 +98,15 @@ angular
           requiresLogin: true
         }
       })
-      .state('miner_logs', {
-        url: '/miners/:miner/logs',
-        templateUrl: 'views/miners.logs.html',
-        controller: 'MinersLogsCtrl',
-        controllerAs: 'minersLogsCtrl',
-        data: {
-          requiresLogin: true
-        }
+      .state('miner.charts', {
+        url: '/charts',
+        parent: 'miner',
+        templateUrl: 'views/miner.charts.html'
+      })
+      .state('miner.logs', {
+        url: '/logs',
+        parent: 'miner',
+        templateUrl: 'views/miner.logs.html'
       })
       .state('install', {
         url: '/install',
@@ -134,6 +134,10 @@ angular
         data: {
           requiresLogin: true
         }
+      })
+      .state('host.charts', {
+        url: '/charts',
+        templateUrl: 'views/host.charts.html'
       })
       .state('account', {
         url: '/account',
@@ -183,13 +187,6 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'loginCtrl'
       });
-
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .accentPalette('indigo')
-      .backgroundPalette('grey');
-
-    //$mdThemingProvider.theme('default').dark();
   })
   .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
     lock.interceptHash();

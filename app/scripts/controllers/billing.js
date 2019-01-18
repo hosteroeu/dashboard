@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('BillingCtrl', function($scope, accountsService, paymentsService, $mdDialog) {
+  .controller('BillingCtrl', function($scope, accountsService, paymentsService) {
     var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.payments = paymentsService.query();
@@ -40,14 +40,4 @@ angular.module('atlasApp')
           $scope.plan = 'custom';
       }
     });
-
-    this.change_plan = function($event) {
-      $mdDialog.show({
-        controller: 'AccountPlansCtrl',
-        controllerAs: 'accountPlansCtrl',
-        templateUrl: 'views/account.plans.html',
-        targetEvent: $event,
-        clickOutsideToClose: true
-      });
-    };
   });

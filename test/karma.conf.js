@@ -24,9 +24,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
-      'bower_components/angular-aria/angular-aria.js',
       'bower_components/angular-messages/angular-messages.js',
-      'bower_components/angular-material/angular-material.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
@@ -58,6 +56,7 @@ module.exports = function(config) {
       'bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js',
       'bower_components/clipboard/dist/clipboard.js',
       'bower_components/ngclipboard/dist/ngclipboard.js',
+      'bower_components/toastr/toastr.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

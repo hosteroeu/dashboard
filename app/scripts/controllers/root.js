@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('RootCtrl', function($scope, $mdDialog, hostsService, minersService, coinsService, accountsService, logsService) {
+  .controller('RootCtrl', function($scope, hostsService, minersService, coinsService, accountsService, logsService) {
     $scope.total_power = 0;
 
     // Wait for auth to work it's magic
@@ -30,8 +30,4 @@ angular.module('atlasApp')
       $scope.profile = JSON.parse(localStorage.getItem('profile')) || {};
       $scope.global_account = JSON.parse(localStorage.getItem('account')) || {};
     }, 2000);
-
-    this.openMenu = function($mdMenu, ev) {
-      $mdMenu.open(ev);
-    };
   });

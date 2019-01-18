@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $mdDialog, $mdToast, $mdBottomSheet, $state, hostsService, minersService, accountsService) {
+  .controller('HostsCtrl', function($scope, $state, hostsService, minersService, accountsService) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
     $scope.hosts_stopped = [];
@@ -49,17 +49,8 @@ angular.module('atlasApp')
     }, 10 * 1000);
     */
 
-    this.open_new_modal = function($event) {
-      $mdDialog.show({
-        controller: 'HostsNewCtrl',
-        controllerAs: 'hostsNewCtrl',
-        templateUrl: 'views/hosts.new.html',
-        targetEvent: $event,
-        clickOutsideToClose: true
-      });
-    };
-
-    this.deploy_miner = function($event, host) {
+    this.deploy_miner = function(host) {
+      /*
       $mdDialog.show({
         controller: 'MinersNewCtrl',
         controllerAs: 'minersNewCtrl',
@@ -70,6 +61,7 @@ angular.module('atlasApp')
           host: host
         }
       });
+      */
     };
 
     // TODO: Refactor this code to support multiple coins
@@ -93,7 +85,7 @@ angular.module('atlasApp')
         try {
           wallet = JSON.parse(account.wallet).address;
         } catch (e) {
-          $mdToast.showSimple('Set the wallet in Settings');
+          window.toastr.error('Set the wallet in Settings');
           return;
         }
 
@@ -119,7 +111,8 @@ angular.module('atlasApp')
             deployed: '2'
           });
 
-          $mdToast.showSimple('Miner Created Successfully');
+          window.toastr.success('Miner Created Successfully');
+
           setTimeout($state.reload, 2000);
         });
       });
@@ -135,17 +128,8 @@ angular.module('atlasApp')
       }
     };
 
-    this.open_details = function(host) {
-      $mdBottomSheet.show({
-        templateUrl: 'views/hosts.details.html',
-        controller: 'HostsDetailsCtrl',
-        locals: {
-          host: host
-        }
-      });
-    };
-
     this.remove = function($event, host) {
+      /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to remove the host?')
         .textContent('The host will not be powered-off. You need to manually power-off the machine.')
@@ -153,19 +137,18 @@ angular.module('atlasApp')
         .targetEvent($event)
         .ok('Remove')
         .cancel('Cancel');
+*/
 
-      $mdDialog.show(confirm).then(function() {
-        hostsService.remove({
-            id: host.id
-          }).$promise
-          .then(function() {
-            if ($state.current.name === 'hosts') {
-              $state.reload();
-            } else {
-              $state.go('hosts');
-            }
-          })
-          .catch(console.error);
-      });
+      hostsService.remove({
+          id: host.id
+        }).$promise
+        .then(function() {
+          if ($state.current.name === 'hosts') {
+            $state.reload();
+          } else {
+            $state.go('hosts');
+          }
+        })
+        .catch(console.error);
     };
   });

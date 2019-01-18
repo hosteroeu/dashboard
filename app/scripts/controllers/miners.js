@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $mdDialog, $state, $mdToast, $mdBottomSheet, minersService, hostsService) {
+  .controller('MinersCtrl', function($scope, $state, minersService, hostsService) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
@@ -52,6 +52,7 @@ angular.module('atlasApp')
 
     this.open_new_modal = function($event) {
       if ($scope.hosts.length > 0) {
+        /*
         $mdDialog.show({
           controller: 'MinersNewCtrl',
           controllerAs: 'minersNewCtrl',
@@ -62,8 +63,9 @@ angular.module('atlasApp')
             host: null
           }
         });
+        */
       } else {
-        $mdToast.showSimple('Please add a host first');
+        window.toastr.error('Please add a Host first');
       }
     };
 
@@ -83,17 +85,8 @@ angular.module('atlasApp')
       window.open('//' + instance.name + '.' + account.name + '.wordpress.hoste.ro');
     };
 
-    this.open_details = function(miner) {
-      $mdBottomSheet.show({
-        templateUrl: 'views/miners.details.html',
-        controller: 'MinersDetailsCtrl',
-        locals: {
-          miner: miner
-        }
-      });
-    };
-
     this.redeploy_all = function($event) {
+      /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to re-deploy all the miners?')
         .textContent('Re-deploying the miners takes several minutes and will delete all your hosts and miners.')
@@ -101,28 +94,28 @@ angular.module('atlasApp')
         .targetEvent($event)
         .ok('Re-deploy')
         .cancel('Cancel');
+      */
 
-      $mdDialog.show(confirm).then(function() {
-        $scope.miners.forEach(function(miner) {
-          minersService.remove({
-            id: miner.id
-          });
+      $scope.miners.forEach(function(miner) {
+        minersService.remove({
+          id: miner.id
         });
-
-        $scope.hosts.forEach(function(host) {
-          hostsService.remove({
-            id: host.id
-          });
-        });
-
-        setTimeout(function() {
-          $mdToast.showSimple('Re-deploying started... It will take several minutes');
-          $state.reload();
-        }, 2000);
       });
+
+      $scope.hosts.forEach(function(host) {
+        hostsService.remove({
+          id: host.id
+        });
+      });
+
+      setTimeout(function() {
+        window.toastr.info('Re-deploying started... It will take several minutes');
+        $state.reload();
+      }, 2000);
     };
 
     this.redeploy = function($event, miner) {
+      /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to re-deploy the miner?')
         .textContent('Re-deploying the miner takes several minutes and will delete the host and the miner.')
@@ -130,29 +123,29 @@ angular.module('atlasApp')
         .targetEvent($event)
         .ok('Re-deploy')
         .cancel('Cancel');
+      */
 
-      $mdDialog.show(confirm).then(function() {
-        minersService.remove({
-          id: miner.id
-        });
-
-        hostsService.remove({
-          id: miner.host_id
-        });
-
-        $mdToast.showSimple('Re-deploying started... It will take several minutes');
-
-        setTimeout(function() {
-          if ($state.current.name === 'miners') {
-            $state.reload();
-          } else {
-            $state.go('miners');
-          }
-        }, 2000);
+      minersService.remove({
+        id: miner.id
       });
+
+      hostsService.remove({
+        id: miner.host_id
+      });
+
+      window.toastr.info('Re-deploying started... It will take several minutes');
+
+      setTimeout(function() {
+        if ($state.current.name === 'miners') {
+          $state.reload();
+        } else {
+          $state.go('miners');
+        }
+      }, 2000);
     };
 
     this.remove = function($event, miner) {
+      /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to remove the miner?')
         .textContent('The hosts will not be deleted. If you want to stop using the host, you need to delete it as well.')
@@ -160,25 +153,24 @@ angular.module('atlasApp')
         .targetEvent($event)
         .ok('Remove')
         .cancel('Cancel');
+      */
 
-      $mdDialog.show(confirm).then(function() {
-        minersService.remove({
-          id: miner.id
-        }).$promise.then(function() {
-          if ($state.current.name === 'miners') {
-            $state.reload();
-          } else {
-            $state.go('miners');
-          }
+      minersService.remove({
+        id: miner.id
+      }).$promise.then(function() {
+        if ($state.current.name === 'miners') {
+          $state.reload();
+        } else {
+          $state.go('miners');
+        }
 
-          hostsService.update({
-              id: miner.host_id
-            }, {
-              deployed: '0'
-            }).$promise
-            .then(console.log)
-            .catch(console.error);
-        });
+        hostsService.update({
+            id: miner.host_id
+          }, {
+            deployed: '0'
+          }).$promise
+          .then(console.log)
+          .catch(console.error);
       });
     };
   });

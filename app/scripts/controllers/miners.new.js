@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersNewCtrl', function($scope, $state, $mdToast, $mdDialog, minersService, hostsService, accountsService, host) {
+  .controller('MinersNewCtrl', function($scope, $state, minersService, hostsService, accountsService, host, toastr) {
     var account = JSON.parse(localStorage.getItem('account'));
     var default_wallet_webdollar = {
       version: '0.1',
@@ -77,12 +77,10 @@ angular.module('atlasApp')
       }
 
       if (selected_host.deployed !== '0') {
-        $mdToast.showSimple('Host is already deployed');
+        window.toastr.error('Host is already deployed');
 
         return;
       }
-
-      $mdDialog.hide();
 
       minersService.save({}, new_miner).$promise.then(function() {
         hostsService.update({
@@ -91,12 +89,13 @@ angular.module('atlasApp')
           deployed: '2'
         });
 
-        $mdToast.showSimple('Miner Created Successfully');
+        window.toastr.error('Miner was deployed');
+
         setTimeout($state.reload, 2000);
       });
     };
 
     this.close = function() {
-      $mdDialog.cancel();
+      //$mdDialog.cancel();
     };
   });

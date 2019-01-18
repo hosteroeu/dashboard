@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('SettingsCtrl', function($scope, $mdToast, $state, accountsService) {
+  .controller('SettingsCtrl', function($scope, $state, accountsService) {
     var account = JSON.parse(localStorage.getItem('account'));
     var _this = this;
 
@@ -28,7 +28,8 @@ angular.module('atlasApp')
         auto_deploy: this.auto_deploy,
         auto_deploy_coin: this.auto_deploy_coin
       }).$promise.then(function() {
-        $mdToast.showSimple('Settings Updated Successfully');
+        window.toastr.success('Settings were updated');
+
         $state.reload();
       });
     };
