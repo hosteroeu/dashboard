@@ -73,7 +73,8 @@
           <!-- /.top-bar-item -->
           <!-- .top-bar-item -->
           <div class="top-bar-item top-bar-item-full">
-            Account:&nbsp;<span class="badge badge-lg badge-info"><a ui-sref="account">{{global_account.name}}</a></span>
+            Account:&nbsp;<span class="badge badge-lg badge-info"><a ui-sref="account">{{global_account.name}}</a></span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <i class="fas fa-bolt"></i>&nbsp;&nbsp;Total Power: {{total_power}} h/s
           </div>
           <!-- /.top-bar-item -->
           <!-- .top-bar-item -->
@@ -81,7 +82,45 @@
             <!-- .nav -->
             <ul class="header-nav nav">
               <!-- .nav-item -->
-              <li class="nav-item dropdown header-nav-dropdown has-notified">
+              <li class="nav-item dropdown header-nav-dropdown">
+                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-envelope"></span>
+                  </a>
+                <div class="dropdown-arrow"></div>
+                <!-- .dropdown-menu -->
+                <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+                  <h6 class="dropdown-header stop-propagation">
+                      <span>Activities
+                        <!--<span class="badge">(2)</span>-->
+                      </span>
+                    </h6>
+                  <!-- .dropdown-scroll -->
+                  <div class="dropdown-scroll has-scrollable">
+                    <!-- .dropdown-item -->
+                    <a class="dropdown-item unread" ng-repeat="log in global_logs">
+                      <div class="tile">
+                        <span class="fa fa-info"></span>
+                      </div>
+                      <div class="dropdown-item-body">
+                        <p class="text">{{log.message}}</p>
+                        <span class="date">{{log.created_at | timeAgo}}</span>
+                      </div>
+                    </a>
+                    <!-- /.dropdown-item -->
+                  </div>
+                  <!-- /.dropdown-scroll -->
+                  <!--
+                    <a href="user-activities.html" class="dropdown-footer">All activities
+                      <i class="fa fa-fw fa-long-arrow-alt-right"></i>
+                    </a>
+                    -->
+                </div>
+                <!-- /.dropdown-menu -->
+              </li>
+              <!-- /.nav-item -->
+              <!-- .nav-item -->
+              <!--<li class="nav-item dropdown header-nav-dropdown has-notified">-->
+              <li class="nav-item dropdown header-nav-dropdown">
                 <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="fa fa-dollar-sign"></span>
                 </a>
@@ -92,11 +131,13 @@
                   <div class="dropdown-sheets">
                     <!-- .dropdown-sheet-item -->
                     <div class="dropdown-sheet-item" ng-repeat="coin in global_coins">
-                      <a ui-sref="coins" class="tile-wrapper">
-                        <span class="tile tile-lg bg-{{coin.color}}">
-                          {{coin.short_name}}
+                      <a ui-sref="wallets.{{coin.internal_name}}" class="tile-wrapper">
+                        <figure class="user-avatar user-avatar-sm">
+                          <img src="{{coin.logo_url}}" alt="User Avatar">
+                        </figure>
+                        <span class="tile-peek">
+                          {{coin.name}}
                         </span>
-                        <span class="tile-peek">{{coin.name}}</span>
                       </a>
                     </div>
                     <!-- /.dropdown-sheet-item -->
@@ -226,11 +267,22 @@
               <li class="menu-header">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
-              <li class="menu-item">
-                <a ui-sref="wallets" class="menu-link">
-                    <span class="menu-icon fas fa-wallet"></span>
-                    <span class="menu-text">Wallets</span>
-                  </a>
+              <li class="menu-item has-child">
+                <a href="#" class="menu-link">
+                  <span class="menu-icon fas fa-wallet"></span>
+                  <span class="menu-text">Wallets</span>
+                </a>
+                <ul class="menu">
+                  <li class="menu-item">
+                    <a ui-sref="wallets.webdollar" class="menu-link">WebDollar</a>
+                  </li>
+                  <li class="menu-item">
+                    <a ui-sref="wallets.nerva" class="menu-link">Nerva</a>
+                  </li>
+                  <li class="menu-item">
+                    <a ui-sref="wallets.webchain" class="menu-link">WebChain</a>
+                  </li>
+                </ul>
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->

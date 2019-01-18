@@ -8,13 +8,23 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('RootCtrl', function($scope, $mdDialog, hostsService, minersService, coinsService, accountsService) {
+  .controller('RootCtrl', function($scope, $mdDialog, hostsService, minersService, coinsService, accountsService, logsService) {
+    $scope.total_power = 0;
+
     // Wait for auth to work it's magic
     setTimeout(function() {
       $scope.global_hosts = hostsService.query();
-      $scope.global_miners = minersService.query();
       $scope.global_coins = coinsService.query({
         on_hostero: 1
+      });
+      $scope.global_logs = logsService.query();
+
+      minersService.query().$promise.then(function(res) {
+        $scope.global_miners = res;
+
+        res.forEach(function(miner) {
+          $scope.total_power += parseInt(miner.power) || 0;
+        });
       });
 
       $scope.profile = JSON.parse(localStorage.getItem('profile')) || {};
