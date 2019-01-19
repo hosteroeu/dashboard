@@ -1,11 +1,24 @@
 <!-- .page -->
 <div class="page">
+  <!-- .page-title-bar -->
+  <header class="page-title-bar">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a ui-sref="miners">
+            <i class="breadcrumb-icon fa fa-angle-left mr-2"></i> Back to Hosts
+          </a>
+        </li>
+      </ol>
+    </nav>
+  </header>
+  <!-- /.page-title-bar -->
   <!-- .page-navs -->
   <nav class="page-navs">
     <!-- .nav-scroller -->
     <div class="nav-scroller">
       <!-- .nav -->
-      <div class="nav nav-center nav-tabs">
+      <div class="nav nav-tabs">
         <a class="nav-link" ui-sref="host({host: host.id})" ng-class="{active: state.current.name == 'host'}">Details</a>
         <a class="nav-link" ui-sref="host.charts({host: host.id})" ng-class="{active: state.current.name == 'host.charts'}">Charts</a>
       </div>
@@ -16,19 +29,6 @@
   <!-- /.page-navs -->
   <!-- .page-inner -->
   <div class="page-inner">
-    <!-- .page-title-bar -->
-    <header class="page-title-bar">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a ui-sref="miners">
-              <i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Hosts
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </header>
-    <!-- /.page-title-bar -->
     <!-- .page-section -->
     <div class="page-section">
       <div class="card card-fluid">
