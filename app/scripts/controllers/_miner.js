@@ -54,10 +54,12 @@ angular.module('atlasApp')
         var regex1 = /([0-9.])+ hashes\/s/g;
         var regex2 = /([0-9.])+ H\/s/g;
         var regex3 = /([0-9.])+ kH\/s/g;
+        var regex4 = /([0-9.])+ MH\/s/g;
 
         var found1 = event.data.match(regex1);
         var found2 = event.data.match(regex2);
         var found3 = event.data.match(regex3);
+        var found4 = event.data.match(regex4);
 
         if (found1) {
           $scope.power = found1[0];
@@ -65,6 +67,8 @@ angular.module('atlasApp')
           $scope.power = found2[0];
         } else if (found3) {
           $scope.power = found3[0];
+        } else if (found4) {
+          $scope.power = found4[0];
         }
 
         $scope.logs.push({
