@@ -25,7 +25,7 @@
             </button>
             <div class="dropdown-arrow dropdown-arrow-right"></div>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all($event)">Re-deploy Miners</a>
+              <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all()">Re-deploy Miners</a>
             </div>
           </div>
         </div>
@@ -84,16 +84,16 @@
                   <span class="sr-only">Logs</span>
                 </a>
                 <!--
-                <a ng-click="minersCtrl.fast_deploy($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Fast deploy">
+                <a ng-click="minersCtrl.fast_deploy(miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Fast deploy">
                   <i class="fa fa-bolt"></i>
                   <span class="sr-only">Fast deploy</span>
                 </a>
                 -->
-                <a ng-click="minersCtrl.redeploy($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
+                <a ng-click="minersCtrl.redeploy(miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
                   <i class="fa fa-redo"></i>
                   <span class="sr-only">Re-deploy</span>
                 </a>
-                <a ng-click="minersCtrl.remove($event, miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
+                <a ng-click="minersCtrl.remove(miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
                   <i class="far fa-trash-alt"></i>
                   <span class="sr-only">Remove</span>
                 </a>

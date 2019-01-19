@@ -56,7 +56,7 @@ angular.module('atlasApp')
       window.open('//' + instance.name + '.' + account.name + '.wordpress.hoste.ro');
     };
 
-    this.redeploy_all = function($event) {
+    this.redeploy_all = function() {
       /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to re-deploy all the miners?')
@@ -85,7 +85,7 @@ angular.module('atlasApp')
       }, 2000);
     };
 
-    this.redeploy = function($event, miner) {
+    this.redeploy = function(miner) {
       /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to re-deploy the miner?')
@@ -115,7 +115,7 @@ angular.module('atlasApp')
       }, 2000);
     };
 
-    this.remove = function($event, miner) {
+    this.remove = function(miner) {
       /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to remove the miner?')

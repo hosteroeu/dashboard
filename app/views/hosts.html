@@ -61,7 +61,7 @@
               </td>
               <td class="align-middle text-right">
                 <!--
-                <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast($event, host)" ng-if="host.deployed == 0 && host.status == 'started'">
+                <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast(host)" ng-if="host.deployed == 0 && host.status == 'started'">
                   <md-tooltip>Fast Deploy Miner</md-tooltip>
                   <md-icon>cloud_upload</md-icon>
                 </md-button>
@@ -72,7 +72,7 @@
                   <span class="sr-only">Deploy</span>
                 </a>
 
-                <a ng-click="hostsCtrl.remove($event, host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
+                <a ng-click="hostsCtrl.remove(host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
                   <i class="fas fa-trash-alt"></i>
                   <span class="sr-only">Remove</span>
                 </a>

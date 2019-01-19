@@ -49,7 +49,7 @@ angular.module('atlasApp')
       }
     };
 
-    this.remove = function($event, host) {
+    this.remove = function(host) {
       /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to remove the host?')
