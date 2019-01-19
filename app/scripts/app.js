@@ -181,6 +181,11 @@ angular
         url: '/webchain',
         templateUrl: 'views/wallets/webchain.html',
       })
+      .state('wallets.veruscoin', {
+        parent: 'wallets',
+        url: '/veruscoin',
+        templateUrl: 'views/wallets/veruscoin.html',
+      })
       .state('billing', {
         url: '/billing',
         templateUrl: 'views/billing.html',

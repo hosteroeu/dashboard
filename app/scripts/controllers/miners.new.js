@@ -62,6 +62,9 @@ angular.module('atlasApp')
       _this.wallet_webchain = account.wallet_webchain;
       _this.password_webchain = account.password_webchain;
       _this.mining_pool_url_webchain = account.mining_pool_url_webchain;
+      _this.wallet_veruscoin = account.wallet_veruscoin;
+      _this.password_veruscoin = account.password_veruscoin;
+      _this.mining_pool_url_veruscoin = account.mining_pool_url_veruscoin;
       _this.selected_coin = account.auto_deploy_coin;
     });
 
@@ -99,6 +102,13 @@ angular.module('atlasApp')
           new_miner.password = _this.password_webchain;
           new_miner.mining_pool_url = _this.mining_pool_url_webchain;
           new_miner.image_uuid = 'docker:morion4000/webchain';
+          break;
+
+        case 'veruscoin':
+          new_miner.wallet = _this.wallet_veruscoin;
+          new_miner.password = _this.password_veruscoin;
+          new_miner.mining_pool_url = _this.mining_pool_url_veruscoin;
+          new_miner.image_uuid = 'docker:morion4000/veruscoin';
           break;
       }
 
