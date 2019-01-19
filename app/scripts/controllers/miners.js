@@ -40,35 +40,6 @@ angular.module('atlasApp')
       });
     });
 
-    /*
-    setInterval(function() {
-      minersService.query().$promise.then(function(res) {
-        if ($scope.miners.length !== res.length) {
-          $scope.miners = res;
-        }
-      });
-    }, 10 * 1000);
-    */
-
-    this.open_new_modal = function($event) {
-      if ($scope.hosts.length > 0) {
-        /*
-        $mdDialog.show({
-          controller: 'MinersNewCtrl',
-          controllerAs: 'minersNewCtrl',
-          templateUrl: 'views/miners.new.html',
-          targetEvent: $event,
-          clickOutsideToClose: false,
-          locals: {
-            host: null
-          }
-        });
-        */
-      } else {
-        window.toastr.error('Please add a Host first');
-      }
-    };
-
     this.get_status_icon = function(status) {
       switch (status) {
         case 'started':

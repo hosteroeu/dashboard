@@ -38,7 +38,7 @@
     <!-- .page-section -->
     <section class="card card-fluid">
       <div class="card-body" ng-if="miners != null && !miners.length">
-        You have not deployed any miners. <a href="" ng-click="minersCtrl.open_new_modal($event)">Deploy a miner</a>.
+        You have not deployed any miners. <a ui-sref="new_miner">Deploy a miner</a>.
       </div>
 
       <div class="table-responsive" ng-if="miners != null && miners.length">
