@@ -16,6 +16,7 @@ angular.module('atlasApp')
       publicKey: '01',
       privateKey: '02'
     };
+
     var _this = this;
 
     _this.state = $state;
@@ -37,20 +38,20 @@ angular.module('atlasApp')
       }
     });
 
-    this.update = function() {
-      if (this.wallet_webdollar) {
-        default_wallet_webdollar.address = decodeURIComponent(this.wallet_webdollar);
+    _this.update = function() {
+      if (_this.wallet_webdollar) {
+        default_wallet_webdollar.address = decodeURIComponent(_this.wallet_webdollar);
       }
 
       accountsService.update({
         id: account.id
       }, {
-        mining_pool_url_webdollar: this.mining_pool_url_webdollar,
+        mining_pool_url_webdollar: _this.mining_pool_url_webdollar,
         wallet_webdollar: JSON.stringify(default_wallet_webdollar),
-        wallet_nerva: this.wallet_nerva,
-        wallet_webchain: this.wallet_webchain,
-        password_webchain: this.password_webchain,
-        mining_pool_url_webchain: this.mining_pool_url_webchain
+        wallet_nerva: _this.wallet_nerva,
+        wallet_webchain: _this.wallet_webchain,
+        password_webchain: _this.password_webchain,
+        mining_pool_url_webchain: _this.mining_pool_url_webchain
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
 

@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $state, hostsService, minersService, accountsService) {
+  .controller('HostsCtrl', function($scope, $state, hostsService) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
     $scope.hosts_stopped = [];
@@ -38,85 +38,6 @@ angular.module('atlasApp')
         }
       });
     });
-
-    /*
-    setInterval(function() {
-      hostsService.query().$promise.then(function(res) {
-        if ($scope.hosts.length !== res.length) {
-          $scope.hosts = res;
-        }
-      });
-    }, 10 * 1000);
-    */
-
-    this.deploy_miner = function(host) {
-      /*
-      $mdDialog.show({
-        controller: 'MinersNewCtrl',
-        controllerAs: 'minersNewCtrl',
-        templateUrl: 'views/miners.new.html',
-        targetEvent: $event,
-        clickOutsideToClose: false,
-        locals: {
-          host: host
-        }
-      });
-      */
-    };
-
-    // TODO: Refactor this code to support multiple coins
-    this.deploy_miner_fast = function($event, host) {
-      var account = JSON.parse(localStorage.getItem('account'));
-      var default_wallet = {
-        version: '0.1',
-        address: null,
-        publicKey: '01',
-        privateKey: '02'
-      };
-
-      accountsService.get({
-        id: account.id
-      }).$promise.then(function(account) {
-        var mining_pool_url = account.mining_pool_url;
-        var selected_host = host;
-        var name = 'miner-' + selected_host.id;
-        var wallet;
-
-        try {
-          wallet = JSON.parse(account.wallet).address;
-        } catch (e) {
-          window.toastr.error('Set the wallet in Settings');
-          return;
-        }
-
-        default_wallet.address = decodeURIComponent(wallet);
-
-        minersService.save({}, {
-          name: name,
-          status: 'stopped',
-          deployed: '2',
-          server_port: '8000',
-          mining_pool_url: mining_pool_url,
-          domain: 'wd.hoste.ro',
-          wallet: JSON.stringify(default_wallet),
-          threads: selected_host.cpu_count || '0',
-          image_uuid: 'docker:morion4000/node:v2',
-          command: 'sh start_pool_mining.sh',
-          wallet_secret_url: '7e5d522a70ce4c455f6875d01c22727e',
-          host_id: selected_host.id,
-        }).$promise.then(function() {
-          hostsService.update({
-            id: selected_host.id
-          }, {
-            deployed: '2'
-          });
-
-          window.toastr.success('Miner Created Successfully');
-
-          setTimeout($state.reload, 2000);
-        });
-      });
-    };
 
     this.get_status_icon = function(status) {
       switch (status) {

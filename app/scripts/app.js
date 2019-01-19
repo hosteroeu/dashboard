@@ -89,6 +89,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('new_miner', {
+        url: '/new_miner/:host',
+        templateUrl: 'views/miners.new.html',
+        controller: 'MinersNewCtrl',
+        controllerAs: 'ctrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('miner', {
         url: '/miners/:miner',
         templateUrl: 'views/miner.html',
@@ -152,7 +161,7 @@ angular
         url: '/wallets',
         templateUrl: 'views/wallets.html',
         controller: 'WalletsCtrl',
-        controllerAs: 'walletsCtrl',
+        controllerAs: 'ctrl',
         data: {
           requiresLogin: true
         }

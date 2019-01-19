@@ -12,8 +12,8 @@
             <h6 class="card-header"> Coins </h6>
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
-              <!--<a ui-sref="wallets" class="nav-link" ng-class="{active: walletsCtrl.state.current.name == 'wallets'}">General</a>-->
-              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins" ng-class="{active: walletsCtrl.state.current.name == 'wallets.' + coin.internal_name}">
+              <!--<a ui-sref="wallets" class="nav-link" ng-class="{active: ctrl.state.current.name == 'wallets'}">General</a>-->
+              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins" ng-class="{active: ctrl.state.current.name == 'wallets.' + coin.internal_name}">
                 <figure class="user-avatar user-avatar-xs">
                   <img src="{{coin.logo_url}}" alt="User Avatar">
                 </figure>
@@ -27,7 +27,7 @@
         <!-- /grid column -->
         <!-- grid column -->
         <div class="col-lg-8">
-          <div ng-if="walletsCtrl.state.current.name === 'wallets'">
+          <div ng-if="ctrl.state.current.name === 'wallets'">
             <!-- .card -->
             <section id="labels" class="card">
               <!-- .card-body -->
@@ -38,7 +38,7 @@
             </section>
             <!-- /.card -->
           </div>
-          <div ng-if="walletsCtrl.state.current.name !== 'wallets'">
+          <div ng-if="ctrl.state.current.name !== 'wallets'">
             <!-- .card -->
             <section id="labels" class="card">
               <!-- .card-body -->
@@ -49,7 +49,7 @@
             </section>
             <!-- /.card -->
             <hr class="my-5">
-            <button class="btn btn-primary btn-lg btn-block" ng-click="walletsCtrl.update()">Update</button>
+            <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.update()">Update</button>
           </div>
         </div>
       </div>
