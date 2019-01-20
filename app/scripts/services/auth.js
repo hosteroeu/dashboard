@@ -45,18 +45,17 @@ angular.module('atlasApp')
           }).$promise.then(function(account) {
             localStorage.setItem('account', JSON.stringify(account));
 
+            lock.hide();
+            $state.go('dashboard');
+
             accountsService.update({
               id: account.id
             }, {
               email: profile.email,
               full_name: profile.name
             }).$promise.then(function() {
-              lock.hide();
-
-              // Allow to things to get set properly
-              setTimeout(function() {
-                $state.go('dashboard');
-              }, 4000);
+              // Refresh page to reload root controller's data
+              location.reload();
             });
           });
         });
