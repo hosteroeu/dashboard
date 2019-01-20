@@ -60,13 +60,6 @@
                 {{ host.updated_at | timeAgo }}
               </td>
               <td class="align-middle text-right">
-                <!--
-                <md-button class="md-icon-button" ng-click="hostsCtrl.deploy_miner_fast(host)" ng-if="host.deployed == 0 && host.status == 'started'">
-                  <md-tooltip>Fast Deploy Miner</md-tooltip>
-                  <md-icon>cloud_upload</md-icon>
-                </md-button>
-                -->
-
                 <a ui-sref="new_miner({host:host.id})" ng-if="host.deployed == 0 && host.status == 'started' && global_miners.length < (global_account.plan_miners + global_account.bonus_miners)" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Deploy">
                   <i class="fas fa-plus"></i>
                   <span class="sr-only">Deploy</span>
