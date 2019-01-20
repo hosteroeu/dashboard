@@ -47,7 +47,7 @@
             <tr>
               <th>Miner</th>
               <th>Coin</th>
-              <th>Power</th>
+              <th>Hashrate</th>
               <th>Updated</th>
               <th class="d-none d-sm-none d-md-none d-lg-block">Host</th>
               <th>&nbsp;</th>
@@ -66,7 +66,7 @@
                 <a ui-sref="wallets.{{miner.coin}}">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
-                {{ miner.power || 0 }} <small>h/s</small>
+                {{ miner.power | hashrate }}
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}
