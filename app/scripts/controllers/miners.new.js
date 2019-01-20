@@ -69,6 +69,12 @@ angular.module('atlasApp')
     });
 
     _this.deploy = function() {
+      if (!_this.selected_host) {
+        window.toastr.warning('Please select a Host');
+
+        return;
+      }
+
       var name = 'miner-' + _this.selected_host.id;
       var new_miner = {
         name: name,
