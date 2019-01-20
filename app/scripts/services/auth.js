@@ -32,7 +32,7 @@ angular.module('atlasApp')
         localStorage.setItem('token', authResult.idToken);
         authManager.authenticate();
 
-        lock.getProfile(authResult.idToken, function(error, profile) {
+        lock.getProfile(authResult.accessToken, function(error, profile) {
           if (error) {
             console.log(error);
           }
@@ -56,6 +56,8 @@ angular.module('atlasApp')
             setTimeout(function() {
               location.reload();
             }, 5 * 1000);
+
+            $state.go('dashboard');
           });
         });
       });
