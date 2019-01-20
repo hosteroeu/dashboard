@@ -26,7 +26,8 @@ angular.module('atlasApp')
           break;
 
         default:
-          console.log(parseInt(input), input.toString().length);
+          //console.log(parseInt(input), input.toString().length);
+
           output = parseInt(input) + ' H/s';
           break;
       }

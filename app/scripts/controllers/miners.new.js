@@ -56,7 +56,7 @@ angular.module('atlasApp')
     }).$promise.then(function(account) {
       _this.mining_pool_url_webdollar = account.mining_pool_url_webdollar;
       var wallet = JSON.parse(account.wallet_webdollar);
-      _this.wallet_webdollar = wallet.address;
+      _this.wallet_webdollar = wallet ? wallet.address : null;
 
       _this.wallet_nerva = account.wallet_nerva;
       _this.wallet_webchain = account.wallet_webchain;
@@ -71,7 +71,6 @@ angular.module('atlasApp')
     _this.deploy = function() {
       if (!_this.selected_host) {
         window.toastr.warning('Please select a Host');
-
         return;
       }
 
@@ -89,6 +88,11 @@ angular.module('atlasApp')
 
       switch (_this.selected_coin) {
         case 'webdollar':
+          if (!_this.mining_pool_url_webdollar || !_this.wallet_webdollar) {
+            window.toastr.warning('Please enter WebDollar information');
+            return;
+          }
+
           new_miner.server_port = '8000';
           new_miner.mining_pool_url = _this.mining_pool_url_webdollar;
           new_miner.domain = 'wd.hoste.ro';
@@ -99,11 +103,21 @@ angular.module('atlasApp')
           break;
 
         case 'nerva':
+          if (!_this.wallet_nerva) {
+            window.toastr.warning('Please enter Nerva information');
+            return;
+          }
+
           new_miner.wallet = _this.wallet_nerva;
           new_miner.image_uuid = 'docker:morion4000/nerva';
           break;
 
         case 'webchain':
+          if (!_this.wallet_webchain || !_this.password_webchain || !_this.mining_pool_url_webchain) {
+            window.toastr.warning('Please enter WebChain information');
+            return;
+          }
+
           new_miner.wallet = _this.wallet_webchain;
           new_miner.password = _this.password_webchain;
           new_miner.mining_pool_url = _this.mining_pool_url_webchain;
@@ -111,6 +125,11 @@ angular.module('atlasApp')
           break;
 
         case 'veruscoin':
+          if (!_this.wallet_veruscoin || !_this.password_veruscoin || !_this.mining_pool_url_veruscoin) {
+            window.toastr.warning('Please enter VerusCoin information');
+            return;
+          }
+
           new_miner.wallet = _this.wallet_veruscoin;
           new_miner.password = _this.password_veruscoin;
           new_miner.mining_pool_url = _this.mining_pool_url_veruscoin;
@@ -120,7 +139,6 @@ angular.module('atlasApp')
 
       if (_this.selected_host.deployed !== '0') {
         window.toastr.error('Host is already deployed');
-
         return;
       }
 
