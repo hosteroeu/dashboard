@@ -50,10 +50,14 @@ angular.module('atlasApp')
             }, {
               email: profile.email,
               full_name: profile.name
-            });
+            }).$promise.then(function() {
+              lock.hide();
 
-            lock.hide();
-            $state.go('dashboard');
+              // Allow to things to get set properly
+              setTimeout(function() {
+                $state.go('dashboard');
+              }, 4000);
+            });
           });
         });
       });

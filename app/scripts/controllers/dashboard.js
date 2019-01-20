@@ -9,27 +9,11 @@
  */
 angular.module('atlasApp')
   .controller('DashboardCtrl', function($scope, accountsService, hostsService, minersService, logsService) {
-    var account = {
-      name: ''
-    };
-
-    setTimeout(function() {
-      account = JSON.parse(localStorage.getItem('account'));
-    }, 2000);
+    var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.logs = [];
-    $scope.hosts = hostsService.query();
     $scope.accounts = accountsService.query();
-    $scope.total_power = 0;
     $scope.show_wmp_chart = false;
-
-    minersService.query().$promise.then(function(res) {
-      $scope.miners = res;
-
-      res.forEach(function(miner) {
-        $scope.total_power += parseInt(miner.power) || 0;
-      });
-    });
 
     logsService.query().$promise.then(function(res) {
       res.forEach(function(log) {

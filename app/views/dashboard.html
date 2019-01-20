@@ -105,7 +105,7 @@
                   <sub>
                   <i class="fas fa-th-list"></i>
                 </sub>
-                  <span class="value">{{ miners.length }}</span>
+                  <span class="value">{{ global_miners.length || 0 }}</span>
                 </p>
                 <h2 class="metric-label"> <a ui-sref="miners">Miners</a> </h2>
               </div>
@@ -122,7 +122,7 @@
                   <sub>
                   <i class="fas fa-list-alt"></i>
                 </sub>
-                  <span class="value">{{ hosts.length }}</span>
+                  <span class="value">{{ global_hosts.length || 0 }}</span>
                 </p>
                 <h2 class="metric-label"> <a ui-sref="hosts">Hosts</a> </h2>
               </div>
