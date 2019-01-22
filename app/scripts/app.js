@@ -123,7 +123,7 @@ angular
         controller: 'InstallCtrl',
         controllerAs: 'installCtrl',
         data: {
-          requiresLogin: true
+          requiresLogin: false
         }
       })
       .state('hosts', {
@@ -202,7 +202,7 @@ angular
         controllerAs: 'loginCtrl'
       });
   })
-  .run(function($rootScope, $location, authService, authManager, lock, jwtHelper) {
+  .run(function($rootScope, $state, $location, authService, authManager, lock, jwtHelper) {
     lock.interceptHash();
 
     $rootScope.authService = authService;
@@ -217,10 +217,11 @@ angular
     // When a location change is detected
     $rootScope.$on('$locationChangeStart', function() {
       var token = localStorage.getItem('token');
+      var location = $location.path();
 
-      if (gtag) {
-        gtag('config', 'UA-128907941-2', {
-          'page_path': $location.path()
+      if (window.gtag) {
+        window.gtag('config', 'UA-128907941-2', {
+          'page_path': location
         });
       }
 
@@ -233,7 +234,9 @@ angular
           $location.path('/login');
         }
       } else {
-        $location.path('/login');
+        if (location !== '/install') {
+          $location.path('/login');
+        }
       }
     });
 

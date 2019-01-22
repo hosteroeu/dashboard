@@ -56,7 +56,7 @@
               <div class="alert-icon">
                 <span class="fa fa-code"></span>
               </div>
-              <span>curl https://www.hostero.eu/install?a={{account.name}} | sh</span>
+              <span>curl https://www.hostero.eu/install?a={{account.name || 'ACCOUNT_ID'}} | sh</span>
             </div>
 
             <!--
@@ -106,7 +106,7 @@
               <div class="alert-icon">
                 <span class="fa fa-code"></span>
               </div>
-              <span>docker run -e CATTLE_HOST_LABELS="account={{account.name}}" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</span>
+              <span>docker run -e CATTLE_HOST_LABELS="account={{account.name || 'ACCOUNT_ID'}}" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</span>
             </div>
 
             <!--
@@ -142,7 +142,7 @@
               <div class="alert-icon">
                 <span class="fa fa-code"></span>
               </div>
-              <span>#!/bin/bash<br />curl https://www.hostero.eu/install?a={{account.name}} | sh</span>
+              <span>#!/bin/bash<br />curl https://www.hostero.eu/install?a={{account.name || 'ACCOUNT_ID'}} | sh</span>
             </div>
           </div>
         </div>
@@ -151,7 +151,8 @@
     </div>
     <!-- /#accordion -->
 
-    <p><strong>Note</strong>: The commands are specific to your account, do not share them with others</p>
+    <p ng-if="isAuthenticated"><strong>Note</strong>: The commands are specific to your account, do not share them with others</p>
+    <p ng-if="!isAuthenticated"><strong>Important</strong>: Replace <i>ACCOUNT_ID</i> with yours. You need to <a ui-sref="login">Login</a>.</p>
   </div>
   <!-- /.page-inner -->
 

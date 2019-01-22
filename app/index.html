@@ -58,7 +58,7 @@
         </div>
         <!-- /.top-bar-brand -->
         <!-- .top-bar-list -->
-        <div class="top-bar-list">
+        <div class="top-bar-list" ng-show="isAuthenticated" ng-cloak>
           <!-- .top-bar-item -->
           <div class="top-bar-item px-2 d-md-none d-lg-none d-xl-none">
             <!-- toggle menu -->
@@ -149,7 +149,7 @@
             </ul>
             <!-- /.nav -->
             <!-- .btn-account -->
-            <div class="dropdown" ng-if="isAuthenticated" ng-cloak>
+            <div class="dropdown">
               <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="user-avatar">
                     <img ng-src="{{profile.picture}}" alt="">
@@ -224,7 +224,7 @@
             <!-- .menu -->
             <ul class="menu">
               <!-- .menu-item -->
-              <li class="menu-item">
+              <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="dashboard" class="menu-link">
                     <span class="menu-icon fas fa-tachometer-alt"></span>
                     <span class="menu-text">Dashboard</span>
@@ -241,11 +241,20 @@
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
-              <!-- .menu-header -->
-              <li class="menu-header">Admin </li>
-              <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item">
+                <a ui-sref="login" class="menu-link" ng-if="!isAuthenticated">
+                    <span class="menu-icon fas fa-sign-in-alt"></span>
+                    <span class="menu-text">Login</span>
+                  </a>
+                <!-- /child menu -->
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-header -->
+              <li class="menu-header" ng-if="isAuthenticated">Admin </li>
+              <!-- /.menu-header -->
+              <!-- .menu-item -->
+              <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="settings" class="menu-link">
                     <span class="menu-icon fas fa-cog"></span>
                     <span class="menu-text">Settings</span>
@@ -254,7 +263,7 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item">
+              <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="billing" class="menu-link">
                     <span class="menu-icon fas fa-search-dollar"></span>
                     <span class="menu-text">Billing</span>
@@ -263,10 +272,10 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-header -->
-              <li class="menu-header">Management </li>
+              <li class="menu-header" ng-if="isAuthenticated">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
-              <li class="menu-item has-child">
+              <li class="menu-item has-child" ng-if="isAuthenticated">
                 <a href="#" class="menu-link">
                   <span class="menu-icon fas fa-wallet"></span>
                   <span class="menu-text">Wallets</span>
@@ -288,7 +297,7 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item">
+              <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="hosts" class="menu-link">
                     <span class="menu-icon fas fa-list-alt"></span>
                     <span class="menu-text">Hosts</span>
@@ -297,7 +306,7 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
-              <li class="menu-item">
+              <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="miners" class="menu-link">
                     <span class="menu-icon fas fa-th-list"></span>
                     <span class="menu-text">Miners</span>
