@@ -151,22 +151,22 @@
             <!-- .btn-account -->
             <div class="dropdown">
               <button class="btn-account d-none d-md-flex" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="user-avatar">
-                    <img ng-src="{{profile.picture}}" alt="">
-                  </span>
-                  <span class="account-summary pr-lg-4 d-none d-lg-block">
-                    <span class="account-name">{{profile.name}}</span>
-                    <span class="account-description">{{profile.email}}</span>
-                  </span>
-                </button>
+                <span class="user-avatar">
+                  <img ng-src="{{profile.picture}}" alt="">
+                </span>
+                <span class="account-summary pr-lg-4 d-none d-lg-block">
+                  <span class="account-name">{{profile.name}}</span>
+                  <span class="account-description">{{profile.email}}</span>
+                </span>
+              </button>
               <div class="dropdown-arrow dropdown-arrow-left"></div>
               <!-- .dropdown-menu -->
               <div class="dropdown-menu">
                 <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{profile.name}} </h6>
                 <a class="dropdown-item" ui-sref="account">
-                    <span class="dropdown-icon oi oi-person"></span> Account</a>
+                  <span class="dropdown-icon oi oi-person"></span> Account</a>
                 <a class="dropdown-item" href="" ng-click="authService.logout()">
-                    <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+                  <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="https://www.hostero.eu/getting-started">Help Center</a>
               </div>
@@ -189,26 +189,26 @@
         <header class="aside-header d-block d-md-none">
           <!-- .btn-account -->
           <button class="btn-account" type="button" data-toggle="collapse" data-target="#dropdown-aside">
-              <span class="user-avatar user-avatar-lg">
-                <img ng-src="{{profile.picture}}" alt="">
-              </span>
-              <span class="account-icon">
-                <span class="fa fa-caret-down fa-lg"></span>
-              </span>
-              <span class="account-summary">
-                <span class="account-name">{{profile.name}}</span>
-                <span class="account-description">{{profile.email}}</span>
-              </span>
-            </button>
+            <span class="user-avatar user-avatar-lg">
+              <img ng-src="{{profile.picture}}" alt="">
+            </span>
+            <span class="account-icon">
+              <span class="fa fa-caret-down fa-lg"></span>
+            </span>
+            <span class="account-summary">
+              <span class="account-name">{{profile.name}}</span>
+              <span class="account-description">{{profile.email}}</span>
+            </span>
+          </button>
           <!-- /.btn-account -->
           <!-- .dropdown-aside -->
           <div id="dropdown-aside" class="dropdown-aside collapse">
             <!-- dropdown-items -->
             <div class="pb-3">
               <a class="dropdown-item" ui-sref="account">
-                  <span class="dropdown-icon oi oi-person"></span> Account</a>
+                <span class="dropdown-icon oi oi-person"></span> Account</a>
               <a class="dropdown-item" href="" ng-click="authService.logout()">
-                  <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+                <span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="https://www.hostero.eu/getting-started">Help Center</a>
             </div>
@@ -226,27 +226,27 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="dashboard" class="menu-link">
-                    <span class="menu-icon fas fa-tachometer-alt"></span>
-                    <span class="menu-text">Dashboard</span>
-                  </a>
+                  <span class="menu-icon fas fa-tachometer-alt"></span>
+                  <span class="menu-text">Dashboard</span>
+                </a>
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="install" class="menu-link">
-                    <span class="menu-icon fas fa-download"></span>
-                    <span class="menu-text">Install</span>
-                    <span class="badge">1 minute</span>
-                  </a>
+                  <span class="menu-icon fas fa-download"></span>
+                  <span class="menu-text">Install</span>
+                  <span class="badge">1 minute</span>
+                </a>
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
               <li class="menu-item">
                 <a ui-sref="login" class="menu-link" ng-if="!isAuthenticated">
-                    <span class="menu-icon fas fa-sign-in-alt"></span>
-                    <span class="menu-text">Login</span>
-                  </a>
+                  <span class="menu-icon fas fa-sign-in-alt"></span>
+                  <span class="menu-text">Login</span>
+                </a>
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
@@ -256,18 +256,18 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="settings" class="menu-link">
-                    <span class="menu-icon fas fa-cog"></span>
-                    <span class="menu-text">Settings</span>
-                  </a>
+                  <span class="menu-icon fas fa-cog"></span>
+                  <span class="menu-text">Settings</span>
+                </a>
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="billing" class="menu-link">
-                    <span class="menu-icon fas fa-search-dollar"></span>
-                    <span class="menu-text">Billing</span>
-                  </a>
+                  <span class="menu-icon fas fa-search-dollar"></span>
+                  <span class="menu-text">Billing</span>
+                </a>
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
@@ -275,8 +275,9 @@
               <li class="menu-header" ng-if="isAuthenticated">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
-              <li class="menu-item has-child" ng-if="isAuthenticated">
-                <a href="#" class="menu-link">
+              <li class="menu-item has-child" ng-show="isAuthenticated">
+                <!--<a href="#" class="menu-link">-->
+                <a ui-sref="wallets" class="menu-link">
                   <span class="menu-icon fas fa-wallet"></span>
                   <span class="menu-text">Wallets</span>
                 </a>
@@ -299,19 +300,19 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="hosts" class="menu-link">
-                    <span class="menu-icon fas fa-list-alt"></span>
-                    <span class="menu-text">Hosts</span>
-                    <span class="badge badge-success" ng-cloak>{{global_hosts.length}}</span>
-                  </a>
+                  <span class="menu-icon fas fa-list-alt"></span>
+                  <span class="menu-text">Hosts</span>
+                  <span class="badge badge-success" ng-cloak>{{global_hosts.length}}</span>
+                </a>
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="miners" class="menu-link">
-                    <span class="menu-icon fas fa-th-list"></span>
-                    <span class="menu-text">Miners</span>
-                    <span class="badge badge-success" ng-cloak>{{global_miners.length}}</span>
-                  </a>
+                  <span class="menu-icon fas fa-th-list"></span>
+                  <span class="menu-text">Miners</span>
+                  <span class="badge badge-success" ng-cloak>{{global_miners.length}}</span>
+                </a>
               </li>
               <!-- /.menu-item -->
             </ul>
