@@ -9,7 +9,9 @@
  */
 angular.module('atlasApp')
   .controller('MinerCtrl', function($scope, $state, minersService, $sce, ansi2html) {
-    $scope.miner = null;
+    $scope.miner = minersService.get({
+      id: $state.params.miner
+    });
     $scope.state = $state;
     $scope.logs = [];
     $scope.power = '0 h/s';
@@ -84,19 +86,6 @@ angular.module('atlasApp')
 
     $scope.$on("$destroy", function() {
       socket.close();
-    });
-
-    minersService.get({
-      id: $state.params.miner
-    }).$promise.then(function(res) {
-      $scope.miner = res;
-
-      try {
-        var wallet = JSON.parse($scope.miner.wallet);
-        $scope.miner.wallet = wallet.address;
-      } catch (e) {
-
-      }
     });
 
     $scope.getIframeSrc = function(panelId, address) {

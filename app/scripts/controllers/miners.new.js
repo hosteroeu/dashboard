@@ -10,12 +10,6 @@
 angular.module('atlasApp')
   .controller('MinersNewCtrl', function($state, minersService, hostsService, accountsService) {
     var account = JSON.parse(localStorage.getItem('account'));
-    var default_wallet_webdollar = {
-      version: '0.1',
-      address: null,
-      publicKey: '01',
-      privateKey: '02'
-    };
     var _this = this;
     var getHostById = function(hosts, id) {
       var host = null;
@@ -55,8 +49,7 @@ angular.module('atlasApp')
       id: account.id
     }).$promise.then(function(account) {
       _this.mining_pool_url_webdollar = account.mining_pool_url_webdollar;
-      var wallet = JSON.parse(account.wallet_webdollar);
-      _this.wallet_webdollar = wallet ? wallet.address : null;
+      _this.wallet_webdollar = account.wallet_webdollar;
 
       _this.wallet_nerva = account.wallet_nerva;
       _this.wallet_webchain = account.wallet_webchain;
@@ -84,8 +77,6 @@ angular.module('atlasApp')
         host_id: _this.selected_host.id
       };
 
-      default_wallet_webdollar.address = decodeURIComponent(_this.wallet_webdollar);
-
       switch (_this.selected_coin) {
         case 'webdollar':
           if (!_this.mining_pool_url_webdollar || !_this.wallet_webdollar) {
@@ -94,7 +85,7 @@ angular.module('atlasApp')
           }
 
           new_miner.mining_pool_url = _this.mining_pool_url_webdollar;
-          new_miner.wallet = JSON.stringify(default_wallet_webdollar);
+          new_miner.wallet = _this.wallet_webdollar;
           break;
 
         case 'nerva':
