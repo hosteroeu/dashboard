@@ -186,6 +186,11 @@ angular
         url: '/veruscoin',
         templateUrl: 'views/wallets/veruscoin.html',
       })
+      .state('wallets.credits', {
+        parent: 'wallets',
+        url: '/credits',
+        templateUrl: 'views/wallets/credits.html',
+      })
       .state('billing', {
         url: '/billing',
         templateUrl: 'views/billing.html',

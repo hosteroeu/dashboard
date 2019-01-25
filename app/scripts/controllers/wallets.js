@@ -31,6 +31,10 @@ angular.module('atlasApp')
       _this.wallet_veruscoin = _account.wallet_veruscoin;
       _this.password_veruscoin = _account.password_veruscoin;
       _this.mining_pool_url_veruscoin = _account.mining_pool_url_veruscoin;
+
+      _this.wallet_credits = _account.wallet_credits;
+      _this.password_credits = _account.password_credits;
+      _this.mining_pool_url_credits = _account.mining_pool_url_credits;
     });
 
     _this.update = function() {
@@ -45,7 +49,10 @@ angular.module('atlasApp')
         mining_pool_url_webchain: _this.mining_pool_url_webchain,
         wallet_veruscoin: _this.wallet_veruscoin,
         password_veruscoin: _this.password_veruscoin,
-        mining_pool_url_veruscoin: _this.mining_pool_url_veruscoin
+        mining_pool_url_veruscoin: _this.mining_pool_url_veruscoin,
+        wallet_credits: _this.wallet_credits,
+        password_credits: _this.password_credits,
+        mining_pool_url_credits: _this.mining_pool_url_credits
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
 

@@ -58,6 +58,9 @@ angular.module('atlasApp')
       _this.wallet_veruscoin = account.wallet_veruscoin;
       _this.password_veruscoin = account.password_veruscoin;
       _this.mining_pool_url_veruscoin = account.mining_pool_url_veruscoin;
+      _this.wallet_credits = account.wallet_credits;
+      _this.password_credits = account.password_credits;
+      _this.mining_pool_url_credits = account.mining_pool_url_credits;
       _this.selected_coin = account.auto_deploy_coin;
     });
 
@@ -117,6 +120,17 @@ angular.module('atlasApp')
           new_miner.wallet = _this.wallet_veruscoin;
           new_miner.password = _this.password_veruscoin;
           new_miner.mining_pool_url = _this.mining_pool_url_veruscoin;
+          break;
+
+        case 'credits':
+          if (!_this.wallet_credits || !_this.password_credits || !_this.mining_pool_url_credits) {
+            window.toastr.warning('Please enter Credits information');
+            return;
+          }
+
+          new_miner.wallet = _this.wallet_credits;
+          new_miner.password = _this.password_credits;
+          new_miner.mining_pool_url = _this.mining_pool_url_credits;
           break;
       }
 
