@@ -47,9 +47,6 @@
             <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
             <p ng-if="miner.coin != 'webdollar'">Wallet: <strong>{{ miner.wallet }}</strong></p>
             <p>Threads: <strong>{{ miner.threads }}</strong></p>
-            <p ng-if="miner.server_port">Server Port: <strong>{{ miner.server_port }}</strong></p>
-            <p ng-if="miner.domain">Domain: <strong>{{ miner.domain }}</strong></p>
-            <p ng-if="miner.wallet_secret_url">Wallet Secret URL: <strong>{{ miner.wallet_secret_url }}</strong></p>
           </div>
         </div>
       </div>
