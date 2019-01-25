@@ -2,6 +2,7 @@ medusa:
 
 models/account.js
 services/rancher.js
+utils/miner.js
 workers/mysql/miners_auto_deploy.js
 
 atlas:

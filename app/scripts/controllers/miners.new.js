@@ -93,13 +93,8 @@ angular.module('atlasApp')
             return;
           }
 
-          new_miner.server_port = '8000';
           new_miner.mining_pool_url = _this.mining_pool_url_webdollar;
-          new_miner.domain = 'wd.hoste.ro';
           new_miner.wallet = JSON.stringify(default_wallet_webdollar);
-          new_miner.image_uuid = 'docker:morion4000/node:v2';
-          new_miner.command = 'sh start_pool_mining.sh';
-          new_miner.wallet_secret_url = '7e5d522a70ce4c455f6875d01c22727e';
           break;
 
         case 'nerva':
@@ -109,7 +104,6 @@ angular.module('atlasApp')
           }
 
           new_miner.wallet = _this.wallet_nerva;
-          new_miner.image_uuid = 'docker:morion4000/nerva';
           break;
 
         case 'webchain':
@@ -121,7 +115,6 @@ angular.module('atlasApp')
           new_miner.wallet = _this.wallet_webchain;
           new_miner.password = _this.password_webchain;
           new_miner.mining_pool_url = _this.mining_pool_url_webchain;
-          new_miner.image_uuid = 'docker:morion4000/webchain';
           break;
 
         case 'veruscoin':
@@ -133,7 +126,6 @@ angular.module('atlasApp')
           new_miner.wallet = _this.wallet_veruscoin;
           new_miner.password = _this.password_veruscoin;
           new_miner.mining_pool_url = _this.mining_pool_url_veruscoin;
-          new_miner.image_uuid = 'docker:morion4000/veruscoin';
           break;
       }
 
