@@ -89,6 +89,7 @@ angular.module('atlasApp')
 
           new_miner.mining_pool_url = _this.mining_pool_url_webdollar;
           new_miner.wallet = _this.wallet_webdollar;
+          new_miner.password = _this.password_webdollar;
           break;
 
         case 'nerva':
