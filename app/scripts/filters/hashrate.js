@@ -32,6 +32,10 @@ angular.module('atlasApp')
           break;
       }
 
+      if (input === '0') {
+        output = 'pending...';
+      }
+
       return output;
     };
   });
