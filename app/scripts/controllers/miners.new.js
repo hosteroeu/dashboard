@@ -61,6 +61,8 @@ angular.module('atlasApp')
       _this.wallet_credits = account.wallet_credits;
       _this.password_credits = account.password_credits;
       _this.mining_pool_url_credits = account.mining_pool_url_credits;
+      _this.wallet_myriad = account.wallet_myriad;
+      _this.mining_pool_url_myriad = account.mining_pool_url_myriad;
       _this.selected_coin = account.auto_deploy_coin;
     });
 
@@ -132,6 +134,16 @@ angular.module('atlasApp')
           new_miner.wallet = _this.wallet_credits;
           new_miner.password = _this.password_credits;
           new_miner.mining_pool_url = _this.mining_pool_url_credits;
+          break;
+
+        case 'myriad':
+          if (!_this.wallet_myriad || !_this.mining_pool_url_myriad) {
+            window.toastr.warning('Please enter Myriad information');
+            return;
+          }
+
+          new_miner.wallet = _this.wallet_myriad;
+          new_miner.mining_pool_url = _this.mining_pool_url_myriad;
           break;
       }
 

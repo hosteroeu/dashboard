@@ -191,6 +191,11 @@ angular
         url: '/credits',
         templateUrl: 'views/wallets/credits.html',
       })
+      .state('wallets.myriad', {
+        parent: 'wallets',
+        url: '/myriad',
+        templateUrl: 'views/wallets/myriad.html',
+      })
       .state('billing', {
         url: '/billing',
         templateUrl: 'views/billing.html',
