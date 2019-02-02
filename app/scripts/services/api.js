@@ -10,7 +10,7 @@
 angular.module('atlasApp')
   .provider('api', function() {
     //this.url = '//localhost:8080/';
-    this.url = '//api.hostero.eu/';
+    this.url = 'https://api.hostero.eu/';
     this.version = 'v1';
 
     this.$get = function() {
