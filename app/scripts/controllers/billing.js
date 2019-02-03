@@ -8,10 +8,11 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('BillingCtrl', function($scope, accountsService, paymentsService) {
+  .controller('BillingCtrl', function($scope, $state, accountsService, paymentsService) {
     var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.payments = paymentsService.query();
+    $scope.state = $state;
 
     accountsService.get({
       id: account.id

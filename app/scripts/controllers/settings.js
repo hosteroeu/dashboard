@@ -12,6 +12,8 @@ angular.module('atlasApp')
     var account = JSON.parse(localStorage.getItem('account'));
     var _this = this;
 
+    _this.state = $state;
+
     accountsService.get({
       id: account.id
     }).$promise.then(function(_account) {

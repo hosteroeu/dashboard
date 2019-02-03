@@ -205,6 +205,10 @@ angular
           requiresLogin: true
         }
       })
+      .state('billing.history', {
+        parent: 'billing',
+        url: '/history'
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
