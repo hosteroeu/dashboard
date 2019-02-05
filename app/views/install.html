@@ -117,7 +117,7 @@
               <div class="alert-icon">
                 <span class="fa fa-code"></span>
               </div>
-              <span>echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json && service docker restart</span>
+              <span>mkdir -p /etc/docker && echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json && service docker restart</span>
             </div>
 
             <!--
