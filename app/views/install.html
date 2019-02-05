@@ -21,8 +21,8 @@
             <!-- .list-group -->
             <ul class="list-group list-group-flush list-group-bordered border-top border-bottom">
               <li class="list-group-item">Internet connectivity</li>
-              <li class="list-group-item">Ubuntu 16.04</li>
-              <li class="list-group-item">Docker</li>
+              <li class="list-group-item">Ubuntu 16.04 (recommended)</li>
+              <li class="list-group-item">Docker (<a href="https://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions" target="_blank">supported versions</a>)</li>
               <li class="list-group-item">1 GiB Storage</li>
               <li class="list-group-item">1 GiB RAM</li>
             </ul>
@@ -84,7 +84,7 @@
           <!-- .card-body -->
           <div class="card-body">
             <h4 class="card-title">Advanced guide</h4>
-            <h6 class="card-subtitle mb-2">Hostero requires Docker to work. We recommend to install Docker via our script, but you can install it using alternative ways as well.</h6>
+            <h6 class="card-subtitle mb-2">Hostero requires Docker to work. We recommend to install Docker via our script, but you can install it using alternative ways as well (<a href="https://rancher.com/docs/rancher/v1.6/en/hosts/#supported-docker-versions" target="_blank">supported versions</a>).</h6>
             <hr />
 
             <p><a class="tile tile-circle">1</a> <strong>Install Docker</strong></p>
@@ -107,6 +107,17 @@
                 <span class="fa fa-code"></span>
               </div>
               <span>docker run -e CATTLE_HOST_LABELS="account={{account.name || 'ACCOUNT_ID'}}" --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.9 http://infra.hostero.eu:8080/v1/scripts/2E28C27EE87F5E1A6B7F:1514678400000:ShibdGaXFOlmN3QGGHj1UFuP1lU</span>
+            </div>
+
+            <p>&nbsp;</p>
+
+            <p><strong>Notes</strong></p>
+            <p>If everything goes well and the host doesn't show up in Hostero after a couple of minutes, try running this command in the Terminal:</p>
+            <div class="alert alert-primary has-icon" role="alert">
+              <div class="alert-icon">
+                <span class="fa fa-code"></span>
+              </div>
+              <span>echo '{"dns": ["8.8.8.8", "8.8.4.4"]}' > /etc/docker/daemon.json && service docker restart</span>
             </div>
 
             <!--
