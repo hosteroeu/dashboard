@@ -1,7 +1,15 @@
-<small>
-  <ul class="logs_list">
-    <li ng-repeat="log in logs.slice().reverse() | limitTo:1000">
-      <div ng-bind-html="to_trusted(log.message)"></div>
-    </li>
-  </ul>
-</small>
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <small>
+      <ul class="logs_list">
+        <li ng-repeat="log in logs | limitTo:10000">
+          <div ng-bind-html="to_trusted(log.message)"></div>
+        </li>
+      </ul>
+    </small>
+  </div>
+  <!-- /.page-inner -->
+</div>
+<!-- /.page -->

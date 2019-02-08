@@ -53,7 +53,10 @@ angular.module('atlasApp')
         $scope.logs.push({
           message: ansi2html.toHtml(event.data)
         });
+
         $scope.$apply();
+
+        window.scrollTo(0, document.body.scrollHeight);
       };
     });
 
