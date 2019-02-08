@@ -39,7 +39,7 @@
             <h4 class="card-title">{{host.name}}</h4>
             <br />
             <p>Status: <strong>{{ host.status | ucfirst }}</strong></p>
-            <p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>
+            <!--<p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>-->
             <p>Created: <strong>{{ host.internal_created | date }}</strong></p>
             <p>Virtualization: <strong>{{ host.docker_version }}</strong></p>
             <p>OS: <strong>{{ host.os }}</strong>, Kernel <strong>{{ host.os_kernel }}</strong></p>

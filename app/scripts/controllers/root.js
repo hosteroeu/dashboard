@@ -8,10 +8,11 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('RootCtrl', function($scope, hostsService, minersService, coinsService, accountsService, logsService) {
+  .controller('RootCtrl', function($scope, $rootScope, hostsService, minersService, coinsService, accountsService, logsService) {
     var token = localStorage.getItem('token');
 
     $scope.isAuthenticated = false;
+    $rootScope.minimalLayout = false;
 
     if (token) {
       $scope.isAuthenticated = true;

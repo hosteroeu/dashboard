@@ -11,6 +11,8 @@ angular.module('atlasApp')
   .controller('HostCtrl', function($scope, $state, hostsService) {
     $scope.host = null;
     $scope.state = $state;
+
+    /*
     var socket;
 
     hostsService.get({
@@ -39,6 +41,7 @@ angular.module('atlasApp')
     $scope.$on("$destroy", function() {
       socket.close();
     });
+    */
 
     hostsService.get({
       id: $state.params.host

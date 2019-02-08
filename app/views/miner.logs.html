@@ -1,11 +1,7 @@
-<h4 class="card-title">Hashrate: {{power}}</h4>
+<p>
+  <a href="http://dashboard.hostero.eu/#!/logs/{{miner.id}}" target="_blank" class="btn btn-primary btn-lg btn-block">See real-time logs</a>
+</p>
 
-<p><strong>Note</strong>: To see the logs on the host, run: <code>docker logs -f $(docker ps | grep miner | cut -c1-5)</code></p>
-
-<small>
-  <ul class="logs_list">
-    <li ng-repeat="log in logs.slice().reverse() | limitTo:1000">
-      <div ng-bind-html="to_trusted(log.message)"></div>
-    </li>
-  </ul>
-</small>
+<p>
+  <strong>Note</strong>: To see the logs on the host, run: <code>docker logs -f $(docker ps | grep miner | cut -c1-5)</code>
+</p>

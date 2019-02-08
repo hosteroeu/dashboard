@@ -46,7 +46,7 @@
   <!-- .app -->
   <div class="app">
     <!-- .app-header -->
-    <header class="app-header">
+    <header class="app-header" ng-hide="minimalLayout">
       <!-- .top-bar -->
       <div class="top-bar">
         <!-- .top-bar-brand -->
@@ -182,7 +182,7 @@
     </header>
     <!-- /.app-header -->
     <!-- .app-aside -->
-    <aside class="app-aside">
+    <aside class="app-aside" ng-hide="minimalLayout">
       <!-- .aside-content -->
       <div class="aside-content">
         <!-- .aside-header -->
@@ -354,7 +354,7 @@
       <div class="wrapper" ui-view>
       </div>
       <!-- .app-footer -->
-      <footer class="app-footer">
+      <footer class="app-footer" ng-hide="minimalLayout">
         <ul class="list-inline">
           <li class="list-inline-item">
             <a class="text-muted" href="https://status.hostero.eu" target="_blank">Service Status</a>
@@ -431,6 +431,7 @@
   <script src="scripts/controllers/account.js"></script>
   <script src="scripts/controllers/install.js"></script>
   <script src="scripts/controllers/wallets.js"></script>
+  <script src="scripts/controllers/logs.js"></script>
   <script src="scripts/filters/hashrate.js"></script>
   <script src="scripts/services/auth.js"></script>
   <script src="scripts/services/hosts.js"></script>

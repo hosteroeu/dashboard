@@ -117,6 +117,15 @@ angular
         parent: 'miner',
         templateUrl: 'views/miner.logs.html'
       })
+      .state('logs', {
+        url: '/logs/:miner',
+        templateUrl: 'views/logs.html',
+        controller: 'LogsCtrl',
+        controllerAs: 'logsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('install', {
         url: '/install',
         templateUrl: 'views/install.html',
