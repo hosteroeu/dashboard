@@ -150,7 +150,7 @@ angular.module('atlasApp')
           new_miner.mining_pool_url = _this.mining_pool_url_myriad;
           break;
 
-        case 'credits':
+        case 'yenten':
           if (!_this.wallet_yenten || !_this.password_yenten || !_this.mining_pool_url_yenten) {
             window.toastr.warning('Please enter Yenten information');
             return;
