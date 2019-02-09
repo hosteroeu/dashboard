@@ -205,6 +205,11 @@ angular
         url: '/myriad',
         templateUrl: 'views/wallets/myriad.html',
       })
+      .state('wallets.yenten', {
+        parent: 'wallets',
+        url: '/yenten',
+        templateUrl: 'views/wallets/yenten.html',
+      })
       .state('billing', {
         url: '/billing',
         templateUrl: 'views/billing.html',

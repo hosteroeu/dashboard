@@ -38,6 +38,10 @@ angular.module('atlasApp')
 
       _this.wallet_myriad = _account.wallet_myriad;
       _this.mining_pool_url_myriad = _account.mining_pool_url_myriad;
+
+      _this.wallet_yenten = _account.wallet_yenten;
+      _this.password_yenten = _account.password_yenten;
+      _this.mining_pool_url_yenten = _account.mining_pool_url_yenten;
     });
 
     _this.update = function() {
@@ -57,7 +61,10 @@ angular.module('atlasApp')
         password_credits: _this.password_credits,
         mining_pool_url_credits: _this.mining_pool_url_credits,
         wallet_myriad: _this.wallet_myriad,
-        mining_pool_url_myriad: _this.mining_pool_url_myriad
+        mining_pool_url_myriad: _this.mining_pool_url_myriad,
+        wallet_yenten: _this.wallet_yenten,
+        password_yenten: _this.password_yenten,
+        mining_pool_url_yenten: _this.mining_pool_url_yenten,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
 
