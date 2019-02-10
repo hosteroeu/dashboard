@@ -42,7 +42,7 @@
             <p>Status: <strong>{{ miner.status | ucfirst }}</strong></p>
             <p>Coin: <strong>{{ miner.coin | ucfirst }}</strong></p>
             <p>Host: <strong><a ui-sref="host({host: miner.Host.id})">{{ miner.Host.name }}</a></strong></p>
-            <p ng-if="miner.mining_pool_url">Mining Pool: <strong><a ng-href="{{ miner.mining_pool_url }}" target="_blank">{{ miner.mining_pool_url }}</a></strong></p>
+            <p ng-if="miner.mining_pool_url">Mining Pool: <strong>{{ miner.mining_pool_url }}</strong></p>
             <p ng-if="miner.password">Password: <strong>{{ miner.password }}</strong></p>
             <p ng-if="miner.coin == 'webdollar'">Wallet: <strong><a ng-href="{{ getHref(miner.wallet) }}" target="_blank">{{ miner.wallet }}</a></strong></p>
             <p ng-if="miner.coin != 'webdollar'">Wallet: <strong>{{ miner.wallet }}</strong></p>
