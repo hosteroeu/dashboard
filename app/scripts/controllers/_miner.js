@@ -19,8 +19,10 @@ angular.module('atlasApp')
       id: $state.params.miner,
       controller: 'logs'
     }).$promise.then(function(data) {
-      var token = data.ws.split('token=');
-      $scope.logs_token = token[1];
+      if (data.ws) {
+        var token = data.ws.split('token=');
+        $scope.logs_token = token[1];
+      }
     });
 
     /*
