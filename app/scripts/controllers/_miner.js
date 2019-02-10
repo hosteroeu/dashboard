@@ -12,7 +12,16 @@ angular.module('atlasApp')
     $scope.miner = minersService.get({
       id: $state.params.miner
     });
+
     $scope.state = $state;
+
+    minersService.get({
+      id: $state.params.miner,
+      controller: 'logs'
+    }).$promise.then(function(data) {
+      var token = data.ws.split('token=');
+      $scope.logs_token = token[1];
+    });
 
     /*
     var socket;

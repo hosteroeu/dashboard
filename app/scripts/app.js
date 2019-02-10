@@ -118,7 +118,7 @@ angular
         templateUrl: 'views/miner.logs.html'
       })
       .state('logs', {
-        url: '/logs/:miner',
+        url: '/logs/:token',
         templateUrl: 'views/logs.html',
         controller: 'LogsCtrl',
         controllerAs: 'logsCtrl',
