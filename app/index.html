@@ -275,32 +275,13 @@
               <li class="menu-header" ng-if="isAuthenticated">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
-              <li class="menu-item has-child" ng-show="isAuthenticated">
-                <!--<a href="#" class="menu-link">-->
+              <li class="menu-item" ng-show="isAuthenticated">
                 <a ui-sref="wallets" class="menu-link">
                   <span class="menu-icon fas fa-wallet"></span>
                   <span class="menu-text">Wallets</span>
+                  <span class="badge badge-warning" ng-cloak>{{global_coins.length}}</span>
                 </a>
-                <ul class="menu">
-                  <li class="menu-item">
-                    <a ui-sref="wallets.webdollar" class="menu-link">WebDollar</a>
-                  </li>
-                  <li class="menu-item">
-                    <a ui-sref="wallets.nerva" class="menu-link">Nerva</a>
-                  </li>
-                  <li class="menu-item">
-                    <a ui-sref="wallets.webchain" class="menu-link">WebChain</a>
-                  </li>
-                  <li class="menu-item">
-                    <a ui-sref="wallets.veruscoin" class="menu-link">VerusCoin</a>
-                  </li>
-                  <li class="menu-item">
-                    <a ui-sref="wallets.credits" class="menu-link">Credits</a>
-                  </li>
-                  <li class="menu-item">
-                    <a ui-sref="wallets.myriad" class="menu-link">Myriad</a>
-                  </li>
-                </ul>
+                <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
               <!-- .menu-item -->
