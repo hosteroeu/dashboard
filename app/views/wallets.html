@@ -13,7 +13,7 @@
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
               <!--<a ui-sref="wallets" class="nav-link" ng-class="{active: ctrl.state.current.name == 'wallets'}">General</a>-->
-              <a ui-sref="wallets.{{coin.internal_name}}" class="nav-link" ng-repeat="coin in global_coins" ng-class="{active: ctrl.state.current.name == 'wallets.' + coin.internal_name}">
+              <a ui-sref="wallets.wallet({wallet:coin.internal_name})" class="nav-link" ng-repeat="coin in global_coins" ng-class="{active: ctrl.state.params.wallet == coin.internal_name}">
                 <figure class="user-avatar user-avatar-xs">
                   <img src="{{coin.logo_url}}" alt="User Avatar">
                 </figure>
@@ -43,7 +43,7 @@
             <section id="labels" class="card">
               <!-- .card-body -->
               <div class="card-body">
-                <div ui-view></div>
+                <div ng-include src="'views/wallets/' + ctrl.state.params.wallet + '.html'"></div>
               </div>
               <!-- /.card-body -->
             </section>

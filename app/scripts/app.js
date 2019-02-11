@@ -175,40 +175,9 @@ angular
           requiresLogin: true
         }
       })
-      .state('wallets.webdollar', {
+      .state('wallets.wallet', {
         parent: 'wallets',
-        url: '/webdollar',
-        templateUrl: 'views/wallets/webdollar.html',
-      })
-      .state('wallets.nerva', {
-        parent: 'wallets',
-        url: '/nerva',
-        templateUrl: 'views/wallets/nerva.html',
-      })
-      .state('wallets.webchain', {
-        parent: 'wallets',
-        url: '/webchain',
-        templateUrl: 'views/wallets/webchain.html',
-      })
-      .state('wallets.veruscoin', {
-        parent: 'wallets',
-        url: '/veruscoin',
-        templateUrl: 'views/wallets/veruscoin.html',
-      })
-      .state('wallets.credits', {
-        parent: 'wallets',
-        url: '/credits',
-        templateUrl: 'views/wallets/credits.html',
-      })
-      .state('wallets.myriad', {
-        parent: 'wallets',
-        url: '/myriad',
-        templateUrl: 'views/wallets/myriad.html',
-      })
-      .state('wallets.yenten', {
-        parent: 'wallets',
-        url: '/yenten',
-        templateUrl: 'views/wallets/yenten.html',
+        url: '/:wallet'
       })
       .state('billing', {
         url: '/billing',

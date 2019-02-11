@@ -8,7 +8,5 @@ workers/mysql/miners_auto_deploy.js
 atlas:
 
 app/scripts/controllers/miners.new.js
-app/index.html
-app/scripts/app.js
 app/scripts/controllers/wallets.js
 app/views/wallets/
