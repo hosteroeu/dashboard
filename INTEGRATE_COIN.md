@@ -10,3 +10,6 @@ atlas:
 app/scripts/controllers/miners.new.js
 app/scripts/controllers/wallets.js
 app/views/wallets/
+
+db:
+accounts
