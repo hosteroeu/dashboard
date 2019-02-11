@@ -30,7 +30,7 @@
             <!-- .visual-picker -->
             <div class="visual-picker visual-picker-sm has-peek px-3" ng-repeat="coin in global_coins">
               <!-- visual-picker input -->
-              <input type="radio" id="{{coin.internal_name}}" name="vprSM" value="{{coin.internal_name}}" ng-model="ctrl.selected_coin" />
+              <input type="radio" id="{{coin.internal_name}}" name="vprSM" value="{{coin.internal_name}}" ng-model="ctrl.wallets.auto_deploy_coin" />
               <!-- .visual-picker-figure -->
               <label class="visual-picker-figure" for="{{coin.internal_name}}">
                 <!-- .visual-picker-content -->
@@ -49,7 +49,7 @@
           </div>
           <!-- /.section-block -->
 
-          <div ng-include src="'views/wallets/' + ctrl.selected_coin + '.html'"></div>
+          <div ng-include src="'views/wallets/' + ctrl.wallets.auto_deploy_coin + '.html'"></div>
 
           <hr class="my-5" />
           <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.deploy()">Deploy</button>

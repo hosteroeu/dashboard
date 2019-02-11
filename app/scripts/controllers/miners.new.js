@@ -48,26 +48,7 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(account) {
-      _this.mining_pool_url_webdollar = account.mining_pool_url_webdollar;
-      _this.wallet_webdollar = account.wallet_webdollar;
-
-      _this.wallet_nerva = account.wallet_nerva;
-      _this.wallet_webchain = account.wallet_webchain;
-      _this.password_webchain = account.password_webchain;
-      _this.mining_pool_url_webchain = account.mining_pool_url_webchain;
-      _this.wallet_veruscoin = account.wallet_veruscoin;
-      _this.password_veruscoin = account.password_veruscoin;
-      _this.mining_pool_url_veruscoin = account.mining_pool_url_veruscoin;
-      _this.wallet_credits = account.wallet_credits;
-      _this.password_credits = account.password_credits;
-      _this.mining_pool_url_credits = account.mining_pool_url_credits;
-      _this.wallet_myriad = account.wallet_myriad;
-      _this.mining_pool_url_myriad = account.mining_pool_url_myriad;
-      _this.wallet_yenten = account.wallet_yenten;
-      _this.password_yenten = account.password_yenten;
-      _this.mining_pool_url_yenten = account.mining_pool_url_yenten;
-
-      _this.selected_coin = account.auto_deploy_coin;
+      _this.wallets = account;
     });
 
     _this.deploy = function() {
@@ -79,14 +60,14 @@ angular.module('atlasApp')
       var name = 'miner-' + _this.selected_host.id;
       var new_miner = {
         name: name,
-        coin: _this.selected_coin,
+        coin: _this.wallets.auto_deploy_coin,
         status: 'stopped',
         deployed: '2',
         threads: _this.threads,
         host_id: _this.selected_host.id
       };
 
-      switch (_this.selected_coin) {
+      switch (_this.wallets.auto_deploy_coin) {
         case 'webdollar':
           if (!_this.mining_pool_url_webdollar || !_this.wallet_webdollar) {
             window.toastr.warning('Please enter WebDollar information');
@@ -159,6 +140,17 @@ angular.module('atlasApp')
           new_miner.wallet = _this.wallet_yenten;
           new_miner.password = _this.password_yenten;
           new_miner.mining_pool_url = _this.mining_pool_url_yenten;
+          break;
+
+        case 'globalboost':
+          if (!_this.wallet_globalboost || !_this.password_globalboost || !_this.mining_pool_url_globalboost) {
+            window.toastr.warning('Please enter GlobalBoost-Y information');
+            return;
+          }
+
+          new_miner.wallet = _this.wallet_globalboost;
+          new_miner.password = _this.password_globalboost;
+          new_miner.mining_pool_url = _this.mining_pool_url_globalboost;
           break;
       }
 
