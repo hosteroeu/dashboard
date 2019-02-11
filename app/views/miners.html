@@ -63,7 +63,7 @@
                 <a ui-sref="miner({miner:miner.id})">{{ miner.name }}</a>
               </td>
               <td>
-                <a ui-sref="wallets.{{miner.coin}}">{{ miner.coin | ucfirst }}</a>
+                <a ui-sref="wallets.wallet({wallet: miner.coin})">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
                 {{ miner.power | hashrate }}
