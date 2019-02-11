@@ -24,13 +24,57 @@
             <input type="number" class="form-control" id="threads" ng-model="ctrl.threads" required="" placeholder="Pick a host" />
           </div>
 
+          <p>Processor</p>
+          <!-- .section-block -->
+          <div class="section-block text-center text-sm-left">
+            <!-- .visual-picker -->
+            <div class="visual-picker visual-picker-sm has-peek px-3">
+              <!-- visual-picker input -->
+              <input type="radio" id="avx2" name="processor" value="avx2" ng-model="ctrl.processor" />
+              <!-- .visual-picker-figure -->
+              <label class="visual-picker-figure" for="avx2">
+                <!-- .visual-picker-content -->
+                <span class="visual-picker-content">
+                  <span class="tile tile-sm bg-gray">
+                    <i class="fa fa-microchip"></i>
+                  </span>
+                </span>
+                <!-- /.visual-picker-content -->
+              </label>
+              <!-- /.visual-picker-figure -->
+              <!-- .visual-picker-peek -->
+              <span class="visual-picker-peek">AVX2 (new)</span>
+            </div>
+            <!-- /.visual-picker -->
+            <!-- .visual-picker -->
+            <div class="visual-picker visual-picker-sm has-peek px-3">
+              <!-- visual-picker input -->
+              <input type="radio" id="sse2" name="processor" value="sse2" ng-model="ctrl.processor" />
+              <!-- .visual-picker-figure -->
+              <label class="visual-picker-figure" for="sse2">
+                <!-- .visual-picker-content -->
+                <span class="visual-picker-content">
+                  <span class="tile tile-sm bg-gray">
+                    <i class="fa fa-microchip"></i>
+                  </span>
+                </span>
+                <!-- /.visual-picker-content -->
+              </label>
+              <!-- /.visual-picker-figure -->
+              <!-- .visual-picker-peek -->
+              <span class="visual-picker-peek">SSE2 (old)</span>
+            </div>
+            <!-- /.visual-picker -->
+          </div>
+          <!-- /.section-block -->
+
           <p>Coin</p>
           <!-- .section-block -->
           <div class="section-block text-center text-sm-left">
             <!-- .visual-picker -->
             <div class="visual-picker visual-picker-sm has-peek px-3" ng-repeat="coin in global_coins">
               <!-- visual-picker input -->
-              <input type="radio" id="{{coin.internal_name}}" name="vprSM" value="{{coin.internal_name}}" ng-model="ctrl.wallets.auto_deploy_coin" />
+              <input type="radio" id="{{coin.internal_name}}" name="coin" value="{{coin.internal_name}}" ng-model="ctrl.wallets.auto_deploy_coin" />
               <!-- .visual-picker-figure -->
               <label class="visual-picker-figure" for="{{coin.internal_name}}">
                 <!-- .visual-picker-content -->

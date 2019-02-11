@@ -28,6 +28,7 @@ angular.module('atlasApp')
     _this.selected_host = null;
     _this.selected_host_id = null;
     _this.threads = 0;
+    _this.processor = 'avx2';
 
     hostsService.query().$promise.then(function(hosts) {
       _this.hosts = hosts;
@@ -64,6 +65,7 @@ angular.module('atlasApp')
         status: 'stopped',
         deployed: '2',
         threads: _this.threads,
+        processor: _this.processor,
         host_id: _this.selected_host.id
       };
 
