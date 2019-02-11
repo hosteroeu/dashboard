@@ -69,88 +69,88 @@ angular.module('atlasApp')
 
       switch (_this.wallets.auto_deploy_coin) {
         case 'webdollar':
-          if (!_this.mining_pool_url_webdollar || !_this.wallet_webdollar) {
+          if (!_this.wallets.mining_pool_url_webdollar || !_this.wallets.wallet_webdollar) {
             window.toastr.warning('Please enter WebDollar information');
             return;
           }
 
-          new_miner.mining_pool_url = _this.mining_pool_url_webdollar;
-          new_miner.wallet = _this.wallet_webdollar;
-          new_miner.password = _this.password_webdollar;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_webdollar;
+          new_miner.wallet = _this.wallets.wallet_webdollar;
+          new_miner.password = _this.wallets.password_webdollar;
           break;
 
         case 'nerva':
-          if (!_this.wallet_nerva) {
+          if (!_this.wallets.wallet_nerva) {
             window.toastr.warning('Please enter Nerva information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_nerva;
+          new_miner.wallet = _this.wallets.wallet_nerva;
           break;
 
         case 'webchain':
-          if (!_this.wallet_webchain || !_this.password_webchain || !_this.mining_pool_url_webchain) {
+          if (!_this.wallets.wallet_webchain || !_this.wallets.password_webchain || !_this.wallets.mining_pool_url_webchain) {
             window.toastr.warning('Please enter WebChain information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_webchain;
-          new_miner.password = _this.password_webchain;
-          new_miner.mining_pool_url = _this.mining_pool_url_webchain;
+          new_miner.wallet = _this.wallets.wallet_webchain;
+          new_miner.password = _this.wallets.password_webchain;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_webchain;
           break;
 
         case 'veruscoin':
-          if (!_this.wallet_veruscoin || !_this.password_veruscoin || !_this.mining_pool_url_veruscoin) {
+          if (!_this.wallets.wallet_veruscoin || !_this.wallets.password_veruscoin || !_this.wallets.mining_pool_url_veruscoin) {
             window.toastr.warning('Please enter VerusCoin information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_veruscoin;
-          new_miner.password = _this.password_veruscoin;
-          new_miner.mining_pool_url = _this.mining_pool_url_veruscoin;
+          new_miner.wallet = _this.wallets.wallet_veruscoin;
+          new_miner.password = _this.wallets.password_veruscoin;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_veruscoin;
           break;
 
         case 'credits':
-          if (!_this.wallet_credits || !_this.password_credits || !_this.mining_pool_url_credits) {
+          if (!_this.wallets.wallet_credits || !_this.wallets.password_credits || !_this.wallets.mining_pool_url_credits) {
             window.toastr.warning('Please enter Credits information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_credits;
-          new_miner.password = _this.password_credits;
-          new_miner.mining_pool_url = _this.mining_pool_url_credits;
+          new_miner.wallet = _this.wallets.wallet_credits;
+          new_miner.password = _this.wallets.password_credits;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_credits;
           break;
 
         case 'myriad':
-          if (!_this.wallet_myriad || !_this.mining_pool_url_myriad) {
+          if (!_this.wallets.wallet_myriad || !_this.wallets.mining_pool_url_myriad) {
             window.toastr.warning('Please enter Myriad information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_myriad;
-          new_miner.mining_pool_url = _this.mining_pool_url_myriad;
+          new_miner.wallet = _this.wallets.wallet_myriad;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_myriad;
           break;
 
         case 'yenten':
-          if (!_this.wallet_yenten || !_this.password_yenten || !_this.mining_pool_url_yenten) {
+          if (!_this.wallets.wallet_yenten || !_this.wallets.password_yenten || !_this.wallets.mining_pool_url_yenten) {
             window.toastr.warning('Please enter Yenten information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_yenten;
-          new_miner.password = _this.password_yenten;
-          new_miner.mining_pool_url = _this.mining_pool_url_yenten;
+          new_miner.wallet = _this.wallets.wallet_yenten;
+          new_miner.password = _this.wallets.password_yenten;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_yenten;
           break;
 
         case 'globalboost':
-          if (!_this.wallet_globalboost || !_this.password_globalboost || !_this.mining_pool_url_globalboost) {
+          if (!_this.wallets.wallet_globalboost || !_this.wallets.password_globalboost || !_this.wallets.mining_pool_url_globalboost) {
             window.toastr.warning('Please enter GlobalBoost-Y information');
             return;
           }
 
-          new_miner.wallet = _this.wallet_globalboost;
-          new_miner.password = _this.password_globalboost;
-          new_miner.mining_pool_url = _this.mining_pool_url_globalboost;
+          new_miner.wallet = _this.wallets.wallet_globalboost;
+          new_miner.password = _this.wallets.password_globalboost;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_globalboost;
           break;
       }
 
