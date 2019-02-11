@@ -130,11 +130,12 @@ angular.module('atlasApp')
           }
 
           new_miner.wallet = _this.wallets.wallet_myriad;
+          new_miner.password = _this.wallets.password_myriad;
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_myriad;
           break;
 
         case 'yenten':
-          if (!_this.wallets.wallet_yenten || !_this.wallets.password_yenten || !_this.wallets.mining_pool_url_yenten) {
+          if (!_this.wallets.wallet_yenten || !_this.wallets.mining_pool_url_yenten) {
             window.toastr.warning('Please enter Yenten information');
             return;
           }
@@ -145,7 +146,7 @@ angular.module('atlasApp')
           break;
 
         case 'globalboost':
-          if (!_this.wallets.wallet_globalboost || !_this.wallets.password_globalboost || !_this.wallets.mining_pool_url_globalboost) {
+          if (!_this.wallets.wallet_globalboost || !_this.wallets.mining_pool_url_globalboost) {
             window.toastr.warning('Please enter GlobalBoost-Y information');
             return;
           }

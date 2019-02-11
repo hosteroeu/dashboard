@@ -39,6 +39,7 @@ angular.module('atlasApp')
         password_credits: _this.wallets.password_credits,
         mining_pool_url_credits: _this.wallets.mining_pool_url_credits,
         wallet_myriad: _this.wallets.wallet_myriad,
+        password_myriad: _this.wallets.password_myriad,
         mining_pool_url_myriad: _this.wallets.mining_pool_url_myriad,
         wallet_yenten: _this.wallets.wallet_yenten,
         password_yenten: _this.wallets.password_yenten,
