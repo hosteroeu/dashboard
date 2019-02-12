@@ -12,7 +12,6 @@ angular.module('atlasApp')
     var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.logs = [];
-    $scope.accounts = accountsService.query();
     $scope.show_wmp_chart = false;
 
     logsService.query().$promise.then(function(res) {
