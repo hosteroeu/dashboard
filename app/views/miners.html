@@ -54,7 +54,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="miner in miners">
+            <tr ng-repeat="miner in miners" ng-class="{highlight: miner.temporary}">
               <td>
                 <div class="tile bg-success">
                   <i class="fa fa-{{minersCtrl.get_status_icon(miner.status)}}"></i>
@@ -76,7 +76,7 @@
                   <i class="fas fa-list-alt"></i>
                   {{ miner.Host.name | limitTo:20 }}...
                 </button>
-                <span ng-if="!miner.Host">Orphaned</span>
+                <span ng-if="!miner.Host">-</span>
               </td>
               <td class="align-middle text-right" ng-if="!miner.temporary">
                 <!--
@@ -101,7 +101,7 @@
                 </a>
               </td>
               <td class="align-middle text-right" ng-if="miner.temporary">
-                Temporary
+                -
               </td>
             </tr>
           </tbody>
