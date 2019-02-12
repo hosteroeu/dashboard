@@ -8,37 +8,45 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $state, minersService, hostsService) {
+  .controller('MinersCtrl', function($scope, $state, minersService, hostsService, DTOptionsBuilder) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
     $scope.miners_running = [];
     $scope.filter = '';
+    $scope.dt_options = DTOptionsBuilder.newOptions()
+      .withDisplayLength(25);
 
-    minersService.query().$promise.then(function(res) {
-      var yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
+    var getMiners = function() {
+      minersService.query().$promise.then(function(res) {
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
 
-      $scope.miners = [];
+        $scope.miners = [];
 
-      res.forEach(function(miner) {
-        var updated = Date.parse(miner.updated_at);
+        res.forEach(function(miner) {
+          var updated = Date.parse(miner.updated_at);
 
-        if (miner.status === 'stopped' && updated < yesterday.getTime()) {
-          return;
-        }
+          if (miner.status === 'stopped' && updated < yesterday.getTime()) {
+            return;
+          }
 
-        $scope.miners.push(miner);
+          $scope.miners.push(miner);
+        });
+
+        $scope.miners.forEach(function(miner) {
+          if (miner.status === 'stopped') {
+            $scope.miners_stopped.push(miner);
+          } else {
+            $scope.miners_running.push(miner);
+          }
+        });
       });
+    };
 
-      $scope.miners.forEach(function(miner) {
-        if (miner.status === 'stopped') {
-          $scope.miners_stopped.push(miner);
-        } else {
-          $scope.miners_running.push(miner);
-        }
-      });
-    });
+    var interval = setInterval(getMiners, 60 * 1000);
+
+    getMiners();
 
     this.get_status_icon = function(status) {
       switch (status) {
@@ -144,4 +152,8 @@ angular.module('atlasApp')
           .catch(console.error);
       });
     };
+
+    $scope.$on('$destroy', function() {
+      clearInterval(interval);
+    });
   });

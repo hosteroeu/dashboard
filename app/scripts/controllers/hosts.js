@@ -14,30 +14,36 @@ angular.module('atlasApp')
     $scope.hosts_stopped = [];
     $scope.filter = '';
 
-    hostsService.query().$promise.then(function(res) {
-      var yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
+    var getHosts = function () {
+      hostsService.query().$promise.then(function(res) {
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
 
-      $scope.hosts = [];
+        $scope.hosts = [];
 
-      res.forEach(function(host) {
-        var updated = Date.parse(host.updated_at);
+        res.forEach(function(host) {
+          var updated = Date.parse(host.updated_at);
 
-        if (host.status === 'stopped' && updated < yesterday.getTime()) {
-          return;
-        }
+          if (host.status === 'stopped' && updated < yesterday.getTime()) {
+            return;
+          }
 
-        $scope.hosts.push(host);
+          $scope.hosts.push(host);
+        });
+
+        $scope.hosts.forEach(function(host) {
+          if (host.status === 'stopped') {
+            $scope.hosts_stopped.push(host);
+          } else if (host.deployed === '1') {
+            $scope.hosts_deployed.push(host);
+          }
+        });
       });
+    };
 
-      $scope.hosts.forEach(function(host) {
-        if (host.status === 'stopped') {
-          $scope.hosts_stopped.push(host);
-        } else if (host.deployed === '1') {
-          $scope.hosts_deployed.push(host);
-        }
-      });
-    });
+    var interval = setInterval(getHosts, 60 * 1000);
+
+    getHosts();
 
     this.get_status_icon = function(status) {
       switch (status) {
@@ -72,4 +78,8 @@ angular.module('atlasApp')
         })
         .catch(console.error);
     };
+
+    $scope.$on('$destroy', function() {
+      clearInterval(interval);
+    });
   });

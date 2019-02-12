@@ -199,10 +199,12 @@ angular
         controllerAs: 'loginCtrl'
       });
   })
-  .run(function($rootScope, $state, $location, authService, authManager, lock, jwtHelper) {
+  .run(function($rootScope, $state, $location, authService, authManager, lock, jwtHelper, DTDefaultOptions) {
     lock.interceptHash();
 
     $rootScope.authService = authService;
+
+    DTDefaultOptions.setLoadingTemplate('<p><center><img src="images/loading.gif"></center></p>');
 
     authService.registerAuthenticationListener();
 
