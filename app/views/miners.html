@@ -78,7 +78,7 @@
                 </button>
                 <span ng-if="!miner.Host">Orphaned</span>
               </td>
-              <td class="align-middle text-right">
+              <td class="align-middle text-right" ng-if="!miner.temporary">
                 <!--
                 <a href="http://dashboard.hostero.eu/#!/logs/{{miner.id}}" target="_blank" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Logs">
                   <i class="fa fa-database"></i>
@@ -99,6 +99,9 @@
                   <i class="far fa-trash-alt"></i>
                   <span class="sr-only">Remove</span>
                 </a>
+              </td>
+              <td class="align-middle text-right" ng-if="miner.temporary">
+                Temporary
               </td>
             </tr>
           </tbody>
