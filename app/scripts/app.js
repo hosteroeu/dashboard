@@ -123,7 +123,7 @@ angular
         controller: 'LogsCtrl',
         controllerAs: 'logsCtrl',
         data: {
-          requiresLogin: true
+          requiresLogin: false
         }
       })
       .state('install', {
