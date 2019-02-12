@@ -33,10 +33,13 @@ angular.module('atlasApp')
           $scope.global_logs = logsService.query();
 
           minersService.query().$promise.then(function(res) {
-            $scope.global_miners = res;
+            $scope.global_miners = [];
 
             res.forEach(function(miner) {
-              $scope.total_power += parseInt(miner.power) || 0;
+              if (!miner.temporary) {
+                $scope.global_miners.push(miner);
+                $scope.total_power += parseInt(miner.power) || 0;
+              }
             });
           });
         }
