@@ -327,7 +327,7 @@
       </div>
       -->
 
-      <div class="page-message" ng-if="global_account.email === 'demo@hostero.eu'">
+      <div class="page-message" ng-if="global_account.email === 'demo@hostero.eu' && global_state.current.name !== 'install'">
         <i class="fa fa-fw fa-bell"></i> You are on the demo account, the data is restored every hour. If you want to create an account: <a href="" ng-click="authService.logout()" class="alert-link">Logout</a>
       </div>
 

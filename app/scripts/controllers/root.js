@@ -8,11 +8,12 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('RootCtrl', function($scope, $rootScope, hostsService, minersService, coinsService, accountsService, logsService) {
+  .controller('RootCtrl', function($scope, $rootScope, $state, hostsService, minersService, coinsService, accountsService, logsService) {
     var token = localStorage.getItem('token');
 
     $scope.isAuthenticated = false;
     $rootScope.minimalLayout = false;
+    $scope.global_state = $state;
 
     // TODO: Don't make API calls from the root scope, it's not cool, use
     // another controller

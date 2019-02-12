@@ -48,14 +48,30 @@ angular.module('atlasApp')
 
     getMiners();
 
-    this.get_status_icon = function(status) {
-      switch (status) {
+    this.get_status_color = function(miner) {
+      var color = 'success';
+
+      if (miner.temporary) {
+        color = '';
+      }
+
+      return color;
+    };
+
+    this.get_status_icon = function(miner) {
+      var icon;
+
+      switch (miner.status) {
         case 'started':
-          return 'plug';
+          icon = 'plug';
+        break;
 
         case 'stopped':
-          return 'power-off';
+          icon = 'power-off';
+        break;
       }
+
+      return icon;
     };
 
     this.open_url = function(instance) {
