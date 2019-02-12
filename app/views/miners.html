@@ -66,8 +66,9 @@
                 <a ui-sref="wallets.wallet({wallet: miner.coin})">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
-                <span ng-if="!miner.temporary">{{ miner.power | hashrate }}</span>
+                <span ng-if="!miner.temporary && miner.coin !== 'webdollar'">{{ miner.power | hashrate }}</span>
                 <span ng-if="miner.temporary">-</span>
+                <span ng-if="miner.coin === 'webdollar'">Not available</span>
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}
