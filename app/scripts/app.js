@@ -80,6 +80,16 @@ angular
           requiresLogin: true
         }
       })
+      .state('settings.auto_deploy', {
+        url: '/auto_deploy',
+        parent: 'settings',
+        templateUrl: 'views/settings.auto_deploy.html'
+      })
+      .state('settings.dual_mining', {
+        url: '/dual_mining',
+        parent: 'settings',
+        templateUrl: 'views/settings.dual_mining.html'
+      })
       .state('miners', {
         url: '/miners',
         templateUrl: 'views/miners.html',

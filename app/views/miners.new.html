@@ -24,13 +24,13 @@
             <input type="number" class="form-control" id="threads" ng-model="ctrl.threads" required="" placeholder="Pick a host" />
           </div>
 
-          <p>Processor</p>
+          <p>Processor Flag</p>
           <!-- .section-block -->
           <div class="section-block text-center text-sm-left">
             <!-- .visual-picker -->
             <div class="visual-picker visual-picker-sm has-peek px-3">
               <!-- visual-picker input -->
-              <input type="radio" id="avx2" name="processor" value="avx2" ng-model="ctrl.processor" />
+              <input type="radio" id="avx2" name="processor" value="avx2" ng-model="ctrl.wallets.default_processor" />
               <!-- .visual-picker-figure -->
               <label class="visual-picker-figure" for="avx2">
                 <!-- .visual-picker-content -->
@@ -49,7 +49,7 @@
             <!-- .visual-picker -->
             <div class="visual-picker visual-picker-sm has-peek px-3">
               <!-- visual-picker input -->
-              <input type="radio" id="sse2" name="processor" value="sse2" ng-model="ctrl.processor" />
+              <input type="radio" id="sse2" name="processor" value="sse2" ng-model="ctrl.wallets.default_processor" />
               <!-- .visual-picker-figure -->
               <label class="visual-picker-figure" for="sse2">
                 <!-- .visual-picker-content -->

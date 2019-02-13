@@ -19,16 +19,40 @@ angular.module('atlasApp')
     }).$promise.then(function(_account) {
       localStorage.setItem('account', JSON.stringify(_account));
 
-      _this.auto_deploy = _account.auto_deploy;
-      _this.auto_deploy_coin = _account.auto_deploy_coin;
+      _this.account = _account;
     });
 
-    this.update = function() {
+    this.update_settings = function() {
       accountsService.update({
         id: account.id
       }, {
-        auto_deploy: this.auto_deploy,
-        auto_deploy_coin: this.auto_deploy_coin
+        default_processor: this.account.default_processor
+      }).$promise.then(function() {
+        window.toastr.success('Settings were updated');
+
+        $state.reload();
+      });
+    };
+
+    this.update_auto_deploy = function() {
+      accountsService.update({
+        id: account.id
+      }, {
+        auto_deploy: this.account.auto_deploy,
+        auto_deploy_coin: this.account.auto_deploy_coin
+      }).$promise.then(function() {
+        window.toastr.success('Settings were updated');
+
+        $state.reload();
+      });
+    };
+
+    this.update_dual_mining = function() {
+      accountsService.update({
+        id: account.id
+      }, {
+        auto_deploy_idle: this.account.auto_deploy_idle,
+        auto_deploy_coin_idle: this.account.auto_deploy_coin_idle
       }).$promise.then(function() {
         window.toastr.success('Settings were updated');
 
