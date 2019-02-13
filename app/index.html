@@ -315,19 +315,7 @@
 
     <!-- .app-main -->
     <main class="app-main">
-      <span ng-if="global_state.current.name !== 'install'">
-        <!--
-        <div class="page-message">
-          <i class="fa fa-fw fa-bell"></i> We are happy to announce we integrated <a href="https://webchain.network" class="alert-link" target="_blank">WebChain</a> into Hostero. <a href="https://www.hostero.eu/getting-started" target="_blank" class="alert-link">Start Mining WebChain!</a>
-        </div>
-        -->
-
-        <!--
-        <div class="page-message">
-          <i class="fa fa-fw fa-bell"></i> We implemented a subscription model for payments. Please check <a ui-sref="billing" class="alert-link">Billing</a> to make sure you are on the correct plan.
-        </div>
-        -->
-
+      <span ng-if="global_state.current.name != 'install' && global_state.current.name != 'logs'">
         <div class="page-message" ng-if="global_account.email === 'demo@hostero.eu'">
           <i class="fa fa-fw fa-bell"></i> You are on the demo account, the data is restored every hour. If you want to create an account, you need to <a href="" ng-click="authService.logout()" class="alert-link">Logout</a>.
         </div>
