@@ -130,7 +130,7 @@
                   <div class="dropdown-sheets">
                     <!-- .dropdown-sheet-item -->
                     <div class="dropdown-sheet-item" ng-repeat="coin in global_coins">
-                      <a ui-sref="wallets.{{coin.internal_name}}" class="tile-wrapper">
+                      <a ui-sref="wallets.wallet({wallet:coin.internal_name})" class="tile-wrapper">
                         <figure class="user-avatar user-avatar-sm">
                           <img src="{{coin.logo_url}}" alt="User Avatar">
                         </figure>
