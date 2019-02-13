@@ -233,7 +233,7 @@ angular
           $location.path('/login');
         }
       } else {
-        if (location !== '/install') {
+        if (location !== '/install' && location.indexOf('/logs/') !== -1) {
           $location.path('/login');
         }
       }
