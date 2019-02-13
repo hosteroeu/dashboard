@@ -6,10 +6,10 @@
   </div>
   <!-- /.card-body -->
   <!-- .list-group -->
-  <div class="list-group list-group-flush list-group-bordered">
+  <div class="list-group list-group-flush">
     <!-- .list-group-item -->
     <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span>Enable Auto Deploy</span>
+      <span>Toggle Auto Deploy</span>
       <!-- .switcher-control -->
       <label class="switcher-control">
         <input type="checkbox" class="switcher-input" ng-model="settingsCtrl.account.auto_deploy">
@@ -21,14 +21,18 @@
   </div>
   <!-- /.list-group -->
 
-  <!-- .section-block -->
-  <div class="section-block text-center text-sm-left">
-    <!-- .visual-picker -->
-    <div class="visual-picker visual-picker-sm has-peek px-3" ng-repeat="coin in global_coins">
-      <!-- visual-picker input -->
-      <input type="radio" id="{{coin.internal_name}}" name="vprSM" value="{{coin.internal_name}}" ng-model="settingsCtrl.account.auto_deploy_coin">
-      <!-- .visual-picker-figure -->
-      <label class="visual-picker-figure" for="{{coin.internal_name}}">
+  <hr />
+
+  <div class="card-body">
+    <h3 class="card-title"> Select Coin </h3>
+    <!-- .section-block -->
+    <div class="section-block text-center text-sm-left">
+      <!-- .visual-picker -->
+      <div class="visual-picker visual-picker-sm has-peek px-3" ng-repeat="coin in global_coins">
+        <!-- visual-picker input -->
+        <input type="radio" id="{{coin.internal_name}}" name="vprSM" value="{{coin.internal_name}}" ng-model="settingsCtrl.account.auto_deploy_coin">
+        <!-- .visual-picker-figure -->
+        <label class="visual-picker-figure" for="{{coin.internal_name}}">
         <!-- .visual-picker-content -->
         <span class="visual-picker-content">
           <span class="tile tile-sm bg-{{coin.color}}">
@@ -37,14 +41,14 @@
         </span>
         <!-- /.visual-picker-content -->
       </label>
-      <!-- /.visual-picker-figure -->
-      <!-- .visual-picker-peek -->
-      <span class="visual-picker-peek">{{coin.name}}</span>
+        <!-- /.visual-picker-figure -->
+        <!-- .visual-picker-peek -->
+        <span class="visual-picker-peek">{{coin.name}}</span>
+      </div>
+      <!-- /.visual-picker -->
     </div>
-    <!-- /.visual-picker -->
+    <!-- /.section-block -->
   </div>
-  <!-- /.section-block -->
 </section>
 <!-- /.card -->
-<hr class="my-5">
 <button class="btn btn-primary btn-lg btn-block" ng-click="settingsCtrl.update_auto_deploy()">Update</button>
