@@ -9,8 +9,12 @@
  */
 angular.module('atlasApp')
   .controller('MinerCtrl', function($scope, $state, minersService) {
-    $scope.miner = minersService.get({
+    $scope.miner = null;
+
+    minersService.get({
       id: $state.params.miner
+    }).$promise.then(function(res) {
+      $scope.miner = res;
     });
 
     $scope.state = $state;
