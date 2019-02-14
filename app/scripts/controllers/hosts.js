@@ -8,11 +8,14 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $state, hostsService) {
+  .controller('HostsCtrl', function($scope, $state, hostsService, DTOptionsBuilder) {
     $scope.hosts = null;
     $scope.hosts_deployed = [];
     $scope.hosts_stopped = [];
     $scope.filter = '';
+    $scope.dt_options = DTOptionsBuilder.newOptions()
+      .withDisplayLength(25)
+      .withOption('retrieve', true);
 
     var getHosts = function () {
       hostsService.query().$promise.then(function(res) {

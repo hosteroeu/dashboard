@@ -15,7 +15,8 @@ angular.module('atlasApp')
     $scope.miners_running = [];
     $scope.filter = '';
     $scope.dt_options = DTOptionsBuilder.newOptions()
-      .withDisplayLength(25);
+      .withDisplayLength(25)
+      .withOption('retrieve', true);
 
     var getMiners = function() {
       minersService.query().$promise.then(function(res) {
