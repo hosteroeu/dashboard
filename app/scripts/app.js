@@ -202,6 +202,10 @@ angular
         parent: 'billing',
         url: '/history'
       })
+      .state('billing.webdollar', {
+        parent: 'billing',
+        url: '/webdollar'
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',

@@ -12,7 +12,8 @@
             <h6 class="card-header">Billing</h6>
             <!-- .nav -->
             <nav class="nav nav-tabs flex-column">
-              <a ui-sref="billing" class="nav-link" ng-class="{active: state.current.name == 'billing'}">Subscription</a>
+              <a ui-sref="billing" class="nav-link" ng-class="{active: state.current.name == 'billing'}">PayPal</a>
+              <a ui-sref="billing.webdollar" class="nav-link" ng-class="{active: state.current.name == 'billing.webdollar'}">WebDollar</a>
               <a ui-sref="billing.history" class="nav-link" ng-class="{active: state.current.name == 'billing.history'}">History</a>
             </nav>
             <!-- /.nav -->
@@ -68,6 +69,15 @@
                     <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
                   </A>
                 </p>
+              </div>
+            </section>
+          </div>
+          <div ng-if="state.current.name === 'billing.webdollar'">
+            <section id="switcher" class="card">
+              <!-- .card-body -->
+              <div class="card-body">
+                <h3 class="card-title"> WebDollar </h3>
+                <p>$WEBD payments coming soon...</p>
               </div>
             </section>
           </div>
