@@ -8,11 +8,63 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('BillingCtrl', function($scope, $state, accountsService, paymentsService) {
+  .controller('BillingCtrl', function($scope, $state, accountsService, paymentsService, coinsService) {
     var account = JSON.parse(localStorage.getItem('account'));
 
     $scope.payments = paymentsService.query();
     $scope.state = $state;
+    $scope.selected = {};
+    $scope.selected.plan = 'hobby';
+    $scope.selected.plan_id = 1;
+    $scope.webdollar_amount = 0;
+
+    var webdollar_eur_price = 0;
+
+    coinsService.query({
+      on_hostero: 1
+    }).$promise.then(function(coins) {
+      for (var i = 0; i < coins.length; i++) {
+        var coin = coins[i];
+
+        if (coin.internal_name === 'webdollar') {
+          webdollar_eur_price = coin.price_eur;
+
+          $scope.set_webdollar_amount();
+          break;
+        }
+      }
+    });
+
+    function get_price_for_plan(plan) {
+      var info = {};
+
+      switch (plan) {
+        case 'hobby':
+          info.id = 1;
+          info.price = 1.99;
+          break;
+        case 'miner':
+          info.id = 2;
+          info.price = 9.99;
+          break;
+        case 'farm':
+          info.id = 3;
+          info.price = 49.99;
+          break;
+        default:
+          info.price = 0;
+          break;
+      }
+
+      return info;
+    }
+
+    $scope.set_webdollar_amount = function() {
+      var info = get_price_for_plan($scope.selected.plan);
+
+      $scope.selected.plan_id = info.id;
+      $scope.webdollar_amount = info.price / webdollar_eur_price;
+    };
 
     accountsService.get({
       id: account.id

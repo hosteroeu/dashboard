@@ -28,7 +28,7 @@
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> Subscribe </h3>
-
+                <br />
                 <center>
                   <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and click Subscribe.</p>
 
@@ -77,7 +77,29 @@
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> WebDollar </h3>
-                <p>$WEBD payments coming soon...</p>
+                <br />
+                <center>
+                  <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and make a payment.</p>
+
+                  <select ng-model="selected.plan" ng-change="set_webdollar_amount()">
+                    <option value="hobby" selected="">Hobby : €1.99 EUR - monthly</option>
+                    <option value="miner">Miner : €9.99 EUR - monthly</option>
+                    <option value="farm">Farm : €49.99 EUR - monthly</option>
+                  </select>
+
+                  <br />
+                  <br />
+
+                  <p>Send the exact WEBD amount</p>
+                  <h4>{{webdollar_amount}}.{{selected.plan_id}}{{global_account.id}}</h4>
+                  <p>to wallet</p>
+                  <h6>WEBD$gCET26qgUFLE5dNUo8aGrn0ZPGQQueFYuj$</h6>
+
+                  <br />
+
+                  <p><small>You need to pay the exact amount specified above, otherwise the payment won't get registered.</small></p>
+                  <p><small>Read more about our <a href="https://www.hostero.eu/pricing" target="_blank">subscription plans</a>.</small></p>
+                </center>
               </div>
             </section>
           </div>
