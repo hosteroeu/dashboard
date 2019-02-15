@@ -11,12 +11,16 @@ angular.module('atlasApp')
   .controller('BillingCtrl', function($scope, $state, accountsService, paymentsService, coinsService) {
     var account = JSON.parse(localStorage.getItem('account'));
 
-    $scope.payments = paymentsService.query();
     $scope.state = $state;
     $scope.selected = {};
     $scope.selected.plan = 'hobby';
     $scope.selected.plan_id = 1;
     $scope.webdollar_amount = 0;
+
+    paymentsService.query().$promise.then(function(payments) {
+      $scope.payments = payments;
+      $scope.last_payment_gateway = payments.length > 0 ? payments[0].gateway : null;
+    });
 
     var webdollar_eur_price = 0;
 

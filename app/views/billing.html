@@ -59,7 +59,7 @@
               </div>
             </section>
 
-            <section id="switcher" class="card" ng-if="account.plan_miners != 1">
+            <section id="switcher" class="card" ng-if="account.plan_miners != 1 && last_payment_gateway == 'paypal'">
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> Unsubscribe </h3>
@@ -120,7 +120,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="payment in payments | reverse">
+                    <tr ng-repeat="payment in payments">
                       <td>{{payment.id}}</td>
                       <td>{{payment.gateway | ucfirst}}</td>
                       <td>
