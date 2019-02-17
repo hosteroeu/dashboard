@@ -154,6 +154,16 @@ angular.module('atlasApp')
           new_miner.password = _this.wallets.password_globalboost;
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_globalboost;
           break;
+
+        case 'elicoin':
+          if (!_this.wallets.wallet_elicoin || !_this.wallets.mining_pool_url_elicoin) {
+            window.toastr.warning('Please enter Elicoin information');
+            return;
+          }
+
+          new_miner.wallet = _this.wallets.wallet_elicoin;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_elicoin;
+          break;
       }
 
       if (_this.selected_host.deployed !== '0') {
