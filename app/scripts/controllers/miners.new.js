@@ -162,6 +162,7 @@ angular.module('atlasApp')
           }
 
           new_miner.wallet = _this.wallets.wallet_elicoin;
+          new_miner.password = _this.wallets.password_elicoin;
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_elicoin;
           break;
       }

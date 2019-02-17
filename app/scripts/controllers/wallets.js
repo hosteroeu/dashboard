@@ -48,6 +48,7 @@ angular.module('atlasApp')
         password_globalboost: _this.wallets.password_globalboost,
         mining_pool_url_globalboost: _this.wallets.mining_pool_url_globalboost,
         wallet_elicoin: _this.wallets.wallet_elicoin,
+        password_elicoin: _this.wallets.password_elicoin,
         mining_pool_url_elicoin: _this.wallets.mining_pool_url_elicoin,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
