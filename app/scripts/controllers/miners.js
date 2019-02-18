@@ -8,7 +8,7 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MinersCtrl', function($scope, $state, minersService, hostsService, DTOptionsBuilder) {
+  .controller('MinersCtrl', function($scope, $state, minersService, coinsService, hostsService, DTOptionsBuilder) {
     $scope.miners = null;
     $scope.hosts = hostsService.query();
     $scope.miners_stopped = [];
@@ -20,27 +20,57 @@ angular.module('atlasApp')
 
     var getMiners = function() {
       minersService.query().$promise.then(function(res) {
-        var yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
+        // TODO: Link miner to coin in DB (build relation)
+        coinsService.query().$promise.then(function(coins) {
+          var yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
 
-        $scope.miners = [];
+          $scope.miners = [];
 
-        res.forEach(function(miner) {
-          var updated = Date.parse(miner.updated_at);
+          res.forEach(function(miner) {
+            var updated = Date.parse(miner.updated_at);
 
-          if (miner.status === 'stopped' && updated < yesterday.getTime()) {
-            return;
-          }
+            if (miner.status === 'stopped' && updated < yesterday.getTime()) {
+              return;
+            }
 
-          $scope.miners.push(miner);
-        });
+            miner.reward_24h_eur = 0;
 
-        $scope.miners.forEach(function(miner) {
-          if (miner.status === 'stopped') {
-            $scope.miners_stopped.push(miner);
-          } else {
-            $scope.miners_running.push(miner);
-          }
+            // TODO: Use benchmarks instead of actual miner power?
+            if (miner.power) {
+              var reward = 0;
+              var coin;
+
+              coins.forEach(function(_coin) {
+                if (_coin.internal_name === miner.coin) {
+                  coin = _coin;
+                }
+              });
+
+              // DOMINANCE = USER_HASHES / GLOBAL_HASHES / * 100
+              // REWARD_PER_DAY = BLOCK_REWARD * 3600 * 24 / BLOCK_TIME * DOMINANCE / 100
+              var dominance = miner.power / coin.network_hashrate / 100;
+              var reward_coins = coin.block_reward * 3600 * 24 / coin.block_time * dominance * 100;
+
+              reward = coin.price_eur * reward_coins;
+
+              if (coin.hybrid) {
+                reward = reward * coin.hybrid_percentage_pow / 100;
+              }
+
+              miner.reward_24h_eur = reward.toFixed(3);
+            }
+
+            $scope.miners.push(miner);
+          });
+
+          $scope.miners.forEach(function(miner) {
+            if (miner.status === 'stopped') {
+              $scope.miners_stopped.push(miner);
+            } else {
+              $scope.miners_running.push(miner);
+            }
+          });
         });
       });
     };
@@ -65,11 +95,11 @@ angular.module('atlasApp')
       switch (miner.status) {
         case 'started':
           icon = 'plug';
-        break;
+          break;
 
         case 'stopped':
           icon = 'power-off';
-        break;
+          break;
       }
 
       return icon;

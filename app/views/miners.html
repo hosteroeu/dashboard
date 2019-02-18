@@ -48,6 +48,7 @@
               <th>Miner</th>
               <th>Coin</th>
               <th>Hashrate</th>
+              <th>Est. 24h Rewards</th>
               <th>Updated</th>
               <th class="d-none d-sm-none d-md-none d-lg-block">Host</th>
               <th>&nbsp;</th>
@@ -66,9 +67,12 @@
                 <a ui-sref="wallets.wallet({wallet: miner.coin})">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
-                <span ng-if="!miner.temporary && miner.coin !== 'webdollar'">{{ miner.power | hashrate }}</span>
+                <span ng-if="!miner.temporary">{{ miner.power | hashrate }}</span>
                 <span ng-if="miner.temporary">-</span>
-                <span ng-if="miner.coin === 'webdollar'">Not available</span>
+              </td>
+              <td>
+                <span ng-if="!miner.temporary">{{ miner.reward_24h_eur }} EUR</span>
+                <span ng-if="miner.temporary">-</span>
               </td>
               <td>
                 {{ miner.updated_at | timeAgo }}
