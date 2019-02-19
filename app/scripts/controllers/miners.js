@@ -58,7 +58,7 @@ angular.module('atlasApp')
                 reward = reward * coin.hybrid_percentage_pow / 100;
               }
 
-              miner.reward_24h_eur = reward.toFixed(3);
+              miner.reward_24h_eur = reward.toFixed(2);
             }
 
             $scope.miners.push(miner);
