@@ -28,6 +28,7 @@ angular.module('atlasApp')
       }, {
         wallet_webdollar: _this.wallets.wallet_webdollar,
         mining_pool_url_webdollar: _this.wallets.mining_pool_url_webdollar,
+        password_webdollar: _this.wallets.password_webdollar,
         wallet_nerva: _this.wallets.wallet_nerva,
         wallet_webchain: _this.wallets.wallet_webchain,
         password_webchain: _this.wallets.password_webchain,
