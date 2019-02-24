@@ -48,7 +48,14 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(account) {
+      var webdollar_password = account.password_webdollar.split('|') || [];
+
       _this.wallets = account;
+
+      if (webdollar_password.length === 2) {
+        _this.wallets.public_key_webdollar = webdollar_password[0];
+        _this.wallets.private_key_webdollar = webdollar_password[1];
+      }
     });
 
     _this.deploy = function() {
@@ -77,7 +84,7 @@ angular.module('atlasApp')
 
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_webdollar;
           new_miner.wallet = _this.wallets.wallet_webdollar;
-          new_miner.password = _this.wallets.password_webdollar;
+          new_miner.password = _this.wallets.public_key_webdollar + '|' + _this.wallets.private_key_webdollar;
           break;
 
         case 'nerva':
