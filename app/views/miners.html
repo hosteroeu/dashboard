@@ -48,7 +48,7 @@
               <th>Miner</th>
               <th>Coin</th>
               <th>Hashrate</th>
-              <th>Est. 24h Rewards</th>
+              <!--<th>Est. 24h Rewards</th>-->
               <th>Updated</th>
               <th class="d-none d-sm-none d-md-none d-lg-block">Rig</th>
               <th>&nbsp;</th>
@@ -70,10 +70,12 @@
                 <span ng-if="!miner.temporary">{{ miner.power | hashrate }}</span>
                 <span ng-if="miner.temporary">-</span>
               </td>
+              <!--
               <td>
                 <span ng-if="!miner.temporary">{{ miner.reward_24h_eur }} &euro;</span>
                 <span ng-if="miner.temporary">-</span>
               </td>
+              -->
               <td>
                 {{ miner.updated_at | timeAgo }}
               </td>
