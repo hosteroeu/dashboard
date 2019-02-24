@@ -60,7 +60,7 @@ angular.module('atlasApp')
 
     _this.deploy = function() {
       if (!_this.selected_host) {
-        window.toastr.warning('Please select a Host');
+        window.toastr.warning('Please select a Rig');
         return;
       }
 
@@ -175,7 +175,7 @@ angular.module('atlasApp')
       }
 
       if (_this.selected_host.deployed !== '0') {
-        window.toastr.error('Host is already deployed');
+        window.toastr.error('Rig is already deployed');
         return;
       }
 

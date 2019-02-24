@@ -271,9 +271,6 @@
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
-              <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Management </li>
-              <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item" ng-show="isAuthenticated">
                 <a ui-sref="wallets" class="menu-link">
@@ -284,11 +281,14 @@
                 <!-- /child menu -->
               </li>
               <!-- /.menu-item -->
+              <!-- .menu-header -->
+              <li class="menu-header" ng-if="isAuthenticated">Management </li>
+              <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="hosts" class="menu-link">
                   <span class="menu-icon fas fa-list-alt"></span>
-                  <span class="menu-text">Hosts</span>
+                  <span class="menu-text">Rigs</span>
                   <span class="badge badge-success" ng-cloak>{{global_hosts.length}}</span>
                 </a>
               </li>

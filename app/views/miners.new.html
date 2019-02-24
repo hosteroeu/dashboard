@@ -11,22 +11,27 @@
     <div class="page-section">
       <div class="card card-fluid">
         <div class="card-body">
-          <div class="form-group">
-            <label for="host">Host</label>
-            <select class="custom-select" id="host" required="required" ng-model="ctrl.selected_host_id" ng-change="ctrl.update_threads()">
-              <option ng-repeat="host in ctrl.hosts" value="{{host.id}}">{{host.name}}</option>
-              <option value="">Choose...</option>
-            </select>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="host">Rig</label>
+                <select class="custom-select" id="host" required="required" ng-model="ctrl.selected_host_id" ng-change="ctrl.update_threads()">
+                  <option ng-repeat="host in ctrl.hosts" value="{{host.id}}">{{host.name}}</option>
+                  <option value="">Choose...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="threads">Threads</label>
+                <input type="number" class="form-control" id="threads" ng-model="ctrl.threads" required="" placeholder="Pick a host" />
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="threads">Threads</label>
-            <input type="number" class="form-control" id="threads" ng-model="ctrl.threads" required="" placeholder="Pick a host" />
-          </div>
-
-          <p>Processor Flag</p>
+          <p>Processor Flag (<a href="" ng-click="ctrl.show_processor_flag = !ctrl.show_processor_flag">overwrite default settings</a>)</p>
           <!-- .section-block -->
-          <div class="section-block text-center text-sm-left">
+          <div class="section-block text-center text-sm-left" ng-show="ctrl.show_processor_flag">
             <!-- .visual-picker -->
             <div class="visual-picker visual-picker-sm has-peek px-3">
               <!-- visual-picker input -->
@@ -93,11 +98,19 @@
           </div>
           <!-- /.section-block -->
 
-          <div ng-include src="'views/wallets/' + ctrl.wallets.auto_deploy_coin + '.html'"></div>
+          <p><a href="" ng-click="ctrl.show_wallet = !ctrl.show_wallet">Overwrite wallet's default settings</a></p>
+
+          <div ng-include src="'views/wallets/' + ctrl.wallets.auto_deploy_coin + '.html'" ng-show="ctrl.show_wallet"></div>
 
           <hr class="my-5" />
-          <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.deploy()">Deploy</button>
-          <button class="btn btn-outline-secondary btn-lg btn-block" ui-sref="miners">Cancel</button>
+          <div class="row">
+            <div class="col-sm">
+              <button class="btn btn-outline-secondary btn-lg btn-block" ui-sref="miners">Cancel</button>
+            </div>
+            <div class="col-sm">
+              <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.deploy()">Deploy</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

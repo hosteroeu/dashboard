@@ -50,7 +50,7 @@
               <th>Hashrate</th>
               <th>Est. 24h Rewards</th>
               <th>Updated</th>
-              <th class="d-none d-sm-none d-md-none d-lg-block">Host</th>
+              <th class="d-none d-sm-none d-md-none d-lg-block">Rig</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
@@ -78,10 +78,9 @@
                 {{ miner.updated_at | timeAgo }}
               </td>
               <td class="d-none d-sm-none d-md-none d-lg-block">
-                <button type="button" class="btn btn-outline-secondary" ui-sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
-                  <i class="fas fa-list-alt"></i>
-                  {{ miner.Host.name | limitTo:20 }}...
-                </button>
+                <a href="" sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
+                  {{ miner.Host.name | limitTo:20 }}
+                </a>
                 <span ng-if="!miner.Host">-</span>
               </td>
               <td class="align-middle text-right" ng-if="!miner.temporary">
