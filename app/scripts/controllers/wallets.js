@@ -30,7 +30,10 @@ angular.module('atlasApp')
     });
 
     _this.update = function() {
-      _this.wallets.password_webdollar = _this.wallets.public_key_webdollar + '|' + _this.wallets.private_key_webdollar;
+      if (_this.wallets.public_key_webdollar && _this.wallets.private_key_webdollar) {
+        _this.wallets.password_webdollar = _this.wallets.public_key_webdollar +
+          '|' + _this.wallets.private_key_webdollar;
+      }
 
       accountsService.update({
         id: account.id
