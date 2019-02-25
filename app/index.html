@@ -265,7 +265,7 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="billing" class="menu-link">
-                  <span class="menu-icon fas fa-search-dollar"></span>
+                  <span class="menu-icon fas fa-wallet"></span>
                   <span class="menu-text">Billing</span>
                 </a>
                 <!-- /child menu -->
@@ -274,8 +274,8 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-show="isAuthenticated">
                 <a ui-sref="wallets" class="menu-link">
-                  <span class="menu-icon fas fa-wallet"></span>
-                  <span class="menu-text">Wallets</span>
+                  <span class="menu-icon fas fa-coins"></span>
+                  <span class="menu-text">Coins</span>
                   <span class="badge badge-warning" ng-cloak>{{global_coins.length}}</span>
                 </a>
                 <!-- /child menu -->
@@ -287,8 +287,8 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="hosts" class="menu-link">
-                  <span class="menu-icon fas fa-list-alt"></span>
-                  <span class="menu-text">Rigs</span>
+                  <span class="menu-icon fas fa-laptop"></span>
+                  <span class="menu-text">Devices</span>
                   <span class="badge badge-success" ng-cloak>{{global_hosts.length}}</span>
                 </a>
               </li>
@@ -296,7 +296,7 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="miners" class="menu-link">
-                  <span class="menu-icon fas fa-th-list"></span>
+                  <span class="menu-icon fas fa-microchip"></span>
                   <span class="menu-text">Miners</span>
                   <span class="badge badge-success" ng-cloak>{{global_miners.length}}</span>
                 </a>
