@@ -40,12 +40,13 @@ angular.module('atlasApp')
           localStorage.setItem('profile', JSON.stringify(profile));
           $rootScope.$broadcast('userProfileSet', profile);
 
+          lock.hide();
+
           accountsService.get({
             controller: 'sync'
           }).$promise.then(function(account) {
             localStorage.setItem('account', JSON.stringify(account));
 
-            lock.hide();
             $state.go('dashboard');
 
             accountsService.update({

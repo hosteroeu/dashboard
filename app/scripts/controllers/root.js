@@ -24,26 +24,23 @@ angular.module('atlasApp')
       $scope.profile = JSON.parse(localStorage.getItem('profile')) || {};
       $scope.global_account = JSON.parse(localStorage.getItem('account')) || {};
 
-      // Wait for all the controllers to be inited
-      setTimeout(function() {
-        if ($rootScope.minimalLayout === false) {
-          $scope.global_hosts = hostsService.query();
-          $scope.global_coins = coinsService.query({
-            on_hostero: 1
-          });
-          $scope.global_logs = logsService.query();
+      if ($rootScope.minimalLayout === false) {
+        $scope.global_hosts = hostsService.query();
+        $scope.global_coins = coinsService.query({
+          on_hostero: 1
+        });
+        $scope.global_logs = logsService.query();
 
-          minersService.query().$promise.then(function(res) {
-            $scope.global_miners = [];
+        minersService.query().$promise.then(function(res) {
+          $scope.global_miners = [];
 
-            res.forEach(function(miner) {
-              if (!miner.temporary) {
-                $scope.global_miners.push(miner);
-                $scope.total_power += parseInt(miner.power) || 0;
-              }
-            });
+          res.forEach(function(miner) {
+            if (!miner.temporary) {
+              $scope.global_miners.push(miner);
+              $scope.total_power += parseInt(miner.power) || 0;
+            }
           });
-        }
-      }, 4000);
+        });
+      }
     }
   });
