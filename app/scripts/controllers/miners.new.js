@@ -48,14 +48,18 @@ angular.module('atlasApp')
     accountsService.get({
       id: account.id
     }).$promise.then(function(account) {
-      var webdollar_password = account.password_webdollar.split('|') || [];
+      var webdollar_password = [];
 
-      _this.wallets = account;
+      if (account.password_webdollar) {
+        webdollar_password = account.password_webdollar.split('|');
+      }
 
       if (webdollar_password.length === 2) {
         _this.wallets.public_key_webdollar = webdollar_password[0];
         _this.wallets.private_key_webdollar = webdollar_password[1];
       }
+
+      _this.wallets = account;
     });
 
     _this.deploy = function() {
