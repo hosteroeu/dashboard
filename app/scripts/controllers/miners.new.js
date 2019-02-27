@@ -50,6 +50,8 @@ angular.module('atlasApp')
     }).$promise.then(function(account) {
       var webdollar_password = [];
 
+      _this.wallets = account;
+
       if (account.password_webdollar) {
         webdollar_password = account.password_webdollar.split('|');
       }
@@ -58,8 +60,6 @@ angular.module('atlasApp')
         _this.wallets.public_key_webdollar = webdollar_password[0];
         _this.wallets.private_key_webdollar = webdollar_password[1];
       }
-
-      _this.wallets = account;
     });
 
     _this.deploy = function() {
