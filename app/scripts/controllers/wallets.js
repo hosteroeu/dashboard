@@ -21,7 +21,11 @@ angular.module('atlasApp')
 
       _this.wallets = _account;
 
-      var webdollar_password = _account.password_webdollar.split('|');
+      var webdollar_password = [];
+
+      if (account.password_webdollar) {
+        webdollar_password = _account.password_webdollar.split('|');
+      }
 
       if (webdollar_password.length === 2) {
         _this.wallets.public_key_webdollar = webdollar_password[0];
