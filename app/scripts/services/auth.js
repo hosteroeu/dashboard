@@ -40,7 +40,9 @@ angular.module('atlasApp')
           }
 
           localStorage.setItem('profile', JSON.stringify(profile));
-          $cookies.put('profile', JSON.stringify(profile));
+          $cookies.put('profile', JSON.stringify(profile), {
+            domain: '.hostero.eu'
+          });
           $rootScope.$broadcast('userProfileSet', profile);
 
           lock.hide();
@@ -50,7 +52,9 @@ angular.module('atlasApp')
           }).$promise.then(function(account) {
             localStorage.setItem('account', JSON.stringify(account));
 
-            $cookies.put('ACCOUNT_ID', account.name);
+            $cookies.put('ACCOUNT_ID', account.name, {
+              domain: '.hostero.eu'
+            });
 
             $state.go('dashboard');
 
