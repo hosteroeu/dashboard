@@ -20,12 +20,12 @@
         <div class="btn-toolbar">
           <div class="dropdown">
             <button type="button" class="btn btn-light" data-toggle="dropdown">
-              <span>More</span>
+              <span>Batch</span>
               <span class="caret"></span>
             </button>
             <div class="dropdown-arrow dropdown-arrow-right"></div>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="" class="dropdown-item" ng-click="minersCtrl.redeploy_all()">Re-deploy Miners</a>
+              <a href="" class="dropdown-item" ng-click="minersCtrl.delete_all()">Delete All Miners</a>
             </div>
           </div>
         </div>
@@ -98,10 +98,12 @@
                   <span class="sr-only">Fast deploy</span>
                 </a>
                 -->
+                <!--
                 <a ng-click="minersCtrl.redeploy(miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
-                  <i class="fa fa-redo"></i>
+                  <i class="fa fa-recycle"></i>
                   <span class="sr-only">Re-deploy</span>
                 </a>
+                -->
                 <a ng-click="minersCtrl.remove(miner)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Remove">
                   <i class="far fa-trash-alt"></i>
                   <span class="sr-only">Remove</span>

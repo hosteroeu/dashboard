@@ -111,7 +111,7 @@ angular.module('atlasApp')
       window.open('//' + instance.name + '.' + account.name + '.wordpress.hoste.ro');
     };
 
-    this.redeploy_all = function() {
+    this.delete_all = function() {
       /*
       var confirm = $mdDialog.confirm()
         .title('Do you want to re-deploy all the miners?')
@@ -123,19 +123,15 @@ angular.module('atlasApp')
       */
 
       $scope.miners.forEach(function(miner) {
-        minersService.remove({
-          id: miner.id
-        });
-      });
-
-      $scope.hosts.forEach(function(host) {
-        hostsService.remove({
-          id: host.id
-        });
+        if (!miner.temporary) {
+          minersService.remove({
+            id: miner.id
+          });
+        }
       });
 
       setTimeout(function() {
-        window.toastr.info('Re-deploying started... It will take several minutes');
+        window.toastr.info('Deleting all the miners...');
         $state.reload();
       }, 2000);
     };
