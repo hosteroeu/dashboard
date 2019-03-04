@@ -80,7 +80,7 @@
                 {{ miner.updated_at | timeAgo }}
               </td>
               <td class="d-none d-sm-none d-md-none d-lg-block">
-                <a href="" sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
+                <a href="" ui-sref="host({host:miner.Host.id})" title="{{miner.Host.name}}" ng-if="miner.Host">
                   {{ miner.Host.name | limitTo:20 }}
                 </a>
                 <span ng-if="!miner.Host">-</span>
