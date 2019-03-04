@@ -29,6 +29,8 @@ angular
   .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $httpProvider, lockProvider, jwtOptionsProvider, cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
 
+    window.Raven.config('https://d9a8c0f13550478997ffd66aad57b277@sentry.io/1395940').install();
+
     lockProvider.init({
       clientID: 'E6Zeo9d6DEXfEeFyvBPeYw3tYdtYNVDP',
       domain: 'morion4000.auth0.com',
