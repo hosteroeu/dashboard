@@ -19,8 +19,12 @@ angular.module('atlasApp')
       localStorage.removeItem('token');
       localStorage.removeItem('profile');
       localStorage.removeItem('account');
-      $cookies.remove('profile');
-      $cookies.remove('ACCOUNT_ID');
+      $cookies.remove('profile', {
+        domain: '.hostero.eu'
+      });
+      $cookies.remove('ACCOUNT_ID', {
+        domain: '.hostero.eu'
+      });
       authManager.unauthenticate();
       userProfile = {};
 
