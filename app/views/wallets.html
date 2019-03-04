@@ -52,7 +52,8 @@
               <div class="nav-scroller">
                 <!-- .nav -->
                 <div class="nav nav-tabs">
-                  <a class="nav-link active" ui-sref="miner({miner: miner.id})">Wallet</a>
+                  <a class="nav-link" ui-sref="wallets.wallet({miner: miner.id})" ng-class="{active: ctrl.state.current.name === 'wallets.wallet'}">Wallet</a>
+                  <a class="nav-link" ui-sref="wallets.miner({miner: miner.id})" ng-class="{active: ctrl.state.current.name === 'wallets.miner'}">Miner</a>
                   <a class="nav-link" href="https://www.hostero.eu/coins/{{ctrl.state.params.wallet}}" target="_blank">Info</a>
                 </div>
                 <!-- /.nav -->
@@ -61,16 +62,30 @@
             </nav>
             <!-- /.page-navs -->
 
-            <!-- .card -->
-            <section id="labels" class="card">
-              <!-- .card-body -->
-              <div class="card-body">
-                <div ng-include src="'views/wallets/' + ctrl.state.params.wallet + '.html'"></div>
-              </div>
-              <!-- /.card-body -->
-            </section>
-            <!-- /.card -->
-            <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.update()">Update</button>
+            <div ng-if="ctrl.state.current.name === 'wallets.miner'">
+              <!-- .card -->
+              <section id="labels" class="card">
+                <!-- .card-body -->
+                <div class="card-body">
+                  <a href="{{ctrl.get_coin_docker_url(ctrl.state.params.wallet)}}" target="_blank">{{ctrl.get_coin_docker_url(ctrl.state.params.wallet)}}</a>
+                </div>
+                <!-- /.card-body -->
+              </section>
+              <!-- /.card -->
+            </div>
+
+            <div ng-if="ctrl.state.current.name === 'wallets.wallet'">
+              <!-- .card -->
+              <section id="labels" class="card">
+                <!-- .card-body -->
+                <div class="card-body">
+                  <div ng-include src="'views/wallets/' + ctrl.state.params.wallet + '.html'"></div>
+                </div>
+                <!-- /.card-body -->
+              </section>
+              <!-- /.card -->
+              <button class="btn btn-primary btn-lg btn-block" ng-click="ctrl.update()">Update</button>
+            </div>
           </div>
         </div>
       </div>

@@ -189,6 +189,10 @@ angular
         parent: 'wallets',
         url: '/:wallet'
       })
+      .state('wallets.miner', {
+        parent: 'wallets.wallet',
+        url: '/miner'
+      })
       .state('billing', {
         url: '/billing',
         templateUrl: 'views/billing.html',

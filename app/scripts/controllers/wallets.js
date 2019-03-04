@@ -33,6 +33,34 @@ angular.module('atlasApp')
       }
     });
 
+    _this.get_coin_docker_url = function(internal_name) {
+      var coins = $scope.global_coins;
+      var coin;
+      var docker_image_name;
+      var docker_image_version;
+      var url = 'https://hub.docker.com/r/morion4000/';
+
+      for (var i=0; i<coins.length; i++) {
+        if (coins[i].internal_name === internal_name) {
+          coin = coins[i];
+          break;
+        }
+      }
+
+      if (coin && coin.docker_image) {
+        try {
+          docker_image_name = coin.docker_image.split('/')[1].split(':')[0];
+          docker_image_version = coin.docker_image.split('/')[1].split(':')[1];
+        } catch(e) {
+          console.error(e);
+        }
+
+        url += docker_image_name;
+      }
+
+      return url;
+    };
+
     _this.update = function() {
       if (_this.wallets.public_key_webdollar && _this.wallets.private_key_webdollar) {
         _this.wallets.password_webdollar = _this.wallets.public_key_webdollar +
