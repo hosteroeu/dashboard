@@ -33,7 +33,7 @@ angular.module('atlasApp')
       }
     });
 
-    _this.get_coin_docker_url = function(internal_name) {
+    _this.get_coin = function(internal_name) {
       var coins = $scope.global_coins;
       var coin;
       var docker_image_name;
@@ -58,7 +58,9 @@ angular.module('atlasApp')
         url += docker_image_name;
       }
 
-      return url;
+      coin.docker_url = url;
+
+      return coin;
     };
 
     _this.update = function() {
