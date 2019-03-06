@@ -329,6 +329,12 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
+    uglify: {
+      options: {
+        sourceMap: true
+      }
+    },
+
     imagemin: {
       dist: {
         files: [{
