@@ -12,6 +12,20 @@
       <!-- title and toolbar -->
       <div class="d-md-flex align-items-md-start">
         <h1 class="page-title mr-sm-auto"> {{hosts.length}} Devices </h1>
+        <!-- .btn-toolbar -->
+        <div class="btn-toolbar">
+          <div class="dropdown">
+            <button type="button" class="btn btn-light" data-toggle="dropdown">
+              <span>Batch</span>
+              <span class="caret"></span>
+            </button>
+            <div class="dropdown-arrow dropdown-arrow-right"></div>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="" class="dropdown-item" ng-click="hostsCtrl.redeploy_all()">Re-deploy All Devices</a>
+            </div>
+          </div>
+        </div>
+        <!-- /.btn-toolbar -->
       </div>
       <!-- /title and toolbar -->
     </header>

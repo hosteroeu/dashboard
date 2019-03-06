@@ -8,7 +8,8 @@
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('HostsCtrl', function($scope, $state, hostsService, DTOptionsBuilder) {
+  .controller('HostsCtrl', function($scope, $state, hostsService, minersService, DTOptionsBuilder) {
+    $scope.miners = minersService.query();
     $scope.hosts = null;
     $scope.hosts_deployed = [];
     $scope.hosts_stopped = [];
@@ -56,6 +57,25 @@ angular.module('atlasApp')
         case 'stopped':
           return 'cloud_off';
       }
+    };
+
+    this.redeploy_all = function() {
+      $scope.hosts.forEach(function(host) {
+        hostsService.remove({
+          id: host.id
+        });
+      });
+
+      $scope.miners.forEach(function(miner) {
+        minersService.remove({
+          id: miner.id
+        });
+      });
+
+      setTimeout(function() {
+        window.toastr.info('Deleting all the devices and miners...');
+        $state.reload();
+      }, 2000);
     };
 
     this.remove = function(host) {
