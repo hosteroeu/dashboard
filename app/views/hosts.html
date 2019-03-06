@@ -11,7 +11,7 @@
       <!-- /floating action -->
       <!-- title and toolbar -->
       <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto"> {{hosts.length}} Devices </h1>
+        <h1 class="page-title mr-sm-auto"> {{hosts.length || 0}} Devices </h1>
         <!-- .btn-toolbar -->
         <div class="btn-toolbar">
           <div class="dropdown">
@@ -35,6 +35,13 @@
     <section class="card card-fluid">
       <div class="card-body" ng-if="hosts != null && !hosts.length">
         You have not installed any hosts. <a ui-sref="install">Install a device</a>.
+      </div>
+
+      <div ng-if="hosts == null">
+        <center>
+          <br />
+          <p><img src="images/loading.gif" /></p>
+        </center>
       </div>
 
       <div class="table-responsive" ng-if="hosts != null && hosts.length">
