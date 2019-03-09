@@ -110,6 +110,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('new_miner_pos', {
+        url: '/new_miner_pos/:host',
+        templateUrl: 'views/miners.new_pos.html',
+        controller: 'MinersNewPOSCtrl',
+        controllerAs: 'ctrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('miner', {
         url: '/miners/:miner',
         templateUrl: 'views/miner.html',

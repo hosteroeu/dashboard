@@ -186,6 +186,10 @@ angular.module('atlasApp')
           $state.go('miners');
         }
 
+        if (miner.Host && miner.Host.user_id === 'shared') {
+          return;
+        }
+
         hostsService.update({
             id: miner.host_id
           }, {
