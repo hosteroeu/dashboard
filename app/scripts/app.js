@@ -140,7 +140,7 @@ angular
       })
       .state('install', {
         url: '/install',
-        templateUrl: 'views/install.html',
+        templateUrl: 'views/install_new.html',
         controller: 'InstallCtrl',
         controllerAs: 'installCtrl',
         data: {
