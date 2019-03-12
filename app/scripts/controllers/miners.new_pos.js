@@ -28,6 +28,23 @@ angular.module('atlasApp')
     _this.selected_host = null;
     _this.selected_host_id = null;
 
+    minersService.query().$promise.then(function(res) {
+      var already_deployed = false;
+
+      res.forEach(function(miner) {
+        // Assume miners with threads -100 (POS only) are POS miners
+        if (miner.threads === '-100') {
+          already_deployed = true;
+        }
+      });
+
+      if (already_deployed) {
+        window.toastr.error('Only one WebDollar POS miner allowed per account');
+
+        $state.go('miners');
+      }
+    });
+
     hostsService.query().$promise.then(function(hosts) {
       _this.hosts = hosts;
 
