@@ -18,6 +18,12 @@ angular.module('atlasApp')
       .withDisplayLength(25)
       .withOption('retrieve', true);
 
+    $scope.$watch('$viewContentLoaded', function() {
+      setTimeout(function() {
+        window.$('[data-toggle="tooltip"]').tooltip();
+      }, 5000);
+    });
+
     var getMiners = function() {
       minersService.query().$promise.then(function(res) {
         // TODO: Link miner to coin in DB (build relation)

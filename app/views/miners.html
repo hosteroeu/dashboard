@@ -74,8 +74,18 @@
                 <a ui-sref="wallets.wallet({wallet: miner.coin})">{{ miner.coin | ucfirst }}</a>
               </td>
               <td>
-                <span ng-if="!miner.temporary">{{ miner.power | hashrate }}</span>
-                <span ng-if="miner.temporary">-</span>
+                <span ng-if="!miner.temporary">
+                  {{ miner.power | hashrate }}
+                  <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Updated every 30 minutes">
+                    <i class="fa fa-info"></i>
+                  </span>
+                </span>
+                <span ng-if="miner.temporary">
+                  -
+                  <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Not computed for temporary miners">
+                    <i class="fa fa-info"></i>
+                  </span>
+                </span>
               </td>
               <!--
               <td>

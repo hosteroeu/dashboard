@@ -28,7 +28,12 @@ angular.module('atlasApp')
         default:
           //console.log(parseInt(input), input.toString().length);
 
-          output = parseInt(input) + ' H/s';
+          if (parseInt(input) === 0) {
+            output = '-';
+          } else {
+            output = parseInt(input) + ' H/s';
+          }
+
           break;
       }
 
