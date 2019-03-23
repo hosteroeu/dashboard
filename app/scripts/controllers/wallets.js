@@ -31,6 +31,12 @@ angular.module('atlasApp')
         _this.wallets.public_key_webdollar = webdollar_password[0];
         _this.wallets.private_key_webdollar = webdollar_password[1];
       }
+
+      if (account.miner_webdollar) {
+        _this.wallets.miner_webdollar = account.miner_webdollar;
+      } else {
+        _this.wallets.miner_webdollar = 'legacy';
+      }
     });
 
     _this.get_coin = function(internal_name) {
@@ -75,6 +81,7 @@ angular.module('atlasApp')
         wallet_webdollar: _this.wallets.wallet_webdollar,
         mining_pool_url_webdollar: _this.wallets.mining_pool_url_webdollar,
         password_webdollar: _this.wallets.password_webdollar,
+        miner_webdollar: _this.wallets.miner_webdollar,
         wallet_nerva: _this.wallets.wallet_nerva,
         wallet_webchain: _this.wallets.wallet_webchain,
         password_webchain: _this.wallets.password_webchain,
@@ -99,8 +106,6 @@ angular.module('atlasApp')
         mining_pool_url_elicoin: _this.wallets.mining_pool_url_elicoin,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
-
-        $state.reload();
       });
     };
   });

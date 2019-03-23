@@ -60,6 +60,12 @@ angular.module('atlasApp')
         _this.wallets.public_key_webdollar = webdollar_password[0];
         _this.wallets.private_key_webdollar = webdollar_password[1];
       }
+
+      if (account.miner_webdollar) {
+        _this.wallets.miner_webdollar = account.miner_webdollar;
+      } else {
+        _this.wallets.miner_webdollar = 'legacy';
+      }
     });
 
     _this.deploy = function() {
@@ -89,6 +95,7 @@ angular.module('atlasApp')
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_webdollar;
           new_miner.wallet = _this.wallets.wallet_webdollar;
           new_miner.password = _this.wallets.public_key_webdollar + '|' + _this.wallets.private_key_webdollar;
+          new_miner.type = _this.wallets.miner_webdollar;
           break;
 
         case 'nerva':
