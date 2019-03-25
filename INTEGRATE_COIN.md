@@ -12,3 +12,7 @@ app/views/wallets/
 
 db:
 accounts
+
+website:
+assets/sitemap.xml
+assets/img/coins/
