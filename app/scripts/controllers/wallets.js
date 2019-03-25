@@ -104,6 +104,9 @@ angular.module('atlasApp')
         wallet_elicoin: _this.wallets.wallet_elicoin,
         password_elicoin: _this.wallets.password_elicoin,
         mining_pool_url_elicoin: _this.wallets.mining_pool_url_elicoin,
+        wallet_xcash: _this.wallets.wallet_xcash,
+        password_xcash: _this.wallets.password_xcash,
+        mining_pool_url_xcash: _this.wallets.mining_pool_url_xcash,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
       });
