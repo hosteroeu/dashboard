@@ -29,6 +29,13 @@ angular.module('atlasApp')
       }
     });
 
+    minersService.query({
+      id: $state.params.miner,
+      controller: 'events'
+    }).$promise.then(function(data) {
+      $scope.events = data;
+    });
+
     /*
     var socket;
 

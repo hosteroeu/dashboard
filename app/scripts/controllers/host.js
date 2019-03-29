@@ -12,6 +12,13 @@ angular.module('atlasApp')
     $scope.host = null;
     $scope.state = $state;
 
+    hostsService.query({
+      id: $state.params.host,
+      controller: 'events'
+    }).$promise.then(function(data) {
+      $scope.events = data;
+    });
+
     /*
     var socket;
 

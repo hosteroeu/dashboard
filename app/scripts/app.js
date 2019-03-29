@@ -138,6 +138,11 @@ angular
         parent: 'miner',
         templateUrl: 'views/miner.logs.html'
       })
+      .state('miner.events', {
+        url: '/events',
+        parent: 'miner',
+        templateUrl: 'views/miner.events.html'
+      })
       .state('logs', {
         url: '/logs/:token',
         templateUrl: 'views/logs.html',
@@ -177,6 +182,10 @@ angular
       .state('host.charts', {
         url: '/charts',
         templateUrl: 'views/host.charts.html'
+      })
+      .state('host.events', {
+        url: '/events',
+        templateUrl: 'views/host.events.html'
       })
       .state('account', {
         url: '/account',
