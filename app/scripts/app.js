@@ -82,6 +82,15 @@ angular
           requiresLogin: true
         }
       })
+      .state('events', {
+        url: '/events',
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl',
+        controllerAs: 'eventsCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .state('settings.auto_deploy', {
         url: '/auto_deploy',
         parent: 'settings',
@@ -141,7 +150,7 @@ angular
       .state('miner.events', {
         url: '/events',
         parent: 'miner',
-        templateUrl: 'views/miner.events.html'
+        templateUrl: 'views/events.html'
       })
       .state('logs', {
         url: '/logs/:token',
@@ -185,7 +194,7 @@ angular
       })
       .state('host.events', {
         url: '/events',
-        templateUrl: 'views/host.events.html'
+        templateUrl: 'views/events.html'
       })
       .state('account', {
         url: '/account',

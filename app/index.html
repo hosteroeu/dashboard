@@ -89,30 +89,29 @@
                 <!-- .dropdown-menu -->
                 <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
                   <h6 class="dropdown-header stop-propagation">
-                      <span>Activities
+                      <span>Events
                         <!--<span class="badge">(2)</span>-->
                       </span>
                     </h6>
                   <!-- .dropdown-scroll -->
                   <div class="dropdown-scroll has-scrollable">
                     <!-- .dropdown-item -->
-                    <a class="dropdown-item unread" ng-repeat="log in global_logs">
+                    <a class="dropdown-item unread" ng-repeat="event in global_events">
                       <div class="tile">
                         <span class="fa fa-info"></span>
                       </div>
                       <div class="dropdown-item-body">
-                        <p class="text">{{log.message}}</p>
-                        <span class="date">{{log.created_at | timeAgo}}</span>
+                        <p class="text">{{event.message}}</p>
+                        <span class="date">{{event.created_at | timeAgo}}</span>
                       </div>
                     </a>
                     <!-- /.dropdown-item -->
                   </div>
                   <!-- /.dropdown-scroll -->
-                  <!--
-                    <a href="user-activities.html" class="dropdown-footer">All activities
-                      <i class="fa fa-fw fa-long-arrow-alt-right"></i>
-                    </a>
-                    -->
+
+                  <a ui-sref="events" class="dropdown-footer">All events
+                    <i class="fa fa-fw fa-long-arrow-alt-right"></i>
+                  </a>
                 </div>
                 <!-- /.dropdown-menu -->
               </li>
@@ -409,6 +408,7 @@
   <script src="scripts/controllers/install.js"></script>
   <script src="scripts/controllers/wallets.js"></script>
   <script src="scripts/controllers/logs.js"></script>
+  <script src="scripts/controllers/events.js"></script>
   <script src="scripts/filters/hashrate.js"></script>
   <script src="scripts/filters/password.js"></script>
   <script src="scripts/services/auth.js"></script>

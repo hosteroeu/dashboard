@@ -29,7 +29,7 @@ angular.module('atlasApp')
         $scope.global_coins = coinsService.query({
           on_hostero: 1
         });
-        $scope.global_logs = logsService.query();
+        $scope.global_events = logsService.query();
 
         minersService.query().$promise.then(function(res) {
           $scope.global_miners = [];
