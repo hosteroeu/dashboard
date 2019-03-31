@@ -25,10 +25,23 @@ angular.module('atlasApp')
       $scope.global_account = JSON.parse(localStorage.getItem('account')) || {};
 
       if ($rootScope.minimalLayout === false) {
-        $scope.global_hosts = hostsService.query();
+        hostsService.query().$promise.then(function(res) {
+          $scope.global_hosts = [];
+          $scope.global_nodes = [];
+
+          res.forEach(function(host) {
+            if (host.user_id === 'shared') {
+              $scope.global_nodes.push(host);
+            } else {
+              $scope.global_hosts.push(host);
+            }
+          });
+        });
+
         $scope.global_coins = coinsService.query({
           on_hostero: 1
         });
+
         $scope.global_events = logsService.query();
 
         minersService.query().$promise.then(function(res) {

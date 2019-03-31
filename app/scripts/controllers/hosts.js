@@ -11,8 +11,6 @@ angular.module('atlasApp')
   .controller('HostsCtrl', function($scope, $state, hostsService, minersService, DTOptionsBuilder) {
     $scope.miners = minersService.query();
     $scope.hosts = null;
-    $scope.hosts_deployed = [];
-    $scope.hosts_stopped = [];
     $scope.filter = '';
     $scope.dt_options = DTOptionsBuilder.newOptions()
       .withDisplayLength(25)
@@ -32,15 +30,11 @@ angular.module('atlasApp')
             return;
           }
 
-          $scope.hosts.push(host);
-        });
-
-        $scope.hosts.forEach(function(host) {
-          if (host.status === 'stopped') {
-            $scope.hosts_stopped.push(host);
-          } else if (host.deployed === '1') {
-            $scope.hosts_deployed.push(host);
+          if (host.user_id === 'shared') {
+            return;
           }
+
+          $scope.hosts.push(host);
         });
       });
     };

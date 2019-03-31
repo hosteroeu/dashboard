@@ -1,0 +1,70 @@
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    <!-- .page-title-bar -->
+    <header class="page-title-bar">
+      <!-- title and toolbar -->
+      <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto"> {{masternodes.length || 0}} Masternodes </h1>
+      </div>
+      <!-- /title and toolbar -->
+    </header>
+    <!-- /.page-title-bar -->
+
+    <!-- .page-section -->
+    <section class="card card-fluid">
+      <div class="card-body" ng-if="masternodes != null && !masternodes.length">
+        No masternodes.
+      </div>
+
+      <div ng-if="masternodes == null">
+        <center>
+          <br />
+          <p><img src="images/loading.gif" /></p>
+        </center>
+      </div>
+
+      <div class="table-responsive" ng-if="masternodes != null && masternodes.length">
+        <table class="table table-hover" datatable="ng" dt-options="dt_options">
+          <thead class="thead-light">
+            <tr>
+              <th>Masternode</th>
+              <th>Status</th>
+              <th>Updated</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="host in masternodes">
+              <td>
+                <div class="tile bg-success">
+                  <i class="fa fa-{{masternodesCtrl.get_status_icon(host.status)}}"></i>
+                </div>
+                &nbsp;
+                <a ui-sref="host({host:host.id})">{{ host.name | limitTo:100 }}</a>
+              </td>
+              <td>
+                <span ng-if="host.deployed == 0 && host.status == 'started'">Ready</span>
+                <span ng-if="host.deployed == 1 && host.status == 'started'">Deployed</span>
+                <span ng-if="host.deployed == 2 && host.status == 'started'">Deploying...</span>
+                <span ng-if="host.status == 'stopped'">Stopped</span>
+              </td>
+              <td>
+                {{ host.updated_at | timeAgo }}
+              </td>
+              <td class="align-middle text-right">
+                <a ui-sref="new_miner_pos({host:host.id})" ng-if="global_miners.length < (global_account.plan_miners + global_account.bonus_miners)" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Deploy WebDollar POS">
+                  <i class="fas fa-plus"></i>
+                  <span class="sr-only">Deploy WebDollar POS</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <!-- /.page-inner -->
+</div>
+<!-- /.page -->

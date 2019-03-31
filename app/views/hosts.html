@@ -81,17 +81,12 @@
                 {{ host.updated_at | timeAgo }}
               </td>
               <td class="align-middle text-right">
-                <a ui-sref="new_miner({host:host.id})" ng-if="host.deployed == 0 && host.status == 'started' && global_miners.length < (global_account.plan_miners + global_account.bonus_miners) && host.user_id != 'shared'" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Deploy">
+                <a ui-sref="new_miner({host:host.id})" ng-if="host.deployed == 0 && host.status == 'started' && global_miners.length < (global_account.plan_miners + global_account.bonus_miners)" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Deploy">
                   <i class="fas fa-plus"></i>
                   <span class="sr-only">Deploy</span>
                 </a>
 
-                <a ui-sref="new_miner_pos({host:host.id})" ng-if="global_miners.length < (global_account.plan_miners + global_account.bonus_miners) && host.user_id == 'shared'" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Deploy WebDollar POS">
-                  <i class="fas fa-plus"></i>
-                  <span class="sr-only">Deploy WebDollar POS</span>
-                </a>
-
-                <a ng-click="hostsCtrl.remove(host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy" ng-if="host.user_id != 'shared'">
+                <a ng-click="hostsCtrl.remove(host)" class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Re-deploy">
                   <i class="fas fa-recycle"></i>
                   <span class="sr-only">Re-deploy</span>
                 </a>
