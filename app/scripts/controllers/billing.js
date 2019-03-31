@@ -67,7 +67,7 @@ angular.module('atlasApp')
       var info = get_price_for_plan($scope.selected.plan);
 
       $scope.selected.plan_id = info.id;
-      $scope.webdollar_amount = parseInt(info.price / webdollar_eur_price);
+      $scope.webdollar_amount = parseInt(info.price / webdollar_eur_price * 1.15);
     };
 
     accountsService.get({
