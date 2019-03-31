@@ -250,7 +250,7 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Admin </li>
+              <li class="menu-header" ng-if="isAuthenticated">Management </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
@@ -281,7 +281,19 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Management </li>
+              <li class="menu-header" ng-if="isAuthenticated">Staking </li>
+              <!-- /.menu-header -->
+              <!-- .menu-item -->
+              <li class="menu-item" ng-if="isAuthenticated">
+                <a ui-sref="masternodes" class="menu-link">
+                  <span class="menu-icon fas fa-network-wired"></span>
+                  <span class="menu-text">Masternodes</span>
+                  <span class="badge badge-success" ng-cloak>{{global_nodes.length}}</span>
+                </a>
+              </li>
+              <!-- /.menu-item -->
+              <!-- .menu-header -->
+              <li class="menu-header" ng-if="isAuthenticated">Mining </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
@@ -298,18 +310,6 @@
                   <span class="menu-icon fas fa-microchip"></span>
                   <span class="menu-text">Miners</span>
                   <span class="badge badge-success" ng-cloak>{{global_miners.length}}</span>
-                </a>
-              </li>
-              <!-- /.menu-item -->
-              <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Staking </li>
-              <!-- /.menu-header -->
-              <!-- .menu-item -->
-              <li class="menu-item" ng-if="isAuthenticated">
-                <a ui-sref="masternodes" class="menu-link">
-                  <span class="menu-icon fas fa-network-wired"></span>
-                  <span class="menu-text">Masternodes</span>
-                  <span class="badge badge-success" ng-cloak>{{global_nodes.length}}</span>
                 </a>
               </li>
               <!-- /.menu-item -->
