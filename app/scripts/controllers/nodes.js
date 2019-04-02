@@ -2,36 +2,36 @@
 
 /**
  * @ngdoc function
- * @name atlasApp.controller:MasternodesCtrl
+ * @name atlasApp.controller:NodesCtrl
  * @description
- * # MasternodesCtrl
+ * # NodesCtrl
  * Controller of the atlasApp
  */
 angular.module('atlasApp')
-  .controller('MasternodesCtrl', function($scope, $state, hostsService, DTOptionsBuilder) {
-    $scope.masternodes = null;
+  .controller('NodesCtrl', function($scope, $state, hostsService, DTOptionsBuilder) {
+    $scope.nodes = null;
     $scope.filter = '';
     $scope.dt_options = DTOptionsBuilder.newOptions()
       .withDisplayLength(25)
       .withOption('retrieve', true);
 
-    var getMasternodes = function () {
+    var getNodes = function () {
       hostsService.query().$promise.then(function(res) {
-        $scope.masternodes = [];
+        $scope.nodes = [];
 
         res.forEach(function(host) {
           if (host.user_id !== 'shared') {
             return;
           }
 
-          $scope.masternodes.push(host);
+          $scope.nodes.push(host);
         });
       });
     };
 
-    var interval = setInterval(getMasternodes, 60 * 1000);
+    var interval = setInterval(getNodes, 60 * 1000);
 
-    getMasternodes();
+    getNodes();
 
     this.get_status_icon = function(status) {
       switch (status) {

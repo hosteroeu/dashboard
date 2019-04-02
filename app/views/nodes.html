@@ -6,7 +6,7 @@
     <header class="page-title-bar">
       <!-- title and toolbar -->
       <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto"> {{masternodes.length || 0}} Masternodes </h1>
+        <h1 class="page-title mr-sm-auto"> {{nodes.length || 0}} Nodes </h1>
       </div>
       <!-- /title and toolbar -->
     </header>
@@ -14,32 +14,32 @@
 
     <!-- .page-section -->
     <section class="card card-fluid">
-      <div class="card-body" ng-if="masternodes != null && !masternodes.length">
-        No masternodes.
+      <div class="card-body" ng-if="nodes != null && !nodes.length">
+        No nodes.
       </div>
 
-      <div ng-if="masternodes == null">
+      <div ng-if="nodes == null">
         <center>
           <br />
           <p><img src="images/loading.gif" /></p>
         </center>
       </div>
 
-      <div class="table-responsive" ng-if="masternodes != null && masternodes.length">
+      <div class="table-responsive" ng-if="nodes != null && nodes.length">
         <table class="table table-hover" datatable="ng" dt-options="dt_options">
           <thead class="thead-light">
             <tr>
-              <th>Masternode</th>
+              <th>Node</th>
               <th>Status</th>
               <th>Updated</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="host in masternodes">
+            <tr ng-repeat="host in nodes">
               <td>
                 <div class="tile bg-success">
-                  <i class="fa fa-{{masternodesCtrl.get_status_icon(host.status)}}"></i>
+                  <i class="fa fa-{{nodesCtrl.get_status_icon(host.status)}}"></i>
                 </div>
                 &nbsp;
                 <a ui-sref="host({host:host.id})">{{ host.name | limitTo:100 }}</a>

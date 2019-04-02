@@ -170,11 +170,11 @@ angular
           requiresLogin: false
         }
       })
-      .state('masternodes', {
-        url: '/masternodes',
-        templateUrl: 'views/masternodes.html',
-        controller: 'MasternodesCtrl',
-        controllerAs: 'masternodesCtrl',
+      .state('nodes', {
+        url: '/nodes',
+        templateUrl: 'views/nodes.html',
+        controller: 'NodesCtrl',
+        controllerAs: 'nodesCtrl',
         data: {
           requiresLogin: true
         }
