@@ -255,7 +255,7 @@ angular
         controllerAs: 'loginCtrl'
       });
   })
-  .run(function($rootScope, $state, $location, authService, authManager, lock, jwtHelper, DTDefaultOptions) {
+  .run(function($rootScope, $state, $location, authService, authManager, lock, jwtHelper, DTDefaultOptions, accountsService) {
     lock.interceptHash();
 
     $rootScope.authService = authService;
@@ -283,6 +283,24 @@ angular
       if (token) {
         if (!jwtHelper.isTokenExpired(token)) {
           authManager.authenticate();
+
+          var account;
+
+          try {
+            account = JSON.parse(localStorage.getItem('account'));
+          } catch(e) {
+            console.error(e);
+          }
+
+          if (account) {
+            accountsService.get({
+              id: account.id
+            }).$promise.then(function(_account) {
+              localStorage.setItem('account', JSON.stringify(_account));
+
+              $rootScope.global_account = _account;
+            });
+          }
         } else {
           localStorage.removeItem('token');
 
