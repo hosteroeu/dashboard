@@ -68,6 +68,7 @@
   },
   "resolutions": {
     "angular": ">=1.7.8",
-    "jquery": ">=1.7.0"
+    "jquery": ">=1.7.0",
+    "auth0-lock": "^11.15.0"
   }
 }
