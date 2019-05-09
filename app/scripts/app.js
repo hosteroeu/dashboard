@@ -274,6 +274,15 @@ angular
       var token = localStorage.getItem('token');
       var location = $location.path();
 
+      // allow http only on logs page
+      if (window.location.hostname === 'dashboard.hostero.eu' &&
+        window.location.protocol === 'http:' &&
+        window.location.path.indexOf('logs') !== -1) {
+        window.stop();
+        window.location.href = 'https://dashboard.hostero.eu';
+        return;
+      }
+
       if (window.gtag) {
         window.gtag('config', 'UA-128907941-2', {
           'page_path': location
@@ -288,7 +297,7 @@ angular
 
           try {
             account = JSON.parse(localStorage.getItem('account'));
-          } catch(e) {
+          } catch (e) {
             console.error(e);
           }
 
