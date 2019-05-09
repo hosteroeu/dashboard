@@ -44,12 +44,14 @@ angular.module('atlasApp')
           }
 
           localStorage.setItem('profile', JSON.stringify(profile));
+
           $cookies.put('profile', JSON.stringify(profile), {
             domain: '.hostero.eu'
           });
+
           $rootScope.$broadcast('userProfileSet', profile);
 
-          lock.hide();
+          //lock.hide();
 
           accountsService.get({
             controller: 'sync'
@@ -69,6 +71,7 @@ angular.module('atlasApp')
               full_name: profile.name
             }).$promise.then(function() {
               // Refresh page to reload root controller's data
+              window.stop();
               location.reload();
             });
           });
