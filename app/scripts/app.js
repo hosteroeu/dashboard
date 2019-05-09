@@ -277,7 +277,7 @@ angular
       // allow http only on logs page
       if (window.location.hostname === 'dashboard.hostero.eu' &&
         window.location.protocol === 'http:' &&
-        location.indexOf('logs') !== -1) {
+        location.indexOf('logs') === -1) {
         window.stop();
         window.location.href = 'https://dashboard.hostero.eu';
         return;
