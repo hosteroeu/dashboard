@@ -30,7 +30,8 @@
           <thead class="thead-light">
             <tr>
               <th>Node</th>
-              <th>Status</th>
+              <th>Coin</th>
+              <th>Type</th>
               <th>Updated</th>
               <th>&nbsp;</th>
             </tr>
@@ -39,16 +40,15 @@
             <tr ng-repeat="host in nodes">
               <td>
                 <div class="tile bg-success">
-                  <i class="fa fa-{{nodesCtrl.get_status_icon(host.status)}}"></i>
+                  <i class="fa fa-network-wired"></i>
                 </div>
-                &nbsp;
-                <a ui-sref="host({host:host.id})">{{ host.name | limitTo:100 }}</a>
+                &nbsp; {{ host.name | limitTo:100 }}
               </td>
               <td>
-                <span ng-if="host.deployed == 0 && host.status == 'started'">Ready</span>
-                <span ng-if="host.deployed == 1 && host.status == 'started'">Deployed</span>
-                <span ng-if="host.deployed == 2 && host.status == 'started'">Deploying...</span>
-                <span ng-if="host.status == 'stopped'">Stopped</span>
+                <a ui-sref="wallets.wallet({wallet: 'webdollar'})">WebDollar</a>
+              </td>
+              <td>
+                Proof Of Stake
               </td>
               <td>
                 {{ host.updated_at | timeAgo }}
@@ -64,6 +64,13 @@
         </table>
       </div>
     </section>
+
+    <div class="alert alert-secondary has-icon" role="alert">
+      <div class="alert-icon">
+        <span class="fa fa-info"></span>
+      </div>
+      <strong>Need help?</strong> Check out our <a href="https://www.hostero.eu/docs/webdollar-pos-mining" class="alert-link" target="_blank">guide</a> for configuring the Proof-of-Stake miner for WebDollar.
+    </div>
   </div>
   <!-- /.page-inner -->
 </div>
