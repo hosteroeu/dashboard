@@ -11,6 +11,18 @@ angular.module('atlasApp')
   .controller('MinerCtrl', function($scope, $state, minersService) {
     $scope.miner = null;
 
+    function set_token() {
+      minersService.get({
+        id: $state.params.miner,
+        controller: 'logs'
+      }).$promise.then(function(data) {
+        if (data.ws) {
+          var token = data.ws.split('token=');
+          $scope.logs_token = token[1];
+        }
+      });
+    }
+
     minersService.get({
       id: $state.params.miner
     }).$promise.then(function(res) {
@@ -19,15 +31,12 @@ angular.module('atlasApp')
 
     $scope.state = $state;
 
-    minersService.get({
-      id: $state.params.miner,
-      controller: 'logs'
-    }).$promise.then(function(data) {
-      if (data.ws) {
-        var token = data.ws.split('token=');
-        $scope.logs_token = token[1];
-      }
-    });
+    set_token();
+
+    // The token expires, need to get it again
+    setInterval(function() {
+      set_token();
+    }, 60 * 1000);
 
     minersService.query({
       id: $state.params.miner,

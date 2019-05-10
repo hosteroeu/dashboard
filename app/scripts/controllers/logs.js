@@ -11,6 +11,7 @@ angular.module('atlasApp')
   .controller('LogsCtrl', function($scope, $rootScope, $state, minersService, $sce, ansi2html) {
     $scope.logs = [];
     $scope.power = '0 h/s';
+    $scope.error = null;
     $rootScope.minimalLayout = true;
 
     var token = $state.params.token;
@@ -18,6 +19,11 @@ angular.module('atlasApp')
 
     socket.onopen = function(event) {
       console.log(event);
+    };
+
+    socket.onerror = function(event) {
+      console.error(event);
+      $scope.error = 'Logs are unavailable, currently...';
     };
 
     socket.onmessage = function(event) {
