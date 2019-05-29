@@ -250,7 +250,7 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Management </li>
+              <li class="menu-header" ng-if="isAuthenticated">Admin </li>
               <!-- /.menu-header -->
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
@@ -281,9 +281,10 @@
               </li>
               <!-- /.menu-item -->
               <!-- .menu-header -->
-              <li class="menu-header" ng-if="isAuthenticated">Staking </li>
+              <!--<li class="menu-header" ng-if="isAuthenticated">Staking </li>-->
               <!-- /.menu-header -->
               <!-- .menu-item -->
+              <!--
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="nodes" class="menu-link">
                   <span class="menu-icon fas fa-network-wired"></span>
@@ -291,6 +292,7 @@
                   <span class="badge badge-success" ng-cloak>{{global_nodes.length}}</span>
                 </a>
               </li>
+              -->
               <!-- /.menu-item -->
               <!-- .menu-header -->
               <li class="menu-header" ng-if="isAuthenticated">Mining </li>
