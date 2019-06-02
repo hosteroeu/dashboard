@@ -25,7 +25,9 @@ angular.module('atlasApp')
     });
 
     var getMiners = function() {
-      minersService.query().$promise.then(function(res) {
+      minersService.query({
+        mode: 'miner'
+      }).$promise.then(function(res) {
         // TODO: Link miner to coin in DB (build relation)
         coinsService.query().$promise.then(function(coins) {
           var yesterday = new Date();

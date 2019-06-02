@@ -44,7 +44,9 @@ angular.module('atlasApp')
 
         $scope.global_events = logsService.query();
 
-        minersService.query().$promise.then(function(res) {
+        minersService.query({
+          mode: 'miner'
+        }).$promise.then(function(res) {
           $scope.global_miners = [];
 
           res.forEach(function(miner) {
