@@ -28,10 +28,10 @@
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> Subscribe </h3>
-                <br />
-                <center>
-                  <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and click Subscribe.</p>
+                <hr />
+                <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and click Subscribe.</p>
 
+                <center>
                   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="FVTLL5JVVUFD2">
@@ -78,10 +78,10 @@
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> WebDollar </h3>
-                <br />
-                <center>
-                  <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and make a payment.</p>
+                <hr />
+                <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and make a payment.</p>
 
+                <center>
                   <select ng-model="selected.plan" ng-change="set_webdollar_amount()">
                     <option value="hobby" selected="">Hobby : €1.99 EUR - monthly</option>
                     <option value="miner">Miner : €9.99 EUR - monthly</option>
@@ -116,7 +116,7 @@
               <!-- .card-body -->
               <div class="card-body">
                 <h3 class="card-title"> Payments History </h3>
-
+                <hr />
                 <table class="table">
                   <thead>
                     <tr>
