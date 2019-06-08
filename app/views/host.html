@@ -44,7 +44,7 @@
 
           <div ng-if="host && state.current.name == 'host'">
             <h4 class="card-title">{{host.name}}</h4>
-            <br />
+            <hr />
             <p>Status: <strong>{{ host.status | ucfirst }}</strong></p>
             <!--<p>CPU Usage: <strong>{{ cpu_usage || 0 }}%</strong></p>-->
             <p>Created: <strong>{{ host.internal_created | date }}</strong></p>
