@@ -119,15 +119,6 @@ angular
           requiresLogin: true
         }
       })
-      .state('new_miner_pos', {
-        url: '/new_miner_pos/:host',
-        templateUrl: 'views/miners.new_pos.html',
-        controller: 'MinersNewPOSCtrl',
-        controllerAs: 'ctrl',
-        data: {
-          requiresLogin: true
-        }
-      })
       .state('miner', {
         url: '/miners/:miner',
         templateUrl: 'views/miner.html',
@@ -142,11 +133,6 @@ angular
         parent: 'miner',
         templateUrl: 'views/miner.charts.html'
       })
-      .state('miner.logs', {
-        url: '/logs',
-        parent: 'miner',
-        templateUrl: 'views/miner.logs.html'
-      })
       .state('miner.events', {
         url: '/events',
         parent: 'miner',
@@ -159,24 +145,6 @@ angular
         controllerAs: 'logsCtrl',
         data: {
           requiresLogin: false
-        }
-      })
-      .state('install', {
-        url: '/install',
-        templateUrl: 'views/install_new.html',
-        controller: 'InstallCtrl',
-        controllerAs: 'installCtrl',
-        data: {
-          requiresLogin: false
-        }
-      })
-      .state('nodes', {
-        url: '/nodes',
-        templateUrl: 'views/nodes.html',
-        controller: 'NodesCtrl',
-        controllerAs: 'nodesCtrl',
-        data: {
-          requiresLogin: true
         }
       })
       .state('hosts', {
