@@ -28,6 +28,7 @@ angular.module('atlasApp')
     _this.selected_host = null;
     _this.selected_host_id = null;
     _this.threads = 0;
+    _this.name = null;
 
     hostsService.query().$promise.then(function(hosts) {
       _this.hosts = hosts;
@@ -36,13 +37,14 @@ angular.module('atlasApp')
         _this.selected_host = getHostById(_this.hosts, $state.params.host);
         _this.selected_host_id = $state.params.host;
         _this.threads = parseInt(_this.selected_host.cpu_count);
+        _this.update_threads();
       }
     });
 
     _this.update_threads = function() {
       _this.selected_host = getHostById(_this.hosts, _this.selected_host_id);
-
       _this.threads = _this.selected_host ? parseInt(_this.selected_host.cpu_count) : 0;
+      _this.name = 'miner-' + _this.selected_host_id;
     };
 
     accountsService.get({
@@ -74,11 +76,11 @@ angular.module('atlasApp')
         return;
       }
 
-      var name = 'miner-' + _this.selected_host.id;
       var new_miner = {
-        name: name,
+        name: _this.name,
         coin: _this.wallets.auto_deploy_coin,
         status: 'stopped',
+        mode: 'miner',
         deployed: '2',
         threads: _this.threads,
         processor: _this.wallets.default_processor,
