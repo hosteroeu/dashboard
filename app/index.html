@@ -123,7 +123,7 @@
               <!--<li class="nav-item dropdown header-nav-dropdown has-notified">-->
               <li class="nav-item dropdown header-nav-dropdown">
                 <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="fa fa-dollar-sign"></span>
+                  <span class="fa fa-coins"></span>
                 </a>
                 <div class="dropdown-arrow"></div>
                 <!-- .dropdown-menu -->
@@ -132,9 +132,9 @@
                   <div class="dropdown-sheets">
                     <!-- .dropdown-sheet-item -->
                     <div class="dropdown-sheet-item" ng-repeat="coin in global_coins">
-                      <a ui-sref="wallets.wallet({wallet:coin.internal_name})" class="tile-wrapper">
+                      <a href="https://www.hostero.eu/coins/{{coin.internal_name}}" target="_blank" class="tile-wrapper">
                         <figure class="user-avatar user-avatar-sm">
-                          <img src="{{coin.logo_url}}" alt="User Avatar">
+                          <img src="{{coin.logo_url}}" alt="Coin Logo">
                         </figure>
                         <span class="tile-peek">
                           {{coin.name}}
@@ -267,7 +267,7 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-if="isAuthenticated">
                 <a ui-sref="billing" class="menu-link">
-                  <span class="menu-icon fas fa-wallet"></span>
+                  <span class="menu-icon fas fa-dollar-sign"></span>
                   <span class="menu-text">Billing</span>
                 </a>
                 <!-- /child menu -->
@@ -276,7 +276,7 @@
               <!-- .menu-item -->
               <li class="menu-item" ng-show="isAuthenticated">
                 <a ui-sref="wallets" class="menu-link">
-                  <span class="menu-icon fas fa-coins"></span>
+                  <span class="menu-icon fas fa-wallet"></span>
                   <span class="menu-text">Wallets</span>
                   <span class="badge badge-warning" ng-cloak>{{global_coins.length}}</span>
                 </a>
