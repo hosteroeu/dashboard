@@ -51,7 +51,7 @@ angular.module('atlasApp')
 
           $rootScope.$broadcast('userProfileSet', profile);
 
-          //lock.hide();
+          lock.hide();
 
           accountsService.get({
             controller: 'sync'
