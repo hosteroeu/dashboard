@@ -107,6 +107,9 @@ angular.module('atlasApp')
         wallet_xcash: _this.wallets.wallet_xcash,
         password_xcash: _this.wallets.password_xcash,
         mining_pool_url_xcash: _this.wallets.mining_pool_url_xcash,
+        wallet_monero: _this.wallets.wallet_monero,
+        password_monero: _this.wallets.password_monero,
+        mining_pool_url_monero: _this.wallets.mining_pool_url_monero,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
       });
