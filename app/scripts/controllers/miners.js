@@ -176,7 +176,7 @@ angular.module('atlasApp')
         if (data.ws) {
           var token = data.ws.split('token=');
 
-          if (token && token.length > 1 && token[1]) {
+          if (token && token.length > 1 && token[1] && token[1] !== 'undefined') {
             window.open('http://dashboard.hostero.eu/#!/logs/' + token[1]);
           } else {
             window.toastr.error('Logs can not be retrieved at this time');
