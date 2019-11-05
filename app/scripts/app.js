@@ -101,6 +101,11 @@ angular
         parent: 'settings',
         templateUrl: 'views/settings.dual_mining.html'
       })
+      .state('settings.bonus', {
+        url: '/bonus',
+        parent: 'settings',
+        templateUrl: 'views/settings.bonus.html'
+      })
       .state('miners', {
         url: '/miners',
         templateUrl: 'views/miners.html',

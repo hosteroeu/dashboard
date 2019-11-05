@@ -59,4 +59,16 @@ angular.module('atlasApp')
         $state.reload();
       });
     };
+
+    this.update_bonus = function() {
+      accountsService.update({
+        id: account.id
+      }, {
+        bonus_eth_address: this.account.bonus_eth_address,
+      }).$promise.then(function() {
+        window.toastr.success('Settings were updated');
+
+        $state.reload();
+      });
+    };
   });
