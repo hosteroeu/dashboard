@@ -32,7 +32,7 @@
                 <p>You are on the <strong><a ui-sref="account">{{plan | ucfirst}}</a></strong> plan. Select a new plan below and click Subscribe.</p>
 
                 <center>
-                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" ng-submit="record_event('paypal', 'paypal_subscribe')" target="_blank">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="FVTLL5JVVUFD2">
                     <table>
@@ -52,7 +52,7 @@
                     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                   </form>
 
-                  <p><small>You can also make a <a href="https://paypal.me/hostero" target="_blank">one-time payment</a>.</small></p>
+                  <p><small>You can also make a <a href="https://paypal.me/hostero" target="_blank" ng-click="record_event('paypal', 'paypal_payment')">one-time payment</a>.</small></p>
                   <br />
                   <p><small>Pay from a PayPal account registered with the email: <strong>{{global_account.email}}</strong>.</small></p>
                   <p><small>Read more about our <a href="https://www.hostero.eu/pricing" target="_blank">subscription plans</a>.</small></p>
@@ -66,7 +66,7 @@
                 <h3 class="card-title"> Unsubscribe </h3>
                 <p>Your PayPal account is getting charged automatically every month.</p>
                 <p>
-                  <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=9ATLAKYSX5TD8">
+                  <A HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=9ATLAKYSX5TD8" target="_blank" ng-click="record_event('paypal', 'paypal_unsubscribe')">
                     <IMG SRC="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" BORDER="0">
                   </A>
                 </p>
@@ -92,7 +92,7 @@
                   <br />
 
                   <p>Send the exact WEBD amount</p>
-                  <h4><a href="https://webdollar.io/payment/WEBD$gCET26qgUFLE5dNUo8aGrn0ZPGQQueFYuj$/{{webdollar_amount}}.{{selected.plan_id}}{{global_account.id}}" target="_blank">{{webdollar_amount}}.{{selected.plan_id}}{{global_account.id}}</a></h4>
+                  <h4><a href="https://webdollar.io/payment/WEBD$gCET26qgUFLE5dNUo8aGrn0ZPGQQueFYuj$/{{webdollar_amount}}.{{selected.plan_id}}{{global_account.id}}" target="_blank" ng-click="record_event('webdollar', 'webdollar_payment')">{{webdollar_amount}}.{{selected.plan_id}}{{global_account.id}}</a></h4>
                   <p>to wallet</p>
                   <h6>WEBD$gCET26qgUFLE5dNUo8aGrn0ZPGQQueFYuj$</h6>
 

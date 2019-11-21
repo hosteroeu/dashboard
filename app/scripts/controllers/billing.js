@@ -70,6 +70,14 @@ angular.module('atlasApp')
       $scope.webdollar_amount = parseInt(info.price / webdollar_eur_price * 1.15);
     };
 
+    $scope.record_event = function(gateway, type) {
+      if (window.gtag) {
+        window.gtag('event', type, {
+          gateway: gateway
+        });
+      }
+    };
+
     accountsService.get({
       id: account.id
     }).$promise.then(function(_account) {
