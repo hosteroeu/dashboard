@@ -215,6 +215,10 @@ angular.module('atlasApp')
       }
 
       minersService.save({}, new_miner).$promise.then(function() {
+        if (window.gtag) {
+          window.gtag('event', 'miners_create');
+        }
+
         hostsService.update({
           id: _this.selected_host.id
         }, {

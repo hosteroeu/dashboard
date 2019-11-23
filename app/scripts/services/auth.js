@@ -62,6 +62,12 @@ angular.module('atlasApp')
               domain: '.hostero.eu'
             });
 
+            if (window.gtag) {
+              window.gtag('event', 'login', {
+                account_name: account.name
+              });
+            }
+
             $state.go('dashboard');
 
             accountsService.update({
