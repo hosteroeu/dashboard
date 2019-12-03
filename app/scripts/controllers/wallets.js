@@ -75,6 +75,10 @@ angular.module('atlasApp')
           '|' + _this.wallets.private_key_webdollar;
       }
 
+      if (window.gtag) {
+        window.gtag('event', 'wallets_update');
+      }
+
       accountsService.update({
         id: account.id
       }, {

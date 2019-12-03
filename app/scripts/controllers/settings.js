@@ -23,6 +23,10 @@ angular.module('atlasApp')
     });
 
     this.update_settings = function() {
+      if (window.gtag) {
+        window.gtag('event', 'settings_update');
+      }
+
       accountsService.update({
         id: account.id
       }, {
@@ -35,6 +39,10 @@ angular.module('atlasApp')
     };
 
     this.update_auto_deploy = function() {
+      if (window.gtag) {
+        window.gtag('event', 'auto_deploy_update');
+      }
+
       accountsService.update({
         id: account.id
       }, {
@@ -48,6 +56,10 @@ angular.module('atlasApp')
     };
 
     this.update_dual_mining = function() {
+      if (window.gtag) {
+        window.gtag('event', 'dual_mining_update');
+      }
+
       accountsService.update({
         id: account.id
       }, {
@@ -61,6 +73,10 @@ angular.module('atlasApp')
     };
 
     this.update_bonus = function() {
+      if (window.gtag) {
+        window.gtag('event', 'bonus_update');
+      }
+
       accountsService.update({
         id: account.id
       }, {
