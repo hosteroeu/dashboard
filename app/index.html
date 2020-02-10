@@ -354,6 +354,11 @@
         <div class="page-message" ng-if="global_miners.length == (global_account.plan_miners + global_account.bonus_miners)" ng-cloak>
           <i class="fa fa-fw fa-bell"></i> <a ui-sref="billing" class="alert-link">Upgrade</a> your account if you want to create more miners.
         </div>
+
+        <div class="page-message" ng-if="global_account.plan_miners == 1" ng-cloak>
+          <i class="fa fa-fw fa-trophy"></i> Our paid plan of <strong>1.99 &euro; / month</strong> allows you to deploy up to 5 miners.
+          <a ui-sref="billing" class="alert-link">Add more miners</a>.
+        </div>
       </span>
 
       <!-- .wrapper -->
