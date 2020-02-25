@@ -101,10 +101,10 @@ angular
         parent: 'settings',
         templateUrl: 'views/settings.dual_mining.html'
       })
-      .state('settings.bonus', {
-        url: '/bonus',
+      .state('settings.eth_address', {
+        url: '/eth_address',
         parent: 'settings',
-        templateUrl: 'views/settings.bonus.html'
+        templateUrl: 'views/settings.eth_address.html'
       })
       .state('miners', {
         url: '/miners',
@@ -220,6 +220,10 @@ angular
       .state('billing.webdollar', {
         parent: 'billing',
         url: '/webdollar'
+      })
+      .state('billing.hostero_miners', {
+        parent: 'billing',
+        url: '/hostero_miners'
       })
       .state('login', {
         url: '/login',
