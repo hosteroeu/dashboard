@@ -12,8 +12,8 @@ ADD . /usr/src/app
 
 RUN gem update --system --no-document && gem install compass --no-document
 RUN npm install
-RUN npm install -g bower
-RUN npm install -g grunt-cli
+RUN npm install -g bower@1.8.4
+RUN npm install -g grunt-cli@0.1.13
 RUN bower install --allow-root
 RUN grunt build
 
