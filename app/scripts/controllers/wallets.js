@@ -114,6 +114,9 @@ angular.module('atlasApp')
         wallet_monero: _this.wallets.wallet_monero,
         password_monero: _this.wallets.password_monero,
         mining_pool_url_monero: _this.wallets.mining_pool_url_monero,
+        wallet_scala: _this.wallets.wallet_scala,
+        password_scala: _this.wallets.password_scala,
+        mining_pool_url_scala: _this.wallets.mining_pool_url_scala,
       }).$promise.then(function() {
         window.toastr.success('Wallet was updated');
       });

@@ -207,6 +207,17 @@ angular.module('atlasApp')
           new_miner.password = _this.wallets.password_monero;
           new_miner.mining_pool_url = _this.wallets.mining_pool_url_monero;
           break;
+
+        case 'scala':
+          if (!_this.wallets.wallet_scala || !_this.wallets.mining_pool_url_scala) {
+            window.toastr.warning('Please enter Scala information');
+            return;
+          }
+
+          new_miner.wallet = _this.wallets.wallet_scala;
+          new_miner.password = _this.wallets.password_scala;
+          new_miner.mining_pool_url = _this.wallets.mining_pool_url_scala;
+          break;
       }
 
       if (_this.selected_host.deployed !== '0') {
