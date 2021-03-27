@@ -329,11 +329,11 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
-    // uglify: {
-    //   options: {
-    //     sourceMap: true
-    //   }
-    // },
+    uglify: {
+      options: {
+        sourceMap: true
+      }
+    },
 
     imagemin: {
       dist: {
@@ -503,7 +503,7 @@ module.exports = function (grunt) {
     'copy:dist',
     //'cdnify',
     'cssmin',
-    //'uglify',
+    'uglify',
     'filerev',
     'usemin',
     'htmlmin'
